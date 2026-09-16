@@ -1,0 +1,23 @@
+﻿[
+  {
+    "targetSkill": "Kubernetes Self-Healing & Pod Debugger",
+    "targetAudience": "DevOps Engineers / SREs",
+    "potentialPartners": ["k8s-lens community", "devops open-source contributors"],
+    "reachoutAngle": "Offer 85% revenue split on an authenticated MCP skill that diagnoses crashing pods without cluster credentials leaking.",
+    "status": "DRAFTED"
+  },
+  {
+    "targetSkill": "Automated Legal NDA Risk Scorer",
+    "targetAudience": "Founders, In-House Counsel",
+    "potentialPartners": ["LegalTech open-source projects", "Contract review developers"],
+    "reachoutAngle": "Monetize specialized contract redlining prompts with zero exposure of underlying clauses or training data.",
+    "status": "DRAFTED"
+  },
+  {
+    "targetSkill": "Biotech PubMed / Clinical Trial Synthesizer",
+    "targetAudience": "Bioinformatics researchers, Pharma analysts",
+    "potentialPartners": ["Open-source BioPython contributors"],
+    "reachoutAngle": "High-value $1.00/run skill that aggregates newly published preprints and clinical trial results in seconds.",
+    "status": "DRAFTED"
+  }
+]

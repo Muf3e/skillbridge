@@ -1,0 +1,36 @@
+{
+  "name": "skillbridge-platform",
+  "version": "0.1.0",
+  "private": true,
+  "description": "SkillBridge: Universal Remote Execution & Monetization Gateway for AI Agent Skills",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run --workspaces --if-present build",
+    "test": "npm run --workspaces --if-present test",
+    "start:gateway": "npm --workspace=packages/gateway run start",
+    "start:worker": "npm --workspace=packages/worker-runtime run start"
+  },
+  "keywords": [
+    "ai",
+    "agent",
+    "mcp",
+    "skills",
+    "marketplace",
+    "remote-execution",
+    "monetization"
+  ],
+  "author": "SkillBridge Core Team",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@types/node": "^22.20.3",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2"
+  }
+}

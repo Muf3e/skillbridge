@@ -1,0 +1,13 @@
+{
+  "name": "@skillbridge/cli",
+  "version": "0.1.0",
+  "main": "src/shim.ts",
+  "scripts": {
+    "test:e2e": "npx ts-node src/test-verification.ts"
+  },
+  "dependencies": {
+    "@skillbridge/shared-types": "0.1.0",
+    "@skillbridge/gateway": "0.1.0"
+  },
+  "license": "Apache-2.0"
+}
