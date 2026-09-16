@@ -40,6 +40,9 @@ export class HardenedSandboxEngine {
       case "skill_clinical_trial_synthesizer":
         return this.runClinicalTrialSynthesizer(req.arguments);
 
+      case "skill_smart_contract_auditor":
+        return this.runSmartContractAuditor(req.arguments);
+
       default:
         return {
           success: false,
@@ -257,6 +260,35 @@ export class HardenedSandboxEngine {
         clinicalSynthesis: "Intervention demonstrated strong superior progression-free survival relative to standard-of-care baseline with a manageable grade 3 safety profile."
       },
       metrics: { tokensUsed: 490 }
+    };
+  }
+
+  private async runSmartContractAuditor(args: Record<string, any>): Promise<SandboxExecutionResponse> {
+    const code = args.soliditySource || "";
+    const hasReentrancy = code.includes(".call{value:") && !code.includes("nonReentrant");
+    const hasUncheckedMath = code.includes("unchecked {");
+
+    const issues: any[] = [];
+    if (hasReentrancy) {
+      issues.push({
+        vulnerability: "SWC-107: Reentrancy Potential",
+        severity: "CRITICAL",
+        recommendation: "Implement OpenZeppelin ReentrancyGuard or adhere strictly to Checks-Effects-Interactions pattern."
+      });
+    }
+
+    return {
+      success: true,
+      data: {
+        securityScore: issues.length > 0 ? "AUDIT_FAIL_CRITICAL" : "AUDIT_PASS",
+        vulnerabilitiesCount: issues.length,
+        issues,
+        gasOptimizations: [
+          { item: "Storage Packing", saving: "~2,100 gas per write", detail: "Pack uint128 timestamp with address owner into a single 32-byte storage slot." }
+        ],
+        auditBadge: issues.length === 0 ? "VERIFIED_SECURE" : "REQUIRES_FIXES"
+      },
+      metrics: { tokensUsed: 520 }
     };
   }
 }

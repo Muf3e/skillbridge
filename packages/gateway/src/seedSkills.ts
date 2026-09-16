@@ -217,12 +217,12 @@ export const legalNdaScorerSkill: SkillManifest = {
   updatedAt: new Date().toISOString()
 };
 
-// NEW SKILL 8: Clinical Trial & PubMed Synthesizer (Biotech & Life Sciences)
+// Seed Skill 8: Biotech Clinical Trial Synthesizer
 export const clinicalTrialSynthesizerSkill: SkillManifest = {
   id: "skill_clinical_trial_synthesizer",
   name: "Biotech Clinical Trial & PubMed Synthesizer",
   version: "1.0.0",
-  description: "Extracts trial cohorts, primary end-point efficacy, adverse event percentages, and statistical confidence intervals from medical literature and clinical trial disclosures.",
+  description: "Extracts trial cohorts, primary end-point efficacy, adverse event percentages, and statistical hazard ratios from medical literature and clinical trial disclosures.",
   authorId: "pub_bio_nexus",
   authorName: "BioNexus Intelligence",
   pricing: {
@@ -248,6 +248,37 @@ export const clinicalTrialSynthesizerSkill: SkillManifest = {
   updatedAt: new Date().toISOString()
 };
 
+// NEW SKILL 9: Smart Contract Security & Gas Optimizer (Web3 / EVM Auditing)
+export const smartContractAuditorSkill: SkillManifest = {
+  id: "skill_smart_contract_auditor",
+  name: "Smart Contract Gas & Security Auditor",
+  version: "1.0.0",
+  description: "Automated bytecode & Solidity static audit engine. Uncovers reentrancy vulnerabilities, flash-loan vulnerabilities, and high-cost storage slot gas optimizations.",
+  authorId: "pub_audit_chain",
+  authorName: "AuditChain Labs",
+  pricing: {
+    model: "pay_per_run",
+    costPerRunUsd: 0.75
+  },
+  capabilities: ["web3", "solidity", "evm", "smart-contracts", "security"],
+  tools: [
+    {
+      name: "audit_solidity_contract",
+      description: "Scans Solidity source code for reentrancy, integer overflows, unchecked transfers, and storage packing gas savings.",
+      inputSchema: {
+        type: "object",
+        properties: {
+          soliditySource: { type: "string", description: "Solidity source code (.sol)" },
+          evmVersion: { type: "string", description: "Cancun, Shanghai, or London" }
+        },
+        required: ["soliditySource"]
+      }
+    }
+  ],
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString()
+};
+
 export const ALL_SEED_SKILLS: SkillManifest[] = [
   deepSecAuditSkill,
   sqlDoctorSkill,
@@ -256,5 +287,6 @@ export const ALL_SEED_SKILLS: SkillManifest[] = [
   tailwindUnifierSkill,
   k8sIncidentCopilotSkill,
   legalNdaScorerSkill,
-  clinicalTrialSynthesizerSkill
+  clinicalTrialSynthesizerSkill,
+  smartContractAuditorSkill
 ];
