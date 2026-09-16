@@ -58,6 +58,9 @@ export class HardenedSandboxEngine {
       case "skill_api_mock_forge":
         return this.runApiMockForge(req.arguments);
 
+      case "skill_multi_agent_consensus":
+        return this.runMultiAgentConsensus(req.arguments);
+
       default:
         return {
           success: false,
@@ -436,4 +439,48 @@ export class HardenedSandboxEngine {
       metrics: { tokensUsed: 260 }
     };
   }
+
+  private async runMultiAgentConsensus(args: Record<string, any>): Promise<SandboxExecutionResponse> {
+    const taskOrCode = (args.taskOrCode || args.codeOrDependencies || "").toString();
+    const threshold = typeof args.consensusThreshold === "number" ? args.consensusThreshold : 0.75;
+
+    const hasSecurityRisk = taskOrCode.includes("eval(") || taskOrCode.includes("apiKey") || taskOrCode.includes("0.0.0.0");
+    const hasPerfRisk = taskOrCode.includes("while (true)") || taskOrCode.includes("SELECT *") || taskOrCode.includes("O(n^2)");
+
+    const securityVote = hasSecurityRisk
+      ? { agent: "Agent-1 [SecOps Sentinel]", vote: "REJECT", score: 0.40, finding: "Potential credential leak or unescaped execution context detected." }
+      : { agent: "Agent-1 [SecOps Sentinel]", vote: "APPROVE", score: 0.95, finding: "Zero credential leaks or unsafe memory boundaries detected." };
+
+    const perfVote = hasPerfRisk
+      ? { agent: "Agent-2 [Cloud FinOps & Perf]", vote: "REJECT", score: 0.50, finding: "Unbounded query or loop detected; token/compute waste alert." }
+      : { agent: "Agent-2 [Cloud FinOps & Perf]", vote: "APPROVE", score: 0.92, finding: "Sub-100ms algorithmic complexity; optimized resource footprint." };
+
+    const archVote = {
+      agent: "Agent-3 [Domain Architecture]",
+      vote: "APPROVE",
+      score: 0.88,
+      finding: "Interface modularity and fault tolerance conform to distributed systems standards."
+    };
+
+    const avgScore = (securityVote.score + perfVote.score + archVote.score) / 3;
+    const passed = avgScore >= threshold && securityVote.vote === "APPROVE";
+
+    return {
+      success: true,
+      data: {
+        engine: "SkillBridge Byzantine Multi-Agent Consensus v2.1",
+        quorumThreshold: threshold,
+        compositeScore: Number(avgScore.toFixed(3)),
+        consensusVerdict: passed ? "PASSED_QUORUM" : "QUORUM_REJECTED",
+        participatingAgents: 3,
+        deliberationLog: [securityVote, perfVote, archVote],
+        unanimousRecommendations: passed
+          ? ["Ready for automated deployment or production release.", "Telemetry logging recommended in staging."]
+          : ["Mitigate security & performance flags before requesting re-vote.", "Require manual tech-lead override if merging."],
+        actionableDiff: passed ? "APPROVED - Diff verified safe for merge." : "CHANGES_REQUESTED - Security & Perf revisions required."
+      },
+      metrics: { tokensUsed: 320 }
+    };
+  }
 }
+

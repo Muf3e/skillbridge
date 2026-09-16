@@ -2,6 +2,9 @@
   "name": "@skillbridge/cli",
   "version": "0.1.0",
   "main": "src/shim.ts",
+  "bin": {
+    "skillbridge": "src/index.ts"
+  },
   "scripts": {
     "test:e2e": "npx ts-node src/test-verification.ts"
   },

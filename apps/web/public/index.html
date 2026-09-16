@@ -91,12 +91,13 @@
         <div class="flex items-center justify-between bg-slate-900/90 border border-slate-800 rounded-xl p-3 shadow-2xl backdrop-blur">
           <div class="flex items-center space-x-3 text-sm font-mono text-slate-300 overflow-hidden">
             <span class="text-indigo-400 font-bold">$</span>
-            <span class="truncate">npx @skillbridge/cli add skill/deepsec-audit</span>
+            <span class="truncate text-white font-semibold">npx @skillbridge/cli setup</span>
           </div>
-          <button onclick="copyCommand('npx @skillbridge/cli add skill/deepsec-audit')" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1.5 rounded-lg border border-slate-700 transition flex-shrink-0">
-            Copy
+          <button onclick="copyCommand('npx @skillbridge/cli setup')" class="text-xs bg-indigo-600 hover:bg-indigo-500 text-white px-3 py-1.5 rounded-lg border border-indigo-500/30 transition flex-shrink-0 font-semibold shadow">
+            Copy 1-Click Setup
           </button>
         </div>
+        <div class="mt-2 text-xs text-slate-500 text-center font-mono">Auto-configures Claude Desktop, Cursor, and Windsurf in &lt; 5 seconds</div>
       </div>
 
       <!-- Trust Badges -->
@@ -127,17 +128,18 @@
       <div>
         <div class="flex items-center space-x-3">
           <h2 class="text-2xl font-bold text-white tracking-tight">Active Sovereign Skills</h2>
-          <span id="skill-count-badge" class="text-xs bg-indigo-500/20 text-indigo-300 font-semibold px-2 py-0.5 rounded-full border border-indigo-500/30">14 Skills</span>
+          <span id="skill-count-badge" class="text-xs bg-indigo-500/20 text-indigo-300 font-semibold px-2 py-0.5 rounded-full border border-indigo-500/30">15 Skills</span>
         </div>
         <p class="text-sm text-slate-400 mt-1">Pre-vetted, sandboxed agent tools executing remotely with outcome-guaranteed billing.</p>
       </div>
 
       <div class="flex items-center space-x-2 overflow-x-auto pb-2 sm:pb-0">
         <button onclick="filterCategory('all')" id="tab-all" class="category-tab text-xs font-semibold px-3 py-1.5 rounded-lg bg-indigo-600 text-white">All Skills</button>
+        <button onclick="filterCategory('Engineering')" id="tab-Engineering" class="category-tab text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800">Engineering</button>
+        <button onclick="filterCategory('AI Ops')" id="tab-AI-Ops" class="category-tab text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800">AI Ops</button>
         <button onclick="filterCategory('Security')" id="tab-Security" class="category-tab text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800">Security</button>
         <button onclick="filterCategory('Database')" id="tab-Database" class="category-tab text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800">Database</button>
         <button onclick="filterCategory('Marketing')" id="tab-Marketing" class="category-tab text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800">Marketing</button>
-        <button onclick="filterCategory('AI Ops')" id="tab-AI-Ops" class="category-tab text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800">AI Ops</button>
         <button onclick="filterCategory('Web3')" id="tab-Web3" class="category-tab text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800">Web3</button>
         <button onclick="filterCategory('Biotech')" id="tab-Biotech" class="category-tab text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800">Biotech</button>
         <button onclick="filterCategory('DevOps')" id="tab-DevOps" class="category-tab text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800">DevOps</button>
@@ -269,26 +271,42 @@
         <button onclick="closeModal('mcp-config-modal')" class="text-slate-400 hover:text-white text-sm font-semibold">✕ Close</button>
       </div>
 
-      <div class="p-6 space-y-4">
-        <p class="text-xs text-slate-300">Paste this into your <code class="text-indigo-400 bg-slate-950 px-1.5 py-0.5 rounded border border-slate-800">claude_desktop_config.json</code> or Cursor MCP settings:</p>
-        <div class="relative">
-          <pre class="bg-slate-950 border border-slate-800 p-4 rounded-xl text-xs font-mono text-cyan-300 overflow-x-auto">{
+      <div class="p-6 space-y-5">
+        <div>
+          <div class="text-xs font-bold uppercase tracking-wider text-indigo-400 mb-2">⚡ Method 1: Instant 1-Click Auto-Setup (Recommended)</div>
+          <p class="text-xs text-slate-300 mb-2">Run this in your terminal. It automatically detects and configures Claude Desktop, Cursor, and Windsurf in under 5 seconds:</p>
+          <div class="flex items-center justify-between bg-slate-950 border border-slate-800 rounded-xl p-3 font-mono text-xs text-indigo-300">
+            <span>npx @skillbridge/cli setup</span>
+            <button onclick="copyCommand('npx @skillbridge/cli setup')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-3 py-1.5 rounded-lg text-xs transition">
+              Copy Command
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">⚙️ Method 2: Manual Config Paste</div>
+          <p class="text-xs text-slate-300 mb-2">Paste this block into your <code class="text-indigo-400 bg-slate-950 px-1.5 py-0.5 rounded border border-slate-800">claude_desktop_config.json</code> or Cursor MCP settings:</p>
+          <div class="relative">
+            <pre class="bg-slate-950 border border-slate-800 p-4 rounded-xl text-xs font-mono text-cyan-300 overflow-x-auto">{
   "mcpServers": {
     "skillbridge": {
       "command": "npx",
-      "args": ["-y", "@skillbridge/cli", "gateway"],
+      "args": ["-y", "@skillbridge/cli", "mcp-proxy"],
       "env": {
-        "SKILLBRIDGE_API_KEY": "sk_live_demo_98765"
+        "SKILLBRIDGE_API_KEY": "sk_live_demo_98765",
+        "SKILLBRIDGE_GATEWAY_URL": "https://skillbridge-gateway.vercel.app"
       }
     }
   }
 }</pre>
-          <button onclick="copyCommand(this.previousElementSibling.innerText)" class="absolute top-3 right-3 text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1 rounded border border-slate-700 transition">
-            Copy JSON
-          </button>
+            <button onclick="copyCommand(this.previousElementSibling.innerText)" class="absolute top-3 right-3 text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1 rounded border border-slate-700 transition">
+              Copy JSON
+            </button>
+          </div>
         </div>
+
         <div class="bg-emerald-950/20 border border-emerald-500/20 p-3.5 rounded-xl text-xs text-emerald-300 leading-relaxed">
-          ✅ Once configured, all skills you add from SkillBridge will appear natively as callable tools in your Claude chat or Cursor terminal without downloading raw scripts.
+          ✅ Once configured, all 15 skills appear natively as callable tools inside Claude Desktop, Cursor, and Windsurf.
         </div>
       </div>
     </div>
@@ -349,6 +367,16 @@
     let walletBalance = 24.15;
 
     let SKILLS_DATA = [
+      {
+        id: "skill_multi_agent_consensus",
+        name: "Multi-Agent Swarm Orchestrator & Consensus Engine",
+        author: "SwarmZero AI",
+        desc: "Adversarial 3-agent consensus audit for mission-critical PRs. Simulates Whitehat Security, Cost/Perf, and Architecture agents debating code changes, outputting Byzantine consensus verdicts.",
+        price: "$1.00 / run",
+        priceNum: 1.00,
+        category: "AI Ops",
+        defaultInput: "function transferToken(address recipient, uint256 amount) public {\n  require(balances[msg.sender] >= amount);\n  balances[recipient] += amount;\n  balances[msg.sender] -= amount;\n}"
+      },
       {
         id: "skill_api_mock_forge",
         name: "Autonomous API Mock Forge & Contract Fuzzer",
@@ -675,7 +703,13 @@
       SKILLS_DATA.unshift(newSkill);
       renderGrid();
       closeModal("publisher-modal");
-      alert(`🎉 Congratulations! "${name}" is now live and monetized on the SkillBridge Gateway.`);
+
+      const githubUrl = `https://github.com/Muf3e/skillbridge/issues/new?title=${encodeURIComponent('[New Skill Submission] ' + name)}&body=${encodeURIComponent(
+        `### New Sovereign Skill Submission\n\n- **Skill Name**: ${name}\n- **Publisher**: ${author}\n- **Category**: ${cat}\n- **Price Per Run**: $${price.toFixed(2)}\n- **Description**: ${desc}\n\n*Submitted via SkillBridge Self-Service Publisher Studio.*`
+      )}`;
+      if (confirm(`🎉 "${name}" is registered in your live browser session!\n\nWould you like to open GitHub to register it in the permanent upstream gateway catalog?`)) {
+        window.open(githubUrl, '_blank');
+      }
     }
 
     function topUpWallet(amount) {

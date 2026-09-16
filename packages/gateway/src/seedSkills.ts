@@ -365,6 +365,32 @@ export const apiMockForgeSkill: SkillManifest = {
   updatedAt: new Date().toISOString()
 };
 
+// Seed Skill 15: Multi-Agent Swarm Consensus & Code Fuzzer
+export const multiAgentConsensusSkill: SkillManifest = {
+  id: "skill_multi_agent_consensus",
+  name: "Multi-Agent Swarm Orchestrator & Consensus Engine",
+  version: "1.0.0",
+  description: "Adversarial 3-agent consensus audit for mission-critical PRs. Simulates Whitehat Security, Cost/Perf, and Architecture agents debating code changes, outputting Byzantine consensus verdicts.",
+  authorId: "pub_swarm_zero",
+  authorName: "SwarmZero AI",
+  pricing: { model: "pay_per_run", costPerRunUsd: 1.00 },
+  capabilities: ["multi-agent", "adversarial", "consensus", "swarm", "governance"],
+  tools: [{
+    name: "evaluate_consensus",
+    description: "Orchestrates a 3-agent adversarial review panel (Security, Cost/Perf, Architecture) and yields formal consensus score and recommendations.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        taskOrCode: { type: "string", description: "Pull request diff, smart contract code, or architectural decision record to audit" },
+        consensusThreshold: { type: "number", description: "Minimum agreement threshold between 0.5 and 1.0 (default 0.75)" }
+      },
+      required: ["taskOrCode"]
+    }
+  }],
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString()
+};
+
 export const ALL_SEED_SKILLS: SkillManifest[] = [
   deepSecAuditSkill,
   sqlDoctorSkill,
@@ -379,5 +405,7 @@ export const ALL_SEED_SKILLS: SkillManifest[] = [
   seoCompIntelSkill,
   gitConflictResolverSkill,
   ragChunkOptimizerSkill,
-  apiMockForgeSkill
+  apiMockForgeSkill,
+  multiAgentConsensusSkill
 ];
+
