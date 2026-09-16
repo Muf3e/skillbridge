@@ -1,0 +1,47 @@
+[
+  {
+    "id": "partner_11",
+    "developer": "Martin Fowler-Chen",
+    "project": "graphql-fuzz-engine (GitHub 2.1k stars)",
+    "domain": "API Security / Fuzzing",
+    "status": "QUEUED",
+    "email": "martin@graphqlsec.io",
+    "pitch": "Monetize automated GraphQL AST fuzzing as a $0.25/run sovereign skill for backend engineering teams."
+  },
+  {
+    "id": "partner_12",
+    "developer": "Carlos Mendez",
+    "project": "agent-memory-eval (GitHub 1.7k stars)",
+    "domain": "Agent Memory / RAG",
+    "status": "QUEUED",
+    "email": "carlos@agentmemory.dev",
+    "pitch": "Package your vector benchmark and context evaluator into an MCP remote tool with instant escrow payouts."
+  },
+  {
+    "id": "partner_13",
+    "developer": "Ananya Joshi",
+    "project": "playwright-stealth-crawler (GitHub 3.9k stars)",
+    "domain": "Web Scraping / Agent Tools",
+    "status": "QUEUED",
+    "email": "ananya@stealthcrawl.org",
+    "pitch": "Provide bulletproof headless browser page extractions to Claude & Cursor users worldwide with zero prompt piracy."
+  },
+  {
+    "id": "partner_14",
+    "developer": "Simon De Vries",
+    "project": "clickhouse-query-perf (GitHub 1.4k stars)",
+    "domain": "OLAP / Big Data",
+    "status": "QUEUED",
+    "email": "simon@chperf.net",
+    "pitch": "Offer real-time ClickHouse partition and codec optimization on SkillBridge without exposing proprietary tuning logic."
+  },
+  {
+    "id": "partner_15",
+    "developer": "Maya Lin",
+    "project": "prompt-injection-shield (GitHub 5.1k stars)",
+    "domain": "AI Red Teaming / Guardrails",
+    "status": "QUEUED",
+    "email": "maya@shieldprompt.ai",
+    "pitch": "Deploy your jailbreak detection models as a protected MCP gateway skill with 85% revenue split."
+  }
+]

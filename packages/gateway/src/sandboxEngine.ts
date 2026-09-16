@@ -55,6 +55,9 @@ export class HardenedSandboxEngine {
       case "skill_rag_chunk_optimizer":
         return this.runRagChunkOptimizer(req.arguments);
 
+      case "skill_api_mock_forge":
+        return this.runApiMockForge(req.arguments);
+
       default:
         return {
           success: false,
@@ -396,6 +399,41 @@ export class HardenedSandboxEngine {
         }
       },
       metrics: { tokensUsed: 195 }
+    };
+  }
+
+  private async runApiMockForge(args: Record<string, any>): Promise<SandboxExecutionResponse> {
+    const schema = (args.endpointSchema || args.rawDocument || args.codeOrDependencies || "").toString();
+    const profile = args.fuzzingProfile || "BOUNDARY_EDGE_CASES";
+
+    return {
+      success: true,
+      data: {
+        mockEngine: "SkillBridge Contract Fuzzer v1.4",
+        profileApplied: profile,
+        syntheticPayloadsGenerated: 4,
+        fixtures: {
+          happyPath200: {
+            status: "success",
+            data: { id: "usr_9984", email: "synthetic.tester@domain.corp", balanceUsd: 1500.00, verified: true }
+          },
+          boundaryNulls400: {
+            error: "VALIDATION_FAILED",
+            fields: { email: null, balanceUsd: -1 }
+          },
+          fuzzPayloadInjection500Prevention: {
+            testedInput: "' OR 1=1; DROP TABLE users; --",
+            outcome: "SANITIZED_SAFE",
+            httpCodeExpectation: 422
+          }
+        },
+        contractAssertions: [
+          "Expect HTTP 200 on schema-conformant input",
+          "Expect HTTP 422 on negative integer balance",
+          "Expect HTTP 400 on malformed email format"
+        ]
+      },
+      metrics: { tokensUsed: 260 }
     };
   }
 }

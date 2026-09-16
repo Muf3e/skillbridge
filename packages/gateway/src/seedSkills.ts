@@ -339,6 +339,32 @@ export const ragChunkOptimizerSkill: SkillManifest = {
   updatedAt: new Date().toISOString()
 };
 
+// Seed Skill 14: Autonomous API Mock Forge & Contract Fuzzer
+export const apiMockForgeSkill: SkillManifest = {
+  id: "skill_api_mock_forge",
+  name: "Autonomous API Mock Forge & Contract Fuzzer",
+  version: "1.0.0",
+  description: "Enterprise contract fuzzing and synthetic mock engine. Ingests OpenAPI specs or route endpoints, produces realistic mock responses, edge-case injections, and boundary tests.",
+  authorId: "pub_forge_api",
+  authorName: "ForgeAPI Labs",
+  pricing: { model: "pay_per_run", costPerRunUsd: 0.25 },
+  capabilities: ["testing", "api", "openapi", "mocking", "fuzzing", "qa"],
+  tools: [{
+    name: "forge_mock_and_fuzz",
+    description: "Generates high-fidelity mock payloads, negative edge cases (null bytes, integer overflows, schema violations), and assertion suites.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        endpointSchema: { type: "string", description: "OpenAPI JSON/YAML snippet or typescript interface" },
+        fuzzingProfile: { type: "string", description: "STANDARD, BOUNDARY_EDGE_CASES, SECURITY_INJECTION" }
+      },
+      required: ["endpointSchema"]
+    }
+  }],
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString()
+};
+
 export const ALL_SEED_SKILLS: SkillManifest[] = [
   deepSecAuditSkill,
   sqlDoctorSkill,
@@ -352,5 +378,6 @@ export const ALL_SEED_SKILLS: SkillManifest[] = [
   llmOpsProfilerSkill,
   seoCompIntelSkill,
   gitConflictResolverSkill,
-  ragChunkOptimizerSkill
+  ragChunkOptimizerSkill,
+  apiMockForgeSkill
 ];

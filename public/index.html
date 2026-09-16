@@ -127,7 +127,7 @@
       <div>
         <div class="flex items-center space-x-3">
           <h2 class="text-2xl font-bold text-white tracking-tight">Active Sovereign Skills</h2>
-          <span id="skill-count-badge" class="text-xs bg-indigo-500/20 text-indigo-300 font-semibold px-2 py-0.5 rounded-full border border-indigo-500/30">13 Skills</span>
+          <span id="skill-count-badge" class="text-xs bg-indigo-500/20 text-indigo-300 font-semibold px-2 py-0.5 rounded-full border border-indigo-500/30">14 Skills</span>
         </div>
         <p class="text-sm text-slate-400 mt-1">Pre-vetted, sandboxed agent tools executing remotely with outcome-guaranteed billing.</p>
       </div>
@@ -349,6 +349,16 @@
     let walletBalance = 24.15;
 
     let SKILLS_DATA = [
+      {
+        id: "skill_api_mock_forge",
+        name: "Autonomous API Mock Forge & Contract Fuzzer",
+        author: "ForgeAPI Labs",
+        desc: "Enterprise contract fuzzing and synthetic mock engine. Ingests OpenAPI specs or route endpoints, produces realistic mock responses, edge-case injections, and boundary tests.",
+        price: "$0.25 / run",
+        priceNum: 0.25,
+        category: "Engineering",
+        defaultInput: "POST /v1/billing/charge\nContent-Type: application/json\n\n{\n  \"userId\": \"usr_8829\",\n  \"amountUsd\": 150.00,\n  \"currency\": \"USD\"\n}"
+      },
       {
         id: "skill_rag_chunk_optimizer",
         name: "RAG Chunk Optimizer and Vector Compressor",
