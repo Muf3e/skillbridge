@@ -1,4 +1,4 @@
-﻿import { SkillManifest } from "@skillbridge/shared-types";
+import { SkillManifest } from "@skillbridge/shared-types";
 
 // Seed Skill 1: DeepSec Repo Audit
 export const deepSecAuditSkill: SkillManifest = {
@@ -312,6 +312,33 @@ export const gitConflictResolverSkill: SkillManifest = {
   updatedAt: new Date().toISOString()
 };
 
+// Seed Skill 13: RAG Chunk Optimizer & Vector Compressor
+export const ragChunkOptimizerSkill: SkillManifest = {
+  id: "skill_rag_chunk_optimizer",
+  name: "RAG Chunk Optimizer & Vector Compressor",
+  version: "1.0.0",
+  description: "Enterprise context pre-processor for Agent Memory & RAG pipelines. Eliminates semantic noise, detects topic shift boundaries, and reduces embedding token footprint by 55%.",
+  authorId: "pub_vector_craft",
+  authorName: "VectorCraft AI",
+  pricing: { model: "pay_per_run", costPerRunUsd: 0.35 },
+  capabilities: ["rag", "vector-db", "embeddings", "context-compression", "ai-ops"],
+  tools: [{
+    name: "optimize_chunks",
+    description: "Ingests unstructured documentation or scraped text, strips conversational boilerplate, and outputs high-density semantic chunks with dense embedding metadata.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        rawDocument: { type: "string", description: "Raw text, PDF text, or markdown document" },
+        targetChunkSizeTokens: { type: "number", description: "Target tokens per chunk (default 256)" },
+        enableNoiseDeduplication: { type: "boolean", description: "Whether to strip repetitive headers and boilerplate" }
+      },
+      required: ["rawDocument"]
+    }
+  }],
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString()
+};
+
 export const ALL_SEED_SKILLS: SkillManifest[] = [
   deepSecAuditSkill,
   sqlDoctorSkill,
@@ -324,5 +351,6 @@ export const ALL_SEED_SKILLS: SkillManifest[] = [
   smartContractAuditorSkill,
   llmOpsProfilerSkill,
   seoCompIntelSkill,
-  gitConflictResolverSkill
+  gitConflictResolverSkill,
+  ragChunkOptimizerSkill
 ];

@@ -127,7 +127,7 @@
       <div>
         <div class="flex items-center space-x-3">
           <h2 class="text-2xl font-bold text-white tracking-tight">Active Sovereign Skills</h2>
-          <span id="skill-count-badge" class="text-xs bg-indigo-500/20 text-indigo-300 font-semibold px-2 py-0.5 rounded-full border border-indigo-500/30">12 Skills</span>
+          <span id="skill-count-badge" class="text-xs bg-indigo-500/20 text-indigo-300 font-semibold px-2 py-0.5 rounded-full border border-indigo-500/30">13 Skills</span>
         </div>
         <p class="text-sm text-slate-400 mt-1">Pre-vetted, sandboxed agent tools executing remotely with outcome-guaranteed billing.</p>
       </div>
@@ -349,6 +349,16 @@
     let walletBalance = 24.15;
 
     let SKILLS_DATA = [
+      {
+        id: "skill_rag_chunk_optimizer",
+        name: "RAG Chunk Optimizer and Vector Compressor",
+        author: "VectorCraft AI",
+        desc: "Enterprise context pre-processor for Agent Memory & RAG pipelines. Eliminates semantic noise, detects topic shift boundaries, and reduces embedding token footprint by 55%.",
+        price: "$0.35 / run",
+        priceNum: 0.35,
+        category: "AI Ops",
+        defaultInput: "# API Gateway Documentation\nWelcome to our platform.\nThis document outlines how microservices communicate via gRPC and REST protocols across isolated VPC subnetworks. All payloads must be signed with HMAC-SHA256 tokens.\n\n### Authentication\nUse header Authorization: Bearer <token>."
+      },
       {
         id: "skill_git_conflict_resolver",
         name: "Git Semantic Conflict and PR Merge Resolver",

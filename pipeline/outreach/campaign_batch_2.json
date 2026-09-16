@@ -1,0 +1,47 @@
+[
+  {
+    "id": "partner_06",
+    "developer": "Liam Gallagher",
+    "project": "chunk-embed-rag (GitHub 4.2k stars)",
+    "domain": "RAG / Vector Architecture",
+    "status": "QUEUED",
+    "email": "liam@vectorchunk.ai",
+    "pitch": "Publish chunk-embed-rag on SkillBridge as a .35/run sovereign skill. Keep proprietary tokenization weights private."
+  },
+  {
+    "id": "partner_07",
+    "developer": "Priya Sharma",
+    "project": "api-mock-forge (GitHub 1.9k stars)",
+    "domain": "QA / API Automation",
+    "status": "QUEUED",
+    "email": "priya@forgeapi.dev",
+    "pitch": "Enable Claude and Cursor users to generate enterprise-grade synthetic API test mocks with 85% creator payout."
+  },
+  {
+    "id": "partner_08",
+    "developer": "Tobias Becker",
+    "project": "postgres-explain-ai (GitHub 3.5k stars)",
+    "domain": "Database / SRE",
+    "status": "QUEUED",
+    "email": "tobias@pgscale.io",
+    "pitch": "Offer automated PostgreSQL index tuning without requiring users to download proprietary tuning models."
+  },
+  {
+    "id": "partner_09",
+    "developer": "Chloe Dubois",
+    "project": "brand-voice-evaluator (GitHub 1.2k stars)",
+    "domain": "Marketing / NLP",
+    "status": "QUEUED",
+    "email": "chloe@copyvector.co",
+    "pitch": "Monetize brand tone consistency scoring for enterprise copywriters with instant escrow settlements."
+  },
+  {
+    "id": "partner_10",
+    "developer": "Kenji Sato",
+    "project": "fastapi-security-audit (GitHub 2.8k stars)",
+    "domain": "AppSec / Python",
+    "status": "QUEUED",
+    "email": "kenji@sato-sec.jp",
+    "pitch": "Provide one-click FastAPI AST vulnerability auditing directly to agentic IDEs worldwide."
+  }
+]
