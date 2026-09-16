@@ -49,6 +49,9 @@ export class HardenedSandboxEngine {
       case "skill_seo_competitive_intel":
         return this.runSeoCompIntel(req.arguments);
 
+      case "skill_git_conflict_resolver":
+        return this.runGitConflictResolver(req.arguments);
+
       default:
         return {
           success: false,
@@ -340,6 +343,24 @@ export class HardenedSandboxEngine {
         recommendedAction: "Publish targeted comparison landing page with verified latency benchmarks and Schema.org FAQ markup."
       },
       metrics: { tokensUsed: 310 }
+    };
+  }
+
+  private async runGitConflictResolver(args: Record<string, any>): Promise<SandboxExecutionResponse> {
+    const hunk = args.conflictHunk || "";
+    const lang = args.fileLanguage || "typescript";
+
+    return {
+      success: true,
+      data: {
+        resolutionStatus: "RESOLVED_CLEAN",
+        detectedIntentHEAD: "Adds telemetry logging for wallet balance deductions.",
+        detectedIntentIncoming: "Refactors payment gateway adapter to handle multi-currency UPI / Stripe.",
+        cleanResolvedCode: "// Merged seamlessly by SkillBridge Git Resolver\nexport async function processPayment(amount: number, currency = 'USD') {\n  logger.info(`Deducting ${amount} ${currency}`);\n  return paymentGateway.charge({ amount, currency });\n}",
+        syntaxValidation: "PASS (0 compiler errors)",
+        semanticRegressionRisk: "VERY_LOW"
+      },
+      metrics: { tokensUsed: 340 }
     };
   }
 }

@@ -260,7 +260,7 @@ export const llmOpsProfilerSkill: SkillManifest = {
   updatedAt: new Date().toISOString()
 };
 
-// NEW SKILL 11: Competitive Intelligence & SEO Reverse Engineer
+// Seed Skill 11: Competitive Intelligence & SEO Reverse Engineer
 export const seoCompIntelSkill: SkillManifest = {
   id: "skill_seo_competitive_intel",
   name: "SEO Semantic Gap & Competitor Reverse Engineer",
@@ -286,6 +286,32 @@ export const seoCompIntelSkill: SkillManifest = {
   updatedAt: new Date().toISOString()
 };
 
+// NEW SKILL 12: Autonomous Git Conflict & PR Merge Resolver
+export const gitConflictResolverSkill: SkillManifest = {
+  id: "skill_git_conflict_resolver",
+  name: "Git Semantic Conflict & PR Merge Resolver",
+  version: "1.0.0",
+  description: "Autonomous code integration engine for engineering teams. Resolves complex three-way git merge conflicts, detects semantic regressions, and verifies that resolved code builds cleanly.",
+  authorId: "pub_merge_flow",
+  authorName: "MergeFlow Labs",
+  pricing: { model: "pay_per_run", costPerRunUsd: 0.20 },
+  capabilities: ["engineering", "git", "merge", "code-review", "developer-tools"],
+  tools: [{
+    name: "resolve_merge_conflict",
+    description: "Ingests conflicting git diff hunks (HEAD vs Incoming vs Common Base) and outputs an authoritative, syntax-clean resolution.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        conflictHunk: { type: "string", description: "Raw git conflict hunk with <<<<<<<, =======, >>>>>>> markers" },
+        fileLanguage: { type: "string", description: "typescript, python, go, or rust" }
+      },
+      required: ["conflictHunk"]
+    }
+  }],
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString()
+};
+
 export const ALL_SEED_SKILLS: SkillManifest[] = [
   deepSecAuditSkill,
   sqlDoctorSkill,
@@ -297,5 +323,6 @@ export const ALL_SEED_SKILLS: SkillManifest[] = [
   clinicalTrialSynthesizerSkill,
   smartContractAuditorSkill,
   llmOpsProfilerSkill,
-  seoCompIntelSkill
+  seoCompIntelSkill,
+  gitConflictResolverSkill
 ];
