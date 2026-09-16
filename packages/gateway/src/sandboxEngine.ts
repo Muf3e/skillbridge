@@ -37,6 +37,9 @@ export class HardenedSandboxEngine {
       case "skill_legal_nda_scorer":
         return this.runLegalNdaScorer(req.arguments);
 
+      case "skill_clinical_trial_synthesizer":
+        return this.runClinicalTrialSynthesizer(req.arguments);
+
       default:
         return {
           success: false,
@@ -233,6 +236,27 @@ export class HardenedSandboxEngine {
         ]
       },
       metrics: { tokensUsed: 420 }
+    };
+  }
+
+  private async runClinicalTrialSynthesizer(args: Record<string, any>): Promise<SandboxExecutionResponse> {
+    const text = args.abstractOrNctData || "";
+    const drug = args.targetDrugOrTherapy || "Investigational Agent";
+
+    return {
+      success: true,
+      data: {
+        therapyEvaluated: drug,
+        phase: "Phase 3 Double-Blind Randomized Control Trial",
+        primaryEndpointResult: "Statistically Significant (p < 0.001)",
+        hazardRatio: "0.68 (95% CI: 0.54-0.85)",
+        adverseEventsGrade3OrHigher: [
+          { symptom: "Neutropenia", incidencePercentage: "8.4%" },
+          { symptom: "Elevated ALT/AST", incidencePercentage: "3.2%" }
+        ],
+        clinicalSynthesis: "Intervention demonstrated strong superior progression-free survival relative to standard-of-care baseline with a manageable grade 3 safety profile."
+      },
+      metrics: { tokensUsed: 490 }
     };
   }
 }

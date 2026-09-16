@@ -155,7 +155,7 @@ export const tailwindUnifierSkill: SkillManifest = {
   updatedAt: new Date().toISOString()
 };
 
-// NEW SKILL 6: Kubernetes SRE Incident Copilot (Autonomous DevOps / Cloud)
+// Seed Skill 6: K8s SRE Incident Copilot
 export const k8sIncidentCopilotSkill: SkillManifest = {
   id: "skill_k8s_incident_copilot",
   name: "K8s SRE Incident & CrashLoop Copilot",
@@ -186,7 +186,7 @@ export const k8sIncidentCopilotSkill: SkillManifest = {
   updatedAt: new Date().toISOString()
 };
 
-// NEW SKILL 7: Legal NDA Risk & Ambiguity Scorer (Automated LegalTech)
+// Seed Skill 7: Legal NDA Risk Scorer
 export const legalNdaScorerSkill: SkillManifest = {
   id: "skill_legal_nda_scorer",
   name: "Commercial NDA Risk & Clause Scorer",
@@ -217,6 +217,37 @@ export const legalNdaScorerSkill: SkillManifest = {
   updatedAt: new Date().toISOString()
 };
 
+// NEW SKILL 8: Clinical Trial & PubMed Synthesizer (Biotech & Life Sciences)
+export const clinicalTrialSynthesizerSkill: SkillManifest = {
+  id: "skill_clinical_trial_synthesizer",
+  name: "Biotech Clinical Trial & PubMed Synthesizer",
+  version: "1.0.0",
+  description: "Extracts trial cohorts, primary end-point efficacy, adverse event percentages, and statistical confidence intervals from medical literature and clinical trial disclosures.",
+  authorId: "pub_bio_nexus",
+  authorName: "BioNexus Intelligence",
+  pricing: {
+    model: "pay_per_run",
+    costPerRunUsd: 0.60
+  },
+  capabilities: ["biotech", "pharma", "clinical-trials", "pubmed", "science"],
+  tools: [
+    {
+      name: "synthesize_trial_evidence",
+      description: "Extracts primary endpoints, hazard ratios, and adverse effect statistics from study disclosures.",
+      inputSchema: {
+        type: "object",
+        properties: {
+          abstractOrNctData: { type: "string", description: "PubMed abstract or ClinicalTrials.gov study protocol excerpt" },
+          targetDrugOrTherapy: { type: "string", description: "Intervention or drug molecule name" }
+        },
+        required: ["abstractOrNctData"]
+      }
+    }
+  ],
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString()
+};
+
 export const ALL_SEED_SKILLS: SkillManifest[] = [
   deepSecAuditSkill,
   sqlDoctorSkill,
@@ -224,5 +255,6 @@ export const ALL_SEED_SKILLS: SkillManifest[] = [
   financialForensicSkill,
   tailwindUnifierSkill,
   k8sIncidentCopilotSkill,
-  legalNdaScorerSkill
+  legalNdaScorerSkill,
+  clinicalTrialSynthesizerSkill
 ];

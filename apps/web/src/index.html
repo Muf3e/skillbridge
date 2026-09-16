@@ -127,7 +127,7 @@
       <div>
         <div class="flex items-center space-x-3">
           <h2 class="text-2xl font-bold text-white tracking-tight">Active Sovereign Skills</h2>
-          <span id="skill-count-badge" class="text-xs bg-indigo-500/20 text-indigo-300 font-semibold px-2 py-0.5 rounded-full border border-indigo-500/30">7 Skills</span>
+          <span id="skill-count-badge" class="text-xs bg-indigo-500/20 text-indigo-300 font-semibold px-2 py-0.5 rounded-full border border-indigo-500/30">8 Skills</span>
         </div>
         <p class="text-sm text-slate-400 mt-1">Pre-vetted, sandboxed agent tools executing remotely with outcome-guaranteed billing.</p>
       </div>
@@ -137,6 +137,7 @@
         <button onclick="filterCategory('Security')" id="tab-Security" class="category-tab text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800">Security</button>
         <button onclick="filterCategory('Database')" id="tab-Database" class="category-tab text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800">Database</button>
         <button onclick="filterCategory('Marketing')" id="tab-Marketing" class="category-tab text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800">Marketing</button>
+        <button onclick="filterCategory('Biotech')" id="tab-Biotech" class="category-tab text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800">Biotech</button>
         <button onclick="filterCategory('DevOps')" id="tab-DevOps" class="category-tab text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800">DevOps</button>
         <button onclick="filterCategory('Legal')" id="tab-Legal" class="category-tab text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800">Legal</button>
         <button onclick="filterCategory('Finance')" id="tab-Finance" class="category-tab text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800">Finance</button>
@@ -346,6 +347,17 @@
     let walletBalance = 24.15;
 
     let SKILLS_DATA = [
+      {
+        id: "skill_clinical_trial_synthesizer",
+        name: "Biotech Clinical Trial and PubMed Synthesizer",
+        author: "BioNexus Intelligence",
+        desc: "Extracts trial cohorts, primary end-point efficacy, adverse event percentages, and statistical hazard ratios from study disclosures.",
+        price: "$0.60 / run",
+        priceNum: 0.60,
+        category: "Biotech",
+        defaultInput: "Phase 3 clinical trial of Nexa-101 in 840 patients with metastatic solid tumors. Hazard ratio for PFS was 0.68 (p < 0.001). Grade 3 neutropenia occurred in 8.4%."
+      },
+
       {
         id: "skill_k8s_incident_copilot",
         name: "K8s SRE Incident and CrashLoop Copilot",
