@@ -1,0 +1,47 @@
+[
+  {
+    "id": "partner_01",
+    "developer": "Alex Rivera",
+    "project": "k8s-pod-doctor (GitHub 2.4k stars)",
+    "domain": "DevOps / SRE",
+    "status": "INVITED",
+    "email": "alex@riveradevops.io",
+    "pitch": "Monetize k8s-pod-doctor as an authenticated zero-leak remote MCP skill with 85% rev split."
+  },
+  {
+    "id": "partner_02",
+    "developer": "Sarah Chen",
+    "project": "solidity-gas-analyzer (GitHub 1.8k stars)",
+    "domain": "Web3 / Solidity",
+    "status": "INVITED",
+    "email": "sarah.chen@web3sec.dev",
+    "pitch": "Run gas audits remotely for DeFi protocols without exposing internal AST heuristics."
+  },
+  {
+    "id": "partner_03",
+    "developer": "Marcus Vance",
+    "project": "legal-diff-nlp (GitHub 950 stars)",
+    "domain": "LegalTech",
+    "status": "INVITED",
+    "email": "m.vance@legaltechlabs.org",
+    "pitch": "Transform contract redlining scripts into an enterprise-ready $0.45/run MCP tool."
+  },
+  {
+    "id": "partner_04",
+    "developer": "Elena Rostova",
+    "project": "biopython-pubmed-extractor (GitHub 3.1k stars)",
+    "domain": "Bioinformatics",
+    "status": "INVITED",
+    "email": "elena@genomeresearch.ai",
+    "pitch": "Feature in our life sciences suite with guaranteed per-run earnings on clinical trial queries."
+  },
+  {
+    "id": "partner_05",
+    "developer": "David Park",
+    "project": "tailwind-palette-extract (GitHub 1.4k stars)",
+    "domain": "Frontend Tools",
+    "status": "INVITED",
+    "email": "david@parkui.dev",
+    "pitch": "Monetize CSS tokenization directly inside Cursor and Windsurf terminals."
+  }
+]
