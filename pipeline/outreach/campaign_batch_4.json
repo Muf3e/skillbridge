@@ -1,0 +1,47 @@
+[
+  {
+    "id": "partner_16",
+    "developer": "João Moura",
+    "project": "crewAI (GitHub 28.4k stars)",
+    "domain": "Multi-Agent Swarm Orchestration",
+    "status": "QUEUED",
+    "email": "joao@crewai.com",
+    "pitch": "Monetize specialized role-based agent swarms as sovereign remote skills with zero script leakage and 85% creator payout."
+  },
+  {
+    "id": "partner_17",
+    "developer": "Assaf Elovic",
+    "project": "gpt-researcher (GitHub 16.2k stars)",
+    "domain": "Autonomous Deep Research",
+    "status": "QUEUED",
+    "email": "assaf@tavily.com",
+    "pitch": "Turn autonomous multi-source research into a premium $0.50/run remote skill callable natively in Cursor and Claude Desktop."
+  },
+  {
+    "id": "partner_18",
+    "developer": "Victor Dibia",
+    "project": "autogen-studio (GitHub 12.0k stars)",
+    "domain": "Agent Workflow Topology",
+    "status": "QUEUED",
+    "email": "victor@autogen.ai",
+    "pitch": "Package conversation topology and consensus analyzers as protected MCP tools with outcome escrow guarantees."
+  },
+  {
+    "id": "partner_19",
+    "developer": "Logan Kilpatrick",
+    "project": "llama-agents (GitHub 35.0k stars)",
+    "domain": "Agentic Workflows & Multi-Agent RAG",
+    "status": "QUEUED",
+    "email": "logan@llamaindex.ai",
+    "pitch": "Bridge agentic RAG sub-question decomposition into a high-throughput sovereign tool across AI IDE ecosystems."
+  },
+  {
+    "id": "partner_20",
+    "developer": "Alexander Wu",
+    "project": "MetaGPT (GitHub 45.0k stars)",
+    "domain": "Software Engineering Multi-Role Swarms",
+    "status": "QUEUED",
+    "email": "alex@metagpt.org",
+    "pitch": "Monetize SOP multi-role code review and architectural specification generation on the SkillBridge zero-leak gateway."
+  }
+]
