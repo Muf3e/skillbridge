@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "apps/web/src/server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/compare/capafy",
+      "dest": "apps/web/src/server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "apps/web/src/server.js"
+    }
+  ]
+}
