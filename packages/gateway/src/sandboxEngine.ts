@@ -46,6 +46,9 @@ export class HardenedSandboxEngine {
       case "skill_llmops_cost_profiler":
         return this.runLlmOpsProfiler(req.arguments);
 
+      case "skill_seo_competitive_intel":
+        return this.runSeoCompIntel(req.arguments);
+
       default:
         return {
           success: false,
@@ -317,6 +320,26 @@ export class HardenedSandboxEngine {
         latencyImprovementEstimate: "240ms P95 reduction via prompt caching"
       },
       metrics: { tokensUsed: 260 }
+    };
+  }
+
+  private async runSeoCompIntel(args: Record<string, any>): Promise<SandboxExecutionResponse> {
+    const target = args.targetDomainOrUrl || "mycompany.ai";
+    const comp = args.competitorUrl || "competitor.com";
+
+    return {
+      success: true,
+      data: {
+        targetDomain: target,
+        competitorDomain: comp,
+        highIntentKeywordGaps: [
+          { query: "self-hosted agent gateway mcp", estimatedSearchVolume: "3,800/mo", difficulty: "24/100 (Easy)" },
+          { query: "zero-leak skill execution vs openai", estimatedSearchVolume: "1,950/mo", difficulty: "18/100 (Very Easy)" }
+        ],
+        competitorContentCluster: "Architecture tear-downs & pricing comparisons rank for 64% of their non-branded inbound search volume.",
+        recommendedAction: "Publish targeted comparison landing page with verified latency benchmarks and Schema.org FAQ markup."
+      },
+      metrics: { tokensUsed: 310 }
     };
   }
 }

@@ -234,7 +234,7 @@ export const smartContractAuditorSkill: SkillManifest = {
   updatedAt: new Date().toISOString()
 };
 
-// NEW SKILL 10: AI App Cost & Token Latency Profiler (AI Infrastructure / LLMOps)
+// Seed Skill 10: LLMOps Cost & Token Latency Profiler
 export const llmOpsProfilerSkill: SkillManifest = {
   id: "skill_llmops_cost_profiler",
   name: "LLMOps Cost & Token Latency Profiler",
@@ -260,6 +260,32 @@ export const llmOpsProfilerSkill: SkillManifest = {
   updatedAt: new Date().toISOString()
 };
 
+// NEW SKILL 11: Competitive Intelligence & SEO Reverse Engineer
+export const seoCompIntelSkill: SkillManifest = {
+  id: "skill_seo_competitive_intel",
+  name: "SEO Semantic Gap & Competitor Reverse Engineer",
+  version: "1.0.0",
+  description: "Reverse engineers search visibility, extracts competitor content clusters, finds unranked question keywords, and outputs structured schema markup.",
+  authorId: "pub_rank_surge",
+  authorName: "RankSurge AI",
+  pricing: { model: "pay_per_run", costPerRunUsd: 0.25 },
+  capabilities: ["marketing", "seo", "growth", "content", "intelligence"],
+  tools: [{
+    name: "analyze_keyword_gap",
+    description: "Uncovers high-intent organic ranking gaps against competing domains and produces targeted FAQ JSON-LD schemas.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        targetDomainOrUrl: { type: "string", description: "Your target domain or URL" },
+        competitorUrl: { type: "string", description: "Competitor URL to benchmark against" }
+      },
+      required: ["targetDomainOrUrl", "competitorUrl"]
+    }
+  }],
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString()
+};
+
 export const ALL_SEED_SKILLS: SkillManifest[] = [
   deepSecAuditSkill,
   sqlDoctorSkill,
@@ -270,5 +296,6 @@ export const ALL_SEED_SKILLS: SkillManifest[] = [
   legalNdaScorerSkill,
   clinicalTrialSynthesizerSkill,
   smartContractAuditorSkill,
-  llmOpsProfilerSkill
+  llmOpsProfilerSkill,
+  seoCompIntelSkill
 ];
