@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillBridge GitHub Push Helper</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #090d16; color: #f1f5f9; padding: 40px; }
+    .box { max-width: 600px; margin: 0 auto; background: #131b2e; border: 1px solid #1e293b; border-radius: 16px; padding: 32px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5); }
+    h2 { color: #6366f1; margin-top: 0; }
+    input { width: 100%; box-sizing: border-box; background: #0a0f1d; border: 1px solid #334155; border-radius: 8px; padding: 12px; color: #fff; font-family: monospace; font-size: 14px; margin: 12px 0 20px; }
+    button { background: #4f46e5; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 14px; }
+    button:hover { background: #4338ca; }
+    pre { background: #020617; padding: 16px; border-radius: 8px; font-size: 13px; color: #38bdf8; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Connect GitHub Repository</h2>
+    <p style="color: #94a3b8; font-size: 14px;">Paste your GitHub Repository URL below to complete automated Vercel deployment:</p>
+    <label style="font-size: 12px; font-weight: bold; color: #cbd5e1; text-transform: uppercase;">GitHub Remote URL</label>
+    <input type="text" id="repo-url" placeholder="https://github.com/your-username/skillbridge.git" />
+    <button onclick="saveAndPush()">Configure and Push</button>
+    <div id="output" style="margin-top: 20px; display: none;">
+      <p style="font-size: 12px; color: #34d399; font-weight: bold;">Run command copied:</p>
+      <pre id="cmd"></pre>
+    </div>
+  </div>
+  <script>
+    function saveAndPush() {
+      const url = document.getElementById('repo-url').value.trim();
+      if (!url) return alert('Please enter a GitHub repository URL');
+      const cmd = `git remote add origin ${url}\ngit push -u origin main`;
+      document.getElementById('cmd').innerText = cmd;
+      document.getElementById('output').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
