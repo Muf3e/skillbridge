@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillBridge API & MCP Reference Documentation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    code, pre { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen">
+  <div class="max-w-5xl mx-auto px-4 py-12">
+    <div class="flex items-center justify-between pb-6 border-b border-slate-800">
+      <div>
+        <a href="/" class="text-xs font-mono text-indigo-400 hover:underline">← Back to SkillBridge Marketplace</a>
+        <h1 class="text-3xl font-extrabold text-white mt-2">SkillBridge MCP & REST API Reference</h1>
+        <p class="text-sm text-slate-400 mt-1">Integrate sovereign AI skills into any autonomous agent framework.</p>
+      </div>
+      <span class="text-xs font-mono bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-3 py-1 rounded-full font-semibold">Protocol v0.2.0</span>
+    </div>
+
+    <!-- Quickstart -->
+    <section class="mt-8 space-y-4">
+      <h2 class="text-xl font-bold text-white">1. Authenticated MCP Execution Endpoint</h2>
+      <p class="text-xs text-slate-300 leading-relaxed">
+        All skills execute inside isolated sandboxes. Invocations require a bearer token with pre-funded wallet credits or a configured monthly spending threshold.
+      </p>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4">
+        <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-2">
+          <span class="text-emerald-400 font-bold">POST</span>
+          <span>https://api.skillbridge.ai/api/v1/execute</span>
+        </div>
+        <pre class="bg-slate-950 p-4 rounded-lg text-xs font-mono text-cyan-300 overflow-x-auto">{
+  "requestId": "req_prod_987654321",
+  "skillId": "skill_deepsec_audit",
+  "toolName": "scan_vulnerabilities",
+  "arguments": {
+    "codeOrDependencies": "const AWS_KEY = 'AKIA...';",
+    "severityThreshold": "HIGH"
+  },
+  "buyerId": "client_cursor_prod",
+  "timestamp": 1789566000000
+}</pre>
+      </div>
+    </section>
+
+    <!-- Response Contract -->
+    <section class="mt-8 space-y-4">
+      <h2 class="text-xl font-bold text-white">2. Outcome-Guaranteed Response Contract</h2>
+      <p class="text-xs text-slate-300 leading-relaxed">
+        If a skill throws an unhandled exception or crashes, <code class="text-indigo-400">success: false</code> triggers an immediate escrow rollback.
+      </p>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4">
+        <pre class="bg-slate-950 p-4 rounded-lg text-xs font-mono text-emerald-300 overflow-x-auto">{
+  "requestId": "req_prod_987654321",
+  "success": true,
+  "data": {
+    "riskScore": "HIGH",
+    "vulnerabilitiesFound": 1,
+    "findings": [{ "type": "SECRET_LEAK", "severity": "CRITICAL" }]
+  },
+  "metrics": {
+    "durationMs": 132,
+    "tokensUsed": 185
+  },
+  "billing": {
+    "amountBilledUsd": 0.15,
+    "escrowReleased": true,
+    "settledToPublisherUsd": 0.13,
+    "platformRakeUsd": 0.02
+  }
+}</pre>
+      </div>
+    </section>
+
+    <!-- Catalog Endpoints -->
+    <section class="mt-8 space-y-4">
+      <h2 class="text-xl font-bold text-white">3. Public Catalog Discovery</h2>
+      <p class="text-xs text-slate-300">Inspect the full catalog of active skills programmatically:</p>
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-3 flex items-center justify-between font-mono text-xs">
+        <span class="text-indigo-400 font-bold">GET</span>
+        <span class="text-slate-300">https://api.skillbridge.ai/api/v1/skills</span>
+        <span class="text-slate-500">No Auth Required</span>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
