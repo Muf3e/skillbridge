@@ -1,19 +1,10 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "apps/web/src/server.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/compare/capafy",
-      "dest": "apps/web/src/server.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "apps/web/src/server.js"
-    }
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/compare/capafy", "destination": "/compare-capafy.html" },
+    { "source": "/vs-capafy", "destination": "/compare-capafy.html" },
+    { "source": "/docs", "destination": "/docs.html" },
+    { "source": "/api-docs", "destination": "/docs.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
