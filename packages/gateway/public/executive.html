@@ -617,70 +617,71 @@
       btn.innerHTML = "<span>🧠 Aegis-One Decomposing Directive...</span>";
 
       try {
-        const res = await fetch("/api/v1/executive/dispatch", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ directive: text })
-        });
+        try {
+          const res = await fetch("/api/v1/executive/dispatch", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ directive: text })
+          });
 
-        if (res.ok) {
-          const json = await res.json();
-          CORPORATE_STATE = json.state;
-          renderCorporateState();
+          if (res.ok) {
+            const json = await res.json();
+            CORPORATE_STATE = json.state;
+            renderCorporateState();
 
-          // Show result
-          const outcome = json.outcome;
-          const box = document.getElementById("dispatch-result-box");
-          box.classList.remove("hidden");
-          document.getElementById("dispatch-cycle-idx").innerText = `Cycle #${outcome.cycleIndex}`;
-          document.getElementById("dispatch-summary").innerText = outcome.summary;
-          document.getElementById("dispatch-decisions-list").innerHTML = outcome.decisions.map(d => `<div class="text-[11px] text-slate-300 font-mono">${d}</div>`).join("");
-          return;
+            // Show result
+            const outcome = json.outcome;
+            const box = document.getElementById("dispatch-result-box");
+            box.classList.remove("hidden");
+            document.getElementById("dispatch-cycle-idx").innerText = `Cycle #${outcome.cycleIndex}`;
+            document.getElementById("dispatch-summary").innerText = outcome.summary;
+            document.getElementById("dispatch-decisions-list").innerHTML = outcome.decisions.map(d => `<div class="text-[11px] text-slate-300 font-mono">${d}</div>`).join("");
+            return;
+          }
+        } catch (_) {}
+
+        // Robust client-side fallback
+        const cycleNum = (CORPORATE_STATE?.totalCyclesRun || 43) + 1;
+        const newDailyGmv = 38450 + Math.floor(Math.random() * 3200);
+        const decisions = [
+          `Executive Directive: ${text}`,
+          "1. Aegis-One decomposed directive into 4 cross-agent deliverables.",
+          "2. Hermes dispatched $500 bounties to qualified GitHub maintainers.",
+          "3. Apollo queued syndicated developer thread and viral meme assets.",
+          `4. Midas updated projected daily GMV to $${newDailyGmv.toLocaleString()}/day; 0% platform burn maintained.`
+        ];
+
+        const newMsg = {
+          id: `msg_c_${Date.now()}`,
+          fromAgent: "central_brain",
+          fromName: "Aegis-One (Executive Brain)",
+          toAgent: "broadcast",
+          topic: "EXECUTIVE_DIRECTIVE_DISPATCHED",
+          message: `Strategic directive issued: '${text}'. All 5 corporate agents deployed.`,
+          timestamp: new Date().toISOString()
+        };
+
+        if (!CORPORATE_STATE) renderBootstrapState();
+        if (!CORPORATE_STATE.messageBus) CORPORATE_STATE.messageBus = [];
+        CORPORATE_STATE.messageBus.unshift(newMsg);
+        CORPORATE_STATE.totalCyclesRun = cycleNum;
+        if (CORPORATE_STATE.financialMetrics) {
+          CORPORATE_STATE.financialMetrics.currentDailyGmvUsd = newDailyGmv;
+          CORPORATE_STATE.financialMetrics.projectedMonthlyRunRateUsd = newDailyGmv * 30;
         }
-      } catch (_) {}
+        renderCorporateState();
 
-      // Robust client-side fallback
-      const cycleNum = (CORPORATE_STATE?.totalCyclesRun || 43) + 1;
-      const newDailyGmv = 38450 + Math.floor(Math.random() * 3200);
-      const decisions = [
-        `Executive Directive: ${text}`,
-        "1. Aegis-One decomposed directive into 4 cross-agent deliverables.",
-        "2. Hermes dispatched $500 bounties to qualified GitHub maintainers.",
-        "3. Apollo queued syndicated developer thread and viral meme assets.",
-        `4. Midas updated projected daily GMV to $${newDailyGmv.toLocaleString()}/day; 0% platform burn maintained.`
-      ];
-
-      const newMsg = {
-        id: `msg_c_${Date.now()}`,
-        fromAgent: "central_brain",
-        fromName: "Aegis-One (Executive Brain)",
-        toAgent: "broadcast",
-        topic: "EXECUTIVE_DIRECTIVE_DISPATCHED",
-        message: `Strategic directive issued: '${text}'. All 5 corporate agents deployed.`,
-        timestamp: new Date().toISOString()
-      };
-
-      if (!CORPORATE_STATE) renderBootstrapState();
-      if (!CORPORATE_STATE.messageBus) CORPORATE_STATE.messageBus = [];
-      CORPORATE_STATE.messageBus.unshift(newMsg);
-      CORPORATE_STATE.totalCyclesRun = cycleNum;
-      if (CORPORATE_STATE.financialMetrics) {
-        CORPORATE_STATE.financialMetrics.currentDailyGmvUsd = newDailyGmv;
-        CORPORATE_STATE.financialMetrics.projectedMonthlyRunRateUsd = newDailyGmv * 30;
+        const box = document.getElementById("dispatch-result-box");
+        box.classList.remove("hidden");
+        document.getElementById("dispatch-cycle-idx").innerText = `Cycle #${cycleNum}`;
+        document.getElementById("dispatch-summary").innerText = `Autonomous Corporate Cycle #${cycleNum} completed under directive '${text}'. All 5 executive agents executed synchronized micro-tasks.`;
+        document.getElementById("dispatch-decisions-list").innerHTML = decisions.map(d => `<div class="text-[11px] text-slate-300 font-mono">${d}</div>`).join("");
+        box.scrollIntoView({ behavior: "smooth" });
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = "<span>⚡ Dispatch to Company Agents</span>";
       }
-      renderCorporateState();
-
-      const box = document.getElementById("dispatch-result-box");
-      box.classList.remove("hidden");
-      document.getElementById("dispatch-cycle-idx").innerText = `Cycle #${cycleNum}`;
-      document.getElementById("dispatch-summary").innerText = `Autonomous Corporate Cycle #${cycleNum} completed under directive '${text}'. All 5 executive agents executed synchronized micro-tasks.`;
-      document.getElementById("dispatch-decisions-list").innerHTML = decisions.map(d => `<div class="text-[11px] text-slate-300 font-mono">${d}</div>`).join("");
-      box.scrollIntoView({ behavior: "smooth" });
-    } finally {
-      btn.disabled = false;
-      btn.innerHTML = "<span>⚡ Dispatch to Company Agents</span>";
     }
-  }
 
   async function triggerExecutiveCycle() {
     const navBtn = document.getElementById("nav-cycle-btn");
