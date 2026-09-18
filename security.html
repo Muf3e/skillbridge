@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<title>SkillBridge | Hardware Attestation & Zero-Leak Whitepaper</title><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-background": "#e2e2e4",
+          "tertiary-container": "#9a989d",
+          "on-primary-container": "#572000",
+          "secondary": "#c8c6c8",
+          "on-primary-fixed-variant": "#7a3000",
+          "secondary-container": "#474649",
+          "on-secondary-fixed-variant": "#474649",
+          "surface-container-highest": "#333537",
+          "inverse-primary": "#a04100",
+          "outline-variant": "#5a4136",
+          "inverse-on-surface": "#2f3132",
+          "background": "#121415",
+          "on-surface": "#e2e2e4",
+          "tertiary-fixed-dim": "#c8c5cb",
+          "on-tertiary-fixed": "#1b1b1f",
+          "primary-fixed": "#ffdbcc",
+          "on-secondary-fixed": "#1b1b1d",
+          "inverse-surface": "#e2e2e4",
+          "on-secondary": "#303032",
+          "on-error": "#690005",
+          "on-tertiary-container": "#313135",
+          "primary-container": "#ff6b00",
+          "on-tertiary-fixed-variant": "#47464b",
+          "primary-fixed-dim": "#ffb693",
+          "error": "#ffb4ab",
+          "error-container": "#93000a",
+          "surface-variant": "#333537",
+          "surface-tint": "#ffb693",
+          "primary": "#ffb693",
+          "surface-container": "#1e2021",
+          "secondary-fixed-dim": "#c8c6c8",
+          "surface-container-lowest": "#0c0e10",
+          "surface-bright": "#37393b",
+          "surface-dim": "#121415",
+          "on-surface-variant": "#e2bfb0",
+          "surface-container-low": "#1a1c1d",
+          "on-error-container": "#ffdad6",
+          "outline": "#a98a7d",
+          "surface": "#121415",
+          "on-tertiary": "#303034",
+          "on-primary-fixed": "#351000",
+          "on-primary": "#561f00",
+          "surface-container-high": "#282a2c",
+          "on-secondary-container": "#b7b4b7",
+          "secondary-fixed": "#e5e1e4",
+          "tertiary": "#c8c5cb",
+          "tertiary-fixed": "#e4e1e7"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-xl": "64px",
+          "margin": "48px",
+          "space-xs": "4px",
+          "space-lg": "32px",
+          "space-md": "16px",
+          "gutter": "24px",
+          "space-sm": "8px"
+        },
+        "fontFamily": {
+          "headline-xl": [
+            "Space Grotesk"
+          ],
+          "headline-lg": [
+            "Space Grotesk"
+          ],
+          "headline-md": [
+            "Space Grotesk"
+          ],
+          "label-sm": [
+            "Inter"
+          ],
+          "headline-sm": [
+            "Space Grotesk"
+          ],
+          "body-md": [
+            "Inter"
+          ],
+          "label-lg": [
+            "Inter"
+          ],
+          "body-sm": [
+            "Inter"
+          ],
+          "body-lg": [
+            "Inter"
+          ]
+        },
+        "fontSize": {
+          "headline-xl": [
+            "72px",
+            {
+              "lineHeight": "80px",
+              "letterSpacing": "-0.03em",
+              "fontWeight": "700"
+            }
+          ],
+          "headline-lg": [
+            "48px",
+            {
+              "lineHeight": "56px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-md": [
+            "32px",
+            {
+              "lineHeight": "40px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "label-sm": [
+            "11px",
+            {
+              "lineHeight": "16px",
+              "letterSpacing": "0.08em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-sm": [
+            "24px",
+            {
+              "lineHeight": "32px",
+              "fontWeight": "500"
+            }
+          ],
+          "body-md": [
+            "15px",
+            {
+              "lineHeight": "24px",
+              "fontWeight": "400"
+            }
+          ],
+          "label-lg": [
+            "14px",
+            {
+              "lineHeight": "20px",
+              "letterSpacing": "0.05em",
+              "fontWeight": "500"
+            }
+          ],
+          "body-sm": [
+            "13px",
+            {
+              "lineHeight": "20px",
+              "fontWeight": "400"
+            }
+          ],
+          "body-lg": [
+            "18px",
+            {
+              "lineHeight": "28px",
+              "fontWeight": "400"
+            }
+          ]
+        }
+      },
+    },
+  }</script></head><body class="bg-background font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- Universal Top Announcement Bar -->
+<aside aria-label="Announcement" class="bg-surface-container-lowest border-b border-outline-variant/30 py-2 px-4 text-center text-xs text-on-surface-variant flex items-center justify-center space-x-2">
+  <span class="inline-block px-2 py-0.5 rounded-full bg-primary-container/20 text-primary font-bold text-[10px] uppercase tracking-wider border border-primary/30">Bounty Live</span>
+  <span>Publish an agent skill this month & compete for the <strong class="text-white">$10,000 creator launch pool</strong>.</span>
+  <a href="/publisher" class="underline font-bold text-primary hover:text-white ml-1 transition">Publish Skill &rarr;</a>
+</aside>
+
+<!-- Universal Stitch Header -->
+<header class="sticky top-0 z-50 bg-[#121415]/90 backdrop-blur-xl border-b border-surface-container-high shadow-[0_1px_8px_rgba(0,0,0,0.4)]">
+  <div class="max-w-7xl mx-auto h-20 w-full px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-space-md">
+    <div class="flex items-center gap-space-lg shrink-0">
+      <a href="/" class="flex items-center gap-space-sm group">
+        <img alt="SkillBridge Logo" class="h-8 w-auto object-contain transition-transform group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AEtjO1UaICitA37g_MPC4BeiTnjynEuRZbSpbHZd30T-MMDasK2U9N4QdYuCZ9qMQQbLF3f7rfl6F6CEix6NSdoym5nuwqMNVGuNwa9UbzW31u5ySY79WGQP06iJylJLZN1gkFPoIgV6Rmrv06vGxtJrxyhPy6LTsP-RDMNsd9e0UAlEYBk-dW7SHsCEZ4s_IBDfFyy6vHUbxkFK3iHSxD0D56CpA4frLDdn9_VI1NXXTd9m7JKO8lc1AH9whED4"/>
+        <div class="flex flex-col">
+          <span class="font-headline-sm text-headline-sm tracking-tight text-on-surface flex items-center gap-space-xs font-bold font-['Space_Grotesk']">SkillBridge <span class="font-headline-sm text-headline-sm text-primary">GATEWAY</span></span>
+          <span class="font-label-sm text-label-sm text-outline tracking-wider uppercase">v0.2.0 sovereign microvm runtime</span>
+        </div>
+      </a>
+      <nav class="hidden xl:flex items-center gap-space-xs p-space-xs bg-surface-container-low/80 rounded-xl border border-white/5">
+        <a class="px-space-md py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="/">Marketplace</a>
+      <a class="px-space-md py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="/playground">IDE & Enclave Playground</a>
+      <a class="px-space-md py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="/publisher">Publisher Studio & Ledger</a>
+      <a class="px-space-md py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="/executive">War Room & Telemetry</a>
+      <a class="px-space-md py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="/docs">Docs & MCP Config</a>
+      <a aria-current="page" class="px-space-md py-space-xs transition-all bg-primary-container text-on-primary-container rounded-lg font-label-lg text-label-lg font-bold shadow-md shadow-primary/20" href="/security">Security Whitepaper</a>
+      <a class="px-space-md py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="/support">24/7 AI Support</a>
+      <a class="px-space-md py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="/marketing">DevRel Launchpad</a>
+      </nav>
+    </div>
+    
+    <div class="flex items-center gap-space-sm shrink-0">
+      <div class="hidden md:flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-low/90 border border-white/5">
+        <span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+        <span class="font-label-sm text-label-sm text-on-surface-variant">AMD SEV-SNP Active • <span class="text-primary font-bold">114ms SLA</span></span>
+      </div>
+      
+      <div class="hidden lg:flex items-center gap-space-xs px-space-md py-space-xs rounded-lg bg-surface-container-high/60 border border-white/5">
+        <span class="font-label-sm text-label-sm text-outline font-mono">CLI</span>
+        <code class="font-body-sm text-body-sm text-on-surface select-all font-mono">npx @skillbridge/cli setup</code>
+        <button onclick="navigator.clipboard.writeText('npx @skillbridge/cli setup'); alert('CLI setup command copied!');" class="hover:text-primary transition-colors text-on-surface-variant" type="button" title="Copy setup command">
+          <span class="material-symbols-outlined text-sm">content_copy</span>
+        </button>
+      </div>
+
+      <button onclick="alert('Developer wallet funded with $24.15 USD. MicroVM gas escrow ready.');" class="flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-high hover:bg-surface-container-highest transition-all border border-white/10" type="button">
+        <span class="material-symbols-outlined text-primary text-sm">account_balance_wallet</span>
+        <span class="font-label-lg text-label-lg text-on-surface font-mono font-bold">$24.15 USD</span>
+        <span class="font-label-sm text-label-sm text-primary font-bold">+ Top Up</span>
+      </button>
+    </div>
+  </div>
+</header>
+<main class="w-full pt-20 bg-background min-h-screen"><div class="flex flex-col w-full">
+<!-- Subtle Ambient Glow Orbs behind key sections -->
+<div class="relative w-full overflow-hidden">
+<div class="absolute -top-40 right-1/4 w-96 h-96 rounded-full bg-primary-container/10 blur-[120px] pointer-events-none"></div>
+<div class="absolute top-96 -left-32 w-80 h-80 rounded-full bg-primary/5 blur-[100px] pointer-events-none"></div>
+<!-- Hero Architecture Section -->
+<section class="w-full px-gutter max-w-7xl mx-auto pt-space-lg pb-space-xl flex flex-col gap-space-lg relative">
+<!-- Breadcrumb & Hardware Node Chip -->
+<div class="flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm uppercase tracking-widest text-outline">
+<span>Architecture</span>
+<span class="text-surface-container-highest">/</span>
+<span class="text-primary font-semibold">Confidential Computing</span>
+</div>
+<div class="flex items-center gap-space-sm px-space-md py-space-xs rounded-full bg-surface-container-high/70 backdrop-blur-md">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary-container"></span>
+</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">
+            AMD SEV-SNP Core #08 Verified • Spec v0.2.0 Locked
+          </span>
+</div>
+</div>
+<!-- Main Headline & Editorial Lead -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<div class="lg:col-span-8 flex flex-col gap-space-md">
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">
+            AMD SEV-SNP Hardware Attestation &amp; <span class="text-primary">Zero-Leak</span> Security Architecture
+          </h1>
+<p class="font-body-lg text-body-lg text-secondary leading-relaxed max-w-2xl">
+            SkillBridge Gateway guarantees sub-150ms remote Model Context Protocol (MCP) execution inside cryptographic micro-enclaves. Our hardware root-of-trust eliminates host memory snooping, prompt eavesdropping, and tampering through ephemeral microVM isolation and automated cryptographic escrow.
+          </p>
+<div class="flex flex-wrap items-center gap-space-md pt-space-xs">
+<a class="flex items-center gap-space-xs px-space-lg py-space-md rounded-lg bg-primary-container hover:bg-primary transition-all text-on-primary-container font-label-lg text-label-lg font-semibold shadow-lg shadow-primary-container/20 hover:scale-[1.01] active:scale-[0.99]" href="#download-report">
+<span class="material-symbols-outlined text-lg">download</span>
+<span>Download Whitepaper (PDF)</span>
+</a>
+<button class="flex items-center gap-space-xs px-space-lg py-space-md rounded-lg bg-surface-container-high/60 hover:bg-surface-container-highest backdrop-blur-md transition-all text-on-surface font-label-lg text-label-lg" id="verifyKeyBtn" type="button">
+<span class="material-symbols-outlined text-primary text-lg">verified_user</span>
+<span>Verify Attestation Key</span>
+</button>
+<div class="flex items-center gap-space-xs text-outline font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-sm text-primary">terminal</span>
+<span>SHA-256 Verified Root</span>
+</div>
+</div>
+</div>
+<!-- Protocol Stat Highlight Box -->
+<div class="lg:col-span-4 bg-surface-container-low/90 backdrop-blur-xl rounded-xl p-space-lg flex flex-col gap-space-md relative overflow-hidden">
+<div class="absolute -right-8 -bottom-8 w-36 h-36 rounded-full bg-primary-container/15 blur-2xl pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Cryptographic Invariant</span>
+<span class="material-symbols-outlined text-primary">security</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-xl text-headline-xl text-on-surface font-bold tracking-tight">0.000%</span>
+<span class="font-label-lg text-label-lg text-primary font-semibold">Zero Prompt Leakage Guarantee</span>
+</div>
+<div class="pt-space-xs flex flex-col gap-space-xs">
+<div class="flex justify-between items-center text-body-sm font-body-sm text-secondary">
+<span>Hardware Register Validation</span>
+<code class="text-on-surface-variant font-mono text-label-sm bg-surface-container px-2 py-0.5 rounded">MSR 0xC001_0131</code>
+</div>
+<div class="flex justify-between items-center text-body-sm font-body-sm text-secondary">
+<span>AES-XTS Encryption</span>
+<span class="text-primary font-mono text-label-sm">512-bit Ephemeral</span>
+</div>
+<div class="flex justify-between items-center text-body-sm font-body-sm text-secondary">
+<span>Attestation Quorum</span>
+<span class="text-on-surface font-mono text-label-sm">4/4 Nodes Synced</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-1.5 overflow-hidden mt-space-xs">
+<div class="bg-primary-container h-full rounded-full w-full"></div>
+</div>
+</div>
+</div>
+<!-- 4 Spec Metric Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md pt-space-xs">
+<div class="bg-surface-container-low/80 backdrop-blur-md rounded-xl p-space-md flex flex-col gap-space-xs hover:bg-surface-container transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">MicroVM Spawn Latency</span>
+<span class="material-symbols-outlined text-primary text-sm">bolt</span>
+</div>
+<div class="font-headline-md text-headline-md text-on-surface font-bold">&lt;8.4<span class="text-primary text-headline-sm">ms</span></div>
+<span class="font-body-sm text-body-sm text-secondary">Firecracker v1.7 fork optimized for zero-copy Linux page cache.</span>
+</div>
+<div class="bg-surface-container-low/80 backdrop-blur-md rounded-xl p-space-md flex flex-col gap-space-xs hover:bg-surface-container transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Root Signing Key</span>
+<span class="material-symbols-outlined text-primary text-sm">key</span>
+</div>
+<div class="font-headline-md text-headline-md text-on-surface font-bold">ECDSA <span class="text-primary text-headline-sm">P-384</span></div>
+<span class="font-body-sm text-body-sm text-secondary">AMD VCEK Hardware Signed Silicon Certificate Authority.</span>
+</div>
+<div class="bg-surface-container-low/80 backdrop-blur-md rounded-xl p-space-md flex flex-col gap-space-xs hover:bg-surface-container transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Attestation P99 SLA</span>
+<span class="material-symbols-outlined text-primary text-sm">timer</span>
+</div>
+<div class="font-headline-md text-headline-md text-on-surface font-bold">114<span class="text-primary text-headline-sm">ms</span></div>
+<span class="font-body-sm text-body-sm text-secondary">End-to-end cryptographic handshake before payload unsealing.</span>
+</div>
+<div class="bg-surface-container-low/80 backdrop-blur-md rounded-xl p-space-md flex flex-col gap-space-xs hover:bg-surface-container transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Isolated Ephemeral RAM</span>
+<span class="material-symbols-outlined text-primary text-sm">memory</span>
+</div>
+<div class="font-headline-md text-headline-md text-on-surface font-bold">64<span class="text-primary text-headline-sm">MB</span></div>
+<span class="font-body-sm text-body-sm text-secondary">Stateless guest envelope completely scrubbed upon exit.</span>
+</div>
+</div>
+</section>
+<!-- Hardware Inspection & Enclave Die Module -->
+<section class="w-full bg-surface-container-lowest py-space-xl">
+<div class="w-full px-gutter max-w-7xl mx-auto flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">Micro-Die Physical Boundary</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Live Enclave Topology &amp; Micro-Die Isolation</h2>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="px-space-md py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">
+              SOC Node: Milan EPYC 7763
+            </span>
+<span class="px-space-md py-1 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm">
+              SNP Hypervisor 1.4-rc3
+            </span>
+</div>
+</div>
+<!-- 3D Hardware Die & Parameter Split Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-stretch">
+<!-- Hardware Visual Preview (Inspired by Inspiration Image) -->
+<div class="lg:col-span-7 bg-surface-container-low rounded-xl overflow-hidden relative group min-h-[420px] flex flex-col justify-between p-space-lg">
+<div class="absolute inset-0 w-full h-full bg-cover bg-center" data-alt="Close up architectural photographic perspective of a dark obsidian semiconductor integrated microchip die mounted on a matte black motherboard. Golden amber illuminated microscopic microcircuit traces radiate outward from a central crystalline transparent micro-enclave chamber. Inside the chamber rests a sleek metallic golden padlock mechanism emitting a warm volumetric amber glow #ff6b00 against obsidian slate textures, luxury editorial tech style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC5c_7V3FdG2P8IK8cv6qiP_yYfv2qlbfh8eICQrl3MJKm-8jaKOYAZRMiOGpVWZzp8Odig1B-EBN3k9j8GeUzxXeiT52riOCH6Kb14xtV_FyzVT_rF2csvUFtl9Xv5Clth5-bAnhAh0LgwkzJQ3aDX5_VLdrIBabJk92EYn97xA4_lEczsO3cd5nr6DYzbTjWnJ3xgIXDVHkWoQZfx5ox-ieXBX9U8t5Nzk7VBAsG3Y6bBDT23lJimzg')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/40 to-transparent"></div>
+<!-- Floating Overlay Badges -->
+<div class="relative z-10 flex items-center justify-between w-full">
+<div class="px-space-md py-space-xs rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-on-surface font-mono">SEV_STATUS: ENCLAVE_SEALED</span>
+</div>
+<span class="px-space-md py-space-xs rounded-lg bg-surface-container-high/80 backdrop-blur-md font-label-sm text-label-sm text-primary">
+                Memory Encrypt ID: 0x9AF03C
+              </span>
+</div>
+<!-- Bottom Floating Enclave Glass Tag -->
+<div class="relative z-10 p-space-md rounded-xl bg-surface-container-lowest/90 backdrop-blur-xl flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-lg bg-primary-container/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">lock_clock</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">SkillBridge Zero-Leak MicroVM</span>
+<span class="font-body-sm text-body-sm text-secondary">ECDSA-attested ephemeral execution envelope</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs self-end sm:self-center">
+<span class="px-space-md py-space-xs rounded-full bg-surface-container-high font-label-sm text-label-sm text-primary font-mono">
+                  &lt; 150ms Guaranteed
+                </span>
+</div>
+</div>
+</div>
+<!-- Side Parameter Digest Card -->
+<div class="lg:col-span-5 bg-surface-container-low/90 backdrop-blur-xl rounded-xl p-space-lg flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-label-lg text-label-lg text-on-surface uppercase tracking-wider font-semibold">Active Attestation Parameters</span>
+<span class="material-symbols-outlined text-primary text-sm">tune</span>
+</div>
+<!-- Parameter rows -->
+<div class="flex flex-col gap-space-sm">
+<div class="p-space-md rounded-lg bg-surface-container flex flex-col gap-1">
+<div class="flex justify-between items-center text-label-sm font-label-sm">
+<span class="text-outline uppercase">VCEK Certificate Chain</span>
+<span class="text-primary font-mono">AMD KDS VALID</span>
+</div>
+<code class="font-mono text-body-sm text-on-surface truncate">MIIC4DCCAcigAwIBAgIQX7J3Fp9o4Y6zP1u7wY9</code>
+</div>
+<div class="p-space-md rounded-lg bg-surface-container flex flex-col gap-1">
+<div class="flex justify-between items-center text-label-sm font-label-sm">
+<span class="text-outline uppercase">Launch Measurement Digest (LD)</span>
+<span class="text-on-surface-variant font-mono">PCR0 #908A</span>
+</div>
+<code class="font-mono text-body-sm text-primary truncate">c3ab8e6a8d7934ef4101e4a2d75f284d59a801e0d3...</code>
+</div>
+<div class="p-space-md rounded-lg bg-surface-container flex flex-col gap-1">
+<div class="flex justify-between items-center text-label-sm font-label-sm">
+<span class="text-outline uppercase">Egress Migration Agent Policy</span>
+<span class="text-error font-mono font-bold">DISABLED</span>
+</div>
+<span class="font-body-sm text-body-sm text-secondary">Zero memory dumps permitted. Hot live migration disabled at hardware fused bits.</span>
+</div>
+<div class="p-space-md rounded-lg bg-surface-container flex flex-col gap-1">
+<div class="flex justify-between items-center text-label-sm font-label-sm">
+<span class="text-outline uppercase">Hypervisor Snooping Trap</span>
+<span class="text-primary font-mono font-bold">VMSA_PROTECTED</span>
+</div>
+<span class="font-body-sm text-body-sm text-secondary">Page Table Faults intercepted by Secure Processor RMP mechanism.</span>
+</div>
+</div>
+</div>
+<!-- Inspect Action Button -->
+<button class="w-full flex items-center justify-center gap-space-xs py-space-md rounded-lg bg-surface-container-high hover:bg-surface-container-highest transition-colors font-label-lg text-label-lg text-on-surface" id="inspectPcrBtn" type="button">
+<span class="material-symbols-outlined text-primary text-sm">data_object</span>
+<span>Inspect Raw PCR Digest</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Threat Vector vs SkillBridge Enclave Matrix -->
+<section class="w-full px-gutter max-w-7xl mx-auto py-space-xl flex flex-col gap-space-lg">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">Zero-Trust Threat Model</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Adversary Vectors vs. Enclave Mitigations</h2>
+<p class="font-body-md text-body-md text-secondary max-w-3xl">
+          SkillBridge treats host cloud operators, colocation data center engineers, and neighboring containers as untrusted adversarial actors.
+        </p>
+</div>
+<!-- Matrix Grid 4 Glass Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg">
+<!-- Vector 01 -->
+<div class="bg-surface-container-low/90 backdrop-blur-xl rounded-xl p-space-lg flex flex-col gap-space-md relative overflow-hidden group hover:bg-surface-container transition-all">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider font-mono">Vector #01</span>
+<span class="material-symbols-outlined text-error text-lg">memory</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Host Hypervisor Memory Snooping</h3>
+<p class="font-body-sm text-body-sm text-secondary">
+              Malicious or subpoenaed cloud hypervisors directly dumping physical host DRAM pages to extract agent memory, proprietary MCP prompt buffers, or private credentials.
+            </p>
+</div>
+<div class="p-space-md rounded-lg bg-surface-container-high/60 flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs text-primary font-label-sm text-label-sm font-semibold uppercase">
+<span class="material-symbols-outlined text-sm">shield</span>
+<span>SkillBridge Mitigation</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Hardware-enforced 512-bit AES-XTS memory encryption. Memory keys are generated by AMD's on-die Secure Processor and never exposed to the host CPU or hypervisor bus.
+            </p>
+</div>
+</div>
+<!-- Vector 02 -->
+<div class="bg-surface-container-low/90 backdrop-blur-xl rounded-xl p-space-lg flex flex-col gap-space-md relative overflow-hidden group hover:bg-surface-container transition-all">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider font-mono">Vector #02</span>
+<span class="material-symbols-outlined text-error text-lg">data_loss_prevention</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Prompt Extraction &amp; Weight Scraping</h3>
+<p class="font-body-sm text-body-sm text-secondary">
+              Replay attacks and cold-boot physical bus probes designed to siphon specialized publisher agents, proprietary domain knowledge weights, and context buffers.
+            </p>
+</div>
+<div class="p-space-md rounded-lg bg-surface-container-high/60 flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs text-primary font-label-sm text-label-sm font-semibold uppercase">
+<span class="material-symbols-outlined text-sm">shield</span>
+<span>SkillBridge Mitigation</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Stateless in-memory execution. MicroVMs are ephemeral lifecycles strictly limited to 64MB RAM. 100% zero-page scrubbing is executed by the kernel post-call before teardown.
+            </p>
+</div>
+</div>
+<!-- Vector 03 -->
+<div class="bg-surface-container-low/90 backdrop-blur-xl rounded-xl p-space-lg flex flex-col gap-space-md relative overflow-hidden group hover:bg-surface-container transition-all">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider font-mono">Vector #03</span>
+<span class="material-symbols-outlined text-error text-lg">router</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Network Man-in-the-Middle Egress</h3>
+<p class="font-body-sm text-body-sm text-secondary">
+              Compromised third-party dependencies within user toolchains attempting unauthorized sideband exfiltration over TCP/UDP external sockets during runtime.
+            </p>
+</div>
+<div class="p-space-md rounded-lg bg-surface-container-high/60 flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs text-primary font-label-sm text-label-sm font-semibold uppercase">
+<span class="material-symbols-outlined text-sm">shield</span>
+<span>SkillBridge Mitigation</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Deterministic Airgap nftables enforcement. Physical virtual network adapters are unmapped. Execution occurs over dedicated Unix Domain Sockets mapped strictly to the MCP bridge.
+            </p>
+</div>
+</div>
+<!-- Vector 04 -->
+<div class="bg-surface-container-low/90 backdrop-blur-xl rounded-xl p-space-lg flex flex-col gap-space-md relative overflow-hidden group hover:bg-surface-container transition-all">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider font-mono">Vector #04</span>
+<span class="material-symbols-outlined text-error text-lg">currency_exchange</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Escrow &amp; Payment Tampering</h3>
+<p class="font-body-sm text-body-sm text-secondary">
+              Unverified invoice inflation, fabricated invocation claims by rogue nodes, or front-running agent execution fees without proof of actual execution.
+            </p>
+</div>
+<div class="p-space-md rounded-lg bg-surface-container-high/60 flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs text-primary font-label-sm text-label-sm font-semibold uppercase">
+<span class="material-symbols-outlined text-sm">shield</span>
+<span>SkillBridge Mitigation</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Cryptographic ZK-Receipt issuance. MicroVM creates an execution digest containing input hash, output state, and hardware attestation signature before escrow unlocks.
+            </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Execution Lifecycle: Airgap & Attestation Verification Pipeline -->
+<section class="w-full bg-surface-container-lowest py-space-xl">
+<div class="w-full px-gutter max-w-7xl mx-auto flex flex-col gap-space-lg">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">Deterministic Execution</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">The 4-Stage Attestation &amp; MicroVM Lifecycle</h2>
+<p class="font-body-md text-body-md text-secondary max-w-2xl">
+            From initial ECDSA hardware verification to zero-page memory dissolving, every millisecond is mathematically bound.
+          </p>
+</div>
+<!-- 4 Steps Interactive Layout -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Stage 01 -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-md relative border-t-0">
+<div class="flex items-center justify-between">
+<span class="font-headline-md text-headline-md text-primary font-bold">01</span>
+<span class="px-space-sm py-0.5 rounded bg-surface-container font-mono text-label-sm text-outline">P-384</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Pre-Execution Attestation</h4>
+<p class="font-body-sm text-body-sm text-secondary">
+                Client verifies AMD VCEK certificate chain and compares enclave measurement digest against the published skill registry manifest.
+              </p>
+</div>
+<div class="mt-auto pt-space-xs text-label-sm font-label-sm text-on-surface-variant font-mono">
+              Latency: ∼12.4ms
+            </div>
+</div>
+<!-- Stage 02 -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-md relative">
+<div class="flex items-center justify-between">
+<span class="font-headline-md text-headline-md text-primary font-bold">02</span>
+<span class="px-space-sm py-0.5 rounded bg-surface-container font-mono text-label-sm text-outline">KVM FORK</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Firecracker MicroVM Spawn</h4>
+<p class="font-body-sm text-body-sm text-secondary">
+                SEV-SNP secure context initialized with hardware-assigned ASID. Fresh ephemeral AES-XTS key generated internally by the AMD PSP.
+              </p>
+</div>
+<div class="mt-auto pt-space-xs text-label-sm font-label-sm text-on-surface-variant font-mono">
+              Latency: ∼8.4ms
+            </div>
+</div>
+<!-- Stage 03 -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-md relative">
+<div class="flex items-center justify-between">
+<span class="font-headline-md text-headline-md text-primary font-bold">03</span>
+<span class="px-space-sm py-0.5 rounded bg-surface-container font-mono text-label-sm text-outline">AIRGAP</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Zero-Egress Tool Run</h4>
+<p class="font-body-sm text-body-sm text-secondary">
+                MCP payload unsealed inside the encrypted memory pool. Tool logic completes with all external egress dropped at the guest kernel gate.
+              </p>
+</div>
+<div class="mt-auto pt-space-xs text-label-sm font-label-sm text-on-surface-variant font-mono">
+              Latency: ∼78.0ms
+            </div>
+</div>
+<!-- Stage 04 -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-md relative">
+<div class="flex items-center justify-between">
+<span class="font-headline-md text-headline-md text-primary font-bold">04</span>
+<span class="px-space-sm py-0.5 rounded bg-surface-container font-mono text-label-sm text-outline">ZERO-SCRUB</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Memory Scrub &amp; ZK Escrow</h4>
+<p class="font-body-sm text-body-sm text-secondary">
+                Guest RAM thoroughly overwritten with zeros. MicroVM context destroyed. Attested output and cryptographic execution receipt emitted.
+              </p>
+</div>
+<div class="mt-auto pt-space-xs text-label-sm font-label-sm text-on-surface-variant font-mono">
+              Latency: ∼15.2ms
+            </div>
+</div>
+</div>
+<!-- Inline SVG Architectural Pipeline Diagram -->
+<div class="w-full bg-surface-container-low rounded-xl p-space-lg flex flex-col gap-space-md overflow-x-auto">
+<div class="flex items-center justify-between min-w-[600px]">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Real-Time Cryptographic Pipeline Flow</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">TOTAL SLA TARGET: 114ms</span>
+</div>
+<div class="w-full min-w-[600px]">
+<svg class="w-full h-24" fill="none" viewbox="0 0 800 80" xmlns="http://www.w3.org/2000/svg">
+<line class="text-surface-container-highest" stroke="currentColor" stroke-dasharray="4 4" stroke-width="2" x1="40" x2="760" y1="40" y2="40"></line>
+<!-- Stage 1 Node -->
+<circle class="fill-surface-container stroke-primary" cx="80" cy="40" r="18" stroke-width="2"></circle>
+<text class="fill-on-surface text-label-sm font-bold font-sans" text-anchor="middle" x="80" y="44">01</text>
+<text class="fill-outline text-label-sm" text-anchor="middle" x="80" y="70">AMD Handshake</text>
+<!-- Stage 2 Node -->
+<circle class="fill-surface-container stroke-primary-container" cx="280" cy="40" r="18" stroke-width="2"></circle>
+<text class="fill-on-surface text-label-sm font-bold font-sans" text-anchor="middle" x="280" y="44">02</text>
+<text class="fill-outline text-label-sm" text-anchor="middle" x="280" y="70">vCPU Fused ASID</text>
+<!-- Stage 3 Node -->
+<circle class="fill-surface-container stroke-primary" cx="480" cy="40" r="18" stroke-width="2"></circle>
+<text class="fill-on-surface text-label-sm font-bold font-sans" text-anchor="middle" x="480" y="44">03</text>
+<text class="fill-outline text-label-sm" text-anchor="middle" x="480" y="70">Airgap Tool Exec</text>
+<!-- Stage 4 Node -->
+<circle class="fill-primary-container stroke-primary" cx="680" cy="40" r="18" stroke-width="2"></circle>
+<text class="fill-on-primary-container text-label-sm font-bold font-sans" text-anchor="middle" x="680" y="44">04</text>
+<text class="fill-primary text-label-sm font-semibold" text-anchor="middle" x="680" y="70">Scrub &amp; Release</text>
+<!-- Dynamic moving pulse line -->
+<line class="text-primary-container" stroke="currentColor" stroke-dasharray="20 160" stroke-linecap="round" stroke-width="2" x1="80" x2="680" y1="40" y2="40">
+<animate attributename="stroke-dashoffset" dur="2s" repeatcount="indefinite" values="180;0"></animate>
+</line>
+</svg>
+</div>
+</div>
+</div>
+</section>
+<!-- Formal Verification & Independent Security Audits -->
+<section class="w-full px-gutter max-w-7xl mx-auto py-space-xl flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">Institutional Validation</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Formal Verification &amp; Security Audits</h2>
+<p class="font-body-md text-body-md text-secondary max-w-2xl">
+            SkillBridge micro-kernel codebases, SEV-SNP hypervisor patches, and escrow settlement contracts are scrutinized by premier cryptography firms.
+          </p>
+</div>
+<div class="flex items-center gap-space-xs text-outline font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-primary text-sm">verified</span>
+<span>All 3 Audits Concluded with Zero Criticals</span>
+</div>
+</div>
+<!-- Audit Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Audit 01 -->
+<div class="bg-surface-container-low/90 backdrop-blur-xl rounded-xl p-space-lg flex flex-col justify-between gap-space-md hover:bg-surface-container transition-colors">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-lg text-label-lg text-on-surface font-bold">Trail of Bits</span>
+<span class="px-space-md py-0.5 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm font-semibold">PASSED</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline font-mono">SCOPE: HYPERVISOR &amp; SEV-SNP DRIVER</span>
+<p class="font-body-sm text-body-sm text-secondary pt-space-xs">
+              Complete manual inspection of KVM page-table encryption invariants and memory scrubbing routines. Verified zero leak vectors under hypervisor compromise emulation.
+            </p>
+</div>
+<div class="flex items-center justify-between pt-space-md">
+<span class="font-label-sm text-label-sm text-outline">Dated Nov 2024</span>
+<a class="flex items-center gap-1 font-label-sm text-label-sm text-primary hover:underline" href="#">
+<span>View Audit PDF</span>
+<span class="material-symbols-outlined text-sm">open_in_new</span>
+</a>
+</div>
+</div>
+<!-- Audit 02 -->
+<div class="bg-surface-container-low/90 backdrop-blur-xl rounded-xl p-space-lg flex flex-col justify-between gap-space-md hover:bg-surface-container transition-colors">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-lg text-label-lg text-on-surface font-bold">Kudelski Security</span>
+<span class="px-space-md py-0.5 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm font-semibold">PASSED</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline font-mono">SCOPE: CRYPTOGRAPHIC ATTESTATION</span>
+<p class="font-body-sm text-body-sm text-secondary pt-space-xs">
+              Hardware root-of-trust verification, AMD VCEK validation pipeline, and zero-knowledge receipt hashing logic. Confirmed mathematically tamper-proof.
+            </p>
+</div>
+<div class="flex items-center justify-between pt-space-md">
+<span class="font-label-sm text-label-sm text-outline">Dated Jan 2025</span>
+<a class="flex items-center gap-1 font-label-sm text-label-sm text-primary hover:underline" href="#">
+<span>View Audit PDF</span>
+<span class="material-symbols-outlined text-sm">open_in_new</span>
+</a>
+</div>
+</div>
+<!-- Audit 03 -->
+<div class="bg-surface-container-low/90 backdrop-blur-xl rounded-xl p-space-lg flex flex-col justify-between gap-space-md hover:bg-surface-container transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-lg text-label-lg text-on-surface font-bold">OpenZeppelin</span>
+<span class="px-space-md py-0.5 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm font-semibold">PASSED</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline font-mono">SCOPE: ESCROW &amp; SETTLEMENT LEDGER</span>
+<p class="font-body-sm text-body-sm text-secondary pt-space-xs">
+            Multi-sig governance, publisher 85% revenue splitting contracts, and micro-charge release conditions. 0 vulnerabilities or reentrancy exploits found.
+          </p>
+</div>
+<div class="flex items-center justify-between pt-space-md">
+<span class="font-label-sm text-label-sm text-outline">Dated Feb 2025</span>
+<a class="flex items-center gap-1 font-label-sm text-label-sm text-primary hover:underline" href="#">
+<span>View Audit PDF</span>
+<span class="material-symbols-outlined text-sm">open_in_new</span>
+</a>
+</div>
+</div>
+</section></div>
+<!-- Closing Sovereign Execution CTA Banner -->
+<section class="w-full px-gutter max-w-7xl mx-auto pb-space-xl">
+<div class="w-full bg-surface-container-low/90 backdrop-blur-xl rounded-xl p-space-lg md:p-space-xl flex flex-col md:flex-row items-center justify-between gap-space-lg relative overflow-hidden">
+<div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-primary-container/20 blur-[90px] pointer-events-none"></div>
+<div class="flex flex-col gap-space-xs max-w-2xl relative z-10">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">Ready for Deployment</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Deploy Your First Isolated MCP Tool</h3>
+<p class="font-body-md text-body-md text-secondary">
+            Integrate confidential microVM execution into Claude, Cursor, or your autonomous agent runtime with two CLI commands.
+          </p>
+</div>
+<div class="flex flex-col sm:flex-row items-center gap-space-md relative z-10 shrink-0 w-full md:w-auto">
+<a class="w-full sm:w-auto text-center px-space-lg py-space-md rounded-lg bg-primary-container hover:bg-primary transition-all text-on-primary-container font-label-lg text-label-lg font-semibold shadow-lg shadow-primary-container/20" href="#">
+            Open Enclave Playground
+          </a>
+<button class="w-full sm:w-auto flex items-center justify-center gap-space-xs px-space-md py-space-md rounded-lg bg-surface-container-high hover:bg-surface-container-highest transition-colors font-mono text-body-sm text-on-surface" id="copyCliBtn" type="button">
+<span>npx @skillbridge/cli enclave test</span>
+<span class="material-symbols-outlined text-sm text-primary">content_copy</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+<!-- Interactive Modal / Notification Script -->
+<script>
+    document.getElementById('verifyKeyBtn')?.addEventListener('click', function() {
+      alert('ECDSA P-384 Verification Result:\nRoot CA: AMD SEV-SNP Production CA\nStatus: VALID (Hardware Fuses Intact)\nDigest Match: 100%');
+    });
+
+    document.getElementById('inspectPcrBtn')?.addEventListener('click', function() {
+      alert('PCR Measurement Digest:\nPCR0: c3ab8e6a8d7934ef4101e4a2d75f284d59a801e0d3\nPCR1: 8904ea8927160912bcad816281710928a6e812ab\nAll hardware registers locked.');
+    });
+
+    document.getElementById('copyCliBtn')?.addEventListener('click', function() {
+      navigator.clipboard.writeText('npx @skillbridge/cli enclave test');
+      const orig = this.innerHTML;
+      this.innerHTML = '<span class="text-primary font-bold">Copied to clipboard!</span>';
+      setTimeout(() => {
+        this.innerHTML = orig;
+      }, 2000);
+    });
+  </script>
+</main>
+<!-- Universal Stitch Institutional Footer -->
+<footer class="bg-surface-container-lowest border-t border-surface-container-high py-12 px-4 sm:px-6 lg:px-8 mt-auto">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-8 mb-12">
+    <div class="md:col-span-2 space-y-4">
+      <div class="flex items-center gap-2">
+        <img alt="SkillBridge Logo" class="h-6 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UaICitA37g_MPC4BeiTnjynEuRZbSpbHZd30T-MMDasK2U9N4QdYuCZ9qMQQbLF3f7rfl6F6CEix6NSdoym5nuwqMNVGuNwa9UbzW31u5ySY79WGQP06iJylJLZN1gkFPoIgV6Rmrv06vGxtJrxyhPy6LTsP-RDMNsd9e0UAlEYBk-dW7SHsCEZ4s_IBDfFyy6vHUbxkFK3iHSxD0D56CpA4frLDdn9_VI1NXXTd9m7JKO8lc1AH9whED4"/>
+        <span class="font-headline-sm text-on-surface font-bold font-['Space_Grotesk']">SkillBridge <span class="text-primary">GATEWAY</span></span>
+      </div>
+      <p class="text-body-sm text-outline max-w-sm">
+        High-performance, hardware-isolated AI agent microVM execution fabric powered by AMD SEV-SNP attestation and MCP native integration.
+      </p>
+      <div class="flex items-center gap-2 text-[10px] font-mono text-outline-variant">
+        <span class="px-2 py-0.5 rounded bg-surface-container border border-outline-variant/30">MCP V0.2.0 SPEC</span>
+        <span class="px-2 py-0.5 rounded bg-surface-container border border-outline-variant/30">AMD SEV-SNP ATTESTED</span>
+      </div>
+    </div>
+    
+    <div>
+      <h4 class="text-xs font-bold uppercase tracking-wider text-on-surface mb-4 font-mono">Protocol</h4>
+      <ul class="space-y-2 text-xs text-outline">
+        <li><a href="/playground" class="hover:text-primary transition">MicroVM Runtime</a></li>
+        <li><a href="/security" class="hover:text-primary transition">Proof of Enclave</a></li>
+        <li><a href="/executive" class="hover:text-primary transition">Telemetry Engine</a></li>
+        <li><a href="/publisher" class="hover:text-primary transition">Consensus Ledger</a></li>
+      </ul>
+    </div>
+    
+    <div>
+      <h4 class="text-xs font-bold uppercase tracking-wider text-on-surface mb-4 font-mono">Publishers</h4>
+      <ul class="space-y-2 text-xs text-outline">
+        <li><a href="/publisher" class="hover:text-primary transition">Agent Registry</a></li>
+        <li><a href="/docs" class="hover:text-primary transition">Publishing CLI</a></li>
+        <li><a href="/publisher" class="hover:text-primary transition">Revenue Splitting (85%)</a></li>
+        <li><a href="/security" class="hover:text-primary transition">Contract Audits</a></li>
+      </ul>
+    </div>
+    
+    <div>
+      <h4 class="text-xs font-bold uppercase tracking-wider text-on-surface mb-4 font-mono">Resources & Support</h4>
+      <ul class="space-y-2 text-xs text-outline">
+        <li><a href="/docs" class="hover:text-primary transition">MCP Specification</a></li>
+        <li><a href="/support" class="hover:text-primary transition">24/7 AI Support Bot</a></li>
+        <li><a href="/security" class="hover:text-primary transition">Security Attestation</a></li>
+        <li><a href="/marketing" class="hover:text-primary transition">DevRel & Social Hub</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="max-w-7xl mx-auto pt-6 border-t border-surface-container-high/60 flex flex-col sm:flex-row items-center justify-between text-[11px] text-outline">
+    <span>&copy; 2026 SkillBridge Technologies Inc. All rights reserved. Production Genesis Node #0412</span>
+    <div class="flex items-center space-x-4 mt-2 sm:mt-0">
+      <span>System Status: <strong class="text-primary">99.992%</strong></span>
+      <span>&bull;</span>
+      <span>Confidential Computing</span>
+      <span>&bull;</span>
+      <span>Zero-Knowledge Attest</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating Quick Support Pill -->
+<div id="floating-support-btn-container" class="fixed bottom-6 right-6 z-50">
+  <a href="/support" class="flex items-center space-x-2.5 px-4 py-2.5 rounded-full bg-[#ff6b00] hover:bg-[#ff8533] text-white text-xs font-bold shadow-xl shadow-[#ff6b00]/30 border border-white/20 transition-all transform hover:-translate-y-0.5 group">
+    <span class="relative flex h-2 w-2">
+      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+      <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+    </span>
+    <span class="material-symbols-outlined text-sm">support_agent</span>
+    <span>Report Issue / Ask AI Support</span>
+  </a>
+</div>
+
+</body></html>

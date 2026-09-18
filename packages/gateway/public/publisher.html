@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<title>SkillBridge | Publisher Studio & Escrow Ledger (85% Split)</title><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-background": "#e2e2e4",
+          "tertiary-container": "#9a989d",
+          "on-primary-container": "#572000",
+          "secondary": "#c8c6c8",
+          "on-primary-fixed-variant": "#7a3000",
+          "secondary-container": "#474649",
+          "on-secondary-fixed-variant": "#474649",
+          "surface-container-highest": "#333537",
+          "inverse-primary": "#a04100",
+          "outline-variant": "#5a4136",
+          "inverse-on-surface": "#2f3132",
+          "background": "#121415",
+          "on-surface": "#e2e2e4",
+          "tertiary-fixed-dim": "#c8c5cb",
+          "on-tertiary-fixed": "#1b1b1f",
+          "primary-fixed": "#ffdbcc",
+          "on-secondary-fixed": "#1b1b1d",
+          "inverse-surface": "#e2e2e4",
+          "on-secondary": "#303032",
+          "on-error": "#690005",
+          "on-tertiary-container": "#313135",
+          "primary-container": "#ff6b00",
+          "on-tertiary-fixed-variant": "#47464b",
+          "primary-fixed-dim": "#ffb693",
+          "error": "#ffb4ab",
+          "error-container": "#93000a",
+          "surface-variant": "#333537",
+          "surface-tint": "#ffb693",
+          "primary": "#ffb693",
+          "surface-container": "#1e2021",
+          "secondary-fixed-dim": "#c8c6c8",
+          "surface-container-lowest": "#0c0e10",
+          "surface-bright": "#37393b",
+          "surface-dim": "#121415",
+          "on-surface-variant": "#e2bfb0",
+          "surface-container-low": "#1a1c1d",
+          "on-error-container": "#ffdad6",
+          "outline": "#a98a7d",
+          "surface": "#121415",
+          "on-tertiary": "#303034",
+          "on-primary-fixed": "#351000",
+          "on-primary": "#561f00",
+          "surface-container-high": "#282a2c",
+          "on-secondary-container": "#b7b4b7",
+          "secondary-fixed": "#e5e1e4",
+          "tertiary": "#c8c5cb",
+          "tertiary-fixed": "#e4e1e7"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-xl": "64px",
+          "margin": "48px",
+          "space-xs": "4px",
+          "space-lg": "32px",
+          "space-md": "16px",
+          "gutter": "24px",
+          "space-sm": "8px"
+        },
+        "fontFamily": {
+          "headline-xl": [
+            "Space Grotesk"
+          ],
+          "headline-lg": [
+            "Space Grotesk"
+          ],
+          "headline-md": [
+            "Space Grotesk"
+          ],
+          "label-sm": [
+            "Inter"
+          ],
+          "headline-sm": [
+            "Space Grotesk"
+          ],
+          "body-md": [
+            "Inter"
+          ],
+          "label-lg": [
+            "Inter"
+          ],
+          "body-sm": [
+            "Inter"
+          ],
+          "body-lg": [
+            "Inter"
+          ]
+        },
+        "fontSize": {
+          "headline-xl": [
+            "72px",
+            {
+              "lineHeight": "80px",
+              "letterSpacing": "-0.03em",
+              "fontWeight": "700"
+            }
+          ],
+          "headline-lg": [
+            "48px",
+            {
+              "lineHeight": "56px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-md": [
+            "32px",
+            {
+              "lineHeight": "40px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "label-sm": [
+            "11px",
+            {
+              "lineHeight": "16px",
+              "letterSpacing": "0.08em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-sm": [
+            "24px",
+            {
+              "lineHeight": "32px",
+              "fontWeight": "500"
+            }
+          ],
+          "body-md": [
+            "15px",
+            {
+              "lineHeight": "24px",
+              "fontWeight": "400"
+            }
+          ],
+          "label-lg": [
+            "14px",
+            {
+              "lineHeight": "20px",
+              "letterSpacing": "0.05em",
+              "fontWeight": "500"
+            }
+          ],
+          "body-sm": [
+            "13px",
+            {
+              "lineHeight": "20px",
+              "fontWeight": "400"
+            }
+          ],
+          "body-lg": [
+            "18px",
+            {
+              "lineHeight": "28px",
+              "fontWeight": "400"
+            }
+          ]
+        }
+      },
+    },
+  }</script></head><body class="bg-background font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- Universal Top Announcement Bar -->
+<aside aria-label="Announcement" class="bg-surface-container-lowest border-b border-outline-variant/30 py-2 px-4 text-center text-xs text-on-surface-variant flex items-center justify-center space-x-2">
+  <span class="inline-block px-2 py-0.5 rounded-full bg-primary-container/20 text-primary font-bold text-[10px] uppercase tracking-wider border border-primary/30">Bounty Live</span>
+  <span>Publish an agent skill this month & compete for the <strong class="text-white">$10,000 creator launch pool</strong>.</span>
+  <a href="/publisher" class="underline font-bold text-primary hover:text-white ml-1 transition">Publish Skill &rarr;</a>
+</aside>
+
+<!-- Universal Stitch Header -->
+<header class="sticky top-0 z-50 bg-[#121415]/90 backdrop-blur-xl border-b border-surface-container-high shadow-[0_1px_8px_rgba(0,0,0,0.4)]">
+  <div class="max-w-7xl mx-auto h-20 w-full px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-space-md">
+    <div class="flex items-center gap-space-lg shrink-0">
+      <a href="/" class="flex items-center gap-space-sm group">
+        <img alt="SkillBridge Logo" class="h-8 w-auto object-contain transition-transform group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AEtjO1UaICitA37g_MPC4BeiTnjynEuRZbSpbHZd30T-MMDasK2U9N4QdYuCZ9qMQQbLF3f7rfl6F6CEix6NSdoym5nuwqMNVGuNwa9UbzW31u5ySY79WGQP06iJylJLZN1gkFPoIgV6Rmrv06vGxtJrxyhPy6LTsP-RDMNsd9e0UAlEYBk-dW7SHsCEZ4s_IBDfFyy6vHUbxkFK3iHSxD0D56CpA4frLDdn9_VI1NXXTd9m7JKO8lc1AH9whED4"/>
+        <div class="flex flex-col">
+          <span class="font-headline-sm text-headline-sm tracking-tight text-on-surface flex items-center gap-space-xs font-bold font-['Space_Grotesk']">SkillBridge <span class="font-headline-sm text-headline-sm text-primary">GATEWAY</span></span>
+          <span class="font-label-sm text-label-sm text-outline tracking-wider uppercase">v0.2.0 sovereign microvm runtime</span>
+        </div>
+      </a>
+      <nav class="hidden xl:flex items-center gap-space-xs p-space-xs bg-surface-container-low/80 rounded-xl border border-white/5">
+        <a class="px-space-md py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="/">Marketplace</a>
+      <a class="px-space-md py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="/playground">IDE & Enclave Playground</a>
+      <a aria-current="page" class="px-space-md py-space-xs transition-all bg-primary-container text-on-primary-container rounded-lg font-label-lg text-label-lg font-bold shadow-md shadow-primary/20" href="/publisher">Publisher Studio & Ledger</a>
+      <a class="px-space-md py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="/executive">War Room & Telemetry</a>
+      <a class="px-space-md py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="/docs">Docs & MCP Config</a>
+      <a class="px-space-md py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="/security">Security Whitepaper</a>
+      <a class="px-space-md py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="/support">24/7 AI Support</a>
+      <a class="px-space-md py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="/marketing">DevRel Launchpad</a>
+      </nav>
+    </div>
+    
+    <div class="flex items-center gap-space-sm shrink-0">
+      <div class="hidden md:flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-low/90 border border-white/5">
+        <span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+        <span class="font-label-sm text-label-sm text-on-surface-variant">AMD SEV-SNP Active • <span class="text-primary font-bold">114ms SLA</span></span>
+      </div>
+      
+      <div class="hidden lg:flex items-center gap-space-xs px-space-md py-space-xs rounded-lg bg-surface-container-high/60 border border-white/5">
+        <span class="font-label-sm text-label-sm text-outline font-mono">CLI</span>
+        <code class="font-body-sm text-body-sm text-on-surface select-all font-mono">npx @skillbridge/cli setup</code>
+        <button onclick="navigator.clipboard.writeText('npx @skillbridge/cli setup'); alert('CLI setup command copied!');" class="hover:text-primary transition-colors text-on-surface-variant" type="button" title="Copy setup command">
+          <span class="material-symbols-outlined text-sm">content_copy</span>
+        </button>
+      </div>
+
+      <button onclick="alert('Developer wallet funded with $24.15 USD. MicroVM gas escrow ready.');" class="flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-high hover:bg-surface-container-highest transition-all border border-white/10" type="button">
+        <span class="material-symbols-outlined text-primary text-sm">account_balance_wallet</span>
+        <span class="font-label-lg text-label-lg text-on-surface font-mono font-bold">$24.15 USD</span>
+        <span class="font-label-sm text-label-sm text-primary font-bold">+ Top Up</span>
+      </button>
+    </div>
+  </div>
+</header>
+<main class="w-full pt-20 bg-background min-h-screen"><div class="flex flex-col w-full">
+<!-- Ambient Copper/Amber Micro-Glow Canvas -->
+<div class="relative w-full overflow-hidden">
+<div class="absolute top-0 left-1/4 w-96 h-96 bg-primary-container/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
+<div class="absolute top-1/3 right-10 w-[30rem] h-[30rem] bg-primary/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+<!-- Announcement Bar -->
+<section class="w-full px-gutter pt-space-md pb-space-sm max-w-7xl mx-auto">
+<div class="relative rounded-xl p-space-md bg-surface-container-low shadow-xl overflow-hidden flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="absolute -right-16 -bottom-16 w-48 h-48 bg-primary-container/15 rounded-full blur-2xl"></div>
+<div class="flex items-center gap-space-md z-10">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center text-on-primary-container shadow-md shrink-0">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">award_star</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold">Genesis Creator Incentive</span>
+<span class="px-space-xs py-0.5 rounded-full bg-primary/20 text-primary font-label-sm text-label-sm font-semibold">Active Pool</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">
+<strong class="text-on-surface font-semibold">$10,000 USD Launch Pool</strong> is allocating grants to verified SEV-SNP autonomous skills. Deploy this epoch to unlock $500 milestone bonuses.
+            </p>
+</div>
+</div>
+<div class="flex items-center gap-space-sm z-10 shrink-0">
+<span class="font-label-sm text-label-sm text-outline hidden lg:inline">Pool Remainder: $7,400</span>
+<a class="px-space-md py-space-xs rounded-lg bg-primary-container hover:bg-primary text-on-primary-container hover:text-on-primary transition-all font-label-lg text-label-lg font-semibold flex items-center gap-space-xs shadow-md" href="#register-studio">
+<span>Publish Skill</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Editorial Header Section -->
+<section class="w-full px-gutter pt-space-lg pb-space-md max-w-7xl mx-auto">
+<div class="flex flex-col gap-space-xs max-w-4xl">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-outline">Creator Ledger &amp; Settlement Gateway</span>
+<span class="text-outline">•</span>
+<span class="font-label-sm text-label-sm text-primary">Zero-Knowledge Attested</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">
+          Deploy Protected Sovereign Skills &amp; Keep <span class="text-primary font-bold">85% Revenue Split</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl">
+          Monetize deterministic model capabilities in zero-leak Firecracker microVM enclaves. Cryptographically locked against extraction via AMD SEV-SNP hardware attestation with direct USDC per-invocation escrow settlement.
+        </p>
+</div>
+</section>
+<!-- Realtime Escrow Stream Ticker -->
+<section class="w-full px-gutter py-space-xs max-w-7xl mx-auto">
+<div class="rounded-lg bg-surface-container-lowest/80 p-space-xs overflow-hidden flex items-center gap-space-sm">
+<div class="flex items-center gap-space-xs px-space-sm py-1 rounded bg-surface-container shrink-0 text-primary">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-sm text-label-sm font-semibold uppercase tracking-wider">Live Escrow Stream</span>
+</div>
+<div class="overflow-x-auto no-scrollbar flex items-center gap-space-lg whitespace-nowrap text-on-surface-variant text-body-sm font-body-sm">
+<div class="flex items-center gap-space-xs">
+<span class="text-outline">TX-9104</span>
+<span class="text-on-surface">skill_rag_chunk_optimizer</span>
+<span class="text-primary font-semibold">+$0.25 USDC</span>
+<span class="text-outline text-label-sm font-label-sm">34ms</span>
+</div>
+<span class="text-surface-container-highest">/</span>
+<div class="flex items-center gap-space-xs">
+<span class="text-outline">TX-9103</span>
+<span class="text-on-surface">skill_deepsec_audit</span>
+<span class="text-primary font-semibold">+$1.00 USDC</span>
+<span class="text-outline text-label-sm font-label-sm">82ms</span>
+</div>
+<span class="text-surface-container-highest">/</span>
+<div class="flex items-center gap-space-xs">
+<span class="text-outline">TX-9102</span>
+<span class="text-on-surface">skill_zero_downtime_migrator</span>
+<span class="text-primary font-semibold">+$0.50 USDC</span>
+<span class="text-outline text-label-sm font-label-sm">119ms</span>
+</div>
+<span class="text-surface-container-highest">/</span>
+<div class="flex items-center gap-space-xs">
+<span class="text-outline">TX-9101</span>
+<span class="text-on-surface">skill_agent_verifier</span>
+<span class="text-primary font-semibold">+$0.10 USDC</span>
+<span class="text-outline text-label-sm font-label-sm">45ms</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Top Metric Cards Grid (4 Cards) -->
+<section class="w-full px-gutter pt-space-md pb-space-lg max-w-7xl mx-auto">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Card 1 -->
+<div class="p-space-md rounded-xl bg-surface-container-low shadow-md relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Total Gross Earnings</span>
+<span class="material-symbols-outlined text-primary text-base">monetization_on</span>
+</div>
+<div class="mt-space-md">
+<span class="font-headline-md text-headline-md font-bold text-on-surface tracking-tight">$14,892.40</span>
+<div class="flex items-center gap-space-xs mt-space-xs">
+<span class="text-primary font-label-sm text-label-sm font-bold flex items-center">
+<span class="material-symbols-outlined text-xs">trending_up</span> +18.4%
+              </span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">vs previous 30d cycle</span>
+</div>
+</div>
+<div class="w-full h-1 bg-surface-container-highest rounded-full mt-space-md overflow-hidden">
+<div class="h-full bg-primary-container" style="width: 78%"></div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="p-space-md rounded-xl bg-surface-container-low shadow-md relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">In-Flight Escrow</span>
+<span class="material-symbols-outlined text-outline text-base">hourglass_top</span>
+</div>
+<div class="mt-space-md">
+<span class="font-headline-md text-headline-md font-bold text-on-surface tracking-tight">$412.80</span>
+<div class="flex items-center gap-space-xs mt-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">32 executions clearing P99 SLA</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-outline font-label-sm text-label-sm mt-space-md pt-1">
+<span>Avg clearing time: 142ms</span>
+<span class="text-primary">99.8% safe</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="p-space-md rounded-xl bg-surface-container-low shadow-md relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Total Invocations</span>
+<span class="material-symbols-outlined text-outline text-base">memory</span>
+</div>
+<div class="mt-space-md">
+<span class="font-headline-md text-headline-md font-bold text-on-surface tracking-tight">118,490</span>
+<div class="flex items-center gap-space-xs mt-space-xs">
+<span class="text-on-surface font-label-sm text-label-sm font-semibold">99.98%</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">container completion</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs text-outline font-label-sm text-label-sm mt-space-md pt-1">
+<span class="text-primary-fixed font-semibold">0 Faults</span>
+<span>in hardware enclaves</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="p-space-md rounded-xl bg-surface-container-low shadow-md relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Launch Bounty Status</span>
+<span class="material-symbols-outlined text-primary text-base">verified</span>
+</div>
+<div class="mt-space-md">
+<span class="font-headline-md text-headline-md font-bold text-on-surface tracking-tight">$500 Claimed</span>
+<div class="flex items-center gap-space-xs mt-space-xs">
+<span class="material-symbols-outlined text-primary text-xs">task_alt</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">1 Tier-1 skill approved by DAOs</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-outline font-label-sm text-label-sm mt-space-md pt-1">
+<span>Next unlocked at 150k calls</span>
+<span class="text-primary font-semibold">+$500</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Visual Banner / Architectural Graphic Showcase -->
+<section class="w-full px-gutter pb-space-lg max-w-7xl mx-auto">
+<div class="rounded-xl p-space-lg bg-surface-container-low shadow-xl relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-space-lg">
+<div class="flex flex-col gap-space-sm max-w-xl z-10">
+<div class="inline-flex items-center gap-space-xs px-space-sm py-1 rounded bg-surface-container-high w-fit">
+<span class="material-symbols-outlined text-primary text-sm">security</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface">Cryptographic Sovereign Guarantee</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface font-semibold">Firecracker Enclave Architecture with Dual Micro-Kernel Guards</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Unlike exposed API proxies, sovereign skills compile directly into hardened microVMs. Model prompts, weights, and proprietary heuristic weights remain unreadable even to host hypervisors.
+          </p>
+<div class="flex flex-wrap gap-space-md pt-space-xs">
+<div class="flex items-center gap-space-xs text-body-sm font-body-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-base">check_circle</span>
+<span>Memory Zeroization</span>
+</div>
+<div class="flex items-center gap-space-xs text-body-sm font-body-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-base">check_circle</span>
+<span>Hardware-root Attestation</span>
+</div>
+<div class="flex items-center gap-space-xs text-body-sm font-body-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-base">check_circle</span>
+<span>Per-invocation Micro-Escrow</span>
+</div>
+</div>
+</div>
+<div class="w-full lg:w-96 h-52 shrink-0 rounded-lg bg-surface-container-highest overflow-hidden relative shadow-inner">
+<img class="w-full h-full object-cover object-center brightness-90" data-alt="Futuristic high-tech obsidian hardware enclave render showing glowing neon amber circuit nodes, encrypted microkernel pathways, floating holographic cryptographic attestation rings, luxury digital studio aesthetic, dark mode #121415 with vibrant amber lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZdx56Z8AR5z5usZDR6UiNo3V50gFeigrNUAPTXdTblTowuUFPHLOzSXL07Vocb4RtIUVwSgvx-aiJoJvbA9IoBWw6JjFmVaBJ57FY0bo0H7ZvEhkL9Q7FOHOiTIPafCw1IPmzVBIPaGPRCwepNOrqIfYFyRRBlQ7zZVWoMwvXn0FtebZKsgxLZIED36ESwjQ1cqAJcbST-vzk6y2_Yh5Q80JvblsSr-b3p31eSTV4BvOYuky8EABvwQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent opacity-80"></div>
+<div class="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary font-mono font-semibold">AMD SEV-SNP: ATTESTED</span>
+<span class="font-label-sm text-label-sm text-secondary font-mono">0x4F7A...228B</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Middle Section: 2 Columns (Yield Simulator vs Escrow Vault) -->
+<section class="w-full px-gutter pb-space-xl max-w-7xl mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Left Column: Interactive Yield Simulator / Creator Royalty Matrix -->
+<div class="lg:col-span-6 rounded-xl p-space-lg bg-surface-container-low shadow-xl flex flex-col justify-between">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-lg">calculate</span>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Interactive Yield Simulator</h3>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-primary font-label-sm text-label-sm font-bold">85% Split</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Model your predictable non-custodial recurring revenue based on invocations across Claude, Cursor, and enterprise autonomous agents.
+            </p>
+<!-- Interactive Controls -->
+<div class="mt-space-md flex flex-col gap-space-md">
+<!-- Slider -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<label class="font-label-lg text-label-lg text-on-surface" for="invocations-slider">Monthly Agent Invocations</label>
+<span class="font-headline-sm text-headline-sm font-bold text-primary" id="invocations-display">10,000 runs</span>
+</div>
+<input class="w-full accent-primary-container bg-surface-container cursor-pointer h-2 rounded-lg" id="invocations-slider" max="100000" min="1000" step="1000" type="range" value="10000"/>
+<div class="flex justify-between text-outline font-label-sm text-label-sm">
+<span>1,000 / mo</span>
+<span>50,000 / mo</span>
+<span>100,000 / mo</span>
+</div>
+</div>
+<!-- Execution Fee Selector -->
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<label class="font-label-lg text-label-lg text-on-surface">Execution Fee (USD / Run)</label>
+<div class="grid grid-cols-4 gap-space-xs" id="fee-selector">
+<button class="fee-btn py-space-xs rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high transition-all text-center font-label-lg text-label-lg font-semibold" data-fee="0.10" type="button">$0.10</button>
+<button class="fee-btn py-space-xs rounded-lg bg-primary-container text-on-primary-container transition-all text-center font-label-lg text-label-lg font-semibold active-fee" data-fee="0.25" type="button">$0.25</button>
+<button class="fee-btn py-space-xs rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high transition-all text-center font-label-lg text-label-lg font-semibold" data-fee="0.50" type="button">$0.50</button>
+<button class="fee-btn py-space-xs rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high transition-all text-center font-label-lg text-label-lg font-semibold" data-fee="1.00" type="button">$1.00</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Resulting Large Callout -->
+<div class="mt-space-lg p-space-md rounded-xl bg-surface-container shadow-inner flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Net Creator Payout</span>
+<span class="font-label-sm text-label-sm text-primary font-mono">Platform Fee: 15%</span>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-headline-xl text-headline-xl font-bold text-on-surface tracking-tight" id="payout-display">$2,125</span>
+<span class="font-headline-sm text-headline-sm text-on-surface-variant font-normal">/ month</span>
+</div>
+<div class="flex items-center justify-between pt-space-xs text-body-sm font-body-sm text-on-surface-variant">
+<span id="gross-display">Gross Volume: $2,500.00</span>
+<span class="text-primary font-semibold">Immediate USDC Escrow</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Non-Custodial Settlement & Creator Escrow Vault -->
+<div class="lg:col-span-6 rounded-xl p-space-lg bg-surface-container-low shadow-xl flex flex-col justify-between">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-lg">account_balance</span>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Non-Custodial Settlement Vault</h3>
+</div>
+<div class="flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-surface-container">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Arbitrum One (Native USDC)</span>
+</div>
+</div>
+<!-- Vault Parameters & Status -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<div class="p-space-sm rounded-lg bg-surface-container flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-outline">Gasless Settlement Re-route</span>
+<div class="flex items-center justify-between mt-1">
+<span class="font-label-lg text-label-lg font-semibold text-on-surface">EIP-4337 Bundler</span>
+<div class="w-10 h-5 bg-primary-container rounded-full p-0.5 flex items-center justify-end cursor-pointer">
+<div class="w-4 h-4 rounded-full bg-on-primary-container"></div>
+</div>
+</div>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-outline">ZK Slasher Audit</span>
+<div class="flex items-center gap-space-xs mt-1">
+<span class="material-symbols-outlined text-primary text-sm">shield</span>
+<span class="font-label-lg text-label-lg font-semibold text-on-surface">0 Leaks in 365d</span>
+</div>
+</div>
+</div>
+<!-- Cryptographic Settlement Receipts Table -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Recent Settlement Batches</span>
+<button class="font-label-sm text-label-sm text-primary hover:underline flex items-center gap-0.5" type="button">
+<span class="material-symbols-outlined text-xs">download</span> 1099-DA Tax Report
+                </button>
+</div>
+<div class="w-full overflow-x-auto rounded-lg bg-surface-container">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead>
+<tr class="text-outline font-label-sm text-label-sm border-b-0 bg-surface-container-high/40">
+<th class="py-space-xs px-space-sm font-semibold">Batch TX Hash</th>
+<th class="py-space-xs px-space-sm font-semibold">Amount</th>
+<th class="py-space-xs px-space-sm font-semibold">Timestamp</th>
+<th class="py-space-xs px-space-sm font-semibold text-right">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-on-surface">
+<tr class="hover:bg-surface-container-high/30 transition-colors">
+<td class="py-2 px-space-sm font-mono text-xs text-primary">0x892a...c03e</td>
+<td class="py-2 px-space-sm font-semibold">$1,480.00 USDC</td>
+<td class="py-2 px-space-sm text-on-surface-variant">Today, 04:15 UTC</td>
+<td class="py-2 px-space-sm text-right"><span class="px-space-xs py-0.5 rounded bg-primary/10 text-primary font-label-sm text-label-sm">Settled</span></td>
+</tr>
+<tr class="hover:bg-surface-container-high/30 transition-colors">
+<td class="py-2 px-space-sm font-mono text-xs text-primary">0x41ab...0092</td>
+<td class="py-2 px-space-sm font-semibold">$2,310.50 USDC</td>
+<td class="py-2 px-space-sm text-on-surface-variant">Oct 24, 2025</td>
+<td class="py-2 px-space-sm text-right"><span class="px-space-xs py-0.5 rounded bg-primary/10 text-primary font-label-sm text-label-sm">Settled</span></td>
+</tr>
+<tr class="hover:bg-surface-container-high/30 transition-colors">
+<td class="py-2 px-space-sm font-mono text-xs text-primary">0x0d33...fa18</td>
+<td class="py-2 px-space-sm font-semibold">$945.20 USDC</td>
+<td class="py-2 px-space-sm text-on-surface-variant">Oct 17, 2025</td>
+<td class="py-2 px-space-sm text-right"><span class="px-space-xs py-0.5 rounded bg-primary/10 text-primary font-label-sm text-label-sm">Settled</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center justify-between text-body-sm font-body-sm text-outline">
+<span>Escrow Contract: <code class="text-on-surface">0x629...E5e0</code></span>
+<span class="text-on-surface font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-primary">lock</span> Hardware Bound
+            </span>
+</div>
+</div>
+</div>
+</section>
+<!-- Publisher Registration Studio Section -->
+<section class="w-full px-gutter pb-space-xl max-w-7xl mx-auto scroll-mt-24" id="register-studio">
+<div class="rounded-xl p-space-lg bg-surface-container-low shadow-xl flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-xl">terminal</span>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Deploy Sovereign Agent Skill</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Register an MCP-compliant agent tool manifest. The runtime will pack dependencies into a secure Firecracker microVM image and generate hardware-level attestation certificates.
+            </p>
+</div>
+<div class="flex items-center gap-space-xs self-start md:self-auto px-space-md py-space-xs rounded-lg bg-surface-container">
+<span class="material-symbols-outlined text-primary text-sm">bolt</span>
+<span class="font-label-sm text-label-sm text-on-surface">Instant Sandbox Deployment</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Registration Form (Left 7 cols) -->
+<form class="lg:col-span-7 flex flex-col gap-space-md" onsubmit="event.preventDefault(); triggerDeployAnimation();">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-lg text-label-lg text-on-surface" for="skill-name">Skill Canonical Name</label>
+<input class="w-full px-space-md py-space-xs rounded-lg bg-surface-container text-on-surface font-mono text-body-sm focus:outline-none focus:ring-1 focus:ring-primary" id="skill-name" type="text" value="skill_realtime_sql_guard"/>
+</div>
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-lg text-label-lg text-on-surface" for="publisher-org">Publisher / Organization</label>
+<input class="w-full px-space-md py-space-xs rounded-lg bg-surface-container text-on-surface font-body-sm focus:outline-none focus:ring-1 focus:ring-primary" id="publisher-org" type="text" value="acme_sovereign_labs.eth"/>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-lg text-label-lg text-on-surface" for="skill-domain">Category Domain</label>
+<select class="w-full px-space-md py-space-xs rounded-lg bg-surface-container text-on-surface font-body-sm focus:outline-none focus:ring-1 focus:ring-primary" id="skill-domain">
+<option selected="">Data Security &amp; Sanitization</option>
+<option>Autonomous Code Migrations</option>
+<option>Vector RAG Chunk Optimization</option>
+<option>Cryptographic Verification</option>
+<option>Autonomous Smart Contract Auditing</option>
+</select>
+</div>
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-lg text-label-lg text-on-surface" for="exec-fee-input">Execution Fee (USD / Run)</label>
+<div class="relative">
+<span class="absolute left-3 top-2 text-outline font-label-lg text-label-lg">$</span>
+<input class="w-full pl-7 pr-space-md py-space-xs rounded-lg bg-surface-container text-on-surface font-body-sm focus:outline-none focus:ring-1 focus:ring-primary" id="exec-fee-input" step="0.01" type="number" value="0.35"/>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<label class="font-label-lg text-label-lg text-on-surface" for="mcp-def">Skill Description &amp; MCP Tool Definition (JSON Schema)</label>
+<span class="font-label-sm text-label-sm text-outline">MCP Protocol v0.2.0</span>
+</div>
+<textarea class="w-full p-space-md rounded-lg bg-surface-container font-mono text-body-sm text-on-surface focus:outline-none focus:ring-1 focus:ring-primary" id="mcp-def" rows="6">{
+  "name": "sanitize_and_validate_sql",
+  "description": "Pre-executes AST parsing and AST-level tainted token isolation against injection attacks.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "raw_query": { "type": "string" },
+      "dialect": { "type": "string", "enum": ["postgres", "snowflake", "mysql"] }
+    },
+    "required": ["raw_query", "dialect"]
+  }
+}</textarea>
+</div>
+<!-- Hardware Security Checkboxes -->
+<div class="p-space-md rounded-lg bg-surface-container flex flex-col gap-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Enclave Isolation Policy</span>
+<div class="flex items-start gap-space-sm">
+<input checked="" class="mt-1 accent-primary-container h-4 w-4 rounded cursor-pointer" id="check-sev" type="checkbox"/>
+<label class="font-body-sm text-body-sm text-on-surface cursor-pointer" for="check-sev">
+<strong class="text-on-surface">AMD SEV-SNP Remote Attestation:</strong> Issue cryptographic enclave signature verifying no memory inspection by cloud hosts.
+                </label>
+</div>
+<div class="flex items-start gap-space-sm">
+<input checked="" class="mt-1 accent-primary-container h-4 w-4 rounded cursor-pointer" id="check-fc" type="checkbox"/>
+<label class="font-body-sm text-body-sm text-on-surface cursor-pointer" for="check-fc">
+<strong class="text-on-surface">Firecracker v1.4.0 MicroVM:</strong> Spawn fresh isolated guest kernel per batch execution (&lt;5ms boot overhead).
+                </label>
+</div>
+</div>
+<!-- Submit Action -->
+<div class="pt-space-xs flex flex-col sm:flex-row items-center gap-space-md">
+<button class="w-full sm:w-auto px-space-lg py-space-md rounded-lg bg-primary-container hover:bg-primary text-on-primary-container hover:text-on-primary font-headline-sm text-headline-sm font-semibold tracking-tight transition-all shadow-lg flex items-center justify-center gap-space-xs" id="deploy-btn" type="submit">
+<span class="material-symbols-outlined text-lg">rocket_launch</span>
+<span>Deploy &amp; Register Sovereign Skill</span>
+</button>
+<span class="font-label-sm text-label-sm text-outline text-center sm:text-left">Non-refundable registry gas: $0.00 (Subsidized by Foundation)</span>
+</div>
+</form>
+<!-- Live Attestation Payload Preview (Right 5 cols) -->
+<div class="lg:col-span-5 flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-sm">code</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Live Attestation Payload Preview</span>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-primary/20 text-primary font-label-sm text-label-sm font-semibold font-mono">STATUS: VALID</span>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest font-mono text-body-sm text-on-surface shadow-inner overflow-x-auto">
+<div class="text-outline">// Cryptographic Attestation Measurement Header</div>
+<div class="mt-1 text-primary-fixed">{</div>
+<div class="pl-4 text-on-surface-variant">"manifest_version": <span class="text-primary">"v0.2.0"</span>,</div>
+<div class="pl-4 text-on-surface-variant">"target_enclave": <span class="text-primary">"firecracker_amd_sev_snp"</span>,</div>
+<div class="pl-4 text-on-surface-variant">"memory_limit_mb": <span class="text-primary">512</span>,</div>
+<div class="pl-4 text-on-surface-variant">"prompt_exposure": <span class="text-primary">"0-leak-enclave"</span>,</div>
+<div class="pl-4 text-on-surface-variant">"measurement_sha256": <span class="text-on-surface">"3f8a9e72bb193049102c9103...918f"</span>,</div>
+<div class="pl-4 text-on-surface-variant">"escrow_split": {</div>
+<div class="pl-8 text-on-surface-variant">"creator_payout_pct": <span class="text-primary font-bold">85.0</span>,</div>
+<div class="pl-8 text-on-surface-variant">"settlement_currency": <span class="text-primary">"USDC_ARBITRUM"</span>,</div>
+<div class="pl-8 text-on-surface-variant">"p99_latency_sla_ms": <span class="text-primary">250</span></div>
+<div class="pl-4 text-on-surface-variant">},</div>
+<div class="pl-4 text-on-surface-variant">"signature": <span class="text-on-surface">"MEQCID...6f8eAttestRoot"</span></div>
+<div class="text-primary-fixed">}</div>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container flex items-center gap-space-sm text-body-sm font-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-base shrink-0">verified_user</span>
+<span>All signatures automatically broadcasted to the decentralized SkillBridge consensus ledger upon deployment.</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Section: 'Your Live Sovereign Skills' Table -->
+<section class="w-full px-gutter pb-space-xl max-w-7xl mx-auto">
+<div class="rounded-xl p-space-lg bg-surface-container-low shadow-xl flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex flex-col gap-0.5">
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Your Live Sovereign Skills</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Currently active Firecracker instances routing autonomous tool-call traffic.</p>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">3 of 3 Sovereign Enclaves Online</span>
+</div>
+</div>
+<!-- Responsive Table Container -->
+<div class="w-full overflow-x-auto rounded-lg bg-surface-container">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead>
+<tr class="text-outline font-label-sm text-label-sm uppercase tracking-wider bg-surface-container-high/60">
+<th class="py-space-md px-space-md font-semibold">Skill Identifier</th>
+<th class="py-space-md px-space-sm font-semibold">Attestation</th>
+<th class="py-space-md px-space-sm font-semibold">Fee / Run</th>
+<th class="py-space-md px-space-sm font-semibold">24h Runs</th>
+<th class="py-space-md px-space-sm font-semibold">24h Net Revenue</th>
+<th class="py-space-md px-space-sm font-semibold">Fail Rate</th>
+<th class="py-space-md px-space-md font-semibold text-right">Configure</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-on-surface">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-high/30 transition-colors">
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">skill_zero_downtime_migrator</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">v1.2.4 • Postgres / MySQL Engine</span>
+</div>
+</td>
+<td class="py-space-md px-space-sm">
+<span class="inline-flex items-center gap-1 px-space-xs py-1 rounded bg-primary/10 text-primary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-xs">verified</span> SEV-SNP
+                  </span>
+</td>
+<td class="py-space-md px-space-sm font-mono font-semibold">$0.50 USDC</td>
+<td class="py-space-md px-space-sm font-mono font-semibold">4,192</td>
+<td class="py-space-md px-space-sm font-mono font-semibold text-primary">+$1,781.60</td>
+<td class="py-space-md px-space-sm">
+<span class="text-on-surface font-semibold">0.00%</span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<div class="flex items-center justify-end gap-space-xs">
+<button class="p-space-xs rounded bg-surface-container-high hover:bg-primary hover:text-on-primary text-on-surface transition-all" type="button">
+<span class="material-symbols-outlined text-sm">tune</span>
+</button>
+<button class="p-space-xs rounded bg-surface-container-high hover:bg-primary hover:text-on-primary text-on-surface transition-all" type="button">
+<span class="material-symbols-outlined text-sm">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-high/30 transition-colors">
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">skill_deepsec_audit</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">v2.0.1 • Smart Contract Formal Verifier</span>
+</div>
+</td>
+<td class="py-space-md px-space-sm">
+<span class="inline-flex items-center gap-1 px-space-xs py-1 rounded bg-primary/10 text-primary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-xs">verified</span> SEV-SNP
+                  </span>
+</td>
+<td class="py-space-md px-space-sm font-mono font-semibold">$1.00 USDC</td>
+<td class="py-space-md px-space-sm font-mono font-semibold">1,820</td>
+<td class="py-space-md px-space-sm font-mono font-semibold text-primary">+$1,547.00</td>
+<td class="py-space-md px-space-sm">
+<span class="text-on-surface font-semibold">0.00%</span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<div class="flex items-center justify-end gap-space-xs">
+<button class="p-space-xs rounded bg-surface-container-high hover:bg-primary hover:text-on-primary text-on-surface transition-all" type="button">
+<span class="material-symbols-outlined text-sm">tune</span>
+</button>
+<button class="p-space-xs rounded bg-surface-container-high hover:bg-primary hover:text-on-primary text-on-surface transition-all" type="button">
+<span class="material-symbols-outlined text-sm">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-high/30 transition-colors">
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">skill_rag_chunk_optimizer</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">v0.9.8 • Context Window Semantic Density</span>
+</div>
+</td>
+<td class="py-space-md px-space-sm">
+<span class="inline-flex items-center gap-1 px-space-xs py-1 rounded bg-primary/10 text-primary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-xs">verified</span> SEV-SNP
+                  </span>
+</td>
+<td class="py-space-md px-space-sm font-mono font-semibold">$0.25 USDC</td>
+<td class="py-space-md px-space-sm font-mono font-semibold">8,940</td>
+<td class="py-space-md px-space-sm font-mono font-semibold text-primary">+$1,899.75</td>
+<td class="py-space-md px-space-sm">
+<span class="text-on-surface font-semibold">0.00%</span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<div class="flex items-center justify-end gap-space-xs">
+<button class="p-space-xs rounded bg-surface-container-high hover:bg-primary hover:text-on-primary text-on-surface transition-all" type="button">
+<span class="material-symbols-outlined text-sm">tune</span>
+</button>
+<button class="p-space-xs rounded bg-surface-container-high hover:bg-primary hover:text-on-primary text-on-surface transition-all" type="button">
+<span class="material-symbols-outlined text-sm">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="flex flex-col sm:flex-row items-center justify-between gap-space-sm text-body-sm font-body-sm text-outline">
+<span class="font-label-sm text-label-sm">Total 24h Collective Volume: 14,952 runs • Net Split Paid: $5,228.35 USDC</span>
+<a class="font-label-sm text-label-sm text-primary hover:underline flex items-center gap-1" href="#">
+<span>Download Full Enclave Metrics Archive</span>
+<span class="material-symbols-outlined text-xs">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Interactive Logic for Calculator & Micro-actions -->
+<script>
+  (function() {
+    let currentInvocations = 10000;
+    let currentFee = 0.25;
+    const royaltySplit = 0.85;
+
+    const slider = document.getElementById('invocations-slider');
+    const invDisplay = document.getElementById('invocations-display');
+    const payoutDisplay = document.getElementById('payout-display');
+    const grossDisplay = document.getElementById('gross-display');
+    const feeButtons = document.querySelectorAll('.fee-btn');
+
+    function updateYield() {
+      const gross = currentInvocations * currentFee;
+      const net = gross * royaltySplit;
+
+      invDisplay.textContent = currentInvocations.toLocaleString() + ' runs';
+      payoutDisplay.textContent = '$' + Math.round(net).toLocaleString();
+      grossDisplay.textContent = 'Gross Volume: $' + gross.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    if (slider) {
+      slider.addEventListener('input', function(e) {
+        currentInvocations = parseInt(e.target.value, 10);
+        updateYield();
+      });
+    }
+
+    feeButtons.forEach(btn => {
+      btn.addEventListener('click', function() {
+        feeButtons.forEach(b => {
+          b.classList.remove('bg-primary-container', 'text-on-primary-container');
+          b.classList.add('bg-surface-container', 'text-on-surface');
+        });
+        this.classList.remove('bg-surface-container', 'text-on-surface');
+        this.classList.add('bg-primary-container', 'text-on-primary-container');
+        currentFee = parseFloat(this.getAttribute('data-fee'));
+        updateYield();
+      });
+    });
+
+    window.triggerDeployAnimation = function() {
+      const btn = document.getElementById('deploy-btn');
+      if (!btn) return;
+      const originalHTML = btn.innerHTML;
+      btn.innerHTML = '<span class="material-symbols-outlined text-lg animate-spin">sync</span><span>Sealing Enclave...</span>';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        btn.innerHTML = '<span class="material-symbols-outlined text-lg">check_circle</span><span>Enclave Verified &amp; Online!</span>';
+        btn.classList.remove('bg-primary-container', 'text-on-primary-container');
+        btn.classList.add('bg-primary', 'text-on-primary');
+        setTimeout(() => {
+          btn.innerHTML = originalHTML;
+          btn.disabled = false;
+          btn.classList.remove('bg-primary', 'text-on-primary');
+          btn.classList.add('bg-primary-container', 'text-on-primary-container');
+        }, 3000);
+      }, 1500);
+    };
+
+    updateYield();
+  })();
+</script></main>
+<!-- Universal Stitch Institutional Footer -->
+<footer class="bg-surface-container-lowest border-t border-surface-container-high py-12 px-4 sm:px-6 lg:px-8 mt-auto">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-8 mb-12">
+    <div class="md:col-span-2 space-y-4">
+      <div class="flex items-center gap-2">
+        <img alt="SkillBridge Logo" class="h-6 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UaICitA37g_MPC4BeiTnjynEuRZbSpbHZd30T-MMDasK2U9N4QdYuCZ9qMQQbLF3f7rfl6F6CEix6NSdoym5nuwqMNVGuNwa9UbzW31u5ySY79WGQP06iJylJLZN1gkFPoIgV6Rmrv06vGxtJrxyhPy6LTsP-RDMNsd9e0UAlEYBk-dW7SHsCEZ4s_IBDfFyy6vHUbxkFK3iHSxD0D56CpA4frLDdn9_VI1NXXTd9m7JKO8lc1AH9whED4"/>
+        <span class="font-headline-sm text-on-surface font-bold font-['Space_Grotesk']">SkillBridge <span class="text-primary">GATEWAY</span></span>
+      </div>
+      <p class="text-body-sm text-outline max-w-sm">
+        High-performance, hardware-isolated AI agent microVM execution fabric powered by AMD SEV-SNP attestation and MCP native integration.
+      </p>
+      <div class="flex items-center gap-2 text-[10px] font-mono text-outline-variant">
+        <span class="px-2 py-0.5 rounded bg-surface-container border border-outline-variant/30">MCP V0.2.0 SPEC</span>
+        <span class="px-2 py-0.5 rounded bg-surface-container border border-outline-variant/30">AMD SEV-SNP ATTESTED</span>
+      </div>
+    </div>
+    
+    <div>
+      <h4 class="text-xs font-bold uppercase tracking-wider text-on-surface mb-4 font-mono">Protocol</h4>
+      <ul class="space-y-2 text-xs text-outline">
+        <li><a href="/playground" class="hover:text-primary transition">MicroVM Runtime</a></li>
+        <li><a href="/security" class="hover:text-primary transition">Proof of Enclave</a></li>
+        <li><a href="/executive" class="hover:text-primary transition">Telemetry Engine</a></li>
+        <li><a href="/publisher" class="hover:text-primary transition">Consensus Ledger</a></li>
+      </ul>
+    </div>
+    
+    <div>
+      <h4 class="text-xs font-bold uppercase tracking-wider text-on-surface mb-4 font-mono">Publishers</h4>
+      <ul class="space-y-2 text-xs text-outline">
+        <li><a href="/publisher" class="hover:text-primary transition">Agent Registry</a></li>
+        <li><a href="/docs" class="hover:text-primary transition">Publishing CLI</a></li>
+        <li><a href="/publisher" class="hover:text-primary transition">Revenue Splitting (85%)</a></li>
+        <li><a href="/security" class="hover:text-primary transition">Contract Audits</a></li>
+      </ul>
+    </div>
+    
+    <div>
+      <h4 class="text-xs font-bold uppercase tracking-wider text-on-surface mb-4 font-mono">Resources & Support</h4>
+      <ul class="space-y-2 text-xs text-outline">
+        <li><a href="/docs" class="hover:text-primary transition">MCP Specification</a></li>
+        <li><a href="/support" class="hover:text-primary transition">24/7 AI Support Bot</a></li>
+        <li><a href="/security" class="hover:text-primary transition">Security Attestation</a></li>
+        <li><a href="/marketing" class="hover:text-primary transition">DevRel & Social Hub</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="max-w-7xl mx-auto pt-6 border-t border-surface-container-high/60 flex flex-col sm:flex-row items-center justify-between text-[11px] text-outline">
+    <span>&copy; 2026 SkillBridge Technologies Inc. All rights reserved. Production Genesis Node #0412</span>
+    <div class="flex items-center space-x-4 mt-2 sm:mt-0">
+      <span>System Status: <strong class="text-primary">99.992%</strong></span>
+      <span>&bull;</span>
+      <span>Confidential Computing</span>
+      <span>&bull;</span>
+      <span>Zero-Knowledge Attest</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating Quick Support Pill -->
+<div id="floating-support-btn-container" class="fixed bottom-6 right-6 z-50">
+  <a href="/support" class="flex items-center space-x-2.5 px-4 py-2.5 rounded-full bg-[#ff6b00] hover:bg-[#ff8533] text-white text-xs font-bold shadow-xl shadow-[#ff6b00]/30 border border-white/20 transition-all transform hover:-translate-y-0.5 group">
+    <span class="relative flex h-2 w-2">
+      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+      <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+    </span>
+    <span class="material-symbols-outlined text-sm">support_agent</span>
+    <span>Report Issue / Ask AI Support</span>
+  </a>
+</div>
+
+</body></html>

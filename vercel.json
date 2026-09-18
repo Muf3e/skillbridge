@@ -18,6 +18,18 @@
       "destination": "/marketing.html"
     },
     {
+      "source": "/playground",
+      "destination": "/playground.html"
+    },
+    {
+      "source": "/publisher",
+      "destination": "/publisher.html"
+    },
+    {
+      "source": "/security",
+      "destination": "/security.html"
+    },
+    {
       "source": "/executive",
       "destination": "/executive.html"
     },
