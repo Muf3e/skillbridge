@@ -400,6 +400,9 @@ function compileMarketplace() {
   // H. Replace Footer
   content = content.replace(/<footer[\s\S]*?<\/footer>/, getPublicUserFooter());
 
+  // Remove old duplicate floating support button
+  content = content.replace(/<!-- Floating Support & Feedback FAB -->[\s\S]*?<\/div>\s*<\/div>/, "");
+
   // I. Replace Floating Support Button
   content = content.replace(/<div id="floating-support-btn-container"[\s\S]*?<\/div>\s*<\/div>/, getFloatingSupportButton());
   if (!content.includes("floating-support-btn-container")) {

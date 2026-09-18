@@ -690,37 +690,7 @@
     </div>
   </div>
 
-  <!-- Floating Support & Feedback FAB -->
-  <div class="fixed bottom-5 right-5 z-40">
-    <button onclick="openSupportModal()" class="flex items-center space-x-2.5 bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold text-xs px-4 py-2.5 rounded-full shadow-2xl shadow-indigo-500/40 border border-indigo-400/30 transition-all transform hover:scale-105 active:scale-95 group">
-      <span class="relative flex h-2.5 w-2.5">
-        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-      </span>
-      <span>💬 Need Help? Report Issue</span>
-      <span class="bg-black/30 text-[10px] px-2 py-0.5 rounded-full text-indigo-200 border border-white/10 group-hover:bg-black/50 font-bold">24/7 AI Bot</span>
-    </button>
-  </div>
-
-  <!-- Global Platform Issue Interceptor Toast -->
-  <div id="error-toast" class="fixed bottom-6 left-6 z-50 hidden max-w-sm bg-slate-900/95 border border-rose-500/40 rounded-2xl p-4 shadow-2xl backdrop-blur-xl text-xs space-y-2.5">
-    <div class="flex items-center justify-between text-rose-400 font-bold">
-      <div class="flex items-center space-x-1.5">
-        <span>⚠️</span>
-        <span id="error-toast-title">Website Issue Detected</span>
-      </div>
-      <button onclick="document.getElementById('error-toast').classList.add('hidden')" class="text-slate-400 hover:text-white text-xs">✕</button>
-    </div>
-    <p id="error-toast-msg" class="text-slate-300 font-mono text-[11px] truncate"></p>
-    <div class="flex items-center space-x-2 pt-1">
-      <button onclick="reportDetectedError()" class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold px-3 py-1.5 rounded-xl text-xs transition shadow flex items-center space-x-1">
-        <span>🛠️ Create Case for AI Bot</span>
-      </button>
-      <button onclick="document.getElementById('error-toast').classList.add('hidden')" class="bg-slate-800 text-slate-300 px-3 py-1.5 rounded-xl text-xs hover:text-white transition">
-        Dismiss
-      </button>
-    </div>
-  </div>
+  
 
   <!-- Footer -->
   
