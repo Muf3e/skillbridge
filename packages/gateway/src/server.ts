@@ -5,6 +5,7 @@ import { GatewayRegistry } from "./registry";
 import { ALL_SEED_SKILLS } from "./seedSkills";
 import { HardenedSandboxEngine } from "./sandboxEngine";
 import { SkillBridgeSupportAgent } from "./supportAgent";
+import { SkillBridgeExecutiveBrain } from "./executiveBrain";
 import { ExecutionRequest, ExecutionResult, CreateSupportCaseDTO, ReplySupportCaseDTO } from "@skillbridge/shared-types";
 
 function parseJsonBody(req: any): Promise<any> {
@@ -51,6 +52,7 @@ export class GatewayServer {
   private registry: GatewayRegistry;
   private sandbox: HardenedSandboxEngine;
   public supportAgent: SkillBridgeSupportAgent;
+  public executiveBrain: SkillBridgeExecutiveBrain;
   private port: number;
 
   constructor(port = 8787) {
@@ -58,6 +60,7 @@ export class GatewayServer {
     this.registry = new GatewayRegistry();
     this.sandbox = new HardenedSandboxEngine();
     this.supportAgent = new SkillBridgeSupportAgent(this.registry);
+    this.executiveBrain = new SkillBridgeExecutiveBrain(this.registry);
     this.init();
   }
 
@@ -134,6 +137,16 @@ export class GatewayServer {
           return;
         }
       }
+
+      if (url === "/executive.html" || url.startsWith("/executive") || url === "/war-room") {
+        const html = getStaticHtml("executive.html");
+        if (html) {
+          res.setHeader("Content-Type", "text/html; charset=utf-8");
+          if (res.writeHead) res.writeHead(200); else res.statusCode = 200;
+          res.end(html);
+          return;
+        }
+      }
     }
 
     // 2. Health check
@@ -145,6 +158,8 @@ export class GatewayServer {
         version: "0.2.0", 
         activeSkills: ALL_SEED_SKILLS.length,
         supportAgent: "online",
+        executiveBrain: "online",
+        totalExecutiveCycles: this.executiveBrain.getState().totalCyclesRun,
         openCases: this.supportAgent.listCases({ status: "open" }).length
       }));
       return;
@@ -308,6 +323,57 @@ export class GatewayServer {
         res.setHeader("Content-Type", "application/json");
         if (res.writeHead) res.writeHead(500); else res.statusCode = 500;
         res.end(JSON.stringify({ error: "Agent consultation error", details: err.message }));
+      }
+      return;
+    }
+
+    // 9b. Executive Brain: Retrieve Full Autonomous Company State
+    if (method === "GET" && (url === "/api/v1/executive/state" || url === "/api/v1/executive/state/")) {
+      res.setHeader("Content-Type", "application/json");
+      if (res.writeHead) res.writeHead(200); else res.statusCode = 200;
+      res.end(JSON.stringify({ success: true, state: this.executiveBrain.getState() }));
+      return;
+    }
+
+    // 9c. Executive Brain: Trigger Autonomous Multi-Agent Strategic Cycle
+    if (method === "POST" && (url === "/api/v1/executive/cycle" || url === "/api/v1/executive/cycle/")) {
+      try {
+        const body = await parseJsonBody(req);
+        const result = await this.executiveBrain.runExecutiveCycle(body.directive);
+        res.setHeader("Content-Type", "application/json");
+        if (res.writeHead) res.writeHead(200); else res.statusCode = 200;
+        res.end(JSON.stringify({ success: true, cycle: result, state: this.executiveBrain.getState() }));
+      } catch (err: any) {
+        res.setHeader("Content-Type", "application/json");
+        if (res.writeHead) res.writeHead(500); else res.statusCode = 500;
+        res.end(JSON.stringify({ error: "Failed to execute executive cycle", details: err.message }));
+      }
+      return;
+    }
+
+    // 9d. Executive Brain: Dispatch High-Level Strategic Directive to Agents
+    if (method === "POST" && (url === "/api/v1/executive/dispatch" || url === "/api/v1/executive/dispatch/")) {
+      try {
+        const body = await parseJsonBody(req);
+        if (!body || !body.directive || !body.directive.trim()) {
+          res.setHeader("Content-Type", "application/json");
+          if (res.writeHead) res.writeHead(400); else res.statusCode = 400;
+          res.end(JSON.stringify({ error: "Missing required 'directive' string in request body." }));
+          return;
+        }
+        const outcome = await this.executiveBrain.dispatchDirective(body.directive.trim());
+        res.setHeader("Content-Type", "application/json");
+        if (res.writeHead) res.writeHead(200); else res.statusCode = 200;
+        res.end(JSON.stringify({ 
+          success: true, 
+          message: "Directive decomposed and delegated across executive agent hierarchy.", 
+          outcome,
+          state: this.executiveBrain.getState() 
+        }));
+      } catch (err: any) {
+        res.setHeader("Content-Type", "application/json");
+        if (res.writeHead) res.writeHead(500); else res.statusCode = 500;
+        res.end(JSON.stringify({ error: "Directive dispatch failed", details: err.message }));
       }
       return;
     }

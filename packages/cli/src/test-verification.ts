@@ -70,8 +70,27 @@ async function runVerification() {
   console.log("Result 4 Billed:", `$${res4.billing.amountBilledUsd.toFixed(2)}`);
   console.log("Result 4 Creator Payout (85%):", `$${res4.billing.settledToPublisherUsd.toFixed(2)}`);
 
+  // 7. Test Remote Tool Execution 5: Multi-Modal Viral Meme Generator (Skill 20)
+  console.log("\n[Test 5] Invoking 'skill_viral_meme_generator' on developer marketing prompt...");
+  const res5 = await client.executeTool("skill_viral_meme_generator", "generate_tech_meme", {
+    template: "two_buttons",
+    topCaption: "Giving Claude Desktop raw unrestricted bash access to host filesystem",
+    bottomCaption: "Using SkillBridge zero-leak microVMs with cryptographic outcome escrow",
+    theme: "dark_neon",
+    aspectRatio: "1:1"
+  });
+
+  console.log("Result 5 Success:", res5.success);
+  console.log("Result 5 Engine:", res5.data.engine);
+  console.log("Result 5 Template:", res5.data.template);
+  console.log("Result 5 Estimated Viral Score:", `${res5.data.estimatedViralScore}/100`);
+  console.log("Result 5 SVG Data URI Length:", `${res5.data.previewDataUri.length} chars`);
+  console.log("Result 5 Billed:", `$${res5.billing.amountBilledUsd.toFixed(2)}`);
+  console.log("Result 5 Creator Payout (85%):", `$${res5.billing.settledToPublisherUsd.toFixed(2)}`);
+  console.log("Result 5 Platform Rake (15%):", `$${res5.billing.platformRakeUsd.toFixed(2)}`);
+
   console.log("\n=================================================");
-  console.log(" Verification Completed Successfully! All Systems Operational.");
+  console.log(" Verification Completed Successfully! All 20 Skills Operational.");
   console.log("=================================================");
   process.exit(0);
 }

@@ -144,3 +144,114 @@ export interface ReplySupportCaseDTO {
   email?: string;
 }
 
+// ==========================================
+// Autonomous Executive Brain & Multi-Agent Types
+// ==========================================
+
+export type ExecutiveAgentId =
+  | 'central_brain'
+  | 'agent_market_surveillance'
+  | 'agent_developer_outreach'
+  | 'agent_content_marketing'
+  | 'agent_financial_orchestrator'
+  | 'agent_quality_security';
+
+export type AgentOperationalStatus = 'idle' | 'analyzing' | 'executing' | 'optimizing' | 'monitoring';
+
+export interface AutonomousAgentProfile {
+  id: ExecutiveAgentId;
+  codename: string;
+  title: string;
+  role: string;
+  status: AgentOperationalStatus;
+  efficiencyScore: number;
+  tasksCompleted: number;
+  currentTask: string;
+  lastActive: string;
+  capabilities: string[];
+}
+
+export interface InterAgentMessage {
+  id: string;
+  fromAgent: ExecutiveAgentId;
+  fromName: string;
+  toAgent: ExecutiveAgentId | 'broadcast';
+  topic: string;
+  message: string;
+  timestamp: string;
+  payload?: Record<string, any>;
+}
+
+export interface RevenueMilestone {
+  id: string;
+  phase: string;
+  targetDailyGmvUsd: number;
+  targetMonthlyRunRateUsd: number;
+  targetArrUsd: number;
+  timeframe: string;
+  currentRunRateUsd: number;
+  status: 'achieved' | 'in_progress' | 'upcoming';
+  progressPct: number;
+  keyDrivers: string[];
+}
+
+export interface MarketOpportunity {
+  id: string;
+  domain: string;
+  title: string;
+  source: string;
+  demandScore: number;
+  estimatedDailyGmvUsd: number;
+  recommendedSkillName: string;
+  actionPlan: string;
+  discoveredAt: string;
+}
+
+export interface CreatorLead {
+  id: string;
+  repoName: string;
+  author: string;
+  stars: number;
+  skillCandidate: string;
+  status: 'identified' | 'contacted' | 'negotiating' | 'onboarded';
+  bountyAllocatedUsd: number;
+  estimatedCreatorAnnualPayoutUsd: number;
+}
+
+export interface SyndicatedPost {
+  id: string;
+  platform: 'x_twitter' | 'reddit' | 'hacker_news' | 'youtube_shorts' | 'linkedin';
+  title: string;
+  content: string;
+  intentUrl?: string;
+  status: 'queued' | 'published' | 'approved';
+  viralScore: number;
+  createdAt: string;
+}
+
+export interface ExecutiveCompanyState {
+  companyName: string;
+  centralBrainVersion: string;
+  centralBrainStatus: 'online' | 'optimizing' | 'autonomous_loop';
+  missionStatement: string;
+  totalCyclesRun: number;
+  lastCycleTimestamp: string;
+  financialMetrics: {
+    currentDailyGmvUsd: number;
+    projectedMonthlyRunRateUsd: number;
+    projectedAnnualRunRateUsd: number;
+    totalEscrowVolumeSettledUsd: number;
+    totalPlatformRakeUsd: number;
+    totalCreatorPayoutsUsd: number;
+    activeSkillsCount: number;
+    totalApiRequestsHandled: number;
+    averageMarginPct: number;
+  };
+  milestones: RevenueMilestone[];
+  agents: AutonomousAgentProfile[];
+  messageBus: InterAgentMessage[];
+  marketOpportunities: MarketOpportunity[];
+  creatorPipeline: CreatorLead[];
+  syndicationQueue: SyndicatedPost[];
+}
+

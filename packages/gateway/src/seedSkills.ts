@@ -496,6 +496,37 @@ export const stealthBrowserSkill: SkillManifest = {
   updatedAt: new Date().toISOString()
 };
 
+export const viralMemeGeneratorSkill: SkillManifest = {
+  id: "skill_viral_meme_generator",
+  name: "Multi-Modal Viral Media & Meme Generator",
+  version: "1.0.0",
+  description: "Programmatic technical meme, social banner, and viral developer asset synthesis engine. Generates dark-mode SVG vector art, terminal diagrams, and high-CTR social media visual cards with zero external GPU or font dependencies.",
+  authorId: "pub_memecraft",
+  authorName: "MemeCraft DevRel Studio",
+  pricing: { model: "pay_per_run", costPerRunUsd: 0.30 },
+  capabilities: ["meme-generator", "viral-marketing", "svg-graphics", "visual-synthesis", "devrel-assets"],
+  tools: [{
+    name: "generate_tech_meme",
+    description: "Generates production-ready SVG vector technical memes and social graphics with customizable developer themes and typography.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        template: { 
+          type: "string", 
+          description: "Meme template archetype: 'distracted_boyfriend', 'drake_hotline', 'galaxy_brain', 'two_buttons', 'terminal_matrix', 'custom_vector'" 
+        },
+        topCaption: { type: "string", description: "Top text header or initial dilemma context" },
+        bottomCaption: { type: "string", description: "Bottom punchline or winning resolution text" },
+        theme: { type: "string", description: "Visual palette: 'dark_neon', 'cyberpunk', 'minimal_clean', 'terminal_green'" },
+        aspectRatio: { type: "string", description: "Output aspect ratio: '1:1', '16:9', or '9:16'" }
+      },
+      required: ["template", "topCaption", "bottomCaption"]
+    }
+  }],
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString()
+};
+
 export const ALL_SEED_SKILLS: SkillManifest[] = [
   deepSecAuditSkill,
   sqlDoctorSkill,
@@ -515,7 +546,8 @@ export const ALL_SEED_SKILLS: SkillManifest[] = [
   zeroDowntimeMigratorSkill,
   chaosLoadTesterSkill,
   contextDistillerSkill,
-  stealthBrowserSkill
+  stealthBrowserSkill,
+  viralMemeGeneratorSkill
 ];
 
 

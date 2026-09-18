@@ -89,6 +89,13 @@ function getModernHtml() {
           <span>Launchpad</span>
           <span class="text-[10px] bg-purple-500/20 text-purple-300 px-1.5 py-0.5 rounded border border-purple-500/30 font-semibold">DevRel</span>
         </a>
+        <a href="/executive" class="hover:text-white transition-colors flex items-center space-x-1">
+          <span>War Room</span>
+          <span class="text-[10px] bg-cyan-500/20 text-cyan-300 px-1.5 py-0.5 rounded border border-cyan-500/30 font-semibold flex items-center space-x-1">
+            <span class="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+            <span>OmniBrain</span>
+          </span>
+        </a>
         <button onclick="openWalletModal()" class="hover:text-white transition-colors">Wallet</button>
       </nav>
 
@@ -699,6 +706,16 @@ function getModernHtml() {
     let caseSearchQuery = '';
 
     const SKILLS_DATA = [
+      {
+        id: "skill_viral_meme_generator",
+        name: "Multi-Modal Viral Media & Meme Generator",
+        author: "MemeCraft DevRel Studio",
+        desc: "Programmatic technical meme, social banner, and viral developer asset synthesis engine. Generates dark-mode SVG vector art, terminal diagrams, and high-CTR social media visual cards with zero external GPU dependencies.",
+        price: "$0.30 / run",
+        priceNum: 0.30,
+        category: "Marketing",
+        defaultInput: "{\\n  \\"template\\": \\"two_buttons\\",\\n  \\"topCaption\\": \\"Running raw unverified MCP tools on host machine\\",\\n  \\"bottomCaption\\": \\"Using SkillBridge isolated microVMs with 85% creator payouts\\",\\n  \\"theme\\": \\"dark_neon\\",\\n  \\"aspectRatio\\": \\"1:1\\"\\n}"
+      },
       {
         id: "skill_stealth_browser_extractor",
         name: "Stealth Headless Browser & Markdown Harvester",
@@ -1785,11 +1802,11 @@ function getModernHtml() {
       btn.innerText = "Running in Isolated MicroVM...";
       btn.disabled = true;
 
-      const payload = {
-        requestId: "web_" + Date.now(),
-        skillId: activeSkill.id,
-        toolName: "execute",
-        arguments: {
+      let skillArgs = {};
+      try {
+        skillArgs = JSON.parse(input);
+      } catch (_) {
+        skillArgs = {
           codeOrDependencies: input,
           query: input,
           scriptText: input,
@@ -1798,8 +1815,18 @@ function getModernHtml() {
           schemaDiffOrSql: input,
           taskOrCode: input,
           rawContext: input,
-          url: input
-        },
+          url: input,
+          template: "two_buttons",
+          topCaption: input,
+          bottomCaption: "Using SkillBridge isolated microVMs with 85% creator payouts"
+        };
+      }
+
+      const payload = {
+        requestId: "web_" + Date.now(),
+        skillId: activeSkill.id,
+        toolName: "execute",
+        arguments: skillArgs,
         buyerId: "web_client",
         timestamp: Date.now()
       };
@@ -3048,10 +3075,13 @@ function getMarketingHtml() {
 </html>`;
 }
 
+const { getExecutiveHtml } = require("./executive_ui_builder");
+
 // Generate files
 const modernHtml = getModernHtml();
 const supportHtml = getSupportHtml();
 const marketingHtml = getMarketingHtml();
+const executiveHtml = getExecutiveHtml();
 
 const targets = [
   "index.html",
@@ -3104,5 +3134,22 @@ for (const m of marketingTargets) {
   fs.writeFileSync(fullPath, marketingHtml, "utf8");
 }
 
-console.log("Successfully rebuilt and synchronized world-class modern UI, Support Center & Marketing Launchpad across all targets!");
+const executiveTargets = [
+  "executive.html",
+  "packages/gateway/executive.html",
+  "packages/gateway/public/executive.html",
+  "public/executive.html",
+  "apps/web/executive.html",
+  "apps/web/public/executive.html",
+  "apps/web/src/executive.html"
+];
+
+for (const e of executiveTargets) {
+  const fullPath = path.isAbsolute(e) ? e : path.join(process.cwd(), e);
+  const dir = path.dirname(fullPath);
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(fullPath, executiveHtml, "utf8");
+}
+
+console.log("Successfully rebuilt and synchronized world-class modern UI, Support Center, Marketing Launchpad & Executive War Room across all 28 targets!");
 

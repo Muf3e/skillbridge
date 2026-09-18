@@ -16,6 +16,14 @@
     {
       "source": "/marketing",
       "destination": "/marketing.html"
+    },
+    {
+      "source": "/executive",
+      "destination": "/executive.html"
+    },
+    {
+      "source": "/war-room",
+      "destination": "/executive.html"
     }
   ]
 }

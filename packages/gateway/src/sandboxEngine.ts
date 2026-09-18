@@ -73,6 +73,9 @@ export class HardenedSandboxEngine {
       case "skill_stealth_browser_extractor":
         return this.runStealthBrowserExtractor(req.arguments);
 
+      case "skill_viral_meme_generator":
+        return this.runViralMemeGenerator(req.arguments);
+
       default:
         return {
           success: false,
@@ -723,6 +726,108 @@ export default function () {
         ] : []
       },
       metrics: { tokensUsed: 310 }
+    };
+  }
+
+  private async runViralMemeGenerator(args: Record<string, any>): Promise<SandboxExecutionResponse> {
+    const template = args.template || "two_buttons";
+    const topCaption = args.topCaption || "Running raw unverified MCP tools on your host machine";
+    const bottomCaption = args.bottomCaption || "Using SkillBridge isolated microVMs with 85% creator payouts";
+    const theme = args.theme || "dark_neon";
+    const aspectRatio = args.aspectRatio || "1:1";
+
+    const width = aspectRatio === "16:9" ? 1200 : aspectRatio === "9:16" ? 675 : 800;
+    const height = aspectRatio === "16:9" ? 675 : aspectRatio === "9:16" ? 1200 : 800;
+
+    const bgGradient = theme === "cyberpunk"
+      ? "linear-gradient(135deg, #090a0f 0%, #1a0826 50%, #031525 100%)"
+      : theme === "terminal_green"
+      ? "linear-gradient(180deg, #020b05 0%, #05160b 100%)"
+      : "linear-gradient(135deg, #070b14 0%, #0f172a 50%, #1e1b4b 100%)";
+
+    const accentColor = theme === "cyberpunk" ? "#f43f5e" : theme === "terminal_green" ? "#22c55e" : "#6366f1";
+    const highlightColor = theme === "cyberpunk" ? "#06b6d4" : theme === "terminal_green" ? "#86efac" : "#a855f7";
+
+    const svgMarkup = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}">
+  <defs>
+    <style>
+      .title { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-weight: 800; fill: #ffffff; }
+      .body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-weight: 600; fill: #cbd5e1; }
+      .code { font-family: 'JetBrains Mono', monospace; font-size: 14px; fill: ${accentColor}; }
+    </style>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070b14" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="${width}" height="${height}" fill="url(#bg)" rx="24" />
+  <rect x="2" y="2" width="${width - 4}" height="${height - 4}" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="2" rx="22" />
+
+  <!-- Top Pill Badge -->
+  <g transform="translate(40, 40)">
+    <rect width="260" height="36" rx="18" fill="rgba(99, 102, 241, 0.15)" stroke="${accentColor}" stroke-opacity="0.35" />
+    <text x="130" y="23" text-anchor="middle" font-size="12" font-weight="700" fill="${accentColor}" font-family="sans-serif">⚡ SKILLBRIDGE VIRAL DISPATCH</text>
+  </g>
+
+  <!-- Top Caption Box (The Dilemma / Bad Choice) -->
+  <g transform="translate(40, 110)">
+    <rect width="${width - 80}" height="140" rx="16" fill="rgba(239, 68, 68, 0.08)" stroke="rgba(239, 68, 68, 0.3)" stroke-width="1.5" />
+    <circle cx="45" cy="50" r="18" fill="rgba(239, 68, 68, 0.2)" />
+    <text x="45" y="56" text-anchor="middle" font-size="16" font-weight="bold" fill="#ef4444" font-family="sans-serif">✕</text>
+    <text x="80" y="44" class="title" font-size="20">TRADITIONAL CLIENT MCP:</text>
+    <text x="80" y="78" class="body" font-size="16">${topCaption.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")}</text>
+  </g>
+
+  <!-- VS Divider -->
+  <g transform="translate(${width / 2}, 300)">
+    <circle cx="0" cy="0" r="24" fill="#0f172a" stroke="${accentColor}" stroke-width="2" />
+    <text x="0" y="6" text-anchor="middle" font-size="14" font-weight="900" fill="#ffffff" font-family="sans-serif">VS</text>
+  </g>
+
+  <!-- Bottom Caption Box (The Solution / SkillBridge Choice) -->
+  <g transform="translate(40, 350)">
+    <rect width="${width - 80}" height="160" rx="16" fill="rgba(34, 197, 94, 0.08)" stroke="rgba(34, 197, 94, 0.3)" stroke-width="1.5" />
+    <circle cx="45" cy="50" r="18" fill="rgba(34, 197, 94, 0.2)" />
+    <text x="45" y="56" text-anchor="middle" font-size="16" font-weight="bold" fill="#22c55e" font-family="sans-serif">✓</text>
+    <text x="80" y="44" class="title" font-size="20" fill="#22c55e">THE SKILLBRIDGE PROTOCOL:</text>
+    <text x="80" y="78" class="body" font-size="16">${bottomCaption.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")}</text>
+    <text x="80" y="112" class="code">🛡️ Zero Host Credentials  •  ⚡ &lt;120ms Latency  •  💰 85% Split</text>
+  </g>
+
+  <!-- Footer Branding -->
+  <g transform="translate(40, ${height - 70})">
+    <text x="0" y="30" font-family="'JetBrains Mono', monospace" font-size="13" fill="#64748b">https://skillbridge-gateway.vercel.app/  |  Autonomous AI Economy</text>
+    <rect x="${width - 240}" y="10" width="160" height="30" rx="8" fill="rgba(99, 102, 241, 0.2)" stroke="${accentColor}" stroke-width="1" />
+    <text x="${width - 160}" y="30" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff" font-family="sans-serif">TEST IN BROWSER &rarr;</text>
+  </g>
+</svg>`;
+
+    const base64Svg = Buffer.from(svgMarkup).toString("base64");
+    const dataUri = `data:image/svg+xml;base64,${base64Svg}`;
+
+    return {
+      success: true,
+      data: {
+        engine: "SkillBridge Multi-Modal Vector Meme Engine v2.1",
+        template,
+        theme,
+        aspectRatio,
+        dimensions: { width, height },
+        topCaption,
+        bottomCaption,
+        estimatedViralScore: 94,
+        socialCopy: `When you realize the difference between running unvetted MCP scripts vs using @SkillBridge remote microVMs:\n\n❌ ${topCaption}\n✅ ${bottomCaption}\n\nLive demo & 85% creator pool: https://skillbridge-gateway.vercel.app/`,
+        svgPreviewSnippet: svgMarkup.substring(0, 300) + "...",
+        previewDataUri: dataUri
+      },
+      metrics: { tokensUsed: 195 }
     };
   }
 }

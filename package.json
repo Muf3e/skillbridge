@@ -11,6 +11,8 @@
     "build": "npm run --workspaces --if-present build",
     "test": "npm run --workspaces --if-present test",
     "test:support": "npx tsx packages/cli/src/test-support-agent.ts",
+    "test:executive": "npx tsx packages/cli/src/test-executive-brain.ts",
+    "test:verification": "npx tsx packages/cli/src/test-verification.ts",
     "start:gateway": "npm --workspace=packages/gateway run start",
     "start:worker": "npm --workspace=packages/worker-runtime run start"
   },
