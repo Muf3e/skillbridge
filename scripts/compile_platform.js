@@ -1,4 +1,4 @@
-﻿const fs = require("fs");
+const fs = require("fs");
 const path = require("path");
 
 const STITCH_BASE = path.join(
@@ -181,8 +181,13 @@ function syncFile(fileName, content) {
 
 // --- 4. COMPILE USER-FACING MARKETPLACE (index.html) ---
 function compileMarketplace() {
-  const prevPath = path.join(process.cwd(), "scratch_index_prev_utf8.html");
-  let content = fs.readFileSync(prevPath, "utf8");
+  const { execSync } = require("child_process");
+  let content;
+  if (fs.existsSync(path.join(process.cwd(), "scratch_index_prev_utf8.html"))) {
+    content = fs.readFileSync(path.join(process.cwd(), "scratch_index_prev_utf8.html"), "utf8");
+  } else {
+    content = execSync("git show 14ed7af:index.html", { encoding: "utf8", maxBuffer: 10 * 1024 * 1024 });
+  }
 
   // A. Replace head typography and styling with Stitch Google Fonts + Luxury Dark Palette
   const stitchHeadStyles = `
@@ -284,6 +289,23 @@ function compileMarketplace() {
 
   // I. In Category Filter Tabs, use Stitch styling
   content = content.replace(/bg-indigo-600/g, `bg-[#ff6b00]`);
+
+  
+  // Clean special character artifacts
+  content = content.replace(/ΓÜí/g, "⚡");
+  content = content.replace(/Γ£ò/g, "✕");
+  content = content.replace(/Γ£ô/g, "✓");
+  content = content.replace(/≡fÆ┐/g, "⚡");
+  content = content.replace(/≡fôª/g, "📋");
+  content = content.replace(/≡fôï/g, "📋");
+  content = content.replace(/≡fñû/g, "🤖");
+  content = content.replace(/ΓÇó/g, "•");
+  content = content.replace(/ΓÇö/g, "—");
+  content = content.replace(/Γ₧ò/g, "+");
+  content = content.replace(/ΓÜá∩╕Å/g, "⚠️");
+  content = content.replace(/≡ƒ[a-zA-Z0-9_]*/g, "");
+  content = content.replace(/Γ[a-zA-Z0-9_]*/g, "");
+  content = content.replace(/&bull;/g, "•");
 
   syncFile("index.html", content);
 }
