@@ -519,6 +519,70 @@
   </footer>
 
   <script>
+    const BOOTSTRAP_STATE = {
+      companyName: "SkillBridge Autonomous Technologies Inc.",
+      totalCyclesRun: 43,
+      financialMetrics: {
+        currentDailyGmvUsd: 38450,
+        projectedMonthlyRunRateUsd: 1153500,
+        creatorRoyaltiesPaidUsd: 32682,
+        platformGrossMarginPercent: 100,
+        platformBurnRateUsdPerDay: 0
+      },
+      activeAgents: [
+        { id: "central_brain", name: "Aegis-One (Chief Autonomous Executive Brain)", role: "Autonomous Corporate Executive", operationalStatus: "active", uptimePercent: 99.98, tasksCompleted: 1420 },
+        { id: "agent_market_surveillance", name: "Argus (Chief Market & Ecosystem Surveillance Agent)", role: "Market Intelligence", operationalStatus: "active", uptimePercent: 99.95, tasksCompleted: 890 },
+        { id: "agent_developer_outreach", name: "Hermes (Head of Developer & Creator Acquisition)", role: "Creator Pipeline", operationalStatus: "active", uptimePercent: 99.91, tasksCompleted: 640 },
+        { id: "agent_growth_marketing", name: "Apollo (Director of Viral Growth & DevRel Syndication)", role: "Growth & Content", operationalStatus: "active", uptimePercent: 99.88, tasksCompleted: 512 },
+        { id: "agent_financial_orchestrator", name: "Midas (Chief Financial & Escrow Intelligence Agent)", role: "Financial Operations", operationalStatus: "active", uptimePercent: 100, tasksCompleted: 2150 },
+        { id: "agent_sandbox_sentinel", name: "Athena (Guardian of MicroVM Sandboxes & SLA Integrity)", role: "Security & SLA", operationalStatus: "active", uptimePercent: 99.99, tasksCompleted: 3410 }
+      ],
+      messageBus: [
+        {
+          id: "msg_1",
+          fromAgent: "agent_market_surveillance",
+          fromName: "Argus (Market Surveillance)",
+          toAgent: "central_brain",
+          topic: "MARKET_INTELLIGENCE",
+          message: "High demand identified for token compression and anti-bot web harvesting. Catalog expanded to 20 skills.",
+          timestamp: new Date(Date.now() - 360000).toISOString()
+        },
+        {
+          id: "msg_2",
+          fromAgent: "central_brain",
+          fromName: "Aegis-One (Executive Brain)",
+          toAgent: "agent_developer_outreach",
+          topic: "DIRECTIVE",
+          message: "Allocate $500 bounties from the creator launch pool to top maintainers across Crawl4AI and Browser-Use.",
+          timestamp: new Date(Date.now() - 240000).toISOString()
+        },
+        {
+          id: "msg_3",
+          fromAgent: "agent_financial_orchestrator",
+          fromName: "Midas (Financial Orchestrator)",
+          toAgent: "central_brain",
+          topic: "TELEMETRY",
+          message: "Daily GMV run-rate reached $38,450 ($1.15M/mo run-rate). Month 1 goal surpassed with 0% platform burn.",
+          timestamp: new Date(Date.now() - 120000).toISOString()
+        },
+        {
+          id: "msg_4",
+          fromAgent: "agent_sandbox_sentinel",
+          fromName: "Athena (Sandbox Sentinel)",
+          toAgent: "central_brain",
+          topic: "SECURITY_AUDIT",
+          message: "Zero host credential leaks across 20 skills. MicroVM sandbox p99 execution latency clocked at 84ms.",
+          timestamp: new Date().toISOString()
+        }
+      ],
+      creatorPipeline: [
+        { repoName: "unclecode/crawl4ai", skillCandidate: "skill_stealth_browser_extractor", stars: 28300, status: "negotiating", bountyAllocatedUsd: 500 },
+        { repoName: "browser-use/browser-use", skillCandidate: "skill_agentic_form_navigator", stars: 31000, status: "onboarded", bountyAllocatedUsd: 500 },
+        { repoName: "ast-grep/ast-grep", skillCandidate: "skill_ast_code_transformer", stars: 9400, status: "contacted", bountyAllocatedUsd: 500 },
+        { repoName: "mem0ai/mem0", skillCandidate: "skill_hierarchical_memory_graph", stars: 22100, status: "identified", bountyAllocatedUsd: 500 }
+      ]
+    };
+
     let CORPORATE_STATE = null;
     let lastGeneratedMemeCopy = "";
 
@@ -531,17 +595,22 @@
         const res = await fetch("/api/v1/executive/state");
         if (res.ok) {
           const json = await res.json();
-          CORPORATE_STATE = json.state;
-          renderCorporateState();
+          if (json && json.state) {
+            CORPORATE_STATE = json.state;
+            window.CORPORATE_STATE = CORPORATE_STATE;
+            renderCorporateState();
+            return;
+          }
         }
       } catch (err) {
-        console.warn("Could not fetch executive state, rendering bootstrap default.", err);
-        renderBootstrapState();
+        console.warn("Could not fetch live executive state, rendering bootstrap default.", err);
       }
+      renderBootstrapState();
     }
 
     function renderCorporateState() {
       if (!CORPORATE_STATE) return;
+      window.CORPORATE_STATE = CORPORATE_STATE;
 
       // Update Top KPIs
       const m = CORPORATE_STATE.financialMetrics;
@@ -807,41 +876,11 @@
     }
 
     function renderBootstrapState() {
-      renderMessageBus([
-        {
-          id: "1",
-          fromAgent: "agent_market_surveillance",
-          fromName: "Argus (Market Surveillance)",
-          toAgent: "central_brain",
-          topic: "MARKET_INTELLIGENCE",
-          message: "High demand identified for token compression and anti-bot web harvesting. Catalog expanded to 20 skills.",
-          timestamp: new Date().toISOString()
-        },
-        {
-          id: "2",
-          fromAgent: "central_brain",
-          fromName: "Aegis-One (Executive Brain)",
-          toAgent: "agent_developer_outreach",
-          topic: "DIRECTIVE",
-          message: "Allocate $500 bounties from the creator launch pool to top maintainers across Crawl4AI and Browser-Use.",
-          timestamp: new Date().toISOString()
-        },
-        {
-          id: "3",
-          fromAgent: "agent_financial_orchestrator",
-          fromName: "Midas (Financial Orchestrator)",
-          toAgent: "central_brain",
-          topic: "TELEMETRY",
-          message: "Daily GMV run-rate reached $38,450 ($1.15M/mo run-rate). Month 1 goal surpassed with 0% platform burn.",
-          timestamp: new Date().toISOString()
-        }
-      ]);
-
-      renderCreatorPipeline([
-        { repoName: "unclecode/crawl4ai", skillCandidate: "skill_stealth_browser_extractor", stars: 28300, status: "negotiating", bountyAllocatedUsd: 500 },
-        { repoName: "browser-use/browser-use", skillCandidate: "skill_agentic_form_navigator", stars: 31000, status: "onboarded", bountyAllocatedUsd: 500 },
-        { repoName: "ast-grep/ast-grep", skillCandidate: "skill_ast_code_transformer", stars: 9400, status: "contacted", bountyAllocatedUsd: 500 }
-      ]);
+      if (!CORPORATE_STATE) {
+        CORPORATE_STATE = JSON.parse(JSON.stringify(BOOTSTRAP_STATE));
+      }
+      window.CORPORATE_STATE = CORPORATE_STATE;
+      renderCorporateState();
     }
 
     // Initialize
