@@ -156,6 +156,75 @@ function getFloatingSupportButton() {
 `;
 }
 
+function getMarketplaceInteractivityScript() {
+  return [
+    "<script>",
+    "document.addEventListener('DOMContentLoaded', () => {",
+    "  const searchInput = document.querySelector('input[placeholder*=\"Search skills\"]');",
+    "  const cards = Array.from(document.querySelectorAll('div.group')).filter(el => el.querySelector('h3'));",
+    "  if (searchInput) {",
+    "    searchInput.addEventListener('input', (e) => {",
+    "      const query = e.target.value.toLowerCase().trim();",
+    "      cards.forEach(card => {",
+    "        const text = card.innerText.toLowerCase();",
+    "        card.style.display = text.includes(query) ? '' : 'none';",
+    "      });",
+    "    });",
+    "  }",
+    "  const filterBtns = Array.from(document.querySelectorAll('button')).filter(b => ",
+    "    b.innerText.includes('All Skills') || b.innerText.includes('Security') || b.innerText.includes('Web3') || ",
+    "    b.innerText.includes('AI Ops') || b.innerText.includes('Database') || b.innerText.includes('DevOps') || b.innerText.includes('Legal')",
+    "  );",
+    "  filterBtns.forEach(btn => {",
+    "    btn.addEventListener('click', () => {",
+    "      filterBtns.forEach(b => {",
+    "        b.className = 'px-space-md py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container-high hover:text-on-surface transition-all whitespace-nowrap text-xs';",
+    "      });",
+    "      btn.className = 'px-space-md py-1.5 rounded-lg bg-primary-container text-on-primary font-semibold shadow-md whitespace-nowrap text-xs';",
+    "      const cat = btn.innerText.toLowerCase();",
+    "      cards.forEach(card => {",
+    "        if (cat.includes('all')) {",
+    "          card.style.display = '';",
+    "        } else if (cat.includes('security') && (card.innerText.includes('DeepSec') || card.innerText.includes('Security') || card.innerText.includes('SAST'))) {",
+    "          card.style.display = '';",
+    "        } else if (cat.includes('web3') && (card.innerText.includes('Solidity') || card.innerText.includes('EVM') || card.innerText.includes('Smart Contract'))) {",
+    "          card.style.display = '';",
+    "        } else if (cat.includes('ai ops') && (card.innerText.includes('Distiller') || card.innerText.includes('Context') || card.innerText.includes('Swarm'))) {",
+    "          card.style.display = '';",
+    "        } else if (cat.includes('database') && (card.innerText.includes('Migrator') || card.innerText.includes('Lock') || card.innerText.includes('SQL'))) {",
+    "          card.style.display = '';",
+    "        } else if (cat.includes('devops') && (card.innerText.includes('Chaos') || card.innerText.includes('Load') || card.innerText.includes('k6'))) {",
+    "          card.style.display = '';",
+    "        } else {",
+    "          card.style.display = 'none';",
+    "        }",
+    "      });",
+    "    });",
+    "  });",
+    "  const mcpBtns = Array.from(document.querySelectorAll('button')).filter(b => b.innerText.includes('+ MCP'));",
+    "  mcpBtns.forEach(btn => {",
+    "    btn.addEventListener('click', (e) => {",
+    "      e.stopPropagation();",
+    "      const card = btn.closest('div.group');",
+    "      const skillName = card ? card.querySelector('h3')?.innerText || 'Sovereign Skill' : 'Sovereign Skill';",
+    "      const skillSlug = 'skill_' + skillName.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '');",
+    "      const cmd = 'npx @skillbridge/cli install ' + skillSlug;",
+    "      navigator.clipboard.writeText(cmd).then(() => {",
+    "        const orig = btn.innerHTML;",
+    "        btn.innerHTML = '<span class=\"material-symbols-outlined text-xs\">done</span><span>Copied!</span>';",
+    "        btn.classList.add('bg-emerald-600', 'text-white');",
+    "        setTimeout(() => {",
+    "          btn.innerHTML = orig;",
+    "          btn.classList.remove('bg-emerald-600', 'text-white');",
+    "        }, 2000);",
+    "      });",
+    "    });",
+    "  });",
+    "});",
+    "</script>"
+  ].join("\n");
+}
+
 function replaceHeaderAndFooter(rawHtml, activeRoute) {
   let html = rawHtml;
   // Replace header
@@ -163,7 +232,7 @@ function replaceHeaderAndFooter(rawHtml, activeRoute) {
   // Replace footer
   html = html.replace(/<footer[\s\S]*?<\/footer>/, getUniversalFooter());
   // Inject floating support button before </body>
-  html = html.replace(/<\/body>/, getFloatingSupportButton() + "\n</body>");
+  html = html.replace(/<\/body>/, getFloatingSupportButton() + (activeRoute === "marketplace" ? getMarketplaceInteractivityScript() : "") + "\n</body>");
 
   // ELIMINATE BLANK SPACES & EXCESSIVE TOP PADDING
   html = html.replace(/class="w-full pt-20 bg-background min-h-screen"/g, 'class="w-full pt-2 sm:pt-4 bg-background min-h-screen"');
