@@ -417,6 +417,33 @@ export const zeroDowntimeMigratorSkill: SkillManifest = {
   updatedAt: new Date().toISOString()
 };
 
+// Seed Skill 17: Chaos Engineering & Synthetic Load Fuzzer
+export const chaosLoadTesterSkill: SkillManifest = {
+  id: "skill_chaos_load_tester",
+  name: "Chaos Engineering & Synthetic Load Fuzzer",
+  version: "1.0.0",
+  description: "Enterprise SRE fault injection and synthetic stress simulator. Simulates cascading network partitions, upstream API latency degradation, and exports executable k6/Locust scenarios.",
+  authorId: "pub_chaosscale",
+  authorName: "ChaosScale SRE Labs",
+  pricing: { model: "pay_per_run", costPerRunUsd: 0.40 },
+  capabilities: ["chaos-engineering", "load-testing", "sre", "resilience", "k6", "locust"],
+  tools: [{
+    name: "simulate_traffic_chaos",
+    description: "Generates stress curves and resilience reports under injected fault patterns (e.g. latency jitter, 502/504 cascade, memory saturation).",
+    inputSchema: {
+      type: "object",
+      properties: {
+        targetService: { type: "string", description: "Target service name or API endpoint URL" },
+        peakRps: { type: "number", description: "Peak requests per second to simulate (e.g. 15000)" },
+        chaosScenario: { type: "string", description: "LATENCY_SPIKE, CASCADING_TIMEOUT, CONNECTION_POOL_EXHAUSTION, RANDOM_503" }
+      },
+      required: ["targetService"]
+    }
+  }],
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString()
+};
+
 export const ALL_SEED_SKILLS: SkillManifest[] = [
   deepSecAuditSkill,
   sqlDoctorSkill,
@@ -433,7 +460,9 @@ export const ALL_SEED_SKILLS: SkillManifest[] = [
   ragChunkOptimizerSkill,
   apiMockForgeSkill,
   multiAgentConsensusSkill,
-  zeroDowntimeMigratorSkill
+  zeroDowntimeMigratorSkill,
+  chaosLoadTesterSkill
 ];
+
 
 

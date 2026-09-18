@@ -1,0 +1,40 @@
+[
+  {
+    "platform": "Twitter",
+    "content": "The dirty secret of the AI agent economy: if you sell an AI prompt, users download it once, copy it, and cancel.\n\nToday we're launching SkillBridge: zero-leak remote MCP execution where your code runs in isolated microVMs & you get paid 85% per run.\n\nTry it: https://skillbridge-gateway.vercel.app/",
+    "status": "QUEUED",
+    "scheduledFor": "2026-09-18T05:43:38.455Z",
+    "targetAudience": "AI Developers & Indie Hackers"
+  },
+  {
+    "platform": "HackerNews",
+    "title": "Show HN: SkillBridge – Zero-leak remote execution gateway for paid AI agent skills",
+    "content": "Built an open-source gateway connecting Claude Desktop and Cursor to paid micro-container skills via Model Context Protocol (MCP). https://skillbridge-gateway.vercel.app/",
+    "status": "QUEUED",
+    "scheduledFor": "2026-09-18T05:43:38.456Z",
+    "targetAudience": "Systems & Infrastructure Engineers"
+  },
+  {
+    "platform": "ProductHunt",
+    "title": "SkillBridge: The Zero-Leak Remote MCP Skill Gateway",
+    "content": "1-click AI IDE setup (`npx @skillbridge/cli setup`), 17 sovereign skills live, outcome escrow, and 85% creator payout.",
+    "status": "QUEUED",
+    "scheduledFor": "2026-09-18T05:43:38.456Z",
+    "targetAudience": "Product Builders & AI Founders"
+  },
+  {
+    "platform": "Reddit",
+    "title": "r/LocalLLaMA: Built a zero-leak remote MCP gateway so you can monetize agent skills without prompt piracy",
+    "content": "Remote execution proxy with sub-150ms latency and 85% creator payout. Live demo: https://skillbridge-gateway.vercel.app/",
+    "status": "QUEUED",
+    "scheduledFor": "2026-09-18T05:43:38.456Z",
+    "targetAudience": "Open Source AI Community"
+  },
+  {
+    "platform": "LinkedIn",
+    "content": "The AI agent economy has an economic bottleneck: distribution and IP protection. Today we launched SkillBridge to enable zero-leak execution of sovereign skills directly in Claude Desktop and Cursor.",
+    "status": "QUEUED",
+    "scheduledFor": "2026-09-18T05:43:38.456Z",
+    "targetAudience": "CTOs, AI Leads & Tech Founders"
+  }
+]

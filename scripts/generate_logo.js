@@ -1,0 +1,66 @@
+const fs = require("fs");
+const path = require("path");
+
+const dirs = [
+  "public/assets",
+  "packages/gateway/public/assets",
+  "apps/web/public/assets"
+];
+
+for (const d of dirs) {
+  if (!fs.existsSync(d)) {
+    fs.mkdirSync(d, { recursive: true });
+  }
+}
+
+const svgLogo = `<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sb_grad" x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6366F1"/>
+      <stop offset="0.5" stop-color="#8B5CF6"/>
+      <stop offset="1" stop-color="#06B6D4"/>
+    </linearGradient>
+    <linearGradient id="sb_glow" x1="12" y1="12" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38BDF8"/>
+      <stop offset="1" stop-color="#818CF8"/>
+    </linearGradient>
+    <filter id="sb_filter" x="0" y="0" width="48" height="48" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+      <feOffset dy="2"/>
+      <feGaussianBlur stdDeviation="3"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.388 0 0 0 0 0.4 0 0 0 0 0.945 0 0 0 0.35 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+    </filter>
+  </defs>
+  <rect width="48" height="48" rx="14" fill="#0B0F19"/>
+  <rect x="0.75" y="0.75" width="46.5" height="46.5" rx="13.25" stroke="url(#sb_grad)" stroke-width="1.5" stroke-opacity="0.4"/>
+  <g filter="url(#sb_filter)">
+    <path d="M13 34V20C13 16.134 16.134 13 20 13H21" stroke="url(#sb_grad)" stroke-width="3" stroke-linecap="round"/>
+    <path d="M35 34V20C35 16.134 31.866 13 28 13H27" stroke="url(#sb_grad)" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="24" cy="18" r="3.5" fill="url(#sb_glow)"/>
+    <circle cx="24" cy="18" r="7" stroke="url(#sb_glow)" stroke-width="1.5" stroke-dasharray="2 2"/>
+    <path d="M10 32C15 28 33 28 38 32" stroke="url(#sb_grad)" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="18" y1="23" x2="18" y2="29" stroke="#818CF8" stroke-width="1.5" stroke-opacity="0.6" stroke-linecap="round"/>
+    <line x1="24" y1="21.5" x2="24" y2="28.5" stroke="#38BDF8" stroke-width="1.5" stroke-opacity="0.8" stroke-linecap="round"/>
+    <line x1="30" y1="23" x2="30" y2="29" stroke="#818CF8" stroke-width="1.5" stroke-opacity="0.6" stroke-linecap="round"/>
+  </g>
+</svg>`;
+
+const targets = [
+  "public/assets/logo.svg",
+  "packages/gateway/public/assets/logo.svg",
+  "apps/web/public/assets/logo.svg",
+  "public/favicon.svg",
+  "packages/gateway/public/favicon.svg",
+  "apps/web/public/favicon.svg"
+];
+
+for (const t of targets) {
+  fs.writeFileSync(t, svgLogo, "utf8");
+}
+
+console.log("Vector Logo & Favicon successfully generated across all packages!");
+
+

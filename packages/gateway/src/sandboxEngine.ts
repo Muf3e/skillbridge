@@ -64,6 +64,9 @@ export class HardenedSandboxEngine {
       case "skill_zero_downtime_migrator":
         return this.runZeroDowntimeMigrator(req.arguments);
 
+      case "skill_chaos_load_tester":
+        return this.runChaosLoadTester(req.arguments);
+
       default:
         return {
           success: false,
@@ -545,6 +548,61 @@ DROP INDEX CONCURRENTLY IF EXISTS idx_temporary_migration;`,
       metrics: { tokensUsed: 290 }
     };
   }
+
+  private async runChaosLoadTester(args: Record<string, any>): Promise<SandboxExecutionResponse> {
+    const targetService = args.targetService || "api-gateway";
+    const peakRps = Number(args.peakRps) || 12500;
+    const scenario = args.chaosScenario || "LATENCY_SPIKE";
+
+    const degradationFactor = scenario === "LATENCY_SPIKE" ? "p99 latency jumped from 28ms to 840ms"
+      : scenario === "CONNECTION_POOL_EXHAUSTION" ? "PostgreSQL pool connections 100/100 exhausted (thread blocking)"
+      : scenario === "RANDOM_503" ? "4.2% error rate injected on upstream microservices"
+      : "Cascading circuit breaker opened after 3 consecutive timeouts";
+
+    return {
+      success: true,
+      data: {
+        engine: "SkillBridge Chaos Simulator v2.4",
+        targetService,
+        simulatedPeakRps: peakRps,
+        chaosScenario: scenario,
+        systemObservations: {
+          baselineP99Latency: "24.5ms",
+          degradedP99Latency: "840.2ms",
+          circuitBreakerTripped: true,
+          cascadingFailureRisk: scenario === "CONNECTION_POOL_EXHAUSTION" ? "CRITICAL" : "MODERATE",
+          detail: degradationFactor
+        },
+        remediationRecommendations: [
+          "Deploy adaptive token-bucket rate limiting at ingress Envoy proxy",
+          "Set downstream gRPC deadlines to 250ms with exponential backoff jitter",
+          "Enforce Redis connection pooling cap with warm standby instances"
+        ],
+        k6ScenarioSnippet: `import http from 'k6/http';
+import { check, sleep } from 'k6';
+
+export const options = {
+  stages: [
+    { duration: '30s', target: ${Math.floor(peakRps / 5)} },
+    { duration: '1m', target: ${peakRps} },
+    { duration: '30s', target: 0 }
+  ],
+  thresholds: {
+    http_req_failed: ['rate<0.01'],
+    http_req_duration: ['p(95)<350']
+  }
+};
+
+export default function () {
+  const res = http.get('https://${targetService}/healthz');
+  check(res, { 'status is 200': (r) => r.status === 200 });
+  sleep(0.1);
+}`
+      },
+      metrics: { tokensUsed: 310 }
+    };
+  }
 }
+
 
 

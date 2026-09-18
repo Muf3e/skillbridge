@@ -22,7 +22,7 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 
-// packages/cli/src/setup.ts
+// src/setup.ts
 var import_fs = __toESM(require("fs"));
 var import_path = __toESM(require("path"));
 var import_os = __toESM(require("os"));
@@ -132,7 +132,7 @@ if (require.main === module) {
   runIdeSetup().catch(console.error);
 }
 
-// packages/cli/src/index.ts
+// src/index.ts
 async function main() {
   const args = process.argv.slice(2);
   const command = args[0] || "setup";

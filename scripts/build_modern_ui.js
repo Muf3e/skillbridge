@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+const fs = require("fs");
+const path = require("path");
+
+function getModernHtml() {
+  return `<!DOCTYPE html>
 <html lang="en" class="dark scroll-smooth">
 <head>
   <meta charset="UTF-8">
@@ -475,7 +479,7 @@
         price: "$0.40 / run",
         priceNum: 0.40,
         category: "DevOps",
-        defaultInput: "{\n  \"targetService\": \"payment-processing-api.internal\",\n  \"peakRps\": 18500,\n  \"chaosScenario\": \"CONNECTION_POOL_EXHAUSTION\"\n}"
+        defaultInput: "{\\n  \\"targetService\\": \\"payment-processing-api.internal\\",\\n  \\"peakRps\\": 18500,\\n  \\"chaosScenario\\": \\"CONNECTION_POOL_EXHAUSTION\\"\\n}"
       },
       {
         id: "skill_zero_downtime_migrator",
@@ -485,7 +489,7 @@
         price: "$0.50 / run",
         priceNum: 0.50,
         category: "Database",
-        defaultInput: "CREATE INDEX idx_user_billing_email ON users(email);\nALTER TABLE orders ADD COLUMN status_code VARCHAR(32) NOT NULL;"
+        defaultInput: "CREATE INDEX idx_user_billing_email ON users(email);\\nALTER TABLE orders ADD COLUMN status_code VARCHAR(32) NOT NULL;"
       },
       {
         id: "skill_multi_agent_consensus",
@@ -495,7 +499,7 @@
         price: "$1.00 / run",
         priceNum: 1.00,
         category: "AI Ops",
-        defaultInput: "function transferToken(address recipient, uint256 amount) public {\n  require(balances[msg.sender] >= amount);\n  balances[recipient] += amount;\n  balances[msg.sender] -= amount;\n}"
+        defaultInput: "function transferToken(address recipient, uint256 amount) public {\\n  require(balances[msg.sender] >= amount);\\n  balances[recipient] += amount;\\n  balances[msg.sender] -= amount;\\n}"
       },
       {
         id: "skill_api_mock_forge",
@@ -505,7 +509,7 @@
         price: "$0.25 / run",
         priceNum: 0.25,
         category: "Engineering",
-        defaultInput: "POST /v1/billing/charge\nContent-Type: application/json\n\n{\n  \"userId\": \"usr_8829\",\n  \"amountUsd\": 150.00,\n  \"currency\": \"USD\"\n}"
+        defaultInput: "POST /v1/billing/charge\\nContent-Type: application/json\\n\\n{\\n  \\"userId\\": \\"usr_8829\\",\\n  \\"amountUsd\\": 150.00,\\n  \\"currency\\": \\"USD\\"\\n}"
       },
       {
         id: "skill_rag_chunk_optimizer",
@@ -515,7 +519,7 @@
         price: "$0.35 / run",
         priceNum: 0.35,
         category: "AI Ops",
-        defaultInput: "# API Gateway Documentation\nWelcome to our platform.\nThis document outlines how microservices communicate via gRPC and REST protocols across isolated VPC subnetworks. All payloads must be signed with HMAC-SHA256 tokens.\n\n### Authentication\nUse header Authorization: Bearer <token>."
+        defaultInput: "# API Gateway Documentation\\nWelcome to our platform.\\nThis document outlines how microservices communicate via gRPC and REST protocols across isolated VPC subnetworks. All payloads must be signed with HMAC-SHA256 tokens.\\n\\n### Authentication\\nUse header Authorization: Bearer <token>."
       },
       {
         id: "skill_git_conflict_resolver",
@@ -525,7 +529,7 @@
         price: "$0.20 / run",
         priceNum: 0.20,
         category: "Engineering",
-        defaultInput: "<<<<<<< HEAD\nexport function log(msg) { console.log(msg); }\n=======\nexport function log(msg) { logger.info(msg); }\n>>>>>>> incoming"
+        defaultInput: "<<<<<<< HEAD\\nexport function log(msg) { console.log(msg); }\\n=======\\nexport function log(msg) { logger.info(msg); }\\n>>>>>>> incoming"
       },
       {
         id: "skill_seo_competitive_intel",
@@ -575,7 +579,7 @@
         price: "$0.30 / run",
         priceNum: 0.30,
         category: "DevOps",
-        defaultInput: "Last State: Terminated\nReason: OOMKilled\nExit Code: 137\nStarted: Wed, 16 Sep 2026\nFinished: Wed, 16 Sep 2026"
+        defaultInput: "Last State: Terminated\\nReason: OOMKilled\\nExit Code: 137\\nStarted: Wed, 16 Sep 2026\\nFinished: Wed, 16 Sep 2026"
       },
       {
         id: "skill_legal_nda_scorer",
@@ -595,7 +599,7 @@
         price: "$0.15 / run",
         priceNum: 0.15,
         category: "Security",
-        defaultInput: "const API_KEY = 'AKIA2398472938472';\neval(req.body.code);"
+        defaultInput: "const API_KEY = 'AKIA2398472938472';\\neval(req.body.code);"
       },
       {
         id: "skill_sql_query_doctor",
@@ -668,53 +672,53 @@
       });
 
       if (filtered.length === 0) {
-        grid.innerHTML = `
+        grid.innerHTML = \`
           <div class="col-span-full py-16 text-center text-slate-500 glass-panel rounded-2xl">
             <svg class="w-12 h-12 mx-auto text-slate-600 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             <p class="text-base font-semibold text-slate-400">No sovereign skills match your search query</p>
             <p class="text-xs text-slate-500 mt-1">Try searching for keywords like "database", "security", "consensus", or "fuzzing"</p>
           </div>
-        `;
+        \`;
         return;
       }
 
       grid.innerHTML = filtered.map(s => {
         const color = getCategoryColor(s.category);
         const creatorSplit = (s.priceNum * 0.85).toFixed(2);
-        return `
+        return \`
         <div class="glass-panel hover:border-indigo-500/40 hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-300 rounded-2xl p-6 flex flex-col justify-between group relative overflow-hidden">
           <div class="absolute -right-8 -top-8 w-24 h-24 bg-indigo-500/5 rounded-full blur-xl pointer-events-none group-hover:bg-indigo-500/15 transition-all"></div>
           <div>
             <div class="flex items-center justify-between gap-2">
-              <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full ${color.bg} ${color.text} border ${color.border}">
-                ${s.category}
+              <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full \${color.bg} \${color.text} border \${color.border}">
+                \${s.category}
               </span>
               <div class="text-right">
-                <span class="text-sm font-extrabold text-white">${s.price}</span>
-                <div class="text-[10px] text-emerald-400 font-mono">Creator gets $${creatorSplit}</div>
+                <span class="text-sm font-extrabold text-white">\${s.price}</span>
+                <div class="text-[10px] text-emerald-400 font-mono">Creator gets $\${creatorSplit}</div>
               </div>
             </div>
 
             <h3 class="text-lg font-bold text-white mt-3.5 tracking-tight group-hover:text-indigo-300 transition-colors">
-              ${s.name}
+              \${s.name}
             </h3>
             <p class="text-xs text-indigo-400/90 font-medium mt-1 flex items-center space-x-1">
-              <span>by ${s.author}</span>
+              <span>by \${s.author}</span>
               <span class="text-emerald-400 text-[10px]" title="Verified Sovereign Publisher">✓</span>
             </p>
             <p class="text-xs text-slate-400 mt-2.5 leading-relaxed line-clamp-3">
-              ${s.desc}
+              \${s.desc}
             </p>
           </div>
 
           <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between gap-3">
-            <span class="text-[11px] font-mono text-slate-500 truncate max-w-[150px]">npx add ${s.id}</span>
-            <button onclick="openPlayground('${s.id}')" class="text-xs font-bold bg-indigo-600/10 hover:bg-indigo-600 text-indigo-300 hover:text-white px-3.5 py-1.5 rounded-xl border border-indigo-500/30 transition flex-shrink-0 flex items-center space-x-1">
+            <span class="text-[11px] font-mono text-slate-500 truncate max-w-[150px]">npx add \${s.id}</span>
+            <button onclick="openPlayground('\${s.id}')" class="text-xs font-bold bg-indigo-600/10 hover:bg-indigo-600 text-indigo-300 hover:text-white px-3.5 py-1.5 rounded-xl border border-indigo-500/30 transition flex-shrink-0 flex items-center space-x-1">
               <span>⚡ Run Demo</span>
             </button>
           </div>
         </div>
-      `;
+      \`;
       }).join("");
     }
 
@@ -724,7 +728,7 @@
         tab.classList.remove("bg-indigo-600", "text-white");
         tab.classList.add("bg-slate-900", "text-slate-400");
       });
-      const activeTab = document.getElementById("tab-" + (cat === 'all' ? 'all' : cat.replace(/\s+/g, '-')));
+      const activeTab = document.getElementById("tab-" + (cat === 'all' ? 'all' : cat.replace(/\\s+/g, '-')));
       if (activeTab) {
         activeTab.classList.remove("bg-slate-900", "text-slate-400");
         activeTab.classList.add("bg-indigo-600", "text-white");
@@ -748,7 +752,7 @@
     function openPlayground(id) {
       activeSkill = SKILLS_DATA.find(s => s.id === id);
       document.getElementById("modal-title").innerText = activeSkill.name;
-      document.getElementById("modal-author").innerText = `Publisher: ${activeSkill.author} | Fee: ${activeSkill.price}`;
+      document.getElementById("modal-author").innerText = \`Publisher: \${activeSkill.author} | Fee: \${activeSkill.price}\`;
       document.getElementById("modal-input").value = activeSkill.defaultInput;
       document.getElementById("modal-result-box").classList.add("hidden");
 
@@ -767,10 +771,10 @@
       document.getElementById("modal-mcp-code").innerText = JSON.stringify(mcpConfig, null, 2);
 
       // Generate cURL
-      const curlSnippet = `curl -X POST "${API_BASE}/api/v1/execute" \\
-  -H "Content-Type: application/json" \\
-  -H "Authorization: Bearer sk_live_demo_98765" \\
-  -d '{"skillId": "${activeSkill.id}", "toolName": "execute", "arguments": {"input": "..."}}'`;
+      const curlSnippet = \`curl -X POST "\${API_BASE}/api/v1/execute" \\\\
+  -H "Content-Type: application/json" \\\\
+  -H "Authorization: Bearer sk_live_demo_98765" \\\\
+  -d '{"skillId": "\${activeSkill.id}", "toolName": "execute", "arguments": {"input": "..."}}'\`;
       document.getElementById("modal-curl-code").innerText = curlSnippet;
 
       switchPlaygroundTab('exec');
@@ -798,7 +802,7 @@
     }
 
     function openWalletModal() {
-      document.getElementById("modal-wallet-balance").innerText = `$${walletBalance.toFixed(2)} USD`;
+      document.getElementById("modal-wallet-balance").innerText = \`$\${walletBalance.toFixed(2)} USD\`;
       document.getElementById("wallet-modal").classList.remove("hidden");
     }
 
@@ -830,7 +834,7 @@
       };
 
       try {
-        const res = await fetch(`${API_BASE}/api/v1/execute`, {
+        const res = await fetch(\`\${API_BASE}/api/v1/execute\`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -842,7 +846,7 @@
         if (!res.ok) throw new Error("HTTP " + res.status);
         const data = await res.json();
         document.getElementById("modal-output").innerText = JSON.stringify(data, null, 2);
-        document.getElementById("modal-timing").innerText = `Latency: ${data.metrics?.durationMs || 120}ms | Billed: $${data.billing?.amountBilledUsd?.toFixed(2) || '0.00'}`;
+        document.getElementById("modal-timing").innerText = \`Latency: \${data.metrics?.durationMs || 120}ms | Billed: $\${data.billing?.amountBilledUsd?.toFixed(2) || '0.00'}\`;
         document.getElementById("modal-result-box").classList.remove("hidden");
 
         if (data.billing?.amountBilledUsd) {
@@ -879,7 +883,7 @@
         };
 
         document.getElementById("modal-output").innerText = JSON.stringify(mockResult, null, 2);
-        document.getElementById("modal-timing").innerText = `Latency: ${simulatedLatency}ms | Billed: $${fee.toFixed(2)} USD (Escrow Verified)`;
+        document.getElementById("modal-timing").innerText = \`Latency: \${simulatedLatency}ms | Billed: $\${fee.toFixed(2)} USD (Escrow Verified)\`;
         document.getElementById("modal-result-box").classList.remove("hidden");
 
         walletBalance = Math.max(0, walletBalance - fee);
@@ -907,7 +911,7 @@
         name,
         author,
         desc,
-        price: `$${price.toFixed(2)} / run`,
+        price: \`$\${price.toFixed(2)} / run\`,
         priceNum: price,
         category: cat,
         defaultInput: "// Sample input for " + name
@@ -917,10 +921,10 @@
       renderGrid();
       closeModal("publisher-modal");
 
-      const githubUrl = `https://github.com/Muf3e/skillbridge/issues/new?title=${encodeURIComponent('[New Skill Submission] ' + name)}&body=${encodeURIComponent(
-        `### New Sovereign Skill Submission\\n\\n- **Skill Name**: ${name}\\n- **Publisher**: ${author}\\n- **Category**: ${cat}\\n- **Price Per Run**: $${price.toFixed(2)}\\n- **Description**: ${desc}\\n\\n*Submitted via SkillBridge Self-Service Publisher Studio.*`)
-      }`;
-      if (confirm(`🎉 "${name}" is registered in your live browser session!\\n\\nWould you like to open GitHub to register it in the permanent upstream gateway catalog?`)) {
+      const githubUrl = \`https://github.com/Muf3e/skillbridge/issues/new?title=\${encodeURIComponent('[New Skill Submission] ' + name)}&body=\${encodeURIComponent(
+        \`### New Sovereign Skill Submission\\\\n\\\\n- **Skill Name**: \${name}\\\\n- **Publisher**: \${author}\\\\n- **Category**: \${cat}\\\\n- **Price Per Run**: $\${price.toFixed(2)}\\\\n- **Description**: \${desc}\\\\n\\\\n*Submitted via SkillBridge Self-Service Publisher Studio.*\`)
+      }\`;
+      if (confirm(\`🎉 "\${name}" is registered in your live browser session!\\\\n\\\\nWould you like to open GitHub to register it in the permanent upstream gateway catalog?\`)) {
         window.open(githubUrl, '_blank');
       }
     }
@@ -928,18 +932,18 @@
     function topUpWallet(amount) {
       walletBalance += amount;
       updateWalletDisplay();
-      document.getElementById("modal-wallet-balance").innerText = `$${walletBalance.toFixed(2)} USD`;
-      alert(`Successfully added $${amount}.00 to your developer wallet!`);
+      document.getElementById("modal-wallet-balance").innerText = \`$\${walletBalance.toFixed(2)} USD\`;
+      alert(\`Successfully added $\${amount}.00 to your developer wallet!\`);
     }
 
     function updateWalletDisplay() {
-      document.getElementById("nav-wallet-balance").innerText = `$${walletBalance.toFixed(2)} USD`;
+      document.getElementById("nav-wallet-balance").innerText = \`$\${walletBalance.toFixed(2)} USD\`;
     }
 
     document.getElementById("pub-price")?.addEventListener("input", (e) => {
       const p = parseFloat(e.target.value) || 0;
       const payout = p * 0.85;
-      document.getElementById("pub-payout-calc").innerText = `$${payout.toFixed(4)} per execution`;
+      document.getElementById("pub-payout-calc").innerText = \`$\${payout.toFixed(4)} per execution\`;
     });
 
     function copyCommand(cmd) {
@@ -950,4 +954,24 @@
     renderGrid();
   </script>
 </body>
-</html>
+</html>`;
+}
+
+const html = getModernHtml();
+const targets = [
+  "index.html",
+  "packages/gateway/index.html",
+  "packages/gateway/public/index.html",
+  "public/index.html",
+  "apps/web/index.html",
+  "apps/web/public/index.html",
+  "apps/web/src/index.html"
+];
+
+for (const t of targets) {
+  fs.writeFileSync(t, html, "utf8");
+}
+console.log("Successfully rebuilt and synchronized world-class modern UI across all 7 targets!");
+
+
+
