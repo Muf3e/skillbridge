@@ -391,6 +391,32 @@ export const multiAgentConsensusSkill: SkillManifest = {
   updatedAt: new Date().toISOString()
 };
 
+// Seed Skill 16: Zero-Downtime Database Migration & Schema Resharder
+export const zeroDowntimeMigratorSkill: SkillManifest = {
+  id: "skill_zero_downtime_migrator",
+  name: "Zero-Downtime Database Migration & Schema Resharder",
+  version: "1.0.0",
+  description: "Enterprise database migration planner. Analyzes DDL/SQL changes, detects table-locking bottlenecks, generates safe Expand/Contract migrations, and provides online zero-downtime rollbacks.",
+  authorId: "pub_prismascale",
+  authorName: "PrismaScale Labs",
+  pricing: { model: "pay_per_run", costPerRunUsd: 0.50 },
+  capabilities: ["database", "migration", "zero-downtime", "postgres", "mysql", "resharding"],
+  tools: [{
+    name: "plan_safe_migration",
+    description: "Evaluates raw SQL or ORM schema alterations for exclusive lock hazards and outputs a safe phased zero-downtime execution plan.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        schemaDiffOrSql: { type: "string", description: "ALTER TABLE or CREATE INDEX statements to analyze" },
+        databaseEngine: { type: "string", description: "POSTGRESQL, MYSQL, COCKROACHDB" }
+      },
+      required: ["schemaDiffOrSql"]
+    }
+  }],
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString()
+};
+
 export const ALL_SEED_SKILLS: SkillManifest[] = [
   deepSecAuditSkill,
   sqlDoctorSkill,
@@ -406,6 +432,8 @@ export const ALL_SEED_SKILLS: SkillManifest[] = [
   gitConflictResolverSkill,
   ragChunkOptimizerSkill,
   apiMockForgeSkill,
-  multiAgentConsensusSkill
+  multiAgentConsensusSkill,
+  zeroDowntimeMigratorSkill
 ];
+
 

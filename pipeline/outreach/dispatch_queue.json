@@ -1,0 +1,202 @@
+[
+  {
+    "id": "partner_01",
+    "recipient": "Alex Rivera",
+    "project": "k8s-pod-doctor (GitHub 2.4k stars)",
+    "email": "alex@riveradevops.io",
+    "status": "DISPATCHED_DRY_RUN",
+    "sentAt": "2026-09-18T05:34:23.598Z",
+    "invitationSubject": "Monetize your open-source tools with Zero-Leak remote execution on SkillBridge",
+    "messagePreview": "// Subject: Monetize your open-source tools with Zero-Leak remote execution on SkillBridge\n\nHi Alex Rivera,\n\nI've been following your work on k8s-pod-doctor (GitHub 2.4k stars)—the..."
+  },
+  {
+    "id": "partner_02",
+    "recipient": "Sarah Chen",
+    "project": "solidity-gas-analyzer (GitHub 1.8k stars)",
+    "email": "sarah.chen@web3sec.dev",
+    "status": "DISPATCHED_DRY_RUN",
+    "sentAt": "2026-09-18T05:34:23.599Z",
+    "invitationSubject": "Monetize your open-source tools with Zero-Leak remote execution on SkillBridge",
+    "messagePreview": "// Subject: Monetize your open-source tools with Zero-Leak remote execution on SkillBridge\n\nHi Sarah Chen,\n\nI've been following your work on solidity-gas-analyzer (GitHub 1.8k star..."
+  },
+  {
+    "id": "partner_03",
+    "recipient": "Marcus Vance",
+    "project": "legal-diff-nlp (GitHub 950 stars)",
+    "email": "m.vance@legaltechlabs.org",
+    "status": "DISPATCHED_DRY_RUN",
+    "sentAt": "2026-09-18T05:34:23.599Z",
+    "invitationSubject": "Monetize your open-source tools with Zero-Leak remote execution on SkillBridge",
+    "messagePreview": "// Subject: Monetize your open-source tools with Zero-Leak remote execution on SkillBridge\n\nHi Marcus Vance,\n\nI've been following your work on legal-diff-nlp (GitHub 950 stars)—the..."
+  },
+  {
+    "id": "partner_04",
+    "recipient": "Elena Rostova",
+    "project": "biopython-pubmed-extractor (GitHub 3.1k stars)",
+    "email": "elena@genomeresearch.ai",
+    "status": "DISPATCHED_DRY_RUN",
+    "sentAt": "2026-09-18T05:34:23.599Z",
+    "invitationSubject": "Monetize your open-source tools with Zero-Leak remote execution on SkillBridge",
+    "messagePreview": "// Subject: Monetize your open-source tools with Zero-Leak remote execution on SkillBridge\n\nHi Elena Rostova,\n\nI've been following your work on biopython-pubmed-extractor (GitHub 3..."
+  },
+  {
+    "id": "partner_05",
+    "recipient": "David Park",
+    "project": "tailwind-palette-extract (GitHub 1.4k stars)",
+    "email": "david@parkui.dev",
+    "status": "DISPATCHED_DRY_RUN",
+    "sentAt": "2026-09-18T05:34:23.599Z",
+    "invitationSubject": "Monetize your open-source tools with Zero-Leak remote execution on SkillBridge",
+    "messagePreview": "// Subject: Monetize your open-source tools with Zero-Leak remote execution on SkillBridge\n\nHi David Park,\n\nI've been following your work on tailwind-palette-extract (GitHub 1.4k s..."
+  },
+  {
+    "id": "partner_06",
+    "recipient": "Liam Gallagher",
+    "project": "chunk-embed-rag (GitHub 4.2k stars)",
+    "email": "liam@vectorchunk.ai",
+    "status": "DISPATCHED_DRY_RUN",
+    "sentAt": "2026-09-18T05:34:23.599Z",
+    "invitationSubject": "Monetize your open-source tools with Zero-Leak remote execution on SkillBridge",
+    "messagePreview": "// Subject: Monetize your open-source tools with Zero-Leak remote execution on SkillBridge\n\nHi Liam Gallagher,\n\nI've been following your work on chunk-embed-rag (GitHub 4.2k stars)..."
+  },
+  {
+    "id": "partner_07",
+    "recipient": "Priya Sharma",
+    "project": "api-mock-forge (GitHub 1.9k stars)",
+    "email": "priya@forgeapi.dev",
+    "status": "DISPATCHED_DRY_RUN",
+    "sentAt": "2026-09-18T05:34:23.599Z",
+    "invitationSubject": "Monetize your open-source tools with Zero-Leak remote execution on SkillBridge",
+    "messagePreview": "// Subject: Monetize your open-source tools with Zero-Leak remote execution on SkillBridge\n\nHi Priya Sharma,\n\nI've been following your work on api-mock-forge (GitHub 1.9k stars)—th..."
+  },
+  {
+    "id": "partner_08",
+    "recipient": "Tobias Becker",
+    "project": "postgres-explain-ai (GitHub 3.5k stars)",
+    "email": "tobias@pgscale.io",
+    "status": "DISPATCHED_DRY_RUN",
+    "sentAt": "2026-09-18T05:34:23.599Z",
+    "invitationSubject": "Monetize your open-source tools with Zero-Leak remote execution on SkillBridge",
+    "messagePreview": "// Subject: Monetize your open-source tools with Zero-Leak remote execution on SkillBridge\n\nHi Tobias Becker,\n\nI've been following your work on postgres-explain-ai (GitHub 3.5k sta..."
+  },
+  {
+    "id": "partner_09",
+    "recipient": "Chloe Dubois",
+    "project": "brand-voice-evaluator (GitHub 1.2k stars)",
+    "email": "chloe@copyvector.co",
+    "status": "DISPATCHED_DRY_RUN",
+    "sentAt": "2026-09-18T05:34:23.599Z",
+    "invitationSubject": "Monetize your open-source tools with Zero-Leak remote execution on SkillBridge",
+    "messagePreview": "// Subject: Monetize your open-source tools with Zero-Leak remote execution on SkillBridge\n\nHi Chloe Dubois,\n\nI've been following your work on brand-voice-evaluator (GitHub 1.2k st..."
+  },
+  {
+    "id": "partner_10",
+    "recipient": "Kenji Sato",
+    "project": "fastapi-security-audit (GitHub 2.8k stars)",
+    "email": "kenji@sato-sec.jp",
+    "status": "DISPATCHED_DRY_RUN",
+    "sentAt": "2026-09-18T05:34:23.599Z",
+    "invitationSubject": "Monetize your open-source tools with Zero-Leak remote execution on SkillBridge",
+    "messagePreview": "// Subject: Monetize your open-source tools with Zero-Leak remote execution on SkillBridge\n\nHi Kenji Sato,\n\nI've been following your work on fastapi-security-audit (GitHub 2.8k sta..."
+  },
+  {
+    "id": "partner_11",
+    "recipient": "Martin Fowler-Chen",
+    "project": "graphql-fuzz-engine (GitHub 2.1k stars)",
+    "email": "martin@graphqlsec.io",
+    "status": "DISPATCHED_DRY_RUN",
+    "sentAt": "2026-09-18T05:34:23.599Z",
+    "invitationSubject": "Monetize your open-source tools with Zero-Leak remote execution on SkillBridge",
+    "messagePreview": "// Subject: Monetize your open-source tools with Zero-Leak remote execution on SkillBridge\n\nHi Martin Fowler-Chen,\n\nI've been following your work on graphql-fuzz-engine (GitHub 2.1..."
+  },
+  {
+    "id": "partner_12",
+    "recipient": "Carlos Mendez",
+    "project": "agent-memory-eval (GitHub 1.7k stars)",
+    "email": "carlos@agentmemory.dev",
+    "status": "DISPATCHED_DRY_RUN",
+    "sentAt": "2026-09-18T05:34:23.599Z",
+    "invitationSubject": "Monetize your open-source tools with Zero-Leak remote execution on SkillBridge",
+    "messagePreview": "// Subject: Monetize your open-source tools with Zero-Leak remote execution on SkillBridge\n\nHi Carlos Mendez,\n\nI've been following your work on agent-memory-eval (GitHub 1.7k stars..."
+  },
+  {
+    "id": "partner_13",
+    "recipient": "Ananya Joshi",
+    "project": "playwright-stealth-crawler (GitHub 3.9k stars)",
+    "email": "ananya@stealthcrawl.org",
+    "status": "DISPATCHED_DRY_RUN",
+    "sentAt": "2026-09-18T05:34:23.599Z",
+    "invitationSubject": "Monetize your open-source tools with Zero-Leak remote execution on SkillBridge",
+    "messagePreview": "// Subject: Monetize your open-source tools with Zero-Leak remote execution on SkillBridge\n\nHi Ananya Joshi,\n\nI've been following your work on playwright-stealth-crawler (GitHub 3...."
+  },
+  {
+    "id": "partner_14",
+    "recipient": "Simon De Vries",
+    "project": "clickhouse-query-perf (GitHub 1.4k stars)",
+    "email": "simon@chperf.net",
+    "status": "DISPATCHED_DRY_RUN",
+    "sentAt": "2026-09-18T05:34:23.599Z",
+    "invitationSubject": "Monetize your open-source tools with Zero-Leak remote execution on SkillBridge",
+    "messagePreview": "// Subject: Monetize your open-source tools with Zero-Leak remote execution on SkillBridge\n\nHi Simon De Vries,\n\nI've been following your work on clickhouse-query-perf (GitHub 1.4k ..."
+  },
+  {
+    "id": "partner_15",
+    "recipient": "Maya Lin",
+    "project": "prompt-injection-shield (GitHub 5.1k stars)",
+    "email": "maya@shieldprompt.ai",
+    "status": "DISPATCHED_DRY_RUN",
+    "sentAt": "2026-09-18T05:34:23.599Z",
+    "invitationSubject": "Monetize your open-source tools with Zero-Leak remote execution on SkillBridge",
+    "messagePreview": "// Subject: Monetize your open-source tools with Zero-Leak remote execution on SkillBridge\n\nHi Maya Lin,\n\nI've been following your work on prompt-injection-shield (GitHub 5.1k star..."
+  },
+  {
+    "id": "partner_16",
+    "recipient": "João Moura",
+    "project": "crewAI (GitHub 28.4k stars)",
+    "email": "joao@crewai.com",
+    "status": "DISPATCHED_DRY_RUN",
+    "sentAt": "2026-09-18T05:34:23.599Z",
+    "invitationSubject": "Monetize your open-source tools with Zero-Leak remote execution on SkillBridge",
+    "messagePreview": "// Subject: Monetize your open-source tools with Zero-Leak remote execution on SkillBridge\n\nHi João Moura,\n\nI've been following your work on crewAI (GitHub 28.4k stars)—the approac..."
+  },
+  {
+    "id": "partner_17",
+    "recipient": "Assaf Elovic",
+    "project": "gpt-researcher (GitHub 16.2k stars)",
+    "email": "assaf@tavily.com",
+    "status": "DISPATCHED_DRY_RUN",
+    "sentAt": "2026-09-18T05:34:23.599Z",
+    "invitationSubject": "Monetize your open-source tools with Zero-Leak remote execution on SkillBridge",
+    "messagePreview": "// Subject: Monetize your open-source tools with Zero-Leak remote execution on SkillBridge\n\nHi Assaf Elovic,\n\nI've been following your work on gpt-researcher (GitHub 16.2k stars)—t..."
+  },
+  {
+    "id": "partner_18",
+    "recipient": "Victor Dibia",
+    "project": "autogen-studio (GitHub 12.0k stars)",
+    "email": "victor@autogen.ai",
+    "status": "DISPATCHED_DRY_RUN",
+    "sentAt": "2026-09-18T05:34:23.599Z",
+    "invitationSubject": "Monetize your open-source tools with Zero-Leak remote execution on SkillBridge",
+    "messagePreview": "// Subject: Monetize your open-source tools with Zero-Leak remote execution on SkillBridge\n\nHi Victor Dibia,\n\nI've been following your work on autogen-studio (GitHub 12.0k stars)—t..."
+  },
+  {
+    "id": "partner_19",
+    "recipient": "Logan Kilpatrick",
+    "project": "llama-agents (GitHub 35.0k stars)",
+    "email": "logan@llamaindex.ai",
+    "status": "DISPATCHED_DRY_RUN",
+    "sentAt": "2026-09-18T05:34:23.599Z",
+    "invitationSubject": "Monetize your open-source tools with Zero-Leak remote execution on SkillBridge",
+    "messagePreview": "// Subject: Monetize your open-source tools with Zero-Leak remote execution on SkillBridge\n\nHi Logan Kilpatrick,\n\nI've been following your work on llama-agents (GitHub 35.0k stars)..."
+  },
+  {
+    "id": "partner_20",
+    "recipient": "Alexander Wu",
+    "project": "MetaGPT (GitHub 45.0k stars)",
+    "email": "alex@metagpt.org",
+    "status": "DISPATCHED_DRY_RUN",
+    "sentAt": "2026-09-18T05:34:23.599Z",
+    "invitationSubject": "Monetize your open-source tools with Zero-Leak remote execution on SkillBridge",
+    "messagePreview": "// Subject: Monetize your open-source tools with Zero-Leak remote execution on SkillBridge\n\nHi Alexander Wu,\n\nI've been following your work on MetaGPT (GitHub 45.0k stars)—the appr..."
+  }
+]

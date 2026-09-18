@@ -1,11 +1,15 @@
 {
   "name": "@skillbridge/cli",
   "version": "0.1.0",
-  "main": "src/shim.ts",
+  "main": "dist/cli.js",
   "bin": {
-    "skillbridge": "src/index.ts"
+    "skillbridge": "dist/cli.js"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
+    "build": "esbuild src/index.ts --bundle --platform=node --outfile=dist/cli.js --banner:js=\"#!/usr/bin/env node\"",
     "test:e2e": "npx ts-node src/test-verification.ts"
   },
   "dependencies": {
