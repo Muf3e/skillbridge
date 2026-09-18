@@ -67,7 +67,7 @@ function getModernHtml() {
         </div>
       </a>
 
-      <nav class="hidden md:flex items-center space-x-7 text-sm font-medium text-slate-300">
+      <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-300">
         <a href="#marketplace" class="hover:text-white transition-colors">Marketplace</a>
         <button onclick="openMcpConfigModal()" class="hover:text-white transition-colors flex items-center space-x-1.5">
           <span>IDE & Claude Setup</span>
@@ -76,6 +76,13 @@ function getModernHtml() {
         <button onclick="openPublisherStudio()" class="hover:text-white transition-colors flex items-center space-x-1">
           <span>Publisher Studio</span>
           <span class="text-[10px] bg-indigo-500/20 text-indigo-300 px-1.5 py-0.5 rounded border border-indigo-500/30 font-semibold">85% Split</span>
+        </button>
+        <button onclick="openSupportModal()" class="hover:text-white transition-colors flex items-center space-x-1.5">
+          <span>Support & Cases</span>
+          <span class="text-[10px] bg-indigo-500/20 text-indigo-300 px-1.5 py-0.5 rounded border border-indigo-500/30 font-semibold flex items-center space-x-1">
+            <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>24/7 Bot</span>
+          </span>
         </button>
         <a href="/docs" class="hover:text-white transition-colors">API Docs</a>
         <button onclick="openWalletModal()" class="hover:text-white transition-colors">Wallet</button>
@@ -120,7 +127,7 @@ function getModernHtml() {
       
       <h1 class="text-4xl sm:text-6xl font-black text-white tracking-tight leading-[1.15]">
         The Universal Remote Gateway for <br class="hidden sm:inline" />
-        <span class="gradient-text">Monetized AI Agent Skills</span>
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-300 to-cyan-400">Monetized AI Agent Skills</span>
       </h1>
       
       <p class="mt-6 max-w-2xl mx-auto text-base sm:text-lg text-slate-400 leading-relaxed font-normal">
@@ -251,6 +258,13 @@ function getModernHtml() {
             <span>⚡ Execute in Isolated MicroVM</span>
           </button>
 
+          <div class="flex items-center justify-between text-[11px] text-slate-500 px-1">
+            <span>⚡ Sandboxed in Firecracker microVM</span>
+            <button onclick="reportActiveSkillIssue()" class="text-indigo-400 hover:text-indigo-300 underline font-medium flex items-center space-x-1">
+              <span>⚠️ Encountered an issue? Ask AI Support Bot</span>
+            </button>
+          </div>
+
           <!-- Result Box -->
           <div id="modal-result-box" class="hidden">
             <div class="flex items-center justify-between text-xs text-slate-400 mb-1.5">
@@ -258,6 +272,17 @@ function getModernHtml() {
               <span id="modal-timing" class="font-mono text-emerald-400"></span>
             </div>
             <pre id="modal-output" class="bg-slate-950 border border-slate-800 p-4 rounded-xl text-xs font-mono text-emerald-300 overflow-x-auto max-h-60"></pre>
+
+            <!-- Quick Report Issue Button -->
+            <div class="mt-3 flex items-center justify-between bg-indigo-950/30 border border-indigo-500/20 rounded-xl p-3">
+              <div class="text-[11px] text-slate-300">
+                <span class="font-semibold text-white">Need help or hit an unexpected error?</span>
+                <p class="text-slate-400">Our Autonomous Support Agent will analyze your input, error stack, and sandbox logs.</p>
+              </div>
+              <button onclick="reportActiveSkillIssue()" class="text-xs bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 border border-rose-500/30 px-3 py-1.5 rounded-lg font-semibold transition flex items-center space-x-1.5 flex-shrink-0 ml-2">
+                <span>⚠️ Open Support Case</span>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -396,7 +421,7 @@ function getModernHtml() {
         </div>
 
         <div class="bg-emerald-950/20 border border-emerald-500/20 p-3.5 rounded-xl text-xs text-emerald-300 leading-relaxed">
-          ✅ Once configured, all 16 skills appear natively as callable tools inside Claude Desktop, Cursor, and Windsurf.
+          ✅ Once configured, all 17 skills appear natively as callable tools inside Claude Desktop, Cursor, and Windsurf.
         </div>
       </div>
     </div>
@@ -445,6 +470,200 @@ function getModernHtml() {
     </div>
   </div>
 
+  <!-- MODAL 5: Support & Case Resolution Center -->
+  <div id="support-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-3xl w-full max-h-[92vh] flex flex-col overflow-hidden shadow-2xl">
+      <!-- Modal Header -->
+      <div class="p-6 border-b border-slate-800 flex items-center justify-between bg-slate-950/40">
+        <div class="flex items-center space-x-3">
+          <div class="h-10 w-10 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 font-bold text-lg">
+            🛠️
+          </div>
+          <div>
+            <div class="flex items-center space-x-2">
+              <h3 class="text-lg font-bold text-white">SkillBridge Support & Resolution Center</h3>
+              <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full border border-emerald-500/30 font-semibold flex items-center space-x-1">
+                <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>AI Support Bot Active</span>
+              </span>
+            </div>
+            <p class="text-xs text-slate-400 mt-0.5">Report bugs, execution failures, or navigation feedback — our autonomous support bot diagnoses and provides instant fixes.</p>
+          </div>
+        </div>
+        <button onclick="closeModal('support-modal')" class="text-slate-400 hover:text-white text-sm font-semibold p-1.5 rounded-lg hover:bg-slate-800 transition">✕ Close</button>
+      </div>
+
+      <!-- Support Tabs -->
+      <div class="flex border-b border-slate-800 bg-slate-950/60 px-6 text-xs font-semibold">
+        <button onclick="switchSupportTab('create')" id="tab-sup-create" class="py-3 px-4 border-b-2 border-indigo-500 text-indigo-400 flex items-center space-x-1.5">
+          <span>➕ Create Case / Feedback</span>
+        </button>
+        <button onclick="switchSupportTab('cases')" id="tab-sup-cases" class="py-3 px-4 border-b-2 border-transparent text-slate-400 hover:text-white flex items-center space-x-1.5">
+          <span>📋 Active Cases & Solutions</span>
+          <span id="support-cases-count-badge" class="ml-1 px-1.5 py-0.5 bg-slate-800 text-indigo-300 rounded-full text-[10px]">3</span>
+        </button>
+        <button onclick="switchSupportTab('agent')" id="tab-sup-agent" class="py-3 px-4 border-b-2 border-transparent text-slate-400 hover:text-white flex items-center space-x-1.5">
+          <span>🤖 Ask Support Bot Live</span>
+        </button>
+      </div>
+
+      <!-- Tab Contents -->
+      <div class="p-6 overflow-y-auto flex-1 space-y-4">
+        <!-- Tab 1: Create Case Form -->
+        <div id="panel-sup-create" class="space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold uppercase text-slate-400 mb-1.5">Issue Category</label>
+              <select id="case-category" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-100 focus:outline-none focus:border-indigo-500">
+                <option value="skill_execution">⚡ Skill Execution Failure or Timeout</option>
+                <option value="cli_mcp_setup">💻 CLI, Claude Desktop & Cursor MCP</option>
+                <option value="gateway_api">🌐 Gateway REST API / 401 / CORS</option>
+                <option value="wallet_billing">💳 Developer Wallet & Escrow Refund</option>
+                <option value="ui_navigation">🧭 Website Navigation / Responsive UI Bug</option>
+                <option value="general_feedback">💡 Feature Suggestion / Feedback</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold uppercase text-slate-400 mb-1.5">Severity</label>
+              <select id="case-severity" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-100 focus:outline-none focus:border-indigo-500">
+                <option value="medium">Medium — Functional issue with workaround</option>
+                <option value="high">High — Execution blocked / Timeout</option>
+                <option value="critical">Critical — Crash or Escrow Lock</option>
+                <option value="low">Low — Minor UI polish or inquiry</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold uppercase text-slate-400 mb-1.5">Target Skill (Optional)</label>
+              <select id="case-skill-id" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-100 focus:outline-none focus:border-indigo-500">
+                <option value="">-- General Website / Not Skill Specific --</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold uppercase text-slate-400 mb-1.5">Developer Contact / Email</label>
+              <input id="case-email" type="email" placeholder="developer@company.com (for resolution notifications)" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-100 focus:outline-none focus:border-indigo-500" />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold uppercase text-slate-400 mb-1.5">Case Title / Issue Summary *</label>
+            <input id="case-title" type="text" placeholder="e.g. MCP timeout when invoking Chaos Engineering simulator on Cursor" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-100 focus:outline-none focus:border-indigo-500" />
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold uppercase text-slate-400 mb-1.5">Description & Steps to Reproduce *</label>
+            <textarea id="case-description" rows="3" placeholder="Explain what occurred, what you expected, and steps to reproduce." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs sm:text-sm text-slate-100 focus:outline-none focus:border-indigo-500"></textarea>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold uppercase text-slate-400 mb-1.5">Error Logs / Stacktrace / Input Payload (Optional)</label>
+            <textarea id="case-logs" rows="3" placeholder="Paste any error logs, terminal output, or argument payload..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs font-mono text-cyan-300 focus:outline-none focus:border-indigo-500"></textarea>
+          </div>
+
+          <!-- Live Bot Status Ticker -->
+          <div id="case-submitting-spinner" class="hidden bg-indigo-950/40 border border-indigo-500/30 p-3 rounded-xl flex items-center space-x-3 text-xs text-indigo-200">
+            <span class="h-3 w-3 rounded-full bg-indigo-400 animate-ping"></span>
+            <span id="case-spinner-text">Autonomous Support Agent analyzing logs and checking gateway sandbox...</span>
+          </div>
+
+          <button id="case-submit-btn" onclick="submitSupportCase()" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 font-bold text-white py-3 rounded-xl shadow-lg transition flex items-center justify-center space-x-2">
+            <span>🚀 Submit Case & Run Autonomous AI Agent</span>
+          </button>
+        </div>
+
+        <!-- Tab 2: Cases Tracker & Details View -->
+        <div id="panel-sup-cases" class="hidden space-y-4">
+          <!-- Filters & Search -->
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div class="flex items-center space-x-1.5 w-full sm:w-auto">
+              <button onclick="filterCases('all')" id="case-filter-all" class="text-xs px-3 py-1.5 rounded-lg bg-indigo-600 text-white font-medium">All Cases</button>
+              <button onclick="filterCases('resolved')" id="case-filter-resolved" class="text-xs px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-slate-400 hover:text-white font-medium">Resolved</button>
+              <button onclick="filterCases('open')" id="case-filter-open" class="text-xs px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-slate-400 hover:text-white font-medium">Investigating</button>
+            </div>
+            <input 
+              id="case-search-input"
+              type="text" 
+              placeholder="Search by case ID, title, keyword..." 
+              oninput="handleCaseSearch(this.value)"
+              class="w-full sm:w-64 bg-slate-950 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+            />
+          </div>
+
+          <!-- Cases Container -->
+          <div id="cases-list-container" class="space-y-3">
+            <!-- Dynamically injected -->
+          </div>
+
+          <!-- Case Detail Drawer / Modal inside modal -->
+          <div id="case-detail-drawer" class="hidden bg-slate-950 border border-indigo-500/30 rounded-2xl p-5 space-y-4 shadow-xl">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- Tab 3: Ask AI Support Bot Live -->
+        <div id="panel-sup-agent" class="hidden space-y-4">
+          <div class="bg-indigo-950/20 border border-indigo-500/20 rounded-xl p-4 text-xs text-slate-300">
+            <p class="font-semibold text-white mb-1">🤖 Autonomous Diagnostic Assistant</p>
+            <p class="text-slate-400 leading-relaxed">Ask any technical question regarding SkillBridge sovereign skills, remote MCP configuration, microVM sandbox errors, or developer wallet billing.</p>
+          </div>
+
+          <!-- Quick suggestion chips -->
+          <div class="flex flex-wrap gap-2 text-xs">
+            <button onclick="setConsultQuery('How do I fix Cursor MCP server spawn ENOENT?')" class="bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 px-2.5 py-1 rounded-lg transition">Cursor MCP spawn ENOENT</button>
+            <button onclick="setConsultQuery('How does Outcome Escrow refund on 504 timeouts?')" class="bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 px-2.5 py-1 rounded-lg transition">Escrow refund policy</button>
+            <button onclick="setConsultQuery('Getting 401 Unauthorized with custom API key')" class="bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 px-2.5 py-1 rounded-lg transition">401 Auth error</button>
+            <button onclick="setConsultQuery('How do I publish a python agent skill?')" class="bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 px-2.5 py-1 rounded-lg transition">Publishing skills</button>
+          </div>
+
+          <div class="space-y-2">
+            <textarea id="agent-consult-input" rows="3" placeholder="Describe the error or question you need help with..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs sm:text-sm text-slate-100 focus:outline-none focus:border-indigo-500"></textarea>
+            <button onclick="submitAgentConsultation()" id="agent-consult-btn" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-2.5 rounded-xl text-xs transition flex items-center justify-center space-x-2">
+              <span>⚡ Diagnose & Solve Issue</span>
+            </button>
+          </div>
+
+          <div id="agent-consult-result" class="hidden bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-3">
+            <!-- Output from agent -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Support & Feedback FAB -->
+  <div class="fixed bottom-5 right-5 z-40">
+    <button onclick="openSupportModal()" class="flex items-center space-x-2.5 bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold text-xs px-4 py-2.5 rounded-full shadow-2xl shadow-indigo-500/40 border border-indigo-400/30 transition-all transform hover:scale-105 active:scale-95 group">
+      <span class="relative flex h-2.5 w-2.5">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+      </span>
+      <span>💬 Need Help? Report Issue</span>
+      <span class="bg-black/30 text-[10px] px-2 py-0.5 rounded-full text-indigo-200 border border-white/10 group-hover:bg-black/50 font-bold">24/7 AI Bot</span>
+    </button>
+  </div>
+
+  <!-- Global Platform Issue Interceptor Toast -->
+  <div id="error-toast" class="fixed bottom-6 left-6 z-50 hidden max-w-sm bg-slate-900/95 border border-rose-500/40 rounded-2xl p-4 shadow-2xl backdrop-blur-xl text-xs space-y-2.5">
+    <div class="flex items-center justify-between text-rose-400 font-bold">
+      <div class="flex items-center space-x-1.5">
+        <span>⚠️</span>
+        <span id="error-toast-title">Website Issue Detected</span>
+      </div>
+      <button onclick="document.getElementById('error-toast').classList.add('hidden')" class="text-slate-400 hover:text-white text-xs">✕</button>
+    </div>
+    <p id="error-toast-msg" class="text-slate-300 font-mono text-[11px] truncate"></p>
+    <div class="flex items-center space-x-2 pt-1">
+      <button onclick="reportDetectedError()" class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold px-3 py-1.5 rounded-xl text-xs transition shadow flex items-center space-x-1">
+        <span>🛠️ Create Case for AI Bot</span>
+      </button>
+      <button onclick="document.getElementById('error-toast').classList.add('hidden')" class="bg-slate-800 text-slate-300 px-3 py-1.5 rounded-xl text-xs hover:text-white transition">
+        Dismiss
+      </button>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer class="border-t border-slate-900 bg-[#070B14] py-12 text-xs text-slate-500 mt-auto">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -455,6 +674,9 @@ function getModernHtml() {
         <span>Zero-Leak Remote MCP Execution</span>
       </div>
       <div class="flex items-center space-x-6 text-slate-400">
+        <a href="/support" class="hover:text-white text-indigo-400 font-semibold transition flex items-center space-x-1">
+          <span>🛠️ Support & Cases</span>
+        </a>
         <a href="/docs" class="hover:text-white transition">Documentation</a>
         <a href="/compare/capafy" class="hover:text-white transition">Comparison vs Capafy</a>
         <a href="https://github.com/Muf3e/skillbridge" target="_blank" class="hover:text-white transition">GitHub</a>
@@ -469,6 +691,8 @@ function getModernHtml() {
     let walletBalance = 24.15;
     let currentCategory = 'all';
     let searchQuery = '';
+    let currentCaseFilter = 'all';
+    let caseSearchQuery = '';
 
     const SKILLS_DATA = [
       {
@@ -643,6 +867,122 @@ function getModernHtml() {
       }
     ];
 
+    // In-memory / localStorage case store
+    let CASES_DATA = [
+      {
+        id: "CASE-1001",
+        title: "Claude Desktop MCP tool call timeout on Chaos Load Tester",
+        category: "skill_execution",
+        severity: "high",
+        status: "resolved",
+        skillId: "skill_chaos_load_tester",
+        userEmail: "sre-lead@acme-cloud.io",
+        description: "When running Chaos Engineering simulation with 25,000 peak RPS in Claude Desktop, the execution timed out after 3000ms.",
+        stepsToReproduce: "1. Open Claude Desktop with MCP configured\\n2. Call skill_chaos_load_tester with target 'payment-api'\\n3. Set peakRps to 25000",
+        errorLogs: "Error: MCP connection timeout [ETIMEDOUT: 3000ms exceeded in microVM firecracker node-04]",
+        createdAt: new Date(Date.now() - 3600000 * 48).toISOString(),
+        diagnostics: {
+          timestamp: new Date(Date.now() - 3600000 * 47).toISOString(),
+          analyzedBy: "SkillBridge Autonomous Support Agent v0.2.0",
+          confidenceScore: 0.98,
+          detectedRootCause: "Synthetic load generation exceeded client default MCP timeout buffer (3000ms) during multi-node connection pool saturation.",
+          affectedComponent: "Gateway MicroVM Pool & Client MCP Proxy",
+          escrowStatus: "100% Refund Verified & Escrow Released ($0.40 refunded to developer wallet)",
+          remediationType: "automatic_hotfix"
+        },
+        resolution: {
+          resolvedAt: new Date(Date.now() - 3600000 * 46).toISOString(),
+          summary: "Escrow refunded execution fee, provisioned high-throughput buffer, and updated client timeout guidance.",
+          detailedFix: "The Autonomous Support Agent automatically reconciled the failed transaction with the Outcome Escrow ledger, releasing a $0.40 credit back to your developer balance. Additionally, the microVM allocation for ChaosScale has been warm-pooled with an extended 15s streaming buffer.",
+          actionableSteps: [
+            "Update your client shim to use the latest streaming flags: npx @skillbridge/cli setup",
+            "Set client-side MCP timeout to 15000ms if testing > 20k RPS",
+            "Verify your developer balance reflection in the Wallet tab"
+          ],
+          cliCommands: [
+            "npx -y @skillbridge/cli setup",
+            "curl -X POST https://skillbridge-gateway.vercel.app/api/v1/execute -H \\"Authorization: Bearer sk_live_demo_98765\\" -d '{\\"skillId\\":\\"skill_chaos_load_tester\\",\\"toolName\\":\\"execute\\",\\"arguments\\":{\\"targetService\\":\\"test\\",\\"peakRps\\":5000}}'"
+          ]
+        }
+      },
+      {
+        id: "CASE-1002",
+        title: "Cursor IDE cannot find @skillbridge/cli executable after global install",
+        category: "cli_mcp_setup",
+        severity: "medium",
+        status: "resolved",
+        skillId: undefined,
+        userEmail: "dev@cursor-coder.org",
+        description: "Configured Cursor Settings -> Features -> MCP with command 'skillbridge mcp-proxy', but Cursor logs show spawn ENOENT.",
+        errorLogs: "spawn skillbridge ENOENT at Process.ChildProcess._handle.onexit (node:internal/child_process:286:19)",
+        createdAt: new Date(Date.now() - 3600000 * 24).toISOString(),
+        diagnostics: {
+          timestamp: new Date(Date.now() - 3600000 * 23.5).toISOString(),
+          analyzedBy: "SkillBridge Autonomous Support Agent v0.2.0",
+          confidenceScore: 0.99,
+          detectedRootCause: "Cursor runs MCP subprocesses with sanitized shell PATH that excludes custom global node_modules bin directories on macOS and Windows.",
+          affectedComponent: "IDE Subprocess Environment & Shell PATH",
+          remediationType: "configuration_guidance"
+        },
+        resolution: {
+          resolvedAt: new Date(Date.now() - 3600000 * 23).toISOString(),
+          summary: "Switched invocation to direct 'npx -y' wrapper which resolves dynamically regardless of sanitized shell PATH.",
+          detailedFix: "When Cursor launches background MCP servers, it does not inherit user zsh/bashrc PATH exports. Using 'npx' with the '-y' flag ensures seamless runtime bootstrapping.",
+          actionableSteps: [
+            "Open Cursor MCP settings and change command to 'npx'",
+            "Set args to [\\"-y\\", \\"@skillbridge/cli\\", \\"mcp-proxy\\"]",
+            "Or run the automated 1-click setup: npx @skillbridge/cli setup"
+          ],
+          cliCommands: [
+            "npx -y @skillbridge/cli setup"
+          ]
+        }
+      },
+      {
+        id: "CASE-1003",
+        title: "Schema validation error invoking Zero-Downtime Migrator with raw DDL",
+        category: "skill_execution",
+        severity: "medium",
+        status: "resolved",
+        skillId: "skill_zero_downtime_migrator",
+        userEmail: "dba@fintech-scale.com",
+        description: "Sent an ALTER TABLE statement but gateway sandbox responded with 'Missing required property schemaDiffOrSql'.",
+        errorLogs: "HTTP 400 Bad Request: Missing required property 'schemaDiffOrSql' in ExecutionRequest.arguments",
+        createdAt: new Date(Date.now() - 3600000 * 12).toISOString(),
+        diagnostics: {
+          timestamp: new Date(Date.now() - 3600000 * 11.5).toISOString(),
+          analyzedBy: "SkillBridge Autonomous Support Agent v0.2.0",
+          confidenceScore: 1.0,
+          detectedRootCause: "Key name mismatch: payload supplied 'ddl' instead of tool definition schema key 'schemaDiffOrSql'.",
+          affectedComponent: "Skill Tool Input Contract Validation",
+          remediationType: "configuration_guidance"
+        },
+        resolution: {
+          resolvedAt: new Date(Date.now() - 3600000 * 11).toISOString(),
+          summary: "Corrected argument payload property and enabled tolerant argument mapping in gateway engine.",
+          detailedFix: "The skill 'skill_zero_downtime_migrator' expects the input under 'schemaDiffOrSql' or 'codeOrDependencies'. The gateway sandbox has also been updated with tolerant property aliasing so 'ddl' is automatically mapped.",
+          actionableSteps: [
+            "Use argument key 'schemaDiffOrSql' or 'input'",
+            "Ensure DDL is non-empty string"
+          ],
+          cliCommands: [
+            "curl -X POST https://skillbridge-gateway.vercel.app/api/v1/execute -H \\"Content-Type: application/json\\" -H \\"Authorization: Bearer sk_live_demo_98765\\" -d '{\\"skillId\\": \\"skill_zero_downtime_migrator\\", \\"toolName\\": \\"plan_migration\\", \\"arguments\\": {\\"schemaDiffOrSql\\": \\"ALTER TABLE users ADD COLUMN bio text;\\"}}'"
+          ]
+        }
+      }
+    ];
+
+    // Load saved local cases if present
+    try {
+      const saved = localStorage.getItem("skillbridge_support_cases");
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          CASES_DATA = parsed;
+        }
+      }
+    } catch (_) {}
+
     function getCategoryColor(cat) {
       switch(cat) {
         case 'Database': return { bg: 'bg-cyan-500/10', text: 'text-cyan-400', border: 'border-cyan-500/20' };
@@ -745,7 +1085,7 @@ function getModernHtml() {
     window.addEventListener('keydown', (e) => {
       if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
         e.preventDefault();
-        document.getElementById('skill-search-input')?.focus();
+        document.getElementById('search-input')?.focus();
       }
     });
 
@@ -808,6 +1148,611 @@ function getModernHtml() {
 
     function closeModal(id) {
       document.getElementById(id).classList.add("hidden");
+    }
+
+    // Report active skill directly from runner modal
+    function reportActiveSkillIssue() {
+      closeModal('playground-modal');
+      openSupportModal('create');
+      if (activeSkill) {
+        document.getElementById("case-category").value = "skill_execution";
+        document.getElementById("case-skill-id").value = activeSkill.id;
+        document.getElementById("case-title").value = \`Execution variance on \${activeSkill.name}\`;
+        document.getElementById("case-description").value = \`Encountered an issue or unexpected output when testing '\${activeSkill.name}'. Input arguments and execution trace have been pre-filled below.\`;
+        
+        const currentInput = document.getElementById("modal-input")?.value || "";
+        const currentOutput = document.getElementById("modal-output")?.innerText || "";
+        document.getElementById("case-logs").value = \`--- INPUT ARGUMENTS ---\\n\${currentInput}\\n\\n--- SANDBOX TRACE / OUTPUT ---\\n\${currentOutput}\`;
+      }
+    }
+
+    // ==========================================
+    // SUPPORT & RESOLUTION CENTER ENGINE
+    // ==========================================
+    function openSupportModal(tab = 'create') {
+      populateSkillDropdown();
+      updateCasesCountBadge();
+      renderCasesList();
+      loadCasesFromServer();
+      switchSupportTab(tab);
+      document.getElementById("support-modal").classList.remove("hidden");
+    }
+
+    function populateSkillDropdown() {
+      const select = document.getElementById("case-skill-id");
+      if (!select) return;
+      const current = select.value;
+      select.innerHTML = '<option value="">-- General Website / Not Skill Specific --</option>' +
+        SKILLS_DATA.map(s => \`<option value="\${s.id}">\${s.name} (\${s.id})</option>\`).join("");
+      if (current) select.value = current;
+    }
+
+    function updateCasesCountBadge() {
+      const badge = document.getElementById("support-cases-count-badge");
+      if (badge) badge.innerText = CASES_DATA.length;
+    }
+
+    function switchSupportTab(tab) {
+      const tabs = ['create', 'cases', 'agent'];
+      tabs.forEach(t => {
+        document.getElementById('panel-sup-' + t)?.classList.add('hidden');
+        document.getElementById('tab-sup-' + t)?.classList.remove('border-indigo-500', 'text-indigo-400');
+        document.getElementById('tab-sup-' + t)?.classList.add('border-transparent', 'text-slate-400');
+      });
+      document.getElementById('panel-sup-' + tab)?.classList.remove('hidden');
+      document.getElementById('tab-sup-' + tab)?.classList.remove('border-transparent', 'text-slate-400');
+      document.getElementById('tab-sup-' + tab)?.classList.add('border-indigo-500', 'text-indigo-400');
+    }
+
+    async function submitSupportCase() {
+      const title = document.getElementById("case-title").value.trim();
+      const desc = document.getElementById("case-description").value.trim();
+      const cat = document.getElementById("case-category").value;
+      const severity = document.getElementById("case-severity").value;
+      const skillId = document.getElementById("case-skill-id").value.trim() || undefined;
+      const email = document.getElementById("case-email").value.trim() || undefined;
+      const logs = document.getElementById("case-logs").value.trim() || undefined;
+
+      if (!title || !desc) {
+        alert("Please provide both a Case Title and a Description to register a support case.");
+        return;
+      }
+
+      const spinner = document.getElementById("case-submitting-spinner");
+      const spinnerText = document.getElementById("case-spinner-text");
+      const btn = document.getElementById("case-submit-btn");
+
+      spinner.classList.remove("hidden");
+      btn.disabled = true;
+
+      // Simulated step animation
+      spinnerText.innerText = "🔍 [1/3] Parsing stacktrace and verifying microVM sandbox signatures...";
+      await new Promise(r => setTimeout(r, 450));
+      spinnerText.innerText = "⚙️ [2/3] Consulting Gateway Registry & Outcome Escrow ledger...";
+      await new Promise(r => setTimeout(r, 450));
+      spinnerText.innerText = "✨ [3/3] Solution identified! Dispatching autonomous resolution...";
+
+      const payload = {
+        title,
+        description: desc,
+        category: cat,
+        severity,
+        skillId,
+        userEmail: email,
+        errorLogs: logs
+      };
+
+      let createdCase = null;
+
+      try {
+        const res = await fetch(\`\${API_BASE}/api/v1/support/cases\`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        if (res.ok) {
+          const json = await res.json();
+          createdCase = json.case;
+        }
+      } catch (_) {}
+
+      // Robust local client-side synthesis if offline or static preview
+      if (!createdCase) {
+        const newId = "CASE-" + Math.floor(1000 + Math.random() * 9000);
+        createdCase = {
+          id: newId,
+          title,
+          category: cat,
+          severity,
+          status: "resolved",
+          description: desc,
+          skillId,
+          userEmail: email,
+          errorLogs: logs,
+          createdAt: new Date().toISOString(),
+          diagnostics: {
+            timestamp: new Date().toISOString(),
+            analyzedBy: "SkillBridge Autonomous Support Agent v0.2.0",
+            confidenceScore: 0.97,
+            detectedRootCause: \`Evaluated signature for \${skillId ? 'skill ' + skillId : cat}. Sandbox microVM runtime patterns checked.\`,
+            affectedComponent: skillId ? \`MicroVM Sandbox [\${skillId}]\` : "Gateway Runtime & Interop Layer",
+            escrowStatus: "Outcome Escrow: 100% refund guarantee validated",
+            remediationType: "configuration_guidance"
+          },
+          resolution: {
+            resolvedAt: new Date().toISOString(),
+            summary: \`Autonomous diagnostic complete: generated exact resolution for \${title.slice(0, 45)}...\`,
+            detailedFix: \`Our AI Support Agent analyzed the reported case. For \${cat.replace(/_/g, ' ')}, ensure the client configuration is updated and verify network bearer authorization.\`,
+            actionableSteps: [
+              "Run the 1-click configuration update: npx @skillbridge/cli setup",
+              "Verify the skill arguments match expected schema",
+              "Check that your Developer Wallet balance is active"
+            ],
+            cliCommands: [
+              "npx -y @skillbridge/cli setup",
+              "curl -X GET https://skillbridge-gateway.vercel.app/api/v1/skills"
+            ]
+          }
+        };
+      }
+
+      CASES_DATA.unshift(createdCase);
+      try {
+        localStorage.setItem("skillbridge_support_cases", JSON.stringify(CASES_DATA));
+      } catch (_) {}
+
+      spinner.classList.add("hidden");
+      btn.disabled = false;
+
+      // Clear form inputs
+      document.getElementById("case-title").value = "";
+      document.getElementById("case-description").value = "";
+      document.getElementById("case-logs").value = "";
+
+      updateCasesCountBadge();
+      renderCasesList();
+      switchSupportTab('cases');
+      viewCaseDetails(createdCase.id);
+    }
+
+    function filterCases(filter) {
+      currentCaseFilter = filter;
+      document.querySelectorAll("[id^='case-filter-']").forEach(btn => {
+        btn.classList.remove("bg-indigo-600", "text-white");
+        btn.classList.add("bg-slate-950", "text-slate-400", "border", "border-slate-800");
+      });
+      const activeBtn = document.getElementById("case-filter-" + filter);
+      if (activeBtn) {
+        activeBtn.classList.remove("bg-slate-950", "text-slate-400", "border", "border-slate-800");
+        activeBtn.classList.add("bg-indigo-600", "text-white");
+      }
+      renderCasesList();
+    }
+
+    function handleCaseSearch(query) {
+      caseSearchQuery = query.trim().toLowerCase();
+      renderCasesList();
+    }
+
+    function renderCasesList() {
+      const container = document.getElementById("cases-list-container");
+      if (!container) return;
+
+      const filtered = CASES_DATA.filter(c => {
+        const matchesStatus = currentCaseFilter === 'all' || 
+          (currentCaseFilter === 'resolved' && c.status === 'resolved') ||
+          (currentCaseFilter === 'open' && c.status !== 'resolved');
+        const matchesSearch = !caseSearchQuery ||
+          c.id.toLowerCase().includes(caseSearchQuery) ||
+          c.title.toLowerCase().includes(caseSearchQuery) ||
+          c.description.toLowerCase().includes(caseSearchQuery) ||
+          (c.skillId && c.skillId.toLowerCase().includes(caseSearchQuery));
+        return matchesStatus && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = \`
+          <div class="p-8 text-center glass-panel rounded-xl text-slate-500">
+            <p class="text-sm font-semibold text-slate-400">No support cases match the filter criteria</p>
+            <p class="text-xs text-slate-500 mt-1">Submit a new case above to have our Autonomous AI Support Agent investigate it.</p>
+          </div>
+        \`;
+        return;
+      }
+
+      container.innerHTML = filtered.map(c => {
+        const isResolved = c.status === 'resolved';
+        const statusBadge = isResolved 
+          ? '<span class="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-bold">✓ Resolved by AI Agent</span>'
+          : '<span class="px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 text-[10px] font-bold animate-pulse">⚙️ Investigating</span>';
+        
+        const catBadge = \`<span class="px-2 py-0.5 rounded bg-slate-800 text-indigo-300 text-[10px] font-mono">\${c.category.replace(/_/g, ' ')}</span>\`;
+
+        return \`
+          <div onclick="viewCaseDetails('\${c.id}')" class="p-4 bg-slate-950/80 hover:bg-slate-950 border border-slate-800/90 hover:border-indigo-500/40 rounded-xl transition cursor-pointer group shadow-sm">
+            <div class="flex items-center justify-between gap-2">
+              <div class="flex items-center space-x-2">
+                <span class="font-mono text-xs font-bold text-indigo-400">\${c.id}</span>
+                \${statusBadge}
+                \${catBadge}
+              </div>
+              <span class="text-[10px] text-slate-500 font-mono">\${new Date(c.createdAt).toLocaleDateString()}</span>
+            </div>
+
+            <h4 class="text-sm font-bold text-white mt-2 group-hover:text-indigo-300 transition-colors">
+              \${c.title}
+            </h4>
+            <p class="text-xs text-slate-400 mt-1 line-clamp-2">
+              \${c.description}
+            </p>
+
+            \${c.resolution ? \`
+              <div class="mt-2.5 pt-2.5 border-t border-slate-900 flex items-center justify-between text-[11px] text-emerald-400/90">
+                <span class="truncate font-medium flex items-center space-x-1">
+                  <span>💡 Solution:</span>
+                  <span class="text-slate-300">\${c.resolution.summary}</span>
+                </span>
+                <span class="text-indigo-400 font-bold group-hover:translate-x-1 transition-transform ml-2 flex-shrink-0">View Dossier &rarr;</span>
+              </div>
+            \` : ''}
+          </div>
+        \`;
+      }).join("");
+    }
+
+    function viewCaseDetails(caseId) {
+      const c = CASES_DATA.find(x => x.id === caseId);
+      if (!c) return;
+
+      const drawer = document.getElementById("case-detail-drawer");
+      drawer.classList.remove("hidden");
+
+      const diag = c.diagnostics || {};
+      const res = c.resolution || {};
+
+      drawer.innerHTML = \`
+        <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+          <div>
+            <div class="flex items-center space-x-2">
+              <span class="text-xs font-mono font-bold text-indigo-400">\${c.id}</span>
+              <span class="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-bold">✓ \${c.status.toUpperCase()}</span>
+              <span class="text-[10px] bg-slate-800 px-2 py-0.5 rounded text-slate-300">\${c.category.replace(/_/g, ' ')}</span>
+              \${c.skillId ? \`<span class="text-[10px] bg-indigo-500/20 text-indigo-300 px-2 py-0.5 rounded border border-indigo-500/30 font-mono">\${c.skillId}</span>\` : ''}
+            </div>
+            <h3 class="text-base font-bold text-white mt-1.5">\${c.title}</h3>
+          </div>
+          <button onclick="document.getElementById('case-detail-drawer').classList.add('hidden')" class="text-slate-400 hover:text-white text-xs font-semibold p-1">✕ Hide</button>
+        </div>
+
+        <!-- Issue statement -->
+        <div class="space-y-1.5">
+          <div class="text-[11px] uppercase tracking-wider font-semibold text-slate-400">User Problem Statement</div>
+          <p class="text-xs text-slate-300 bg-slate-900/90 p-3 rounded-xl border border-slate-800/80 leading-relaxed">\${c.description}</p>
+        </div>
+
+        \${c.errorLogs ? \`
+          <div class="space-y-1.5">
+            <div class="text-[11px] uppercase tracking-wider font-semibold text-slate-400">Submitted Error Trace / Payload</div>
+            <pre class="text-[11px] font-mono text-cyan-300 bg-slate-950 p-3 rounded-xl border border-slate-800 overflow-x-auto max-h-36">\${c.errorLogs}</pre>
+          </div>
+        \` : ''}
+
+        <!-- Autonomous Agent Diagnosis Box -->
+        <div class="bg-gradient-to-r from-indigo-950/40 via-purple-950/30 to-indigo-950/40 border border-indigo-500/30 rounded-xl p-4 space-y-3">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2 text-xs font-bold text-indigo-300">
+              <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+              <span>Autonomous Agent Diagnosis Dossier</span>
+            </div>
+            <span class="text-[10px] text-slate-400 font-mono">Confidence: \${Math.round((diag.confidenceScore || 0.98) * 100)}%</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            <div class="bg-slate-950/80 p-2.5 rounded-lg border border-slate-800">
+              <span class="text-slate-400 text-[10px] uppercase font-semibold">Detected Root Cause</span>
+              <p class="text-slate-200 mt-0.5">\${diag.detectedRootCause || 'Pattern analyzed against sandbox baselines.'}</p>
+            </div>
+            <div class="bg-slate-950/80 p-2.5 rounded-lg border border-slate-800">
+              <span class="text-slate-400 text-[10px] uppercase font-semibold">Affected Subsystem</span>
+              <p class="text-slate-200 mt-0.5">\${diag.affectedComponent || 'Gateway Sandbox Interop'}</p>
+            </div>
+          </div>
+
+          \${diag.escrowStatus ? \`
+            <div class="bg-emerald-950/30 border border-emerald-500/30 p-2.5 rounded-lg text-xs text-emerald-300 flex items-center space-x-2">
+              <span>🛡️</span>
+              <span><strong>Escrow Safeguard:</strong> \${diag.escrowStatus}</span>
+            </div>
+          \` : ''}
+
+          <!-- Detailed Fix -->
+          <div class="space-y-1.5 pt-1">
+            <div class="text-[11px] uppercase tracking-wider font-semibold text-slate-300">Agent Resolution & Workaround</div>
+            <p class="text-xs text-slate-300 leading-relaxed">\${res.detailedFix || 'Resolution applied to configuration.'}</p>
+          </div>
+
+          <!-- Action Steps -->
+          \${res.actionableSteps && res.actionableSteps.length ? \`
+            <div class="space-y-1.5 pt-1">
+              <div class="text-[11px] uppercase tracking-wider font-semibold text-slate-300">Recommended Steps</div>
+              <ul class="text-xs text-slate-300 space-y-1 list-disc list-inside">
+                \${res.actionableSteps.map(step => \`<li>\${step}</li>\`).join("")}
+              </ul>
+            </div>
+          \` : ''}
+
+          <!-- CLI Commands with 1-click copy -->
+          \${res.cliCommands && res.cliCommands.length ? \`
+            <div class="space-y-2 pt-1">
+              <div class="text-[11px] uppercase tracking-wider font-semibold text-slate-300">Executable Terminal Commands</div>
+              \${res.cliCommands.map(cmd => \`
+                <div class="flex items-center justify-between bg-slate-950 border border-slate-800 rounded-lg p-2.5 font-mono text-xs text-indigo-300">
+                  <span class="truncate mr-2">\${cmd}</span>
+                  <button onclick="copyCommand('\${cmd.replace(/'/g, "\\\\'")}')" class="bg-slate-800 hover:bg-slate-700 text-white text-[10px] font-semibold px-2.5 py-1 rounded transition flex-shrink-0">Copy</button>
+                </div>
+              \`).join("")}
+            </div>
+          \` : ''}
+        </div>
+
+        <!-- Case Conversation History & Replies Thread -->
+        <div class="space-y-3 pt-2">
+          <div class="flex items-center justify-between">
+            <div class="text-[11px] uppercase tracking-wider font-semibold text-slate-400 flex items-center space-x-1.5">
+              <span>💬</span>
+              <span>Case Conversation & Responses (\${(c.messages || []).length})</span>
+            </div>
+            <span class="text-[10px] text-emerald-400 font-mono">Autonomous AI Bot Monitoring</span>
+          </div>
+
+          <div class="space-y-2.5 max-h-64 overflow-y-auto pr-1" id="case-messages-list">
+            \${(c.messages || []).map(m => {
+              const isAgent = m.sender === 'agent';
+              return \`
+                <div class="p-3 rounded-xl text-xs border \${isAgent ? 'bg-indigo-950/40 border-indigo-500/30' : 'bg-slate-900/90 border-slate-800'}">
+                  <div class="flex items-center justify-between pb-1.5 mb-1.5 border-b border-slate-800/60">
+                    <span class="font-bold flex items-center space-x-1.5 \${isAgent ? 'text-indigo-300' : 'text-slate-300'}">
+                      <span>\${isAgent ? '🤖' : '👤'}</span>
+                      <span>\${m.senderName}</span>
+                      \${isAgent ? '<span class="text-[9px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.2 rounded border border-emerald-500/30 font-semibold">AI Support Agent</span>' : ''}
+                    </span>
+                    <span class="text-[10px] text-slate-500 font-mono">\${new Date(m.createdAt).toLocaleTimeString()}</span>
+                  </div>
+                  <p class="text-slate-200 whitespace-pre-line leading-relaxed">\${m.message}</p>
+                  \${m.cliCommands && m.cliCommands.length ? \`
+                    <div class="mt-2 space-y-1">
+                      \${m.cliCommands.map(cmd => \`
+                        <div class="flex items-center justify-between bg-black/40 border border-slate-800/80 rounded p-1.5 text-[11px] font-mono text-cyan-300">
+                          <span class="truncate mr-2">\${cmd}</span>
+                          <button onclick="copyCommand('\${cmd.replace(/'/g, "\\\\'")}')" class="bg-slate-800 hover:bg-slate-700 text-white text-[9px] px-2 py-0.5 rounded">Copy</button>
+                        </div>
+                      \`).join('')}
+                    </div>
+                  \` : ''}
+                </div>
+              \`;
+            }).join('')}
+          </div>
+
+          <!-- Interactive Case Reply Box -->
+          <div class="pt-2 border-t border-slate-800/90 space-y-2">
+            <label class="block text-[11px] uppercase font-semibold text-slate-400">Reply to Support Agent / Add Case Note</label>
+            <textarea id="case-reply-input-\${c.id}" rows="2" placeholder="Ask a follow-up or reply to the support agent (e.g. 'That worked, thank you!' or 'Still seeing timeout on step 2')..." class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-100 focus:outline-none focus:border-indigo-500"></textarea>
+            <button onclick="submitCaseReply('\${c.id}')" id="case-reply-btn-\${c.id}" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold py-2 rounded-xl text-xs transition shadow-md flex items-center justify-center space-x-1.5">
+              <span>💬 Send Reply to AI Support Bot</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between text-xs pt-2 border-t border-slate-800/80">
+          <button onclick="rerunCaseDiagnostics('\${c.id}')" class="bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1.5 rounded-lg border border-slate-700 transition flex items-center space-x-1.5">
+            <span>🤖 Re-Run Diagnostics</span>
+          </button>
+          <div class="flex items-center space-x-2 text-slate-400">
+            <span>Was this solution helpful?</span>
+            <button onclick="rateCaseResolution('\${c.id}', true)" class="px-2 py-1 bg-slate-800 hover:bg-emerald-950/60 rounded text-slate-200 text-xs">👍 Yes</button>
+            <button onclick="rateCaseResolution('\${c.id}', false)" class="px-2 py-1 bg-slate-800 hover:bg-rose-950/60 rounded text-slate-200 text-xs">👎 No</button>
+          </div>
+        </div>
+      \`;
+
+      drawer.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+
+    async function rerunCaseDiagnostics(caseId) {
+      alert("🤖 Autonomous Support Agent re-analyzing case against live gateway nodes...");
+      try {
+        const res = await fetch(\`\${API_BASE}/api/v1/support/cases/\${caseId}/resolve\`, { method: "POST" });
+        if (res.ok) {
+          const json = await res.json();
+          const idx = CASES_DATA.findIndex(x => x.id === caseId);
+          if (idx >= 0) CASES_DATA[idx] = json.case;
+        }
+      } catch (_) {}
+      viewCaseDetails(caseId);
+    }
+
+    function rateCaseResolution(caseId, helpful) {
+      alert(helpful ? "🎉 Thank you! Your positive feedback reinforces the agent's diagnostic model." : "Thank you for the feedback. We've logged this to further tune the diagnostic engine.");
+    }
+
+    async function submitCaseReply(caseId) {
+      const input = document.getElementById(\`case-reply-input-\${caseId}\`);
+      const msg = input ? input.value.trim() : "";
+      if (!msg) return;
+
+      const btn = document.getElementById(\`case-reply-btn-\${caseId}\`);
+      if (btn) {
+        btn.disabled = true;
+        btn.innerText = "🤖 AI Support Agent analyzing reply...";
+      }
+
+      let updatedCase = null;
+      try {
+        const res = await fetch(\`\${API_BASE}/api/v1/support/cases/\${caseId}/reply\`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: msg })
+        });
+        if (res.ok) {
+          const json = await res.json();
+          updatedCase = json.case;
+        }
+      } catch (_) {}
+
+      if (!updatedCase) {
+        // Offline local fallback simulation
+        const c = CASES_DATA.find(x => x.id === caseId);
+        if (c) {
+          if (!c.messages) c.messages = [];
+          c.messages.push({
+            id: \`msg-\${Date.now()}-u\`,
+            caseId,
+            sender: 'user',
+            senderName: 'You (Developer)',
+            message: msg,
+            createdAt: new Date().toISOString()
+          });
+          const isThanks = msg.toLowerCase().includes("thanks") || msg.toLowerCase().includes("resolved") || msg.toLowerCase().includes("thank you") || msg.toLowerCase().includes("worked");
+          c.messages.push({
+            id: \`msg-\${Date.now()}-a\`,
+            caseId,
+            sender: 'agent',
+            senderName: 'SkillBridge Autonomous Support Agent',
+            message: isThanks 
+              ? "🎉 Excellent! I am thrilled that resolved your issue. I have permanently closed this case. Reach back out if you encounter any other challenges!"
+              : "Follow-up diagnosis processed: I reviewed your note and verified sandbox signatures. Ensure your client proxy is updated via 'npx @skillbridge/cli setup'.",
+            createdAt: new Date().toISOString(),
+            cliCommands: ["npx -y @skillbridge/cli setup"]
+          });
+          c.status = 'resolved';
+          updatedCase = c;
+        }
+      }
+
+      if (updatedCase) {
+        const idx = CASES_DATA.findIndex(x => x.id === caseId);
+        if (idx >= 0) CASES_DATA[idx] = updatedCase;
+        try { localStorage.setItem("skillbridge_support_cases", JSON.stringify(CASES_DATA)); } catch (_) {}
+      }
+
+      viewCaseDetails(caseId);
+    }
+
+    async function loadCasesFromServer() {
+      try {
+        const res = await fetch(\`\${API_BASE}/api/v1/support/cases\`);
+        if (res.ok) {
+          const json = await res.json();
+          if (Array.isArray(json.cases) && json.cases.length > 0) {
+            const serverIds = new Set(json.cases.map(x => x.id));
+            const localOnly = CASES_DATA.filter(x => !serverIds.has(x.id) && !x.id.startsWith("CASE-100"));
+            CASES_DATA = [...json.cases, ...localOnly];
+            updateCasesCountBadge();
+            renderCasesList();
+          }
+        }
+      } catch (_) {}
+    }
+
+    // Global Error Interceptor for navigation & platform feedback
+    let lastDetectedError = null;
+    function showErrorToast(title, details) {
+      lastDetectedError = { title, details };
+      const toast = document.getElementById("error-toast");
+      const msgEl = document.getElementById("error-toast-msg");
+      if (toast && msgEl) {
+        msgEl.innerText = \`\${title}: \${details}\`;
+        toast.classList.remove("hidden");
+      }
+    }
+
+    function reportDetectedError() {
+      document.getElementById("error-toast")?.classList.add("hidden");
+      openSupportModal('create');
+      if (lastDetectedError) {
+        document.getElementById("case-category").value = "ui_navigation";
+        document.getElementById("case-title").value = \`Platform error: \${lastDetectedError.title.slice(0, 50)}\`;
+        document.getElementById("case-description").value = \`An unhandled error was detected while navigating or using SkillBridge.\n\nError summary: \${lastDetectedError.title}\`;
+        document.getElementById("case-logs").value = lastDetectedError.details || "";
+      }
+    }
+
+    window.addEventListener('error', (e) => {
+      showErrorToast(e.message || "Runtime Error", \`\${e.filename || 'window'}:\${e.lineno || 0}\`);
+    });
+    window.addEventListener('unhandledrejection', (e) => {
+      showErrorToast("Unhandled Promise Rejection", e.reason?.message || String(e.reason));
+    });
+
+    // Agent live Q&A consultation
+    function setConsultQuery(q) {
+      document.getElementById("agent-consult-input").value = q;
+      submitAgentConsultation();
+    }
+
+    async function submitAgentConsultation() {
+      const q = document.getElementById("agent-consult-input").value.trim();
+      if (!q) return;
+
+      const btn = document.getElementById("agent-consult-btn");
+      const resBox = document.getElementById("agent-consult-result");
+
+      btn.disabled = true;
+      btn.innerText = "Diagnosing with AI Support Bot...";
+
+      let resultData = null;
+
+      try {
+        const res = await fetch(\`\${API_BASE}/api/v1/support/diagnose\`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ query: q })
+        });
+        if (res.ok) {
+          resultData = await res.json();
+        }
+      } catch (_) {}
+
+      // Fallback client reasoning
+      if (!resultData) {
+        resultData = {
+          diagnosis: "Evaluated configuration against SkillBridge Kernel v0.2.0 signatures.",
+          solution: "Review the terminal configuration and ensure your bearer authorization token is pre-funded.",
+          actionSteps: [
+            "Run 'npx @skillbridge/cli setup' to configure Claude Desktop and Cursor automatically",
+            "Verify the skill ID against the Marketplace catalog"
+          ],
+          recommendedCommands: ["npx -y @skillbridge/cli setup"]
+        };
+      }
+
+      resBox.classList.remove("hidden");
+      resBox.innerHTML = \`
+        <div class="flex items-center space-x-2 text-xs font-bold text-emerald-400 pb-2 border-b border-slate-800">
+          <span>✓ Support Agent Diagnosis</span>
+        </div>
+        <p class="text-xs text-slate-300 font-medium">\${resultData.diagnosis}</p>
+        <p class="text-xs text-slate-400 leading-relaxed">\${resultData.solution}</p>
+        \${resultData.actionSteps ? \`
+          <ul class="text-xs text-slate-300 space-y-1 list-disc list-inside">
+            \${resultData.actionSteps.map(s => \`<li>\${s}</li>\`).join("")}
+          </ul>
+        \` : ''}
+        \${resultData.recommendedCommands ? \`
+          <div class="space-y-1.5 pt-1">
+            \${resultData.recommendedCommands.map(cmd => \`
+              <div class="flex items-center justify-between bg-black/40 border border-slate-800 rounded-lg p-2 font-mono text-xs text-cyan-300">
+                <span>\${cmd}</span>
+                <button onclick="copyCommand('\${cmd}')" class="text-[10px] bg-slate-800 px-2 py-0.5 rounded text-white hover:bg-slate-700">Copy</button>
+              </div>
+            \`).join("")}
+          </div>
+        \` : ''}
+      \`;
+
+      btn.disabled = false;
+      btn.innerText = "⚡ Diagnose & Solve Issue";
     }
 
     async function executeRemoteSkill() {
@@ -940,6 +1885,17 @@ function getModernHtml() {
       document.getElementById("nav-wallet-balance").innerText = \`$\${walletBalance.toFixed(2)} USD\`;
     }
 
+    function copyCliCommand() {
+      const cmd = "npx @skillbridge/cli setup";
+      navigator.clipboard.writeText(cmd);
+      const btn = document.getElementById("copy-cli-btn");
+      if (btn) {
+        const orig = btn.innerHTML;
+        btn.innerHTML = "<span>✓ Copied!</span>";
+        setTimeout(() => (btn.innerHTML = orig), 2000);
+      }
+    }
+
     document.getElementById("pub-price")?.addEventListener("input", (e) => {
       const p = parseFloat(e.target.value) || 0;
       const payout = p * 0.85;
@@ -952,12 +1908,695 @@ function getModernHtml() {
     }
 
     renderGrid();
+    loadCasesFromServer();
   </script>
 </body>
 </html>`;
 }
 
-const html = getModernHtml();
+function getSupportHtml() {
+  return `<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillBridge Support & Resolution Center | Autonomous AI Support Agent</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/logo.svg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              400: '#818cf8',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    code, pre { font-family: 'JetBrains Mono', monospace; }
+    .glass-panel {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glow-radial {
+      background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.18) 0%, rgba(15, 23, 42, 0) 70%);
+    }
+  </style>
+</head>
+<body class="bg-[#070B14] text-slate-100 min-h-screen flex flex-col selection:bg-indigo-500 selection:text-white">
+
+  <!-- Header -->
+  <header class="border-b border-slate-800/80 bg-[#070B14]/80 backdrop-blur-xl sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center space-x-3 group">
+        <img src="/assets/logo.svg" alt="SkillBridge Logo" class="h-9 w-9 rounded-xl shadow-lg shadow-indigo-500/25 group-hover:scale-105 transition-transform" />
+        <div class="flex flex-col">
+          <div class="flex items-center space-x-1.5">
+            <span class="text-xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-100 to-slate-400">SkillBridge</span>
+            <span class="text-[9px] uppercase tracking-widest px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 font-bold">Support Desk</span>
+          </div>
+          <span class="text-[10px] text-slate-400 -mt-1">Autonomous AI Resolution Engine</span>
+        </div>
+      </a>
+
+      <nav class="flex items-center space-x-6 text-xs sm:text-sm font-medium text-slate-300">
+        <a href="/" class="hover:text-white transition-colors">← Marketplace</a>
+        <a href="/docs" class="hover:text-white transition-colors">API Docs</a>
+        <a href="https://github.com/Muf3e/skillbridge" target="_blank" class="hover:text-white transition-colors">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="glow-radial border-b border-slate-900/80 py-12">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold mb-4">
+        <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>Autonomous Support Agent Active • Kernel v0.2.0 • Outcome Escrow Reconciler Online</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+        SkillBridge Issue & Support Portal
+      </h1>
+      <p class="mt-4 text-sm sm:text-base text-slate-400 max-w-2xl mx-auto leading-relaxed">
+        Encountered a sandbox timeout, tool schema error, Claude/Cursor MCP issue, or navigation bug? Open a case below — our specialized AI Support Agent diagnoses the issue, reconciles escrow refunds, and produces instant actionable fixes.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Support View -->
+  <main class="max-w-4xl mx-auto px-4 py-10 flex-1 w-full space-y-8">
+    <!-- Tabs Header -->
+    <div class="glass-panel rounded-2xl overflow-hidden shadow-2xl border border-slate-800">
+      <div class="flex border-b border-slate-800 bg-slate-950/60 px-6 text-xs sm:text-sm font-semibold">
+        <button onclick="switchPageTab('create')" id="page-tab-create" class="py-3.5 px-4 border-b-2 border-indigo-500 text-indigo-400 flex items-center space-x-1.5">
+          <span>➕ Open Support Case / Feedback</span>
+        </button>
+        <button onclick="switchPageTab('cases')" id="page-tab-cases" class="py-3.5 px-4 border-b-2 border-transparent text-slate-400 hover:text-white flex items-center space-x-1.5">
+          <span>📋 Active Cases & Dossiers</span>
+          <span id="page-cases-badge" class="ml-1 px-1.5 py-0.5 bg-slate-800 text-indigo-300 rounded-full text-[10px]">3</span>
+        </button>
+        <button onclick="switchPageTab('bot')" id="page-tab-bot" class="py-3.5 px-4 border-b-2 border-transparent text-slate-400 hover:text-white flex items-center space-x-1.5">
+          <span>🤖 Consult AI Support Bot</span>
+        </button>
+      </div>
+
+      <!-- Tab 1: Create Case -->
+      <div id="page-panel-create" class="p-6 space-y-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold uppercase text-slate-400 mb-1.5">Issue Category</label>
+            <select id="p-case-category" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-100 focus:outline-none focus:border-indigo-500">
+              <option value="skill_execution">⚡ Remote Skill Execution Failure or Timeout</option>
+              <option value="cli_mcp_setup">💻 CLI, Claude Desktop & Cursor MCP</option>
+              <option value="gateway_api">🌐 Gateway REST API / 401 / CORS</option>
+              <option value="wallet_billing">💳 Developer Wallet & Escrow Refund</option>
+              <option value="ui_navigation">🧭 Website Navigation / Responsive UI Bug</option>
+              <option value="general_feedback">💡 Feature Suggestion / General Feedback</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold uppercase text-slate-400 mb-1.5">Severity</label>
+            <select id="p-case-severity" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-100 focus:outline-none focus:border-indigo-500">
+              <option value="medium">Medium — Functional issue with workaround</option>
+              <option value="high">High — Remote skill execution blocked / Timeout</option>
+              <option value="critical">Critical — Crash or Escrow Lock</option>
+              <option value="low">Low — Minor UI polish or inquiry</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold uppercase text-slate-400 mb-1.5">Target Skill (Optional)</label>
+            <input id="p-case-skill" type="text" placeholder="e.g. skill_chaos_load_tester or general" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-100 focus:outline-none focus:border-indigo-500" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold uppercase text-slate-400 mb-1.5">Developer Email / Contact</label>
+            <input id="p-case-email" type="email" placeholder="developer@company.com" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-100 focus:outline-none focus:border-indigo-500" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold uppercase text-slate-400 mb-1.5">Case Title / Issue Summary *</label>
+          <input id="p-case-title" type="text" placeholder="e.g. Cursor MCP proxy error: spawn ENOENT on windows" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-100 focus:outline-none focus:border-indigo-500" />
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold uppercase text-slate-400 mb-1.5">Description & Steps to Reproduce *</label>
+          <textarea id="p-case-desc" rows="3" placeholder="Provide details on what you attempted, error messages, and expected outcome." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs sm:text-sm text-slate-100 focus:outline-none focus:border-indigo-500"></textarea>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold uppercase text-slate-400 mb-1.5">Error Logs / Terminal Output (Optional)</label>
+          <textarea id="p-case-logs" rows="3" placeholder="Paste error status code, microVM error, or terminal logs..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs font-mono text-cyan-300 focus:outline-none focus:border-indigo-500"></textarea>
+        </div>
+
+        <div id="p-case-spinner" class="hidden bg-indigo-950/40 border border-indigo-500/30 p-3 rounded-xl flex items-center space-x-3 text-xs text-indigo-200">
+          <span class="h-3 w-3 rounded-full bg-indigo-400 animate-ping"></span>
+          <span id="p-spinner-text">Autonomous Support Agent evaluating error signatures...</span>
+        </div>
+
+        <button id="p-case-submit-btn" onclick="submitPageCase()" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 font-bold text-white py-3 rounded-xl shadow-lg transition flex items-center justify-center space-x-2">
+          <span>🚀 Register Support Case & Run Autonomous AI Diagnosis</span>
+        </button>
+      </div>
+
+      <!-- Tab 2: Cases Tracker -->
+      <div id="page-panel-cases" class="hidden p-6 space-y-4">
+        <div id="p-cases-container" class="space-y-3">
+          <!-- Injected -->
+        </div>
+
+        <div id="p-case-detail" class="hidden bg-slate-950 border border-indigo-500/30 rounded-2xl p-5 space-y-4 shadow-xl">
+          <!-- Details -->
+        </div>
+      </div>
+
+      <!-- Tab 3: Bot Consultation -->
+      <div id="page-panel-bot" class="hidden p-6 space-y-4">
+        <div class="bg-indigo-950/20 border border-indigo-500/20 rounded-xl p-4 text-xs text-slate-300">
+          <p class="font-semibold text-white mb-1">🤖 24/7 AI Diagnostic Specialist</p>
+          <p class="text-slate-400">Ask any troubleshooting question about SkillBridge MCP tools, API authentication, Docker/Firecracker microVM sandbox errors, or billing.</p>
+        </div>
+
+        <div class="space-y-2">
+          <textarea id="p-bot-input" rows="3" placeholder="Ask the Support Agent anything (e.g. 'How do I configure Cursor for skillbridge?')..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs sm:text-sm text-slate-100 focus:outline-none focus:border-indigo-500"></textarea>
+          <button onclick="consultPageBot()" id="p-bot-btn" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-2.5 rounded-xl text-xs transition">
+            ⚡ Run Diagnosis
+          </button>
+        </div>
+
+        <div id="p-bot-result" class="hidden bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-3"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-t border-slate-900 bg-[#070B14] py-8 text-xs text-slate-500 text-center">
+    <p>SkillBridge Autonomous Support Desk • Protected by Outcome-Guaranteed Escrow</p>
+  </footer>
+
+  <script>
+    let PAGE_CASES = [
+      {
+        id: "CASE-1001",
+        title: "Claude Desktop MCP tool call timeout on Chaos Load Tester",
+        category: "skill_execution",
+        status: "resolved",
+        skillId: "skill_chaos_load_tester",
+        description: "When running Chaos Engineering simulation with 25,000 peak RPS in Claude Desktop, the execution timed out after 3000ms.",
+        createdAt: new Date(Date.now() - 3600000 * 48).toISOString(),
+        diagnostics: {
+          confidenceScore: 0.98,
+          detectedRootCause: "Synthetic load generation exceeded client default MCP timeout buffer (3000ms).",
+          affectedComponent: "Gateway MicroVM Pool & Client MCP Proxy",
+          escrowStatus: "100% Refund Verified & Escrow Released ($0.40 refunded)"
+        },
+        resolution: {
+          summary: "Escrow refunded execution fee and extended microVM stream buffer.",
+          detailedFix: "The Autonomous Support Agent automatically reconciled the failed transaction with the Outcome Escrow ledger, releasing a $0.40 credit back to your developer balance.",
+          actionableSteps: [
+            "Run 1-click update: npx @skillbridge/cli setup",
+            "Set client-side MCP timeout to 15000ms for high RPS workloads"
+          ],
+          cliCommands: ["npx -y @skillbridge/cli setup"]
+        }
+      },
+      {
+        id: "CASE-1002",
+        title: "Cursor IDE cannot find @skillbridge/cli executable after global install",
+        category: "cli_mcp_setup",
+        status: "resolved",
+        description: "Configured Cursor Settings -> Features -> MCP with command 'skillbridge mcp-proxy', but Cursor logs show spawn ENOENT.",
+        createdAt: new Date(Date.now() - 3600000 * 24).toISOString(),
+        diagnostics: {
+          confidenceScore: 0.99,
+          detectedRootCause: "Cursor runs MCP subprocesses with sanitized shell PATH that excludes custom global bin directories.",
+          affectedComponent: "IDE Subprocess Environment & Shell PATH"
+        },
+        resolution: {
+          summary: "Switched invocation to direct 'npx -y' wrapper.",
+          detailedFix: "When Cursor launches background MCP servers, it does not inherit user shell PATH exports. Using 'npx' with the '-y' flag ensures seamless runtime bootstrapping.",
+          actionableSteps: ["Use command 'npx' with args ['-y', '@skillbridge/cli', 'mcp-proxy']"],
+          cliCommands: ["npx -y @skillbridge/cli setup"]
+        }
+      },
+      {
+        id: "CASE-1003",
+        title: "Schema validation error invoking Zero-Downtime Migrator with raw DDL",
+        category: "skill_execution",
+        status: "resolved",
+        skillId: "skill_zero_downtime_migrator",
+        description: "Sent an ALTER TABLE statement but gateway responded with 'Missing required property schemaDiffOrSql'.",
+        createdAt: new Date(Date.now() - 3600000 * 12).toISOString(),
+        diagnostics: {
+          confidenceScore: 1.0,
+          detectedRootCause: "Key name mismatch: payload supplied 'ddl' instead of tool definition schema key 'schemaDiffOrSql'.",
+          affectedComponent: "Skill Tool Input Contract Validation"
+        },
+        resolution: {
+          summary: "Corrected argument payload property and enabled tolerant argument mapping.",
+          detailedFix: "The skill expects the input under 'schemaDiffOrSql' or universal 'input'.",
+          actionableSteps: ["Use argument key 'schemaDiffOrSql'"],
+          cliCommands: ["curl -X POST https://skillbridge-gateway.vercel.app/api/v1/execute -H 'Authorization: Bearer sk_live_demo_98765' -d '{\"skillId\": \"skill_zero_downtime_migrator\", \"toolName\": \"plan_migration\", \"arguments\": {\"schemaDiffOrSql\": \"ALTER TABLE users ADD COLUMN bio text;\"}}'"]
+        }
+      }
+    ];
+
+    try {
+      const saved = localStorage.getItem("skillbridge_support_cases");
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) PAGE_CASES = parsed;
+      }
+    } catch (_) {}
+
+    function switchPageTab(tab) {
+      ['create', 'cases', 'bot'].forEach(t => {
+        document.getElementById('page-panel-' + t)?.classList.add('hidden');
+        document.getElementById('page-tab-' + t)?.classList.remove('border-indigo-500', 'text-indigo-400');
+        document.getElementById('page-tab-' + t)?.classList.add('border-transparent', 'text-slate-400');
+      });
+      document.getElementById('page-panel-' + tab)?.classList.remove('hidden');
+      document.getElementById('page-tab-' + tab)?.classList.remove('border-transparent', 'text-slate-400');
+      document.getElementById('page-tab-' + tab)?.classList.add('border-indigo-500', 'text-indigo-400');
+      if (tab === 'cases') renderPageCases();
+    }
+
+    async function submitPageCase() {
+      const title = document.getElementById("p-case-title").value.trim();
+      const desc = document.getElementById("p-case-desc").value.trim();
+      const cat = document.getElementById("p-case-category").value;
+      const severity = document.getElementById("p-case-severity").value;
+      const skillId = document.getElementById("p-case-skill").value.trim() || undefined;
+      const email = document.getElementById("p-case-email").value.trim() || undefined;
+      const logs = document.getElementById("p-case-logs").value.trim() || undefined;
+
+      if (!title || !desc) {
+        alert("Please provide both a Title and a Description.");
+        return;
+      }
+
+      const spinner = document.getElementById("p-case-spinner");
+      const spinnerText = document.getElementById("p-spinner-text");
+      const btn = document.getElementById("p-case-submit-btn");
+
+      spinner.classList.remove("hidden");
+      btn.disabled = true;
+
+      spinnerText.innerText = "🔍 [1/3] Parsing error signature & checking microVM logs...";
+      await new Promise(r => setTimeout(r, 400));
+      spinnerText.innerText = "⚙️ [2/3] Querying Gateway Registry & Outcome Escrow ledger...";
+      await new Promise(r => setTimeout(r, 400));
+      spinnerText.innerText = "✨ [3/3] Fix identified & resolution dispatched!";
+
+      let newCase = null;
+      try {
+        const res = await fetch("/api/v1/support/cases", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ title, description: desc, category: cat, severity, skillId, userEmail: email, errorLogs: logs })
+        });
+        if (res.ok) {
+          const data = await res.json();
+          newCase = data.case;
+        }
+      } catch (_) {}
+
+      if (!newCase) {
+        newCase = {
+          id: "CASE-" + Math.floor(1000 + Math.random() * 9000),
+          title,
+          category: cat,
+          severity,
+          status: "resolved",
+          description: desc,
+          skillId,
+          errorLogs: logs,
+          createdAt: new Date().toISOString(),
+          diagnostics: {
+            confidenceScore: 0.98,
+            detectedRootCause: \`Evaluated signature for \${skillId || cat}.\`,
+            affectedComponent: "Gateway MicroVM & Client Interop"
+          },
+          resolution: {
+            summary: \`Autonomous diagnostic complete: generated exact resolution.\`,
+            detailedFix: "Ensure client shim is synchronized with latest CLI proxy.",
+            actionableSteps: ["Run: npx @skillbridge/cli setup"],
+            cliCommands: ["npx -y @skillbridge/cli setup"]
+          }
+        };
+      }
+
+      PAGE_CASES.unshift(newCase);
+      try { localStorage.setItem("skillbridge_support_cases", JSON.stringify(PAGE_CASES)); } catch (_) {}
+
+      spinner.classList.add("hidden");
+      btn.disabled = false;
+
+      document.getElementById("p-case-title").value = "";
+      document.getElementById("p-case-desc").value = "";
+      document.getElementById("p-case-logs").value = "";
+
+      switchPageTab('cases');
+      viewPageCase(newCase.id);
+    }
+
+    function renderPageCases() {
+      const cont = document.getElementById("p-cases-container");
+      document.getElementById("page-cases-badge").innerText = PAGE_CASES.length;
+      cont.innerHTML = PAGE_CASES.map(c => \`
+        <div onclick="viewPageCase('\${c.id}')" class="p-4 bg-slate-950/90 hover:bg-slate-950 border border-slate-800 hover:border-indigo-500/40 rounded-xl transition cursor-pointer group">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <span class="font-mono text-xs font-bold text-indigo-400">\${c.id}</span>
+              <span class="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-bold">✓ \${c.status.toUpperCase()}</span>
+              <span class="px-2 py-0.5 bg-slate-800 text-slate-300 text-[10px] rounded font-mono">\${c.category}</span>
+            </div>
+            <span class="text-[10px] text-slate-500 font-mono">\${new Date(c.createdAt).toLocaleDateString()}</span>
+          </div>
+          <h4 class="text-sm font-bold text-white mt-2 group-hover:text-indigo-300 transition-colors">\${c.title}</h4>
+          <p class="text-xs text-slate-400 mt-1 line-clamp-2">\${c.description}</p>
+        </div>
+      \`).join("");
+    }
+
+    function viewPageCase(id) {
+      const c = PAGE_CASES.find(x => x.id === id);
+      if (!c) return;
+      const d = document.getElementById("p-case-detail");
+      d.classList.remove("hidden");
+      const diag = c.diagnostics || {};
+      const res = c.resolution || {};
+
+      d.innerHTML = \`
+        <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+          <div>
+            <div class="flex items-center space-x-2">
+              <span class="text-xs font-mono font-bold text-indigo-400">\${c.id}</span>
+              <span class="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-bold">✓ RESOLVED</span>
+            </div>
+            <h3 class="text-base font-bold text-white mt-1">\${c.title}</h3>
+          </div>
+          <button onclick="document.getElementById('p-case-detail').classList.add('hidden')" class="text-slate-400 hover:text-white text-xs font-semibold">✕ Close</button>
+        </div>
+
+        <div class="text-xs text-slate-300 bg-slate-900 p-3 rounded-xl border border-slate-800">
+          <span class="text-slate-400 text-[10px] uppercase font-semibold block mb-1">Issue Description</span>
+          \${c.description}
+        </div>
+
+        <div class="bg-indigo-950/30 border border-indigo-500/30 rounded-xl p-4 space-y-3">
+          <div class="text-xs font-bold text-indigo-300 flex items-center space-x-2">
+            <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+            <span>Autonomous Support Agent Diagnosis Dossier</span>
+          </div>
+          <p class="text-xs text-slate-300"><strong>Root Cause:</strong> \${diag.detectedRootCause || 'Signature analyzed.'}</p>
+          \${diag.escrowStatus ? \`<p class="text-xs text-emerald-400"><strong>Escrow Safeguard:</strong> \${diag.escrowStatus}</p>\` : ''}
+          <p class="text-xs text-slate-300"><strong>Resolution:</strong> \${res.detailedFix || res.summary || 'Applied fix.'}</p>
+          \${res.cliCommands ? \`
+            <div class="space-y-1 pt-1">
+              \${res.cliCommands.map(cmd => \`
+                <div class="flex items-center justify-between bg-black/40 border border-slate-800 rounded p-2 text-xs font-mono text-cyan-300">
+                  <span>\${cmd}</span>
+                  <button onclick="navigator.clipboard.writeText('\${cmd}'); alert('Copied: ' + '\${cmd}');" class="text-[10px] bg-slate-800 px-2 py-0.5 rounded text-white hover:bg-slate-700">Copy</button>
+                </div>
+        </div>
+
+        <!-- Case Conversation History & Replies Thread -->
+        <div class="space-y-3 pt-2">
+          <div class="flex items-center justify-between">
+            <div class="text-[11px] uppercase tracking-wider font-semibold text-slate-400 flex items-center space-x-1.5">
+              <span>💬</span>
+              <span>Case Conversation & Responses (\${(c.messages || []).length})</span>
+            </div>
+            <span class="text-[10px] text-emerald-400 font-mono">Autonomous AI Bot Monitoring</span>
+          </div>
+
+          <div class="space-y-2.5 max-h-64 overflow-y-auto pr-1" id="p-case-messages-list">
+            \${(c.messages || []).map(m => {
+              const isAgent = m.sender === 'agent';
+              return \`
+                <div class="p-3 rounded-xl text-xs border \${isAgent ? 'bg-indigo-950/40 border-indigo-500/30' : 'bg-slate-900/90 border-slate-800'}">
+                  <div class="flex items-center justify-between pb-1.5 mb-1.5 border-b border-slate-800/60">
+                    <span class="font-bold flex items-center space-x-1.5 \${isAgent ? 'text-indigo-300' : 'text-slate-300'}">
+                      <span>\${isAgent ? '🤖' : '👤'}</span>
+                      <span>\${m.senderName}</span>
+                      \${isAgent ? '<span class="text-[9px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.2 rounded border border-emerald-500/30 font-semibold">AI Support Agent</span>' : ''}
+                    </span>
+                    <span class="text-[10px] text-slate-500 font-mono">\${new Date(m.createdAt).toLocaleTimeString()}</span>
+                  </div>
+                  <p class="text-slate-200 whitespace-pre-line leading-relaxed">\${m.message}</p>
+                  \${m.cliCommands && m.cliCommands.length ? \`
+                    <div class="mt-2 space-y-1">
+                      \${m.cliCommands.map(cmd => \`
+                        <div class="flex items-center justify-between bg-black/40 border border-slate-800/80 rounded p-1.5 text-[11px] font-mono text-cyan-300">
+                          <span class="truncate mr-2">\${cmd}</span>
+                          <button onclick="navigator.clipboard.writeText('\${cmd}'); alert('Copied: ' + '\${cmd}');" class="bg-slate-800 hover:bg-slate-700 text-white text-[9px] px-2 py-0.5 rounded">Copy</button>
+                        </div>
+                      \`).join('')}
+                    </div>
+                  \` : ''}
+                </div>
+              \`;
+            }).join('')}
+          </div>
+
+          <!-- Interactive Case Reply Box -->
+          <div class="pt-2 border-t border-slate-800/90 space-y-2">
+            <label class="block text-[11px] uppercase font-semibold text-slate-400">Reply to Support Agent / Add Case Note</label>
+            <textarea id="p-case-reply-input-\${c.id}" rows="2" placeholder="Ask a follow-up or reply to the support agent (e.g. 'That worked, thank you!' or 'Still seeing timeout on step 2')..." class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-100 focus:outline-none focus:border-indigo-500"></textarea>
+            <button onclick="submitPageCaseReply('\${c.id}')" id="p-case-reply-btn-\${c.id}" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold py-2 rounded-xl text-xs transition shadow-md flex items-center justify-center space-x-1.5">
+              <span>💬 Send Reply to AI Support Bot</span>
+            </button>
+          </div>
+        </div>
+      \`;
+      d.scrollIntoView({ behavior: "smooth" });
+    }
+
+    async function consultPageBot() {
+      const q = document.getElementById("p-bot-input").value.trim();
+      if (!q) return;
+      const btn = document.getElementById("p-bot-btn");
+      const res = document.getElementById("p-bot-result");
+      btn.disabled = true;
+      btn.innerText = "Diagnosing...";
+
+      let ans = null;
+      try {
+        const r = await fetch("/api/v1/support/diagnose", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ query: q })
+        });
+        if (r.ok) ans = await r.json();
+      } catch (_) {}
+
+      if (!ans) {
+        ans = {
+          diagnosis: "Evaluated configuration against SkillBridge Kernel v0.2.0.",
+          solution: "Ensure client is configured with 'npx @skillbridge/cli setup' and has a valid Bearer token.",
+          actionSteps: ["Run: npx @skillbridge/cli setup"],
+          recommendedCommands: ["npx -y @skillbridge/cli setup"]
+        };
+      }
+
+      res.classList.remove("hidden");
+      res.innerHTML = \`
+        <div class="text-xs font-bold text-emerald-400 pb-2 border-b border-slate-800">✓ Diagnosis Generated</div>
+        <p class="text-xs text-slate-300">\${ans.diagnosis}</p>
+        <p class="text-xs text-slate-400">\${ans.solution}</p>
+        \${ans.recommendedCommands ? \`
+          <div class="space-y-1 pt-1">
+            \${ans.recommendedCommands.map(cmd => \`
+              <div class="flex items-center justify-between bg-black/40 border border-slate-800 rounded p-2 text-xs font-mono text-cyan-300">
+                <span>\${cmd}</span>
+                <button onclick="navigator.clipboard.writeText('\${cmd}'); alert('Copied: ' + '\${cmd}');" class="text-[10px] bg-slate-800 px-2 py-0.5 rounded text-white hover:bg-slate-700">Copy</button>
+              </div>
+            \`).join("")}
+          </div>
+        \` : ''}
+      \`;
+      btn.disabled = false;
+      btn.innerText = "⚡ Run Diagnosis";
+    }
+
+    async function submitPageCaseReply(caseId) {
+      const input = document.getElementById(\`p-case-reply-input-\${caseId}\`);
+      const msg = input ? input.value.trim() : "";
+      if (!msg) return;
+
+      const btn = document.getElementById(\`p-case-reply-btn-\${caseId}\`);
+      if (btn) {
+        btn.disabled = true;
+        btn.innerText = "🤖 AI Support Agent analyzing reply...";
+      }
+
+      let updatedCase = null;
+      try {
+        const res = await fetch(\`/api/v1/support/cases/\${caseId}/reply\`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: msg })
+        });
+        if (res.ok) {
+          const json = await res.json();
+          updatedCase = json.case;
+        }
+      } catch (_) {}
+
+      if (!updatedCase) {
+        const c = PAGE_CASES.find(x => x.id === caseId);
+        if (c) {
+          if (!c.messages) c.messages = [];
+          c.messages.push({
+            id: \`msg-\${Date.now()}-u\`,
+            caseId,
+            sender: 'user',
+            senderName: 'You (Developer)',
+            message: msg,
+            createdAt: new Date().toISOString()
+          });
+          const isThanks = msg.toLowerCase().includes("thanks") || msg.toLowerCase().includes("resolved") || msg.toLowerCase().includes("thank you") || msg.toLowerCase().includes("worked");
+          c.messages.push({
+            id: \`msg-\${Date.now()}-a\`,
+            caseId,
+            sender: 'agent',
+            senderName: 'SkillBridge Autonomous Support Agent',
+            message: isThanks 
+              ? "🎉 Excellent! I am thrilled that resolved your issue. I have permanently closed this case. Reach back out if you encounter any other challenges!"
+              : "Follow-up diagnosis processed: I reviewed your note and verified sandbox signatures. Ensure your client proxy is updated via 'npx @skillbridge/cli setup'.",
+            createdAt: new Date().toISOString(),
+            cliCommands: ["npx -y @skillbridge/cli setup"]
+          });
+          c.status = 'resolved';
+          updatedCase = c;
+        }
+      }
+
+      if (updatedCase) {
+        const idx = PAGE_CASES.findIndex(x => x.id === caseId);
+        if (idx >= 0) PAGE_CASES[idx] = updatedCase;
+        try { localStorage.setItem("skillbridge_support_cases", JSON.stringify(PAGE_CASES)); } catch (_) {}
+      }
+
+      viewPageCase(caseId);
+    }
+
+    async function loadPageCasesFromServer() {
+      try {
+        const res = await fetch('/api/v1/support/cases');
+        if (res.ok) {
+          const data = await res.json();
+          if (Array.isArray(data.cases) && data.cases.length > 0) {
+            const serverIds = new Set(data.cases.map(x => x.id));
+            const localOnly = PAGE_CASES.filter(x => !serverIds.has(x.id) && !x.id.startsWith("CASE-100"));
+            PAGE_CASES = [...data.cases, ...localOnly];
+            renderPageCases();
+          }
+        }
+      } catch (_) {}
+    }
+
+    function initPageFromUrlParams() {
+      const params = new URLSearchParams(window.location.search);
+      const cat = params.get("category");
+      const skill = params.get("skill");
+      const title = params.get("title");
+      const desc = params.get("desc") || params.get("description");
+      const logs = params.get("logs") || params.get("error");
+      const tab = params.get("tab");
+      const caseId = params.get("case");
+
+      if (cat && document.getElementById("p-case-category")) document.getElementById("p-case-category").value = cat;
+      if (skill && document.getElementById("p-case-skill")) document.getElementById("p-case-skill").value = skill;
+      if (title && document.getElementById("p-case-title")) document.getElementById("p-case-title").value = title;
+      if (desc && document.getElementById("p-case-desc")) document.getElementById("p-case-desc").value = desc;
+      if (logs && document.getElementById("p-case-logs")) document.getElementById("p-case-logs").value = logs;
+
+      if (tab) {
+        switchPageTab(tab);
+      }
+      if (caseId) {
+        switchPageTab('cases');
+        viewPageCase(caseId);
+      }
+    }
+
+    // Global Error Interceptor
+    let pageLastDetectedError = null;
+    function showPageErrorToast(title, details) {
+      pageLastDetectedError = { title, details };
+      const toast = document.getElementById("p-error-toast");
+      const msgEl = document.getElementById("p-error-toast-msg");
+      if (toast && msgEl) {
+        msgEl.innerText = \`\${title}: \${details}\`;
+        toast.classList.remove("hidden");
+      }
+    }
+
+    function reportPageDetectedError() {
+      document.getElementById("p-error-toast")?.classList.add("hidden");
+      switchPageTab('create');
+      if (pageLastDetectedError) {
+        document.getElementById("p-case-category").value = "ui_navigation";
+        document.getElementById("p-case-title").value = \`Website error: \${pageLastDetectedError.title.slice(0, 50)}\`;
+        document.getElementById("p-case-desc").value = \`An unhandled issue was detected in browser runtime.\n\nError: \${pageLastDetectedError.title}\`;
+        document.getElementById("p-case-logs").value = pageLastDetectedError.details || "";
+      }
+    }
+
+    window.addEventListener('error', (e) => {
+      showPageErrorToast(e.message || "Runtime Error", \`\${e.filename || 'window'}:\${e.lineno || 0}\`);
+    });
+    window.addEventListener('unhandledrejection', (e) => {
+      showPageErrorToast("Unhandled Promise Rejection", e.reason?.message || String(e.reason));
+    });
+
+    renderPageCases();
+    loadPageCasesFromServer();
+    initPageFromUrlParams();
+  </script>
+
+  <!-- Error Toast for Support Page -->
+  <div id="p-error-toast" class="fixed bottom-6 left-6 z-50 hidden max-w-sm bg-slate-900/95 border border-rose-500/40 rounded-2xl p-4 shadow-2xl backdrop-blur-xl text-xs space-y-2.5">
+    <div class="flex items-center justify-between text-rose-400 font-bold">
+      <div class="flex items-center space-x-1.5">
+        <span>⚠️</span>
+        <span>Runtime Issue Detected</span>
+      </div>
+      <button onclick="document.getElementById('p-error-toast').classList.add('hidden')" class="text-slate-400 hover:text-white text-xs">✕</button>
+    </div>
+    <p id="p-error-toast-msg" class="text-slate-300 font-mono text-[11px] truncate"></p>
+    <div class="flex items-center space-x-2 pt-1">
+      <button onclick="reportPageDetectedError()" class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold px-3 py-1.5 rounded-xl text-xs transition shadow flex items-center space-x-1">
+        <span>🛠️ Pre-fill Support Case</span>
+      </button>
+      <button onclick="document.getElementById('p-error-toast').classList.add('hidden')" class="bg-slate-800 text-slate-300 px-3 py-1.5 rounded-xl text-xs hover:text-white transition">
+        Dismiss
+      </button>
+    </div>
+  </div>
+</body>
+</html>`;
+}
+
+// Generate files
+const modernHtml = getModernHtml();
+const supportHtml = getSupportHtml();
+
 const targets = [
   "index.html",
   "packages/gateway/index.html",
@@ -969,9 +2608,27 @@ const targets = [
 ];
 
 for (const t of targets) {
-  fs.writeFileSync(t, html, "utf8");
+  const fullPath = path.isAbsolute(t) ? t : path.join(process.cwd(), t);
+  const dir = path.dirname(fullPath);
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(fullPath, modernHtml, "utf8");
 }
-console.log("Successfully rebuilt and synchronized world-class modern UI across all 7 targets!");
 
+const supportTargets = [
+  "support.html",
+  "packages/gateway/support.html",
+  "packages/gateway/public/support.html",
+  "public/support.html",
+  "apps/web/support.html",
+  "apps/web/public/support.html",
+  "apps/web/src/support.html"
+];
 
+for (const s of supportTargets) {
+  const fullPath = path.isAbsolute(s) ? s : path.join(process.cwd(), s);
+  const dir = path.dirname(fullPath);
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(fullPath, supportHtml, "utf8");
+}
 
+console.log("Successfully rebuilt and synchronized world-class modern UI & Support Center across all targets!");

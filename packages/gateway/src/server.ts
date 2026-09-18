@@ -4,7 +4,27 @@ import fs from "fs";
 import { GatewayRegistry } from "./registry";
 import { ALL_SEED_SKILLS } from "./seedSkills";
 import { HardenedSandboxEngine } from "./sandboxEngine";
-import { ExecutionRequest, ExecutionResult } from "@skillbridge/shared-types";
+import { SkillBridgeSupportAgent } from "./supportAgent";
+import { ExecutionRequest, ExecutionResult, CreateSupportCaseDTO, ReplySupportCaseDTO } from "@skillbridge/shared-types";
+
+function parseJsonBody(req: any): Promise<any> {
+  if (req.body && typeof req.body === "object") return Promise.resolve(req.body);
+  if (typeof req.body === "string") {
+    try { return Promise.resolve(JSON.parse(req.body)); } catch (e) { return Promise.reject(e); }
+  }
+  return new Promise((resolve, reject) => {
+    let b = "";
+    req.on("data", (c: any) => (b += c));
+    req.on("end", () => {
+      try {
+        if (!b.trim()) return resolve({});
+        resolve(JSON.parse(b));
+      } catch (e) {
+        reject(e);
+      }
+    });
+  });
+}
 
 function getStaticHtml(filename: string): string | null {
   const candidates = [
@@ -30,12 +50,14 @@ function getStaticHtml(filename: string): string | null {
 export class GatewayServer {
   private registry: GatewayRegistry;
   private sandbox: HardenedSandboxEngine;
+  public supportAgent: SkillBridgeSupportAgent;
   private port: number;
 
   constructor(port = 8787) {
     this.port = port;
     this.registry = new GatewayRegistry();
     this.sandbox = new HardenedSandboxEngine();
+    this.supportAgent = new SkillBridgeSupportAgent(this.registry);
     this.init();
   }
 
@@ -92,13 +114,29 @@ export class GatewayServer {
           return;
         }
       }
+
+      if (url === "/support.html" || url.startsWith("/support")) {
+        const html = getStaticHtml("support.html");
+        if (html) {
+          res.setHeader("Content-Type", "text/html; charset=utf-8");
+          if (res.writeHead) res.writeHead(200); else res.statusCode = 200;
+          res.end(html);
+          return;
+        }
+      }
     }
 
     // 2. Health check
     if (method === "GET" && url === "/health") {
       res.setHeader("Content-Type", "application/json");
       if (res.writeHead) res.writeHead(200); else res.statusCode = 200;
-      res.end(JSON.stringify({ status: "healthy", version: "0.2.0", activeSkills: ALL_SEED_SKILLS.length }));
+      res.end(JSON.stringify({ 
+        status: "healthy", 
+        version: "0.2.0", 
+        activeSkills: ALL_SEED_SKILLS.length,
+        supportAgent: "online",
+        openCases: this.supportAgent.listCases({ status: "open" }).length
+      }));
       return;
     }
 
@@ -125,22 +163,149 @@ export class GatewayServer {
       return;
     }
 
-    // 5. Remote Execution Sandbox
-    if (method === "POST" && url === "/api/v1/execute") {
-      const parseBody = (): Promise<ExecutionRequest> => {
-        if (req.body && typeof req.body === "object") return Promise.resolve(req.body);
-        if (typeof req.body === "string") return Promise.resolve(JSON.parse(req.body));
-        return new Promise((resolve, reject) => {
-          let b = "";
-          req.on("data", (c: any) => (b += c));
-          req.on("end", () => {
-            try { resolve(JSON.parse(b)); } catch (e) { reject(e); }
-          });
-        });
-      };
+    // 5. Support Center: List Cases
+    if (method === "GET" && (url === "/api/v1/support/cases" || url === "/api/v1/support/cases/")) {
+      const queryString = rawUrl.includes("?") ? rawUrl.split("?")[1] : "";
+      const params = new URLSearchParams(queryString);
+      const category = params.get("category") || undefined;
+      const status = params.get("status") || undefined;
+      const search = params.get("search") || undefined;
 
+      const cases = this.supportAgent.listCases({ category, status, search });
+      res.setHeader("Content-Type", "application/json");
+      if (res.writeHead) res.writeHead(200); else res.statusCode = 200;
+      res.end(JSON.stringify({ cases, total: cases.length }));
+      return;
+    }
+
+    // 6. Support Center: Case Messages & Replies
+    if (method === "GET" && url.startsWith("/api/v1/support/cases/") && url.endsWith("/messages")) {
+      const caseId = url.replace("/api/v1/support/cases/", "").replace("/messages", "").split("/")[0];
+      const foundCase = this.supportAgent.getCase(caseId);
+      res.setHeader("Content-Type", "application/json");
+      if (!foundCase) {
+        if (res.writeHead) res.writeHead(404); else res.statusCode = 404;
+        res.end(JSON.stringify({ error: `Support case '${caseId}' not found.` }));
+        return;
+      }
+      if (res.writeHead) res.writeHead(200); else res.statusCode = 200;
+      res.end(JSON.stringify({ messages: foundCase.messages || [] }));
+      return;
+    }
+
+    if (method === "POST" && url.startsWith("/api/v1/support/cases/") && (url.endsWith("/reply") || url.endsWith("/messages"))) {
+      const caseId = url.replace("/api/v1/support/cases/", "").replace("/reply", "").replace("/messages", "").split("/")[0];
       try {
-        const payload = await parseBody();
+        const body: ReplySupportCaseDTO = await parseJsonBody(req);
+        if (!body || !body.message || !body.message.trim()) {
+          res.setHeader("Content-Type", "application/json");
+          if (res.writeHead) res.writeHead(400); else res.statusCode = 400;
+          res.end(JSON.stringify({ error: "Missing required 'message' in reply request body." }));
+          return;
+        }
+
+        const replyResult = await this.supportAgent.replyToCase(caseId, body);
+        res.setHeader("Content-Type", "application/json");
+        if (res.writeHead) res.writeHead(200); else res.statusCode = 200;
+        res.end(JSON.stringify({ 
+          success: true, 
+          message: "Reply processed and AI agent diagnostic response appended.",
+          case: replyResult.case,
+          agentReply: replyResult.replyMessage 
+        }));
+      } catch (err: any) {
+        res.setHeader("Content-Type", "application/json");
+        const status = err.message?.includes("not found") ? 404 : 500;
+        if (res.writeHead) res.writeHead(status); else res.statusCode = status;
+        res.end(JSON.stringify({ error: err.message }));
+      }
+      return;
+    }
+
+    // 6b. Support Center: Get Case by ID
+    if (method === "GET" && url.startsWith("/api/v1/support/cases/")) {
+      const caseId = url.replace("/api/v1/support/cases/", "").split("/")[0];
+      const foundCase = this.supportAgent.getCase(caseId);
+      res.setHeader("Content-Type", "application/json");
+      if (!foundCase) {
+        if (res.writeHead) res.writeHead(404); else res.statusCode = 404;
+        res.end(JSON.stringify({ error: `Support case '${caseId}' not found.` }));
+        return;
+      }
+      if (res.writeHead) res.writeHead(200); else res.statusCode = 200;
+      res.end(JSON.stringify({ case: foundCase }));
+      return;
+    }
+
+    // 7. Support Center: Register / Create New Case (Autonomous Agent Triaged)
+    if (method === "POST" && (url === "/api/v1/support/cases" || url === "/api/v1/support/cases/")) {
+      try {
+        const body: CreateSupportCaseDTO = await parseJsonBody(req);
+        if (!body || !body.title || !body.description) {
+          res.setHeader("Content-Type", "application/json");
+          if (res.writeHead) res.writeHead(400); else res.statusCode = 400;
+          res.end(JSON.stringify({ error: "Missing required fields: 'title' and 'description' are mandatory to register a support case." }));
+          return;
+        }
+
+        const createdCase = await this.supportAgent.createCase(body);
+        res.setHeader("Content-Type", "application/json");
+        if (res.writeHead) res.writeHead(201); else res.statusCode = 201;
+        res.end(JSON.stringify({ 
+          success: true, 
+          message: `Case ${createdCase.id} registered and triaged by SkillBridge Autonomous Support Agent.`,
+          case: createdCase 
+        }));
+      } catch (err: any) {
+        res.setHeader("Content-Type", "application/json");
+        if (res.writeHead) res.writeHead(500); else res.statusCode = 500;
+        res.end(JSON.stringify({ error: "Failed to process support case", details: err.message }));
+      }
+      return;
+    }
+
+    // 8. Support Center: On-Demand Re-Triage / Resolve Case
+    if (method === "POST" && url.startsWith("/api/v1/support/cases/") && url.endsWith("/resolve")) {
+      const caseId = url.replace("/api/v1/support/cases/", "").replace("/resolve", "").split("/")[0];
+      try {
+        const resolved = await this.supportAgent.triageAndResolveCase(caseId);
+        res.setHeader("Content-Type", "application/json");
+        if (res.writeHead) res.writeHead(200); else res.statusCode = 200;
+        res.end(JSON.stringify({ success: true, case: resolved }));
+      } catch (err: any) {
+        res.setHeader("Content-Type", "application/json");
+        if (res.writeHead) res.writeHead(404); else res.statusCode = 404;
+        res.end(JSON.stringify({ error: err.message }));
+      }
+      return;
+    }
+
+    // 9. Support Center: Direct Agent Diagnostic Consultation
+    if (method === "POST" && url === "/api/v1/support/diagnose") {
+      try {
+        const body = await parseJsonBody(req);
+        if (!body || !body.query) {
+          res.setHeader("Content-Type", "application/json");
+          if (res.writeHead) res.writeHead(400); else res.statusCode = 400;
+          res.end(JSON.stringify({ error: "Missing 'query' string in request body." }));
+          return;
+        }
+        const answer = await this.supportAgent.askAgent(body.query, body.context);
+        res.setHeader("Content-Type", "application/json");
+        if (res.writeHead) res.writeHead(200); else res.statusCode = 200;
+        res.end(JSON.stringify({ success: true, ...answer }));
+      } catch (err: any) {
+        res.setHeader("Content-Type", "application/json");
+        if (res.writeHead) res.writeHead(500); else res.statusCode = 500;
+        res.end(JSON.stringify({ error: "Agent consultation error", details: err.message }));
+      }
+      return;
+    }
+
+    // 10. Remote Execution Sandbox
+    if (method === "POST" && url === "/api/v1/execute") {
+      try {
+        const payload: ExecutionRequest = await parseJsonBody(req);
         const apiKey = ((req.headers && req.headers["authorization"]) || "").replace("Bearer ", "").trim();
 
         const authCheck = this.registry.preauthorizeRun(apiKey, payload.skillId, payload.requestId);

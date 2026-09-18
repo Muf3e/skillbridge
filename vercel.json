@@ -8,6 +8,10 @@
     {
       "source": "/docs",
       "destination": "/docs.html"
+    },
+    {
+      "source": "/support",
+      "destination": "/support.html"
     }
   ]
 }

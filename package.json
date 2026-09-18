@@ -10,6 +10,7 @@
   "scripts": {
     "build": "npm run --workspaces --if-present build",
     "test": "npm run --workspaces --if-present test",
+    "test:support": "npx tsx packages/cli/src/test-support-agent.ts",
     "start:gateway": "npm --workspace=packages/gateway run start",
     "start:worker": "npm --workspace=packages/worker-runtime run start"
   },

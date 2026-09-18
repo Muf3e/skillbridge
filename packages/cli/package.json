@@ -10,7 +10,8 @@
   ],
   "scripts": {
     "build": "esbuild src/index.ts --bundle --platform=node --outfile=dist/cli.js --banner:js=\"#!/usr/bin/env node\"",
-    "test:e2e": "npx ts-node src/test-verification.ts"
+    "test:e2e": "npx tsx src/test-verification.ts",
+    "test:support": "npx tsx src/test-support-agent.ts"
   },
   "dependencies": {
     "@skillbridge/shared-types": "0.1.0",
