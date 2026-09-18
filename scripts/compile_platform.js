@@ -8,15 +8,15 @@ const STITCH_BASE = path.join(
   "stitch_skillbridge_agent_gateway"
 );
 
-// --- 1. PUBLIC USER-FACING HEADER (NO War Room, NO Launchpad!) ---
+// --- 1. PUBLIC USER-FACING HEADER (Clean, simple, non-tech friendly) ---
 function getPublicUserHeader(activeRoute) {
   const userLinks = [
-    { id: "marketplace", label: "Marketplace", href: "/" },
-    { id: "playground", label: "IDE & Enclave Playground", href: "/playground" },
-    { id: "publisher", label: "Publisher Studio & Ledger", href: "/publisher" },
-    { id: "docs", label: "Docs & MCP Config", href: "/docs" },
-    { id: "security", label: "Security Whitepaper", href: "/security" },
-    { id: "support", label: "24/7 AI Support", href: "/support" }
+    { id: "marketplace", label: "Tool Store", href: "/" },
+    { id: "playground", label: "Try In Browser", href: "/playground" },
+    { id: "publisher", label: "Sell Your Tool (85%)", href: "/publisher" },
+    { id: "docs", label: "Beginner Guide", href: "/docs" },
+    { id: "security", label: "Safety & Privacy", href: "/security" },
+    { id: "support", label: "24/7 AI Help", href: "/support" }
   ];
 
   const navHtml = userLinks.map(l => {
@@ -30,20 +30,20 @@ function getPublicUserHeader(activeRoute) {
   return `
 <!-- Universal Top Announcement Bar -->
 <aside aria-label="Announcement" class="bg-[#121415] border-b border-white/5 py-2 px-4 text-center text-xs text-[#a0a2a4] flex items-center justify-center space-x-2">
-  <span class="inline-block px-2 py-0.5 rounded-full bg-[#ff6b00]/15 text-[#ff6b00] font-bold text-[10px] uppercase tracking-wider border border-[#ff6b00]/30">Bounty Live</span>
-  <span>Publish an agent skill this month & compete for the <strong class="text-white">$10,000 creator launch pool</strong>.</span>
-  <a href="/publisher" class="underline font-bold text-[#ff6b00] hover:text-white ml-1 transition">Publish Skill &rarr;</a>
+  <span class="inline-block px-2 py-0.5 rounded-full bg-[#ff6b00]/15 text-[#ff6b00] font-bold text-[10px] uppercase tracking-wider border border-[#ff6b00]/30">Creator Opportunity</span>
+  <span>Have a prompt or script? Turn it into a paid AI tool and keep <strong class="text-white">85% of all earnings</strong>.</span>
+  <a href="/publisher" class="underline font-bold text-[#ff6b00] hover:text-white ml-1 transition">Start Selling &rarr;</a>
 </aside>
 
-<!-- Universal Public Stitch Header -->
+<!-- Universal Public Header -->
 <header class="sticky top-0 z-50 bg-[#121415]/90 backdrop-blur-xl border-b border-white/10 shadow-[0_1px_8px_rgba(0,0,0,0.4)]">
   <div class="max-w-7xl mx-auto h-20 w-full px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
     <div class="flex items-center gap-6 shrink-0">
       <a href="/" class="flex items-center gap-3 group">
         <img alt="SkillBridge Logo" class="h-8 w-auto object-contain transition-transform group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AEtjO1UaICitA37g_MPC4BeiTnjynEuRZbSpbHZd30T-MMDasK2U9N4QdYuCZ9qMQQbLF3f7rfl6F6CEix6NSdoym5nuwqMNVGuNwa9UbzW31u5ySY79WGQP06iJylJLZN1gkFPoIgV6Rmrv06vGxtJrxyhPy6LTsP-RDMNsd9e0UAlEYBk-dW7SHsCEZ4s_IBDfFyy6vHUbxkFK3iHSxD0D56CpA4frLDdn9_VI1NXXTd9m7JKO8lc1AH9whED4"/>
         <div class="flex flex-col">
-          <span class="text-lg tracking-tight text-white flex items-center gap-1 font-bold font-['Space_Grotesk']">SkillBridge <span class="text-[#ff6b00]">GATEWAY</span></span>
-          <span class="text-[10px] text-[#a0a2a4] tracking-wider uppercase font-mono">v0.2.0 sovereign microvm runtime</span>
+          <span class="text-lg tracking-tight text-white flex items-center gap-1 font-bold font-['Space_Grotesk']">SkillBridge</span>
+          <span class="text-[10px] text-[#ff6b00] font-semibold tracking-wide uppercase">The Simple App Store for AI</span>
         </div>
       </a>
       <nav class="hidden xl:flex items-center gap-1 p-1 bg-[#1b1b1f]/80 rounded-xl border border-white/5">
@@ -53,26 +53,26 @@ function getPublicUserHeader(activeRoute) {
     
     <div class="flex items-center gap-3 shrink-0">
       <div class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#1b1b1f] border border-white/5">
-        <span class="w-2 h-2 rounded-full bg-[#ff6b00] animate-pulse"></span>
-        <span class="text-xs text-[#a0a2a4]">AMD SEV-SNP Active • <span class="text-[#ff6b00] font-bold">114ms SLA</span></span>
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="text-xs text-[#a0a2a4]">100% Safe Cloud Execution • <span class="text-emerald-400 font-bold">Fast &amp; Private</span></span>
       </div>
       
       <div class="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#232527] border border-white/5">
-        <span class="text-xs text-[#a0a2a4] font-mono">CLI</span>
+        <span class="text-xs text-[#a0a2a4]">1-Click AI Setup:</span>
         <code class="text-xs text-white select-all font-mono">npx @skillbridge/cli setup</code>
-        <button onclick="navigator.clipboard.writeText('npx @skillbridge/cli setup'); alert('CLI setup command copied!');" class="hover:text-[#ff6b00] transition-colors text-[#a0a2a4]" type="button" title="Copy setup command">
+        <button onclick="navigator.clipboard.writeText('npx @skillbridge/cli setup'); alert('1-Click setup command copied! Run this in your terminal to connect Claude, Cursor, or ChatGPT.');" class="hover:text-[#ff6b00] transition-colors text-[#a0a2a4]" type="button" title="Copy setup command">
           <span class="material-symbols-outlined text-sm">content_copy</span>
         </button>
       </div>
 
-      <button onclick="if(typeof openWalletModal==='function'){openWalletModal();}else{alert('Developer wallet balance: $24.15 USD. MicroVM gas escrow ready.');}" class="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#232527] hover:bg-[#2f3132] transition-all border border-white/10" type="button">
+      <button onclick="if(typeof openWalletModal==='function'){openWalletModal();}else{alert('Your wallet balance: $24.15 USD. Ready to use any tool.');}" class="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#232527] hover:bg-[#2f3132] transition-all border border-white/10" type="button">
         <span class="material-symbols-outlined text-[#ff6b00] text-sm">account_balance_wallet</span>
-        <span id="nav-wallet-balance" class="text-xs text-white font-mono font-bold">$24.15 USD</span>
+        <span id="nav-wallet-balance" class="text-xs text-white font-bold">$24.15 Balance</span>
         <span class="text-xs text-[#ff6b00] font-bold">+ Top Up</span>
       </button>
 
       <button onclick="if(typeof openPublisherStudio==='function'){openPublisherStudio();}else{window.location.href='/publisher';}" class="bg-[#ff6b00] hover:bg-[#ff8533] text-white font-bold text-xs px-3.5 py-2 rounded-xl transition shadow-lg shadow-[#ff6b00]/25 active:scale-95 flex items-center space-x-1.5">
-        <span>+ Monetize Skill</span>
+        <span>+ Earn 85% Sharing a Tool</span>
       </button>
     </div>
   </div>
@@ -80,65 +80,63 @@ function getPublicUserHeader(activeRoute) {
 `;
 }
 
-// --- 2. UNIVERSAL INSTITUTIONAL FOOTER (with Discreet Admin Portal link) ---
+// --- 2. UNIVERSAL INSTITUTIONAL FOOTER ---
 function getPublicUserFooter() {
   return `
-<!-- Universal Stitch Institutional Footer -->
+<!-- Universal Institutional Footer -->
 <footer class="bg-[#121415] border-t border-white/10 py-12 px-4 sm:px-6 lg:px-8 mt-auto">
   <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-8 mb-12">
     <div class="md:col-span-2 space-y-4">
       <div class="flex items-center gap-2">
         <img alt="SkillBridge Logo" class="h-6 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UaICitA37g_MPC4BeiTnjynEuRZbSpbHZd30T-MMDasK2U9N4QdYuCZ9qMQQbLF3f7rfl6F6CEix6NSdoym5nuwqMNVGuNwa9UbzW31u5ySY79WGQP06iJylJLZN1gkFPoIgV6Rmrv06vGxtJrxyhPy6LTsP-RDMNsd9e0UAlEYBk-dW7SHsCEZ4s_IBDfFyy6vHUbxkFK3iHSxD0D56CpA4frLDdn9_VI1NXXTd9m7JKO8lc1AH9whED4"/>
-        <span class="text-lg text-white font-bold font-['Space_Grotesk']">SkillBridge <span class="text-[#ff6b00]">GATEWAY</span></span>
+        <span class="text-lg text-white font-bold font-['Space_Grotesk']">SkillBridge</span>
       </div>
       <p class="text-xs text-[#a0a2a4] max-w-sm leading-relaxed">
-        High-performance, hardware-isolated AI agent microVM execution fabric powered by AMD SEV-SNP attestation and MCP native integration.
+        The simple, safe App Store for AI tools. We let anyone give superpower skills to their AI assistants safely in the cloud with zero risk of computer viruses, zero leaked files, and a 100% money-back guarantee.
       </p>
-      <div class="flex items-center gap-2 text-[10px] font-mono text-[#a0a2a4]">
-        <span class="px-2 py-0.5 rounded bg-[#1b1b1f] border border-white/5">MCP V0.2.0 SPEC</span>
-        <span class="px-2 py-0.5 rounded bg-[#1b1b1f] border border-white/5">AMD SEV-SNP ATTESTED</span>
+      <div class="flex items-center gap-2 text-[10px] text-[#a0a2a4]">
+        <span class="px-2 py-0.5 rounded bg-[#1b1b1f] border border-white/5 text-emerald-400 font-semibold">🛡️ 100% SAFE CLOUD LOCKBOX</span>
+        <span class="px-2 py-0.5 rounded bg-[#1b1b1f] border border-white/5 text-cyan-400 font-semibold">⚡ FAST RESULTS (&lt; 0.2s)</span>
       </div>
     </div>
     
     <div>
-      <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4 font-mono">Protocol</h4>
+      <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4 font-mono">Explore Tools</h4>
       <ul class="space-y-2 text-xs text-[#a0a2a4]">
-        <li><a href="/playground" class="hover:text-[#ff6b00] transition">MicroVM Runtime</a></li>
-        <li><a href="/security" class="hover:text-[#ff6b00] transition">Proof of Enclave</a></li>
-        <li><a href="/publisher" class="hover:text-[#ff6b00] transition">Consensus Ledger</a></li>
-        <li><a href="/admin" class="hover:text-[#ff6b00] transition text-[#a0a2a4]/70">Admin Console &rarr;</a></li>
+        <li><a href="/" class="hover:text-[#ff6b00] transition">All Ready Tools</a></li>
+        <li><a href="/playground" class="hover:text-[#ff6b00] transition">Try in Browser (Free)</a></li>
+        <li><a href="/security" class="hover:text-[#ff6b00] transition">How We Keep You Safe</a></li>
+        <li><a href="/admin" class="hover:text-[#ff6b00] transition text-[#a0a2a4]/50">Staff Portal &rarr;</a></li>
       </ul>
     </div>
     
     <div>
-      <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4 font-mono">Publishers</h4>
+      <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4 font-mono">For Creators</h4>
       <ul class="space-y-2 text-xs text-[#a0a2a4]">
-        <li><a href="/publisher" class="hover:text-[#ff6b00] transition">Agent Registry</a></li>
-        <li><a href="/docs" class="hover:text-[#ff6b00] transition">Publishing CLI</a></li>
-        <li><a href="/publisher" class="hover:text-[#ff6b00] transition">Revenue Splitting (85%)</a></li>
-        <li><a href="/security" class="hover:text-[#ff6b00] transition">Contract Audits</a></li>
+        <li><a href="/publisher" class="hover:text-[#ff6b00] transition">Sell a Tool (Keep 85%)</a></li>
+        <li><a href="/docs" class="hover:text-[#ff6b00] transition">Step-by-Step Guide</a></li>
+        <li><a href="/publisher" class="hover:text-[#ff6b00] transition">Creator Payouts</a></li>
       </ul>
     </div>
     
     <div>
-      <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4 font-mono">Resources & Support</h4>
+      <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4 font-mono">Help &amp; Support</h4>
       <ul class="space-y-2 text-xs text-[#a0a2a4]">
-        <li><a href="/docs" class="hover:text-[#ff6b00] transition">MCP Specification</a></li>
-        <li><a href="/support" class="hover:text-[#ff6b00] transition">24/7 AI Support Bot</a></li>
-        <li><a href="/security" class="hover:text-[#ff6b00] transition">Security Attestation</a></li>
-        <li><a href="/admin" class="hover:text-[#ff6b00] transition text-[#a0a2a4]/50">Operations Portal</a></li>
+        <li><a href="/support" class="hover:text-[#ff6b00] transition">24/7 AI Help Center</a></li>
+        <li><a href="/docs" class="hover:text-[#ff6b00] transition">Beginner's Guide</a></li>
+        <li><a href="/security" class="hover:text-[#ff6b00] transition">Privacy Guarantee</a></li>
       </ul>
     </div>
   </div>
   
   <div class="max-w-7xl mx-auto pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#a0a2a4]">
-    <span>&copy; 2026 SkillBridge Technologies Inc. All rights reserved. Production Genesis Node #0412</span>
+    <span>&copy; 2026 SkillBridge Inc. All rights reserved. Simple, secure tools for everyday AI users.</span>
     <div class="flex items-center space-x-4 mt-2 sm:mt-0">
-      <span>System Status: <strong class="text-[#ff6b00]">99.992%</strong></span>
+      <span>System Status: <strong class="text-emerald-400">100% Operational</strong></span>
       <span>&bull;</span>
-      <span>Confidential Computing</span>
+      <span>100% Safe Cloud Execution</span>
       <span>&bull;</span>
-      <a href="/admin" class="hover:text-[#ff6b00] transition text-[#a0a2a4]/70">Staff Access</a>
+      <a href="/admin" class="hover:text-[#ff6b00] transition text-[#a0a2a4]/50">Staff Access</a>
     </div>
   </div>
 </footer>
@@ -156,7 +154,7 @@ function getFloatingSupportButton() {
       <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
     </span>
     <span class="material-symbols-outlined text-sm">support_agent</span>
-    <span>Report Issue / Ask AI Support</span>
+    <span>Need Help? Ask AI Support (24/7)</span>
   </button>
 </div>
 `;
@@ -247,50 +245,312 @@ function compileMarketplace() {
   // C. Replace Body Class with Obsidian
   content = content.replace(/<body class="bg-\[#070B14\][^"]*"/, `<body class="bg-[#121415] text-[#e2e2e4] min-h-screen flex flex-col selection:bg-[#ff6b00] selection:text-white"`);
 
-  // D. Replace Live Ticker styling with Stitch amber
+  // D. Replace Live Ticker with Simple, Friendly Activity
   const tickerOldRegex = /<!-- Live Micro-Transaction Activity Ticker -->[\s\S]*?<\/div>\s*<\/div>/;
   const tickerNew = `
-  <!-- Live Micro-Transaction Activity Ticker -->
+  <!-- Live Activity Ticker -->
   <div class="border-b border-white/5 bg-[#161819] py-2 overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center space-x-4 text-xs font-mono text-[#a0a2a4]">
       <div class="flex items-center space-x-2 text-[#ff6b00] font-bold uppercase tracking-wider flex-shrink-0">
-        <span class="h-2 w-2 rounded-full bg-[#ff6b00] animate-ping"></span>
-        <span class="text-[11px]">Live Gateway Ledger</span>
+        <span class="h-2 w-2 rounded-full bg-emerald-400 animate-ping"></span>
+        <span class="text-[11px]">Live Activity</span>
       </div>
-      <div id="live-ticker-text" class="truncate text-[#e2e2e4] text-[11px] animate-pulse">
-        ⚡ [122ms] skill_chaos_load_tester simulated 15k RPS surge &bull; ⚡ [118ms] skill_multi_agent_consensus settled $0.85 to SwarmZero AI &bull; ⚡ [94ms] skill_zero_downtime_migrator executed 0-lock plan &bull; ⚡ [142ms] skill_rag_chunk_optimizer compressed 58% tokens &bull; ⚡ [110ms] skill_deepsec_audit passed with 0 leaks
+      <div id="live-ticker-text" class="truncate text-[#e2e2e4] text-[11px]">
+        ⚡ Someone tested "Legal Contract Risk Scorer" — 0 risks found &bull; ⚡ Tool Creator received $0.42 payout &bull; ⚡ "Website Performance Audit" completed in 0.14s &bull; ⚡ "Social Media Ad Copy Generator" created 3 variations &bull; ⚡ "Smart Contract Security Scanner" verified 0 vulnerabilities
       </div>
     </div>
   </div>`;
   content = content.replace(tickerOldRegex, tickerNew);
 
-  // E. Replace Hero styling
-  content = content.replace(/bg-indigo-500\/10 border border-indigo-500\/20 text-indigo-300/, `bg-[#ff6b00]/10 border border-[#ff6b00]/25 text-[#ff6b00] font-mono`);
-  content = content.replace(/bg-gradient-to-r from-indigo-400 via-purple-300 to-cyan-400/, `text-[#ff6b00] font-bold`);
-  content = content.replace(/bg-indigo-600 hover:bg-indigo-500 text-white/, `bg-[#ff6b00] hover:bg-[#ff8533] text-white font-bold`);
-  content = content.replace(/border-indigo-500\/30/g, `border-white/10`);
-  content = content.replace(/text-indigo-400 font-mono/g, `text-[#ff6b00] font-mono`);
+  // E. Replace Hero Section with Beginner-Friendly Design & 3 Simple Steps
+  const heroOldRegex = /<!-- Hero Section -->[\s\S]*?<\/section>/;
+  const heroNew = `
+  <!-- Hero Section -->
+  <section class="relative pt-14 pb-16 overflow-hidden glow-radial border-b border-white/5">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
+      <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-xs font-semibold mb-6 shadow-inner">
+        <span class="flex h-2 w-2 relative">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+        </span>
+        <span>Simple, Safe &amp; Private • Works with Claude, Cursor, ChatGPT &amp; Web</span>
+      </div>
+      
+      <h1 class="text-4xl sm:text-6xl font-black text-white tracking-tight leading-[1.15]">
+        The Easy App Store for <br class="hidden sm:inline" />
+        <span class="text-[#ff6b00]">AI Skills &amp; Tools</span>
+      </h1>
+      
+      <p class="mt-5 max-w-2xl mx-auto text-base sm:text-lg text-[#a0a2a4] leading-relaxed font-normal">
+        Just like downloading apps onto your phone, SkillBridge lets you add real-world skills to your AI in 1 click. Review contracts, test websites, make graphics, or check code—safely in the cloud without ever risking your computer or passwords.
+      </p>
 
-  // F. Replace Footer with Public User Footer
+      <!-- 3 Easy Steps for Complete Beginners -->
+      <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto text-left">
+        <div class="bg-[#1b1b1f] border border-white/10 rounded-2xl p-5 hover:border-[#ff6b00]/30 transition shadow-lg">
+          <div class="w-10 h-10 rounded-xl bg-[#ff6b00]/15 text-[#ff6b00] flex items-center justify-center font-bold text-lg mb-3">1</div>
+          <h3 class="text-base font-bold text-white mb-1 font-['Space_Grotesk']">Pick Any Tool</h3>
+          <p class="text-xs text-[#a0a2a4] leading-relaxed">Browse 20 ready-to-use tools below. From business contracts to web testing, pick whatever you need done.</p>
+        </div>
+        <div class="bg-[#1b1b1f] border border-white/10 rounded-2xl p-5 hover:border-[#ff6b00]/30 transition shadow-lg">
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/15 text-cyan-400 flex items-center justify-center font-bold text-lg mb-3">2</div>
+          <h3 class="text-base font-bold text-white mb-1 font-['Space_Grotesk']">Test Free in 1-Click</h3>
+          <p class="text-xs text-[#a0a2a4] leading-relaxed">Click "Try Live Demo" to run it right in your browser, or copy a 1-line command to add it to your AI app.</p>
+        </div>
+        <div class="bg-[#1b1b1f] border border-white/10 rounded-2xl p-5 hover:border-[#ff6b00]/30 transition shadow-lg">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center font-bold text-lg mb-3">3</div>
+          <h3 class="text-base font-bold text-white mb-1 font-['Space_Grotesk']">100% Safe Cloud Bubble</h3>
+          <p class="text-xs text-[#a0a2a4] leading-relaxed">Runs in a locked cloud sandbox. Zero risk of computer viruses, zero leaked files, and a 100% money-back guarantee.</p>
+        </div>
+      </div>
+
+      <!-- Quick 1-Click Setup Widget for Tech & Non-Tech users -->
+      <div class="mt-8 max-w-xl mx-auto">
+        <div class="bg-[#1b1b1f] p-2.5 rounded-2xl flex items-center justify-between space-x-3 shadow-xl border border-white/10">
+          <div class="flex items-center space-x-3 pl-3 overflow-hidden">
+            <span class="text-[#ff6b00] font-mono text-sm font-bold select-none">&gt;</span>
+            <code id="cli-cmd-display" class="text-xs sm:text-sm font-mono text-slate-200 truncate select-all">npx @skillbridge/cli setup</code>
+          </div>
+          <button 
+            onclick="copyCliCommand()" 
+            id="copy-cli-btn"
+            class="flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-[#ff6b00] hover:bg-[#ff8533] text-white font-bold text-xs transition duration-150 shadow-md flex-shrink-0"
+          >
+            <span class="material-symbols-outlined text-sm">content_copy</span>
+            <span>Copy 1-Click Setup</span>
+          </button>
+        </div>
+        <div class="mt-2 text-xs text-[#a0a2a4] text-center flex items-center justify-center space-x-2">
+          <span>✨ Automatically connects to Claude, Cursor &amp; Windsurf in 3 seconds</span>
+        </div>
+      </div>
+
+      <!-- Trust Metrics Badges -->
+      <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto text-left border-t border-white/5 pt-8">
+        <div class="bg-[#1b1b1f] p-4 rounded-xl border border-white/5">
+          <div class="text-2xl sm:text-3xl font-black text-white">85%</div>
+          <div class="text-xs text-[#a0a2a4] font-medium mt-1">Paid to Tool Creators</div>
+        </div>
+        <div class="bg-[#1b1b1f] p-4 rounded-xl border border-white/5">
+          <div class="text-2xl sm:text-3xl font-black text-cyan-400">&lt; 0.2s</div>
+          <div class="text-xs text-[#a0a2a4] font-medium mt-1">Superfast Cloud Speed</div>
+        </div>
+        <div class="bg-[#1b1b1f] p-4 rounded-xl border border-white/5">
+          <div class="text-2xl sm:text-3xl font-black text-emerald-400">100%</div>
+          <div class="text-xs text-[#a0a2a4] font-medium mt-1">Money-Back Guarantee</div>
+        </div>
+        <div class="bg-[#1b1b1f] p-4 rounded-xl border border-white/5">
+          <div class="text-2xl sm:text-3xl font-black text-[#ff6b00]">100% Safe</div>
+          <div class="text-xs text-[#a0a2a4] font-medium mt-1">Zero File or Password Leaks</div>
+        </div>
+      </div>
+    </div>
+  </section>`;
+  content = content.replace(heroOldRegex, heroNew);
+
+  // F. Replace Marketplace Header and Search with Friendly Labels
+  const marketHeaderOld = /<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-800\/80">[\s\S]*?<\/div>\s*<\/div>/;
+  const marketHeaderNew = `
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-white/10">
+      <div>
+        <div class="flex items-center space-x-3">
+          <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight font-['Space_Grotesk']">Ready-to-Use AI Tools</h2>
+          <span id="skill-count-badge" class="text-xs bg-[#ff6b00]/20 text-[#ff6b00] font-bold px-3 py-1 rounded-full border border-[#ff6b00]/30">20 Tools Available</span>
+        </div>
+        <p class="text-sm text-[#a0a2a4] mt-1">Pick any tool to test it free in your browser right now, or click to add it to your AI.</p>
+      </div>
+
+      <!-- Quick Search Bar -->
+      <div class="relative w-full md:w-80">
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#a0a2a4]">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        </div>
+        <input 
+          id="search-input"
+          type="text" 
+          placeholder="Search tools (e.g. contracts, website, meme)..." 
+          oninput="handleSearch(this.value)"
+          class="w-full bg-[#1b1b1f] border border-white/10 rounded-xl pl-10 pr-10 py-2.5 text-xs sm:text-sm text-white placeholder-[#a0a2a4] focus:outline-none focus:border-[#ff6b00] focus:ring-1 focus:ring-[#ff6b00] transition shadow-inner"
+        />
+        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+          <kbd class="text-[10px] font-mono text-[#a0a2a4] bg-[#232527] px-1.5 py-0.5 rounded border border-white/10">/</kbd>
+        </div>
+      </div>
+    </div>`;
+  content = content.replace(marketHeaderOld, marketHeaderNew);
+
+  // G. Replace Category Filter Tabs with Friendly Categories
+  const catOldRegex = /<!-- Category Filter Tabs -->[\s\S]*?<\/div>/;
+  const catNew = `
+    <!-- Category Filter Tabs -->
+    <div class="flex items-center space-x-2 overflow-x-auto py-4 scrollbar-none">
+      <button onclick="filterCategory('all')" id="tab-all" class="category-tab text-xs font-semibold px-3.5 py-1.5 rounded-lg bg-[#ff6b00] text-white whitespace-nowrap shadow-sm">All Tools (20)</button>
+      <button onclick="filterCategory('Legal')" id="tab-Legal" class="category-tab text-xs font-semibold px-3.5 py-1.5 rounded-lg bg-[#1b1b1f] text-[#a0a2a4] hover:text-white border border-white/10 whitespace-nowrap transition">Contracts &amp; Legal</button>
+      <button onclick="filterCategory('Marketing')" id="tab-Marketing" class="category-tab text-xs font-semibold px-3.5 py-1.5 rounded-lg bg-[#1b1b1f] text-[#a0a2a4] hover:text-white border border-white/10 whitespace-nowrap transition">Marketing &amp; Social</button>
+      <button onclick="filterCategory('Security')" id="tab-Security" class="category-tab text-xs font-semibold px-3.5 py-1.5 rounded-lg bg-[#1b1b1f] text-[#a0a2a4] hover:text-white border border-white/10 whitespace-nowrap transition">Security &amp; Safety</button>
+      <button onclick="filterCategory('Engineering')" id="tab-Engineering" class="category-tab text-xs font-semibold px-3.5 py-1.5 rounded-lg bg-[#1b1b1f] text-[#a0a2a4] hover:text-white border border-white/10 whitespace-nowrap transition">Coding &amp; Web</button>
+      <button onclick="filterCategory('Database')" id="tab-Database" class="category-tab text-xs font-semibold px-3.5 py-1.5 rounded-lg bg-[#1b1b1f] text-[#a0a2a4] hover:text-white border border-white/10 whitespace-nowrap transition">Database &amp; Data</button>
+      <button onclick="filterCategory('Finance')" id="tab-Finance" class="category-tab text-xs font-semibold px-3.5 py-1.5 rounded-lg bg-[#1b1b1f] text-[#a0a2a4] hover:text-white border border-white/10 whitespace-nowrap transition">Business &amp; Finance</button>
+      <button onclick="filterCategory('AI Ops')" id="tab-AI-Ops" class="category-tab text-xs font-semibold px-3.5 py-1.5 rounded-lg bg-[#1b1b1f] text-[#a0a2a4] hover:text-white border border-white/10 whitespace-nowrap transition">AI Optimization</button>
+      <button onclick="filterCategory('DevOps')" id="tab-DevOps" class="category-tab text-xs font-semibold px-3.5 py-1.5 rounded-lg bg-[#1b1b1f] text-[#a0a2a4] hover:text-white border border-white/10 whitespace-nowrap transition">Cloud &amp; DevOps</button>
+      <button onclick="filterCategory('Biotech')" id="tab-Biotech" class="category-tab text-xs font-semibold px-3.5 py-1.5 rounded-lg bg-[#1b1b1f] text-[#a0a2a4] hover:text-white border border-white/10 whitespace-nowrap transition">Science &amp; Health</button>
+    </div>`;
+  content = content.replace(catOldRegex, catNew);
+
+  // H. Replace Footer
   content = content.replace(/<footer[\s\S]*?<\/footer>/, getPublicUserFooter());
 
-  // G. Replace floating support button
+  // I. Replace Floating Support Button
   content = content.replace(/<div id="floating-support-btn-container"[\s\S]*?<\/div>\s*<\/div>/, getFloatingSupportButton());
   if (!content.includes("floating-support-btn-container")) {
     content = content.replace(/<\/body>/, getFloatingSupportButton() + "\n</body>");
   }
 
-  // H. Replace card rendering styling in renderGrid() with Stitch Obsidian Glass
-  const oldCardTpl = `<div class="glass-panel hover:border-indigo-500/40 hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-300 rounded-2xl p-6 flex flex-col justify-between group relative overflow-hidden">`;
-  const newCardTpl = `<div class="glass-panel hover:border-[#ff6b00]/50 hover:shadow-2xl hover:shadow-[#ff6b00]/10 transition-all duration-300 rounded-2xl p-6 flex flex-col justify-between group relative overflow-hidden bg-[#1b1b1f] border border-white/10">`;
-  content = content.replace(oldCardTpl, newCardTpl);
-  content = content.replace(/text-white mt-3\.5 tracking-tight group-hover:text-indigo-300/, `text-white mt-3.5 tracking-tight group-hover:text-[#ff6b00] font-['Space_Grotesk']`);
-  content = content.replace(/bg-indigo-600\/10 hover:bg-indigo-600 text-indigo-300 hover:text-white px-3\.5 py-1\.5 rounded-xl border border-indigo-500\/30/, `bg-[#ff6b00]/15 hover:bg-[#ff6b00] text-[#ff6b00] hover:text-white px-3.5 py-1.5 rounded-xl border border-[#ff6b00]/30 font-bold`);
+  // J. Simplify the Playground Modal in index.html
+  const modalPlayOld = /<!-- MODAL 1: Interactive Live Demo Playground[\s\S]*?<!-- MODAL 2: Publisher Studio/;
+  const modalPlayNew = `<!-- MODAL 1: Interactive Live Demo Playground -->
+  <div id="playground-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-[#1b1b1f] border border-white/10 rounded-2xl max-w-2xl w-full max-h-[90vh] flex flex-col overflow-hidden shadow-2xl">
+      <div class="p-6 border-b border-white/10 flex items-center justify-between">
+        <div>
+          <h3 id="modal-title" class="text-lg font-bold text-white font-['Space_Grotesk']">Test This AI Tool Live</h3>
+          <p id="modal-author" class="text-xs text-[#ff6b00] mt-0.5 font-medium"></p>
+        </div>
+        <button onclick="closeModal('playground-modal')" class="text-[#a0a2a4] hover:text-white text-sm font-semibold p-1">✕ Close</button>
+      </div>
 
-  // I. In Category Filter Tabs, use Stitch styling
-  content = content.replace(/bg-indigo-600/g, `bg-[#ff6b00]`);
+      <!-- Playground Tabs -->
+      <div class="flex border-b border-white/10 bg-[#161819] px-6 text-xs font-semibold">
+        <button onclick="switchPlaygroundTab('exec')" id="tab-play-exec" class="py-2.5 px-3 border-b-2 border-[#ff6b00] text-[#ff6b00]">▶ Try It Live</button>
+        <button onclick="switchPlaygroundTab('mcp')" id="tab-play-mcp" class="py-2.5 px-3 border-b-2 border-transparent text-[#a0a2a4] hover:text-white">🤖 Connect to Your AI (Claude / Cursor)</button>
+        <button onclick="switchPlaygroundTab('curl')" id="tab-play-curl" class="py-2.5 px-3 border-b-2 border-transparent text-[#a0a2a4] hover:text-white">💻 For Developers (API / cURL)</button>
+      </div>
 
-  
+      <div class="p-6 space-y-4 overflow-y-auto flex-1">
+        <!-- Tab 1: Execution -->
+        <div id="panel-play-exec" class="space-y-4">
+          <div>
+            <label class="block text-xs font-semibold text-white mb-2">Your Request / Test Data (feel free to edit or use the sample below):</label>
+            <textarea id="modal-input" rows="4" class="w-full bg-[#121415] border border-white/10 rounded-xl p-3 font-mono text-xs sm:text-sm text-slate-200 focus:outline-none focus:border-[#ff6b00]"></textarea>
+          </div>
+
+          <button id="modal-run-btn" onclick="executeRemoteSkill()" class="w-full bg-[#ff6b00] hover:bg-[#ff8533] font-bold text-white py-3 rounded-xl shadow-lg shadow-[#ff6b00]/20 transition flex items-center justify-center space-x-2">
+            <span>▶ Run This Tool (Free Instant Preview)</span>
+          </button>
+
+          <div class="flex items-center justify-between text-[11px] text-[#a0a2a4] px-1">
+            <span class="flex items-center gap-1 text-emerald-400">
+              <span class="material-symbols-outlined text-sm">security</span>
+              <span>Runs safely in the cloud — your computer is 100% protected</span>
+            </span>
+            <button onclick="reportActiveSkillIssue()" class="text-[#ff6b00] hover:underline font-medium flex items-center space-x-1">
+              <span>Need help with this tool?</span>
+            </button>
+          </div>
+
+          <!-- Result Box -->
+          <div id="modal-result-box" class="hidden">
+            <div class="flex items-center justify-between text-xs text-[#a0a2a4] mb-1.5">
+              <span class="font-bold text-white flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-emerald-400 text-sm">check_circle</span>
+                <span>Result from AI Tool:</span>
+              </span>
+              <span id="modal-timing" class="font-mono text-emerald-400 text-xs"></span>
+            </div>
+            <pre id="modal-output" class="bg-[#121415] border border-white/10 p-4 rounded-xl text-xs font-mono text-emerald-300 overflow-x-auto max-h-60 leading-relaxed"></pre>
+
+            <!-- Quick Report Issue Button -->
+            <div class="mt-3 flex items-center justify-between bg-[#161819] border border-white/10 rounded-xl p-3">
+              <div class="text-[11px] text-[#a0a2a4]">
+                <span class="font-semibold text-white">Have a question or noticed something unexpected?</span>
+                <p>Our friendly 24/7 AI Support Agent is ready to help explain the result.</p>
+              </div>
+              <button onclick="reportActiveSkillIssue()" class="text-xs bg-[#232527] hover:bg-[#2f3132] text-white border border-white/10 px-3 py-1.5 rounded-lg font-semibold transition flex items-center space-x-1.5 flex-shrink-0 ml-2">
+                <span>💬 Ask AI Support</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: MCP Config -->
+        <div id="panel-play-mcp" class="hidden space-y-4">
+          <div class="bg-[#161819] p-4 rounded-xl border border-white/10">
+            <h4 class="text-sm font-bold text-white mb-1 font-['Space_Grotesk']">How to use this tool in Claude or Cursor</h4>
+            <p class="text-xs text-[#a0a2a4] leading-relaxed">
+              Run this 1-line command in your terminal. It automatically detects and adds this tool to Claude Desktop, Cursor, or Windsurf in less than 3 seconds:
+            </p>
+            <div class="mt-3 flex items-center justify-between bg-[#121415] border border-white/10 rounded-xl p-3 font-mono text-xs text-[#ff6b00]">
+              <span id="modal-mcp-cli-cmd">npx -y @skillbridge/cli setup</span>
+              <button onclick="copyCommand('npx -y @skillbridge/cli setup')" class="bg-[#ff6b00] hover:bg-[#ff8533] text-white font-semibold px-3 py-1.5 rounded-lg text-xs transition">
+                Copy Command
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <p class="text-xs text-[#a0a2a4] mb-2">Or copy the configuration block manually:</p>
+            <pre id="modal-mcp-code" class="bg-[#121415] border border-white/10 p-4 rounded-xl text-xs font-mono text-cyan-300 overflow-x-auto"></pre>
+            <button onclick="copyCommand(document.getElementById('modal-mcp-code').innerText)" class="mt-2 text-xs bg-[#232527] hover:bg-[#2f3132] text-white font-semibold px-3 py-1.5 rounded-lg border border-white/10">Copy Configuration</button>
+          </div>
+        </div>
+
+        <!-- Tab 3: cURL & SDK -->
+        <div id="panel-play-curl" class="hidden space-y-3">
+          <p class="text-xs text-[#a0a2a4]">For software engineers who want to call this skill via HTTP API:</p>
+          <pre id="modal-curl-code" class="bg-[#121415] border border-white/10 p-4 rounded-xl text-xs font-mono text-amber-300 overflow-x-auto"></pre>
+          <button onclick="copyCommand(document.getElementById('modal-curl-code').innerText)" class="text-xs bg-[#232527] hover:bg-[#2f3132] text-white font-semibold px-3 py-1.5 rounded-lg border border-white/10">Copy cURL Snippet</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: Publisher Studio`;
+  content = content.replace(modalPlayOld, modalPlayNew);
+
+  // K. Update Card Rendering Template in renderGrid() with Friendly Layout
+  const renderCardOld = /grid\.innerHTML = filtered\.map\(s => \{[\s\S]*?\}\)\.join\(""\);/;
+  const renderCardNew = `grid.innerHTML = filtered.map(s => {
+        const color = getCategoryColor(s.category);
+        const creatorSplit = (s.priceNum * 0.85).toFixed(2);
+        return \`
+        <div class="glass-panel hover:border-[#ff6b00]/50 hover:shadow-2xl hover:shadow-[#ff6b00]/10 transition-all duration-300 rounded-2xl p-6 flex flex-col justify-between group relative overflow-hidden bg-[#1b1b1f] border border-white/10">
+          <div>
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full \${color.bg} \${color.text} border \${color.border}">
+                \${s.category}
+              </span>
+              <div class="text-right">
+                <span class="text-sm font-extrabold text-white">\${s.price}</span>
+                <div class="text-[10px] text-emerald-400 font-medium">Free Live Preview</div>
+              </div>
+            </div>
+
+            <h3 class="text-lg font-bold text-white mt-3.5 tracking-tight group-hover:text-[#ff6b00] font-['Space_Grotesk'] transition-colors">
+              \${s.name}
+            </h3>
+            <p class="text-xs text-[#a0a2a4] font-medium mt-1 flex items-center space-x-1">
+              <span>by \${s.author}</span>
+              <span class="text-emerald-400 text-[10px]" title="Verified Safe Creator">✓ Verified</span>
+            </p>
+            <p class="text-xs text-[#a0a2a4] mt-3 leading-relaxed line-clamp-3">
+              \${s.desc}
+            </p>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between gap-3">
+            <button onclick="openMcpConfigModal()" class="text-xs text-[#a0a2a4] hover:text-white transition flex items-center space-x-1" title="Add to Claude, Cursor, or ChatGPT">
+              <span class="material-symbols-outlined text-sm text-[#ff6b00]">add_circle</span>
+              <span>Add to AI</span>
+            </button>
+            <button onclick="openPlayground('\${s.id}')" class="text-xs font-bold bg-[#ff6b00] hover:bg-[#ff8533] text-white px-4 py-2 rounded-xl transition shadow-md shadow-[#ff6b00]/20 flex-shrink-0 flex items-center space-x-1.5">
+              <span>▶ Try Live Demo</span>
+            </button>
+          </div>
+        </div>
+      \`;
+      }).join("");`;
+  content = content.replace(renderCardOld, renderCardNew);
+
   // Clean special character artifacts
   content = content.replace(/ΓÜí/g, "⚡");
   content = content.replace(/Γ£ò/g, "✕");
@@ -310,13 +570,148 @@ function compileMarketplace() {
   syncFile("index.html", content);
 }
 
-// --- 5. COMPILE PUBLIC USER SUB-PAGES ---
+// --- 5. COMPILE PUBLIC USER SUB-PAGES WITH BEGINNER EXPLAINERS ---
 const publicSubPages = [
-  { folder: "skillbridge_microvm_ide_enclave_playground", route: "playground", fileName: "playground.html", title: "SkillBridge | MicroVM Enclave Playground" },
-  { folder: "skillbridge_publisher_studio_escrow_ledger", route: "publisher", fileName: "publisher.html", title: "SkillBridge | Publisher Studio & Escrow Ledger (85% Split)" },
-  { folder: "skillbridge_mcp_setup_developer_docs", route: "docs", fileName: "docs.html", title: "SkillBridge | 1-Click MCP Setup & Developer Docs" },
-  { folder: "skillbridge_security_attestation_whitepaper", route: "security", fileName: "security.html", title: "SkillBridge | Hardware Attestation & Zero-Leak Whitepaper" },
-  { folder: "skillbridge_support_center_autonomous_ai_bot", route: "support", fileName: "support.html", title: "SkillBridge Support & Resolution Center | Autonomous AI Bot" }
+  { 
+    folder: "skillbridge_microvm_ide_enclave_playground", 
+    route: "playground", 
+    fileName: "playground.html", 
+    title: "SkillBridge | Try AI Tools Live in Your Browser",
+    explainer: `
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-2">
+  <div class="bg-gradient-to-r from-[#1b1b1f] to-[#232527] border border-[#ff6b00]/30 rounded-2xl p-6 shadow-xl">
+    <div class="flex items-start gap-4">
+      <div class="w-12 h-12 rounded-xl bg-cyan-500/15 text-cyan-400 flex items-center justify-center shrink-0">
+        <span class="material-symbols-outlined text-2xl">science</span>
+      </div>
+      <div>
+        <span class="text-[11px] font-bold uppercase tracking-wider text-cyan-400">Live Browser Testing Lab</span>
+        <h2 class="text-lg sm:text-xl font-bold text-white mt-0.5 font-['Space_Grotesk']">Try Any AI Tool Right Here — Nothing to Install</h2>
+        <p class="text-xs sm:text-sm text-[#a0a2a4] mt-2 leading-relaxed">
+          You don't need any technical skills or software installed on your machine. Choose any tool from the list, type your question or request into the box (or leave the pre-filled sample), and click "Run" to see the instant result returned in under 0.2 seconds.
+        </p>
+        <div class="mt-3 flex flex-wrap items-center gap-3 text-xs">
+          <span class="px-2.5 py-1 rounded-lg bg-white/5 text-white font-medium">▶ Free instant testing</span>
+          <span class="px-2.5 py-1 rounded-lg bg-white/5 text-white font-medium">⚡ Runs in 0.14 seconds</span>
+          <span class="px-2.5 py-1 rounded-lg bg-white/5 text-white font-medium">🔒 Safe cloud sandbox</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`
+  },
+  { 
+    folder: "skillbridge_publisher_studio_escrow_ledger", 
+    route: "publisher", 
+    fileName: "publisher.html", 
+    title: "SkillBridge | Creator Studio — Sell Your AI Tools (85% Split)",
+    explainer: `
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-2">
+  <div class="bg-gradient-to-r from-[#1b1b1f] to-[#232527] border border-[#ff6b00]/30 rounded-2xl p-6 shadow-xl">
+    <div class="flex items-start gap-4">
+      <div class="w-12 h-12 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center shrink-0">
+        <span class="material-symbols-outlined text-2xl">payments</span>
+      </div>
+      <div>
+        <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-400">Creator Earnings & Studio</span>
+        <h2 class="text-lg sm:text-xl font-bold text-white mt-0.5 font-['Space_Grotesk']">Sell Your AI Skills &amp; Keep 85% of Every Run</h2>
+        <p class="text-xs sm:text-sm text-[#a0a2a4] mt-2 leading-relaxed">
+          Have you written a great prompt, script, or automated tool? You can publish it on SkillBridge in under 2 minutes. Whenever another person or company uses your tool, you automatically receive 85% of the fee directly into your wallet. Your source prompts and code are 100% protected and hidden so nobody can copy them.
+        </p>
+        <div class="mt-3 flex flex-wrap items-center gap-3 text-xs">
+          <span class="px-2.5 py-1 rounded-lg bg-white/5 text-white font-medium">💰 85% Creator Payouts</span>
+          <span class="px-2.5 py-1 rounded-lg bg-white/5 text-white font-medium">🔒 Prompt Protection (Zero Copying)</span>
+          <span class="px-2.5 py-1 rounded-lg bg-white/5 text-white font-medium">⏱️ 2-Minute Setup</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`
+  },
+  { 
+    folder: "skillbridge_mcp_setup_developer_docs", 
+    route: "docs", 
+    fileName: "docs.html", 
+    title: "SkillBridge | Beginner's Guide & 1-Click AI Setup",
+    explainer: `
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-2">
+  <div class="bg-gradient-to-r from-[#1b1b1f] to-[#232527] border border-[#ff6b00]/30 rounded-2xl p-6 shadow-xl">
+    <div class="flex items-start gap-4">
+      <div class="w-12 h-12 rounded-xl bg-[#ff6b00]/15 text-[#ff6b00] flex items-center justify-center shrink-0">
+        <span class="material-symbols-outlined text-2xl">menu_book</span>
+      </div>
+      <div>
+        <span class="text-[11px] font-bold uppercase tracking-wider text-[#ff6b00]">Beginner Friendly Guide</span>
+        <h2 class="text-lg sm:text-xl font-bold text-white mt-0.5 font-['Space_Grotesk']">What is an AI Tool and how do I use it?</h2>
+        <p class="text-xs sm:text-sm text-[#a0a2a4] mt-2 leading-relaxed">
+          Think of an AI tool just like an app on your smartphone. By default, an AI assistant like Claude or Cursor can only write text. When you add a SkillBridge tool, you give your AI superpowers—like the ability to check legal contracts, test websites, or analyze balance sheets. Best of all, everything runs in a secure cloud lockbox so your computer files and passwords are never exposed.
+        </p>
+        <div class="mt-3 flex flex-wrap items-center gap-3 text-xs">
+          <span class="px-2.5 py-1 rounded-lg bg-white/5 text-white font-medium">⚡ Works in 1 click</span>
+          <span class="px-2.5 py-1 rounded-lg bg-white/5 text-white font-medium">🛡️ 100% Safe &amp; Private</span>
+          <span class="px-2.5 py-1 rounded-lg bg-white/5 text-white font-medium">💰 100% Money-back Guarantee</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`
+  },
+  { 
+    folder: "skillbridge_security_attestation_whitepaper", 
+    route: "security", 
+    fileName: "security.html", 
+    title: "SkillBridge | Safety & Privacy First — 100% Protection",
+    explainer: `
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-2">
+  <div class="bg-gradient-to-r from-[#1b1b1f] to-[#232527] border border-[#ff6b00]/30 rounded-2xl p-6 shadow-xl">
+    <div class="flex items-start gap-4">
+      <div class="w-12 h-12 rounded-xl bg-[#ff6b00]/15 text-[#ff6b00] flex items-center justify-center shrink-0">
+        <span class="material-symbols-outlined text-2xl">shield</span>
+      </div>
+      <div>
+        <span class="text-[11px] font-bold uppercase tracking-wider text-[#ff6b00]">100% Privacy &amp; Safety Guarantee</span>
+        <h2 class="text-lg sm:text-xl font-bold text-white mt-0.5 font-['Space_Grotesk']">How SkillBridge Protects Your Computer and Passwords</h2>
+        <p class="text-xs sm:text-sm text-[#a0a2a4] mt-2 leading-relaxed">
+          Unlike standard AI plugins that run directly on your personal computer where they could potentially read files or passwords, SkillBridge executes all tools inside an isolated cloud lockbox (microVM). The tool can only see the specific text you send it. Once the job is done, the lockbox vanishes. Your computer, passwords, and private files stay 100% untouched.
+        </p>
+        <div class="mt-3 flex flex-wrap items-center gap-3 text-xs">
+          <span class="px-2.5 py-1 rounded-lg bg-white/5 text-white font-medium">🛡️ Zero Virus Risk</span>
+          <span class="px-2.5 py-1 rounded-lg bg-white/5 text-white font-medium">🔒 Zero Password/File Leaks</span>
+          <span class="px-2.5 py-1 rounded-lg bg-white/5 text-white font-medium">✅ Automatic Escrow Refunds</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`
+  },
+  { 
+    folder: "skillbridge_support_center_autonomous_ai_bot", 
+    route: "support", 
+    fileName: "support.html", 
+    title: "SkillBridge Support & Resolution Center | 24/7 Autonomous AI Bot",
+    explainer: `
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-2">
+  <div class="bg-gradient-to-r from-[#1b1b1f] to-[#232527] border border-[#ff6b00]/30 rounded-2xl p-6 shadow-xl">
+    <div class="flex items-start gap-4">
+      <div class="w-12 h-12 rounded-xl bg-purple-500/15 text-purple-400 flex items-center justify-center shrink-0">
+        <span class="material-symbols-outlined text-2xl">support_agent</span>
+      </div>
+      <div>
+        <span class="text-[11px] font-bold uppercase tracking-wider text-purple-400">24/7 AI Resolution Center</span>
+        <h2 class="text-lg sm:text-xl font-bold text-white mt-0.5 font-['Space_Grotesk']">SkillBridge Support &amp; Resolution Center</h2>
+        <p class="text-xs sm:text-sm text-[#a0a2a4] mt-2 leading-relaxed">
+          Need help with a tool or have a question? Our friendly 24/7 AI Support Agent is always online to answer questions, diagnose issues, and help you get the most out of your AI skills. You can also submit a case and receive an instant step-by-step resolution.
+        </p>
+        <div class="mt-3 flex flex-wrap items-center gap-3 text-xs">
+          <span class="px-2.5 py-1 rounded-lg bg-white/5 text-white font-medium">🤖 Instant AI Answers</span>
+          <span class="px-2.5 py-1 rounded-lg bg-white/5 text-white font-medium">🎫 Track Support Cases</span>
+          <span class="px-2.5 py-1 rounded-lg bg-white/5 text-white font-medium">💰 Instant Escrow Refund Resolution</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`
+  }
 ];
 
 function compilePublicSubPages() {
