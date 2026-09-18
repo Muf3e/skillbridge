@@ -30,12 +30,16 @@
       "destination": "/security.html"
     },
     {
+      "source": "/admin",
+      "destination": "/admin.html"
+    },
+    {
       "source": "/executive",
-      "destination": "/executive.html"
+      "destination": "/admin.html"
     },
     {
       "source": "/war-room",
-      "destination": "/executive.html"
+      "destination": "/admin.html"
     }
   ]
 }
