@@ -1,4 +1,4 @@
-﻿const fs = require("fs");
+const fs = require("fs");
 const path = require("path");
 
 const STITCH_BASE = path.join(
@@ -159,7 +159,7 @@ function getFloatingSupportButton() {
 function getMarketplaceInteractivityScript() {
   return [
     "<script>",
-    "document.addEventListener('DOMContentLoaded', () => {",
+    "function initMarketplaceInteractive() {",
     "  const searchInput = document.querySelector('input[placeholder*=\"Search skills\"]');",
     "  const cards = Array.from(document.querySelectorAll('div.group')).filter(el => el.querySelector('h3'));",
     "  if (searchInput) {",
@@ -220,7 +220,12 @@ function getMarketplaceInteractivityScript() {
     "      });",
     "    });",
     "  });",
-    "});",
+    "}",
+    "if (document.readyState === 'loading') {",
+    "  document.addEventListener('DOMContentLoaded', initMarketplaceInteractive);",
+    "} else {",
+    "  initMarketplaceInteractive();",
+    "}",
     "</script>"
   ].join("\n");
 }
