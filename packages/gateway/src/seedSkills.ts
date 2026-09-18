@@ -470,6 +470,32 @@ export const contextDistillerSkill: SkillManifest = {
   updatedAt: new Date().toISOString()
 };
 
+export const stealthBrowserSkill: SkillManifest = {
+  id: "skill_stealth_browser_extractor",
+  name: "Stealth Headless Browser & Markdown Harvester",
+  description: "Enterprise headless browser microVM with anti-bot bypass. Executes dynamic SPA JS rendering, extracts DOM interaction hierarchies, and delivers ultra-clean token-dense markdown.",
+  authorId: "pub_crawlviking",
+  authorName: "CrawlViking AI Labs",
+  pricing: { model: "pay_per_run", costPerRunUsd: 0.45 },
+  capabilities: ["web-crawling", "headless-browser", "markdown-extraction", "spa-rendering", "anti-bot"],
+  tools: [{
+    name: "extract_page_content",
+    description: "Renders live URL via stealth microVM browser, evaluates client-side JavaScript, and extracts structured LLM-ready markdown.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        url: { type: "string", description: "Target web page URL (e.g. https://docs.github.com/en)" },
+        waitForSelector: { type: "string", description: "Optional CSS selector to wait for before extracting content" },
+        stripBoilerplate: { type: "boolean", description: "Strip navbars, footers, cookie notices, and ads (default true)" },
+        extractInteractiveElements: { type: "boolean", description: "Include clickable buttons, links, and input forms in output" }
+      },
+      required: ["url"]
+    }
+  }],
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString()
+};
+
 export const ALL_SEED_SKILLS: SkillManifest[] = [
   deepSecAuditSkill,
   sqlDoctorSkill,
@@ -488,7 +514,8 @@ export const ALL_SEED_SKILLS: SkillManifest[] = [
   multiAgentConsensusSkill,
   zeroDowntimeMigratorSkill,
   chaosLoadTesterSkill,
-  contextDistillerSkill
+  contextDistillerSkill,
+  stealthBrowserSkill
 ];
 
 

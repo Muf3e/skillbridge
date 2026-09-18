@@ -1,0 +1,109 @@
+{
+  "campaign": "SkillBridge Q3 2026 Creator Activation & $10k Launch Pool",
+  "totalBudgetBountyUsd": 10000,
+  "perCreatorBountyUsd": 500,
+  "creatorSplitPct": 85,
+  "platformTakeRatePct": 15,
+  "targets": [
+    {
+      "id": "target_01",
+      "authorOrOrg": "ast-grep Maintainers",
+      "repo": "https://github.com/ast-grep/ast-grep",
+      "category": "Code Intelligence",
+      "proposedSkill": "Autonomous AST Structural Refactorer & Anti-Pattern Rewriter",
+      "suggestedPricing": "$0.40 / run",
+      "pitchAngle": "Monetize ultra-fast structural code replacement for AI coding agents without exposing proprietary tree-sitter rules.",
+      "status": "DRAFT_READY"
+    },
+    {
+      "id": "target_02",
+      "authorOrOrg": "mem0ai",
+      "repo": "https://github.com/mem0ai/mem0",
+      "category": "Memory & Context",
+      "proposedSkill": "Persistent Multi-Session Memory Graph & Context Recall",
+      "suggestedPricing": "$0.30 / run",
+      "pitchAngle": "Provide remote serverless long-term conversational memory with instant microVM recall for Claude Desktop and Cursor.",
+      "status": "DRAFT_READY"
+    },
+    {
+      "id": "target_03",
+      "authorOrOrg": "unclecode (crawl4ai)",
+      "repo": "https://github.com/unclecode/crawl4ai",
+      "category": "Web & Scraping",
+      "proposedSkill": "Ultra-Fast LLM Markdown Crawler & Dynamic DOM Harvester",
+      "suggestedPricing": "$0.45 / run",
+      "pitchAngle": "Turn crawl4ai into a monetized sovereign MCP tool with zero client setup and guaranteed 85% creator split.",
+      "status": "DRAFT_READY"
+    },
+    {
+      "id": "target_04",
+      "authorOrOrg": "All-Hands-AI (OpenHands)",
+      "repo": "https://github.com/All-Hands-AI/OpenHands",
+      "category": "Autonomous Agents",
+      "proposedSkill": "Autonomous Software Engineering Benchmark Resolver & Multi-File Refactorer",
+      "suggestedPricing": "$0.75 / run",
+      "pitchAngle": "Execute heavy SWE-bench evaluation tasks on demand with isolated container sandboxing and outcome escrow protection.",
+      "status": "DRAFT_READY"
+    },
+    {
+      "id": "target_05",
+      "authorOrOrg": "browser-use",
+      "repo": "https://github.com/browser-use/browser-use",
+      "category": "Automation",
+      "proposedSkill": "Autonomous Web Navigator & Dynamic Form Automation Copilot",
+      "suggestedPricing": "$0.60 / run",
+      "pitchAngle": "Run browser automation remotely with sub-150ms latency so Claude Desktop doesn't have to launch local Chromium instances.",
+      "status": "DRAFT_READY"
+    },
+    {
+      "id": "target_06",
+      "authorOrOrg": "remotion-dev",
+      "repo": "https://github.com/remotion-dev/remotion",
+      "category": "Media Generation",
+      "proposedSkill": "Programmatic React Video Renderer & Dynamic Template Synthesizer",
+      "suggestedPricing": "$0.80 / run",
+      "pitchAngle": "Enable coding agents to render animated product videos and data visualizations via isolated microVM renderers.",
+      "status": "DRAFT_READY"
+    },
+    {
+      "id": "target_07",
+      "authorOrOrg": "3b1b (Manim)",
+      "repo": "https://github.com/3b1b/manim",
+      "category": "Media Generation",
+      "proposedSkill": "Mathematical & Scientific Technical Animation Generator",
+      "suggestedPricing": "$0.65 / run",
+      "pitchAngle": "Render precise mathematical animations for research and educational agents without LaTeX/ffmpeg install headaches.",
+      "status": "DRAFT_READY"
+    },
+    {
+      "id": "target_08",
+      "authorOrOrg": "Aider (paul-gauthier)",
+      "repo": "https://github.com/paul-gauthier/aider",
+      "category": "Code Intelligence",
+      "proposedSkill": "Git-Aware Semantic Code Diff & Multi-File Patch Synthesizer",
+      "suggestedPricing": "$0.35 / run",
+      "pitchAngle": "Monetize Aider's repo-map and AST diff algorithms as a high-speed remote sovereign skill.",
+      "status": "DRAFT_READY"
+    },
+    {
+      "id": "target_09",
+      "authorOrOrg": "FinRobot (AI4Finance-Foundation)",
+      "repo": "https://github.com/AI4Finance-Foundation/FinRobot",
+      "category": "Finance",
+      "proposedSkill": "Autonomous SEC 10-K Forensic Breakdown & Equity Valuation Model",
+      "suggestedPricing": "$0.55 / run",
+      "pitchAngle": "Deliver institutional-grade financial intelligence to trading and research agents on a pay-per-run basis.",
+      "status": "DRAFT_READY"
+    },
+    {
+      "id": "target_10",
+      "authorOrOrg": "freqtrade",
+      "repo": "https://github.com/freqtrade/freqtrade",
+      "category": "Finance",
+      "proposedSkill": "Algorithmic Crypto Strategy Backtester & Risk Boundary Evaluator",
+      "suggestedPricing": "$0.50 / run",
+      "pitchAngle": "Execute heavy strategy simulations with zero client CPU consumption and verified escrow guarantees.",
+      "status": "DRAFT_READY"
+    }
+  ]
+}

@@ -700,6 +700,16 @@ function getModernHtml() {
 
     const SKILLS_DATA = [
       {
+        id: "skill_stealth_browser_extractor",
+        name: "Stealth Headless Browser & Markdown Harvester",
+        author: "CrawlViking AI Labs",
+        desc: "Enterprise headless browser microVM with anti-bot bypass. Executes dynamic SPA JS rendering, extracts DOM interaction hierarchies, and delivers ultra-clean token-dense markdown.",
+        price: "$0.45 / run",
+        priceNum: 0.45,
+        category: "Web & Data",
+        defaultInput: "{\\n  \\"url\\": \\"https://docs.github.com/en\\",\\n  \\"stripBoilerplate\\": true,\\n  \\"extractInteractiveElements\\": true\\n}"
+      },
+      {
         id: "skill_context_token_compressor",
         name: "Context Distiller & Token Reducer",
         author: "DistillOps AI",
@@ -1787,7 +1797,8 @@ function getModernHtml() {
           rawCodeOrStyles: input,
           schemaDiffOrSql: input,
           taskOrCode: input,
-          rawContext: input
+          rawContext: input,
+          url: input
         },
         buyerId: "web_client",
         timestamp: Date.now()

@@ -55,6 +55,21 @@ async function runVerification() {
   console.log("Result 3 Billed:", `$${res3.billing.amountBilledUsd.toFixed(2)}`);
   console.log("Result 3 Creator Payout (85%):", `$${res3.billing.settledToPublisherUsd.toFixed(2)}`);
 
+  // 6. Test Remote Tool Execution 4: Stealth Browser & Markdown Harvester (Skill 19)
+  console.log("\n[Test 4] Invoking 'skill_stealth_browser_extractor' on target web application...");
+  const res4 = await client.executeTool("skill_stealth_browser_extractor", "extract_page_content", {
+    url: "https://docs.github.com/en",
+    stripBoilerplate: true,
+    extractInteractiveElements: true
+  });
+
+  console.log("Result 4 Success:", res4.success);
+  console.log("Result 4 Target Host:", res4.data.resolvedHost);
+  console.log("Result 4 HTTP Status:", res4.data.httpStatus);
+  console.log("Result 4 Render Time:", `${res4.data.renderMetrics.networkIdleMs}ms`);
+  console.log("Result 4 Billed:", `$${res4.billing.amountBilledUsd.toFixed(2)}`);
+  console.log("Result 4 Creator Payout (85%):", `$${res4.billing.settledToPublisherUsd.toFixed(2)}`);
+
   console.log("\n=================================================");
   console.log(" Verification Completed Successfully! All Systems Operational.");
   console.log("=================================================");
