@@ -1961,5 +1961,16 @@ Error summary: ${lastDetectedError.title}`;
     renderGrid();
     loadCasesFromServer();
   </script>
+
+  <!-- Universal Omnipresent Floating Support & Quick Issue Trigger Button -->
+  <div id="floating-support-btn-container" class="fixed bottom-6 right-6 z-40 flex items-center">
+    <button onclick="openSupportModal('create')" class="group flex items-center space-x-2.5 bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold px-4 py-3 rounded-full shadow-2xl shadow-indigo-500/50 border border-indigo-400/40 transition transform hover:scale-105 active:scale-95">
+      <span class="relative flex h-2.5 w-2.5">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+      </span>
+      <span class="text-xs tracking-wide">Report Issue / Ask AI Support</span>
+    </button>
+  </div>
 </body>
 </html>

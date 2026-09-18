@@ -7,6 +7,9 @@ import {
   MarketOpportunity,
   CreatorLead,
   SyndicatedPost,
+  SocialMediaAccount,
+  InfluencerLead,
+  ViralVideoScript,
   ExecutiveCompanyState
 } from "@skillbridge/shared-types";
 import { GatewayRegistry } from "./registry";
@@ -19,6 +22,9 @@ export class SkillBridgeExecutiveBrain {
   private marketOpportunities: MarketOpportunity[] = [];
   private creatorPipeline: CreatorLead[] = [];
   private syndicationQueue: SyndicatedPost[] = [];
+  private socialAccounts: SocialMediaAccount[] = [];
+  private influencers: InfluencerLead[] = [];
+  private videoScripts: ViralVideoScript[] = [];
   private agents: Map<ExecutiveAgentId, AutonomousAgentProfile> = new Map();
   private milestones: RevenueMilestone[] = [];
 
@@ -30,6 +36,9 @@ export class SkillBridgeExecutiveBrain {
     this.initMarketOpportunities();
     this.initCreatorPipeline();
     this.initSyndicationQueue();
+    this.initSocialAccounts();
+    this.initInfluencers();
+    this.initVideoScripts();
     this.initMessageBus();
   }
 
@@ -371,6 +380,177 @@ export class SkillBridgeExecutiveBrain {
     ];
   }
 
+  private initSocialAccounts() {
+    this.socialAccounts = [
+      {
+        platform: 'x_twitter',
+        handle: '@SkillBridgeHQ',
+        displayName: 'SkillBridge | Universal Agent Skills Gateway',
+        profileUrl: 'https://twitter.com/SkillBridgeHQ',
+        actionUrl: 'https://twitter.com/intent/tweet?text=' + encodeURIComponent('Building or using AI agent skills? @SkillBridgeHQ executes skills in secure microVMs with 85% creator splits & 0 host leaks. Live: https://skillbridge-gateway.vercel.app/'),
+        status: 'active',
+        targetAudience: 'AI Researchers, Claude & Cursor Power Users, LLM Engineers',
+        reachTarget: '1,000,000 Impressions / Week'
+      },
+      {
+        platform: 'reddit',
+        handle: 'r/SkillBridge & r/LocalLLaMA',
+        displayName: 'SkillBridge Developer Community',
+        profileUrl: 'https://www.reddit.com/r/LocalLLaMA/',
+        actionUrl: 'https://www.reddit.com/submit?url=' + encodeURIComponent('https://skillbridge-gateway.vercel.app/') + '&title=' + encodeURIComponent('Stop cloning unvetted MCP servers to your localhost — SkillBridge sandboxed execution'),
+        status: 'active',
+        targetAudience: 'Open-Source AI Builders, Local Model Enthusiasts',
+        reachTarget: '500,000 Devs'
+      },
+      {
+        platform: 'linkedin',
+        handle: 'SkillBridge Enterprise Protocols',
+        displayName: 'SkillBridge Autonomous Technologies',
+        profileUrl: 'https://www.linkedin.com/company/skillbridge-gateway',
+        actionUrl: 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent('https://skillbridge-gateway.vercel.app/'),
+        status: 'connected',
+        targetAudience: 'CTOs, Enterprise Security Architects, Venture Investors',
+        reachTarget: '250,000 Leaders'
+      },
+      {
+        platform: 'youtube',
+        handle: '@SkillBridgeDevRel',
+        displayName: 'SkillBridge Engineering & DevRel',
+        profileUrl: 'https://www.youtube.com/@SkillBridgeDevRel',
+        actionUrl: 'https://www.youtube.com/channel/UCskillbridge_official',
+        status: 'active',
+        targetAudience: 'Developers, Prompt Engineers, Tutorial Watchers',
+        reachTarget: '100,000 Subscribers'
+      },
+      {
+        platform: 'github',
+        handle: 'Muf3e/skillbridge',
+        displayName: 'SkillBridge Protocol (Open Specification)',
+        profileUrl: 'https://github.com/Muf3e/skillbridge',
+        actionUrl: 'https://github.com/Muf3e/skillbridge/stargazers',
+        status: 'active',
+        targetAudience: 'Open-Source Tool Authors, MCP Maintainers',
+        reachTarget: '10,000 Stars'
+      }
+    ];
+  }
+
+  private initInfluencers() {
+    this.influencers = [
+      {
+        id: 'inf_01',
+        name: 'AI Tool Reviewers & YouTubers',
+        platform: 'YouTube / X',
+        handle: '@AIToolReviewerHQ',
+        archetype: 'ai_tool_reviewer',
+        estimatedReach: '650,000 Devs',
+        customPitch: "Hey! Loved your deep dive on Cursor agent workflows. We noticed everyone is running raw MCP tools locally with full bash access. SkillBridge (skillbridge-gateway.vercel.app) fixes this with isolated Firecracker microVMs and an 85% creator pool. We'd love to sponsor a video or grant your community $500 bounties for publishing skills.",
+        bountyOfferUsd: 500,
+        status: 'pitched'
+      },
+      {
+        id: 'inf_02',
+        name: 'Top Python & Agent Framework Authors',
+        platform: 'GitHub / Twitter',
+        handle: '@OpenSourceMaintainer',
+        archetype: 'python_maintainer',
+        estimatedReach: '280,000 Devs',
+        customPitch: "Your repo is a foundational dependency across LLM pipelines. Instead of letting users struggle with local setup and copying your code for free, publish your core capability to SkillBridge. You keep 85% of every single API call (projected $5k-$12k/mo passive revenue) with zero infrastructure management.",
+        bountyOfferUsd: 500,
+        status: 'partnered'
+      },
+      {
+        id: 'inf_03',
+        name: 'Cybersecurity & AppSec Specialists',
+        platform: 'Substack / X',
+        handle: '@InfraSecAuditor',
+        archetype: 'security_auditor',
+        estimatedReach: '190,000 Security Pros',
+        customPitch: "We audited 50 community MCP servers and found alarming prompt injection vectors and plaintext credential leakage. SkillBridge enforces zero host credentials and hardware-isolated microVM sandboxing with cryptographic outcome escrow. Would love to have you review our architecture whitepaper.",
+        bountyOfferUsd: 500,
+        status: 'identified'
+      },
+      {
+        id: 'inf_04',
+        name: 'AI Infrastructure & Growth VCs',
+        platform: 'LinkedIn / Substack',
+        handle: '@VentureScoutAI',
+        archetype: 'vc_growth_scout',
+        estimatedReach: '120,000 LPs & Founders',
+        customPitch: "SkillBridge is building the financial and execution clearinghouse for autonomous AI agents. Scaling from $38k/day to $1M/day and $1B unicorn ARR with 0% platform burn and 15% platform margins. Check out our live autonomous War Room at skillbridge-gateway.vercel.app/executive.",
+        bountyOfferUsd: 500,
+        status: 'pitched'
+      }
+    ];
+  }
+
+  private initVideoScripts() {
+    this.videoScripts = [
+      {
+        id: 'script_01',
+        title: 'The Security Nightmare in Your AI Editor',
+        archetype: 'High-Impact Security Warning',
+        durationSeconds: 60,
+        hook: "🚨 You are one pip install away from exposing every API key on your computer.",
+        storyboard: [
+          {
+            timestamp: "0:00 - 0:10",
+            visualCue: "Close-up of developer terminal typing pip install untrusted-mcp-tool with flashing red overlay",
+            audioVoiceover: "Every developer is copying random MCP servers directly to their laptops, giving Claude and Cursor full bash access.",
+            bRollPrompt: "Cybersecurity vulnerability alert, terminal window streaming plaintext secrets"
+          },
+          {
+            timestamp: "0:10 - 0:28",
+            visualCue: "Screen switches to SkillBridge UI showing dark-neon microVM badge with sub-120ms latency counter",
+            audioVoiceover: "SkillBridge changes the game. Your agent executes tools in remote isolated microVMs. Zero host credentials leak. 100% cryptographic escrow guarantee.",
+            bRollPrompt: "Firecracker virtualization animation, clean encrypted data tunnel"
+          },
+          {
+            timestamp: "0:28 - 0:45",
+            visualCue: "Creator payout dashboard ticking up with 85% split badge: $0.25, $0.50, $1.20 per call",
+            audioVoiceover: "And if you're a developer? Package your Python or TS script as a skill in 30 seconds and keep 85% of every single execution.",
+            bRollPrompt: "Financial ticker rising, creator wallet receiving instant USDC"
+          },
+          {
+            timestamp: "0:45 - 0:60",
+            visualCue: "Terminal runs 'npx @skillbridge/cli setup' and Cursor instantly connects",
+            audioVoiceover: "1-click setup. Visit skillbridge-gateway.vercel.app now and claim your share of the $10,000 launch pool.",
+            bRollPrompt: "Fast developer typing in Cursor, celebration emoji"
+          }
+        ],
+        callToAction: "Visit skillbridge-gateway.vercel.app to run live sandboxes & publish skills!"
+      },
+      {
+        id: 'script_02',
+        title: 'How Open-Source Devs Are Earning $5,000/Month Passive Income',
+        archetype: 'Creator Monetization Proof',
+        durationSeconds: 60,
+        hook: "💰 Stop giving away your high-value code for free while AI companies make billions.",
+        storyboard: [
+          {
+            timestamp: "0:00 - 0:12",
+            visualCue: "GitHub repo with 15,000 stars and zero sponsor revenue, sad maintainer graphic",
+            audioVoiceover: "You spent nights building an incredible scraper or SQL optimizer. 10,000 developers use it every day, but your sponsor button has $0.",
+            bRollPrompt: "GitHub star counter rising, coffee cup on messy desk"
+          },
+          {
+            timestamp: "0:12 - 0:30",
+            visualCue: "SkillBridge Publisher Studio modal filling in 3 lines of schema and setting $0.30 per run",
+            audioVoiceover: "SkillBridge lets you turn your repo into a sovereign remote skill. When agents like Cursor or Claude call it, you earn 85% automatically.",
+            bRollPrompt: "Modern web UI form, revenue split calculator"
+          },
+          {
+            timestamp: "0:30 - 0:60",
+            visualCue: "Live Executive War Room showing Hermes $500 bounties and creator earnings ticking past $40,000/day",
+            audioVoiceover: "We're distributing a $10,000 creator launch pool right now. Apply at skillbridge-gateway.vercel.app/marketing.",
+            bRollPrompt: "Split screen of developer smiling and automated bank deposit"
+          }
+        ],
+        callToAction: "Publish your skill today at skillbridge-gateway.vercel.app/marketing!"
+      }
+    ];
+  }
+
   private initMessageBus() {
     this.messageBus = [
       {
@@ -620,7 +800,10 @@ export class SkillBridgeExecutiveBrain {
       messageBus: this.messageBus,
       marketOpportunities: this.marketOpportunities,
       creatorPipeline: this.creatorPipeline,
-      syndicationQueue: this.syndicationQueue
+      syndicationQueue: this.syndicationQueue,
+      socialAccounts: this.socialAccounts,
+      influencers: this.influencers,
+      videoScripts: this.videoScripts
     };
   }
 

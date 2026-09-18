@@ -229,6 +229,44 @@ export interface SyndicatedPost {
   createdAt: string;
 }
 
+export interface SocialMediaAccount {
+  platform: 'x_twitter' | 'reddit' | 'linkedin' | 'youtube' | 'github';
+  handle: string;
+  displayName: string;
+  profileUrl: string;
+  actionUrl: string;
+  status: 'active' | 'configuring' | 'connected';
+  targetAudience: string;
+  reachTarget: string;
+}
+
+export interface InfluencerLead {
+  id: string;
+  name: string;
+  platform: string;
+  handle: string;
+  archetype: 'ai_tool_reviewer' | 'python_maintainer' | 'security_auditor' | 'vc_growth_scout';
+  estimatedReach: string;
+  customPitch: string;
+  bountyOfferUsd: number;
+  status: 'identified' | 'pitched' | 'partnered';
+}
+
+export interface ViralVideoScript {
+  id: string;
+  title: string;
+  archetype: string;
+  durationSeconds: number;
+  hook: string;
+  storyboard: Array<{
+    timestamp: string;
+    visualCue: string;
+    audioVoiceover: string;
+    bRollPrompt: string;
+  }>;
+  callToAction: string;
+}
+
 export interface ExecutiveCompanyState {
   companyName: string;
   centralBrainVersion: string;
@@ -253,5 +291,9 @@ export interface ExecutiveCompanyState {
   marketOpportunities: MarketOpportunity[];
   creatorPipeline: CreatorLead[];
   syndicationQueue: SyndicatedPost[];
+  socialAccounts?: SocialMediaAccount[];
+  influencers?: InfluencerLead[];
+  videoScripts?: ViralVideoScript[];
 }
+
 

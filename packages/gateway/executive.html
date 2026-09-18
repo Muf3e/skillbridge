@@ -508,6 +508,95 @@
           </div>
         </div>
 
+        <!-- SECTION: Social Media Channels & Influencer Command Hub -->
+        <div class="glass-panel rounded-2xl p-6 border border-slate-800 space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-800">
+            <div>
+              <h3 class="text-lg font-bold text-white flex items-center space-x-2">
+                <span>🌐</span>
+                <span>Autonomous Social Media & Influencer Command Hub</span>
+              </h3>
+              <p class="text-xs text-slate-400">Apollo continuously syndicates technical assets and influencer DMs to attract users and creators worldwide.</p>
+            </div>
+            <span class="text-[10px] font-mono bg-cyan-950/60 border border-cyan-500/30 text-cyan-300 px-2.5 py-1 rounded-full">
+              5 Active Networks
+            </span>
+          </div>
+
+          <!-- Social Handles Pills -->
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
+            <a href="https://twitter.com/intent/tweet?text=Building%20with%20AI%20agent%20skills%3F%20%40SkillBridgeHQ%20executes%20skills%20in%20isolated%20microVMs%20with%2085%25%20creator%20splits%20%26%20zero%20host%20leaks%21%20https%3A%2F%2Fskillbridge-gateway.vercel.app%2F" target="_blank" class="p-3 bg-slate-950 rounded-xl border border-slate-800 hover:border-cyan-500/50 transition flex flex-col justify-between space-y-2">
+              <div class="flex items-center justify-between text-xs text-cyan-400 font-bold">
+                <span>𝕏 Twitter / X</span>
+                <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              </div>
+              <div class="text-xs font-mono text-white">@SkillBridgeHQ</div>
+              <span class="text-[10px] text-cyan-300 underline">Post Intent &rarr;</span>
+            </a>
+
+            <a href="https://www.reddit.com/r/LocalLLaMA/submit?title=Stop%20cloning%20unvetted%20MCP%20servers%20to%20your%20localhost%20%E2%80%94%20SkillBridge%20sandboxed%20execution&url=https%3A%2F%2Fskillbridge-gateway.vercel.app%2F" target="_blank" class="p-3 bg-slate-950 rounded-xl border border-slate-800 hover:border-rose-500/50 transition flex flex-col justify-between space-y-2">
+              <div class="flex items-center justify-between text-xs text-rose-400 font-bold">
+                <span>🤖 Reddit</span>
+                <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              </div>
+              <div class="text-xs font-mono text-white">r/SkillBridge</div>
+              <span class="text-[10px] text-rose-300 underline">Post Thread &rarr;</span>
+            </a>
+
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fskillbridge-gateway.vercel.app%2F" target="_blank" class="p-3 bg-slate-950 rounded-xl border border-slate-800 hover:border-blue-500/50 transition flex flex-col justify-between space-y-2">
+              <div class="flex items-center justify-between text-xs text-blue-400 font-bold">
+                <span>💼 LinkedIn</span>
+                <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              </div>
+              <div class="text-xs font-mono text-white">Enterprise Network</div>
+              <span class="text-[10px] text-blue-300 underline">Share Post &rarr;</span>
+            </a>
+
+            <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex flex-col justify-between space-y-2">
+              <div class="flex items-center justify-between text-xs text-red-400 font-bold">
+                <span>📺 YouTube & Shorts</span>
+                <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              </div>
+              <div class="text-xs font-mono text-white">@SkillBridgeDevRel</div>
+              <button onclick="copyExecutiveShortScript()" class="text-[10px] text-red-300 underline text-left">Copy 60s Script &rarr;</button>
+            </div>
+
+            <a href="https://github.com/Muf3e/skillbridge" target="_blank" class="p-3 bg-slate-950 rounded-xl border border-slate-800 hover:border-purple-500/50 transition flex flex-col justify-between space-y-2">
+              <div class="flex items-center justify-between text-xs text-purple-400 font-bold">
+                <span>🐙 GitHub</span>
+                <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              </div>
+              <div class="text-xs font-mono text-white">Muf3e/skillbridge</div>
+              <span class="text-[10px] text-purple-300 underline">Star Repo &rarr;</span>
+            </a>
+          </div>
+
+          <!-- Influencer Outreach DM Generator -->
+          <div class="bg-slate-950/80 border border-slate-800/80 rounded-xl p-4 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-indigo-300 flex items-center space-x-1.5">
+                <span>🎯</span>
+                <span>Influencer Outreach & $500 Bounty Pitch DM</span>
+              </span>
+              <select id="exec-influencer-select" onchange="updateExecPitch()" class="bg-slate-900 border border-slate-700 text-xs text-white rounded-lg px-2.5 py-1">
+                <option value="reviewer">AI Tool Reviewer & YouTuber</option>
+                <option value="maintainer">Open-Source Python Framework Author</option>
+                <option value="security">Cybersecurity & AppSec Auditor</option>
+                <option value="vc">AI Infrastructure Venture Investor</option>
+              </select>
+            </div>
+            <div class="bg-slate-900/90 p-3 rounded-lg border border-slate-800 text-xs text-slate-300 leading-relaxed font-sans" id="exec-pitch-box">
+              Hey! Loved your deep dive on Cursor agent workflows. We noticed everyone is running raw MCP tools locally with full bash access. SkillBridge (skillbridge-gateway.vercel.app) fixes this with isolated Firecracker microVMs and an 85% creator pool. We'd love to sponsor a video or grant your community $500 bounties for publishing skills.
+            </div>
+            <div class="flex items-center justify-between pt-1 text-[11px]">
+              <span class="text-emerald-400 font-mono">Bounty Allocated: $500 USD (from $10,000 launch pool)</span>
+              <button onclick="copyExecPitch()" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-3 py-1.5 rounded-lg text-xs transition">
+                📋 Copy Pitch DM
+              </button>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -517,6 +606,17 @@
   <footer class="border-t border-slate-800/80 py-6 text-center text-xs text-slate-400 font-mono">
     SkillBridge Autonomous Technologies Inc. • Enterprise Agent Gateway v0.2.0 • OmniBrain Multi-Agent Nervous System
   </footer>
+
+  <!-- Universal Floating Support & Quick Issue Trigger Button -->
+  <div id="floating-support-btn-container" class="fixed bottom-6 right-6 z-40 flex items-center">
+    <a href="/support?tab=create" class="group flex items-center space-x-2.5 bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold px-4 py-3 rounded-full shadow-2xl shadow-indigo-500/50 border border-indigo-400/40 transition transform hover:scale-105 active:scale-95">
+      <span class="relative flex h-2.5 w-2.5">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+      </span>
+      <span class="text-xs tracking-wide">Report Issue / Ask AI Support</span>
+    </a>
+  </div>
 
   <script>
     const BOOTSTRAP_STATE = {
@@ -875,6 +975,30 @@
       alert("✓ Copied viral tweet & meme copy to clipboard!");
     }
 
+    const EXEC_INFLUENCER_PITCHES = {
+      reviewer: "Hey! Loved your deep dive on Cursor agent workflows. We noticed everyone is running raw MCP tools locally with full bash access. SkillBridge (skillbridge-gateway.vercel.app) fixes this with isolated Firecracker microVMs and an 85% creator pool. We'd love to sponsor a video or grant your community $500 bounties for publishing skills.",
+      maintainer: "Your repo is a foundational dependency across LLM pipelines. Instead of letting users struggle with local setup and copying your code for free, publish your core capability to SkillBridge. You keep 85% of every single API call (projected $5k-$12k/mo passive revenue) with zero infrastructure management: https://skillbridge-gateway.vercel.app/marketing",
+      security: "We audited 50 community MCP servers and found alarming prompt injection vectors and plaintext credential leakage. SkillBridge enforces zero host credentials and hardware-isolated microVM sandboxing with cryptographic outcome escrow: https://skillbridge-gateway.vercel.app/docs",
+      vc: "SkillBridge is building the financial and execution clearinghouse for autonomous AI agents. Scaling from $38k/day to $1M/day and $1B unicorn ARR with 0% platform burn and 15% platform margins. Live War Room: https://skillbridge-gateway.vercel.app/executive"
+    };
+
+    function updateExecPitch() {
+      const val = document.getElementById("exec-influencer-select")?.value || "reviewer";
+      const text = EXEC_INFLUENCER_PITCHES[val] || EXEC_INFLUENCER_PITCHES.reviewer;
+      document.getElementById("exec-pitch-box").innerText = text;
+    }
+
+    function copyExecPitch() {
+      const text = document.getElementById("exec-pitch-box").innerText;
+      navigator.clipboard.writeText(text);
+      alert("✓ Copied personalized influencer pitch DM to clipboard!");
+    }
+
+    function copyExecutiveShortScript() {
+      navigator.clipboard.writeText("🚨 You are one pip install away from exposing every API key on your computer.\\n\\nEvery developer is copying random MCP servers directly to their laptops, giving Claude and Cursor full bash access.\\n\\nSkillBridge changes the game. Your agent executes tools in remote isolated microVMs with zero host credentials and 100% cryptographic escrow.\\n\\nRun 'npx @skillbridge/cli setup' in 3 seconds. Claim your share of the $10k creator pool: https://skillbridge-gateway.vercel.app/");
+      alert("✓ Copied 60-second video script to clipboard!");
+    }
+
     function renderBootstrapState() {
       if (!CORPORATE_STATE) {
         CORPORATE_STATE = JSON.parse(JSON.stringify(BOOTSTRAP_STATE));
@@ -885,6 +1009,7 @@
 
     // Initialize
     loadCorporateState();
+    updateExecPitch();
   </script>
 </body>
 </html>
