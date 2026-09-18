@@ -567,8 +567,18 @@ function compileMarketplace() {
   content = content.replace(/Γ₧ò/g, "+");
   content = content.replace(/ΓÜá∩╕Å/g, "⚠️");
   content = content.replace(/≡ƒ[a-zA-Z0-9_]*/g, "");
-  content = content.replace(/Γ[a-zA-Z0-9_]*/g, "");
-  content = content.replace(/&bull;/g, "•");
+  content = content.replace(
+    'btn.innerText = "Running in Isolated MicroVM...";',
+    'btn.innerText = "⏳ Running safely in cloud...";'
+  );
+  content = content.replace(
+    'btn.innerText = "⚡ Execute in Isolated MicroVM";',
+    'btn.innerHTML = "<span>▶ Run This Tool (Free Instant Preview)</span>";'
+  );
+  content = content.replace(
+    'sandboxEnvironment: "Isolated Firecracker MicroVM"',
+    'sandboxEnvironment: "100% Safe Cloud Bubble"'
+  );
 
   syncFile("index.html", content);
 }
