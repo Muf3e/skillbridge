@@ -12,6 +12,10 @@
     {
       "source": "/support",
       "destination": "/support.html"
+    },
+    {
+      "source": "/marketing",
+      "destination": "/marketing.html"
     }
   ]
 }

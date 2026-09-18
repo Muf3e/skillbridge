@@ -1,4 +1,4 @@
-﻿import { GatewayServer } from "../../gateway/src/server";
+import { GatewayServer } from "../../gateway/src/server";
 import { SkillBridgeLocalShim } from "../src/shim";
 
 async function runVerification() {
@@ -40,6 +40,20 @@ async function runVerification() {
   console.log("Result 2 Est Cost Reduction:", res2.data.estimatedCostReduction);
   console.log("Result 2 Billed:", `$${res2.billing.amountBilledUsd.toFixed(2)}`);
   console.log("Result 2 Creator Payout (85%):", `$${res2.billing.settledToPublisherUsd.toFixed(2)}`);
+
+  // 5. Test Remote Tool Execution 3: Context Distiller & Token Reducer (Skill 18)
+  console.log("\n[Test 3] Invoking 'skill_context_token_compressor' on raw verbose code payload...");
+  const res3 = await client.executeTool("skill_context_token_compressor", "distill_context_payload", {
+    rawContext: `// Copyright 2026 Acme Corp. All rights reserved.\n// License: MIT\nexport interface UserRecord {\n  id: string;\n  name: string;\n  email: string;\n}\n\n// Helper method\nexport function calculateBilling(hours: number): number {\n  return hours * 150;\n}`,
+    targetCompressionPct: 75,
+    language: "typescript"
+  });
+
+  console.log("Result 3 Success:", res3.success);
+  console.log("Result 3 Compression Achieved:", res3.data.achievedCompressionPct);
+  console.log("Result 3 Tokens Eliminated:", res3.data.metrics.tokensEliminated);
+  console.log("Result 3 Billed:", `$${res3.billing.amountBilledUsd.toFixed(2)}`);
+  console.log("Result 3 Creator Payout (85%):", `$${res3.billing.settledToPublisherUsd.toFixed(2)}`);
 
   console.log("\n=================================================");
   console.log(" Verification Completed Successfully! All Systems Operational.");

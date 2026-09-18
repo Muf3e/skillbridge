@@ -81,6 +81,10 @@
           </span>
         </button>
         <a href="/docs" class="hover:text-white transition-colors">API Docs</a>
+        <a href="/marketing" class="hover:text-white transition-colors flex items-center space-x-1">
+          <span>Launchpad</span>
+          <span class="text-[10px] bg-purple-500/20 text-purple-300 px-1.5 py-0.5 rounded border border-purple-500/30 font-semibold">DevRel</span>
+        </a>
         <button onclick="openWalletModal()" class="hover:text-white transition-colors">Wallet</button>
       </nav>
 
@@ -691,6 +695,16 @@
     let caseSearchQuery = '';
 
     const SKILLS_DATA = [
+      {
+        id: "skill_context_token_compressor",
+        name: "Context Distiller & Token Reducer",
+        author: "DistillOps AI",
+        desc: "Enterprise context compressor. Reduces massive codebases, stacktraces, and prompt histories by 65-80% using AST distillation, entropy deduplication, and syntax-preserving semantic compaction.",
+        price: "$0.35 / run",
+        priceNum: 0.35,
+        category: "AI Ops",
+        defaultInput: "{\n  \"rawContext\": \"export interface UserRecord { id: string; name: string; email: string; }\\nexport function calculateBilling(hours: number): number { return hours * 150; }\",\n  \"targetCompressionPct\": 75,\n  \"language\": \"typescript\"\n}"
+      },
       {
         id: "skill_chaos_load_tester",
         name: "Chaos Engineering & Synthetic Load Fuzzer",
@@ -1770,7 +1784,8 @@ Error summary: ${lastDetectedError.title}`;
           filingExcerpt: input,
           rawCodeOrStyles: input,
           schemaDiffOrSql: input,
-          taskOrCode: input
+          taskOrCode: input,
+          rawContext: input
         },
         buyerId: "web_client",
         timestamp: Date.now()

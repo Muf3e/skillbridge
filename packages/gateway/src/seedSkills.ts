@@ -444,6 +444,32 @@ export const chaosLoadTesterSkill: SkillManifest = {
   updatedAt: new Date().toISOString()
 };
 
+export const contextDistillerSkill: SkillManifest = {
+  id: "skill_context_token_compressor",
+  name: "Context Distiller & Token Reducer",
+  description: "Enterprise context compressor. Reduces massive codebases, stacktraces, and prompt histories by 65-80% using AST distillation, entropy deduplication, and syntax-preserving semantic compaction.",
+  authorId: "pub_distillops",
+  authorName: "DistillOps AI",
+  pricing: { model: "pay_per_run", costPerRunUsd: 0.35 },
+  capabilities: ["context-compression", "token-optimizer", "ast-distillation", "prompt-compression", "llm-cost-cutting"],
+  tools: [{
+    name: "distill_context_payload",
+    description: "Compresses raw code or prompt context while preserving functional contracts, API signatures, and core reasoning markers.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        rawContext: { type: "string", description: "Raw code snippet, file bundle, or multi-turn prompt history to distill" },
+        targetCompressionPct: { type: "number", description: "Target compression percentage (e.g. 70)" },
+        preserveSyntax: { type: "boolean", description: "Preserve valid programming language syntax (default true)" },
+        language: { type: "string", description: "Programming or markup language (e.g. typescript, python, json, markdown)" }
+      },
+      required: ["rawContext"]
+    }
+  }],
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString()
+};
+
 export const ALL_SEED_SKILLS: SkillManifest[] = [
   deepSecAuditSkill,
   sqlDoctorSkill,
@@ -461,8 +487,10 @@ export const ALL_SEED_SKILLS: SkillManifest[] = [
   apiMockForgeSkill,
   multiAgentConsensusSkill,
   zeroDowntimeMigratorSkill,
-  chaosLoadTesterSkill
+  chaosLoadTesterSkill,
+  contextDistillerSkill
 ];
+
 
 
 

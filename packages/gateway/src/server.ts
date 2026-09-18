@@ -124,6 +124,16 @@ export class GatewayServer {
           return;
         }
       }
+
+      if (url === "/marketing.html" || url.startsWith("/marketing")) {
+        const html = getStaticHtml("marketing.html");
+        if (html) {
+          res.setHeader("Content-Type", "text/html; charset=utf-8");
+          if (res.writeHead) res.writeHead(200); else res.statusCode = 200;
+          res.end(html);
+          return;
+        }
+      }
     }
 
     // 2. Health check
