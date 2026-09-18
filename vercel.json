@@ -30,15 +30,15 @@
       "destination": "/security.html"
     },
     {
-      "source": "/admin",
-      "destination": "/admin.html"
-    },
-    {
       "source": "/executive",
-      "destination": "/admin.html"
+      "destination": "/executive.html"
     },
     {
       "source": "/war-room",
+      "destination": "/executive.html"
+    },
+    {
+      "source": "/admin",
       "destination": "/admin.html"
     }
   ]

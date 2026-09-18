@@ -1,1037 +1,1035 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SkillBridge Sovereign Admin & Executive Console</title>
-  <meta name="description" content="Live Autonomous Corporate Operations, Multi-Agent Hierarchy, Real-Time Inter-Agent Message Bus, and $1M/day Revenue Trajectory." />
-  <link rel="icon" type="image/svg+xml" href="/assets/logo.svg">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
-    body { font-family: 'Plus Jakarta Sans', sans-serif; }
-    code, pre { font-family: 'JetBrains Mono', monospace; }
-    .glass-panel {
-      background: rgba(15, 23, 42, 0.75);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .glow-radial {
-      background: radial-gradient(circle at 50% 0%, rgba(6, 182, 212, 0.15) 0%, rgba(15, 23, 42, 0) 70%);
-    }
-    .scrollbar-custom::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
-    }
-    .scrollbar-custom::-webkit-scrollbar-track {
-      background: rgba(15, 23, 42, 0.6);
-    }
-    .scrollbar-custom::-webkit-scrollbar-thumb {
-      background: rgba(99, 102, 241, 0.3);
-      border-radius: 3px;
-    }
-    .scrollbar-custom::-webkit-scrollbar-thumb:hover {
-      background: rgba(99, 102, 241, 0.6);
-    }
-  </style>
-</head>
-<body class="bg-[#050811] text-slate-100 min-h-screen flex flex-col selection:bg-cyan-500 selection:text-black">
 
-  <!-- Autonomous Corporate Status Bar -->
-  <aside aria-label="Corporate Brain Status" class="bg-gradient-to-r from-cyan-950/80 via-slate-950/80 to-indigo-950/80 border-b border-cyan-500/20 py-2 px-4 text-center text-xs text-cyan-200 flex items-center justify-between">
-    <div class="flex items-center space-x-2">
-      <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 font-bold text-[10px] uppercase tracking-wider border border-cyan-500/30">
-        <span class="h-1.5 w-1.5 rounded-full bg-cyan-400 mr-1.5 animate-pulse"></span>
-        OmniBrain v1.0 Active
-      </span>
-      <span class="hidden sm:inline text-slate-400">Autonomous Corporation Mode:</span>
-      <strong class="text-white hidden sm:inline">SkillBridge Technologies Inc.</strong>
-    </div>
-    <div class="flex items-center space-x-4 text-[11px] font-mono">
-      <span class="text-slate-400">Active Cycles: <strong id="top-cycles-counter" class="text-cyan-400">43</strong></span>
-      <span class="text-slate-400 hidden md:inline">Platform Burn: <strong class="text-emerald-400">$0.00 / mo</strong></span>
-      <span class="text-slate-400 hidden md:inline">Escrow Settlement: <strong class="text-emerald-400">100%</strong></span>
-    </div>
-  </aside>
+<html class="dark" lang="en"><head>
+<title>SkillBridge | OmniBrain Autonomous War Room & Telemetry</title><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-background": "#e2e2e4",
+          "tertiary-container": "#9a989d",
+          "on-primary-container": "#572000",
+          "secondary": "#c8c6c8",
+          "on-primary-fixed-variant": "#7a3000",
+          "secondary-container": "#474649",
+          "on-secondary-fixed-variant": "#474649",
+          "surface-container-highest": "#333537",
+          "inverse-primary": "#a04100",
+          "outline-variant": "#5a4136",
+          "inverse-on-surface": "#2f3132",
+          "background": "#121415",
+          "on-surface": "#e2e2e4",
+          "tertiary-fixed-dim": "#c8c5cb",
+          "on-tertiary-fixed": "#1b1b1f",
+          "primary-fixed": "#ffdbcc",
+          "on-secondary-fixed": "#1b1b1d",
+          "inverse-surface": "#e2e2e4",
+          "on-secondary": "#303032",
+          "on-error": "#690005",
+          "on-tertiary-container": "#313135",
+          "primary-container": "#ff6b00",
+          "on-tertiary-fixed-variant": "#47464b",
+          "primary-fixed-dim": "#ffb693",
+          "error": "#ffb4ab",
+          "error-container": "#93000a",
+          "surface-variant": "#333537",
+          "surface-tint": "#ffb693",
+          "primary": "#ffb693",
+          "surface-container": "#1e2021",
+          "secondary-fixed-dim": "#c8c6c8",
+          "surface-container-lowest": "#0c0e10",
+          "surface-bright": "#37393b",
+          "surface-dim": "#121415",
+          "on-surface-variant": "#e2bfb0",
+          "surface-container-low": "#1a1c1d",
+          "on-error-container": "#ffdad6",
+          "outline": "#a98a7d",
+          "surface": "#121415",
+          "on-tertiary": "#303034",
+          "on-primary-fixed": "#351000",
+          "on-primary": "#561f00",
+          "surface-container-high": "#282a2c",
+          "on-secondary-container": "#b7b4b7",
+          "secondary-fixed": "#e5e1e4",
+          "tertiary": "#c8c5cb",
+          "tertiary-fixed": "#e4e1e7"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-xl": "64px",
+          "margin": "48px",
+          "space-xs": "4px",
+          "space-lg": "32px",
+          "space-md": "16px",
+          "gutter": "24px",
+          "space-sm": "8px"
+        },
+        "fontFamily": {
+          "headline-xl": [
+            "Space Grotesk"
+          ],
+          "headline-lg": [
+            "Space Grotesk"
+          ],
+          "headline-md": [
+            "Space Grotesk"
+          ],
+          "label-sm": [
+            "Inter"
+          ],
+          "headline-sm": [
+            "Space Grotesk"
+          ],
+          "body-md": [
+            "Inter"
+          ],
+          "label-lg": [
+            "Inter"
+          ],
+          "body-sm": [
+            "Inter"
+          ],
+          "body-lg": [
+            "Inter"
+          ]
+        },
+        "fontSize": {
+          "headline-xl": [
+            "72px",
+            {
+              "lineHeight": "80px",
+              "letterSpacing": "-0.03em",
+              "fontWeight": "700"
+            }
+          ],
+          "headline-lg": [
+            "48px",
+            {
+              "lineHeight": "56px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-md": [
+            "32px",
+            {
+              "lineHeight": "40px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "label-sm": [
+            "11px",
+            {
+              "lineHeight": "16px",
+              "letterSpacing": "0.08em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-sm": [
+            "24px",
+            {
+              "lineHeight": "32px",
+              "fontWeight": "500"
+            }
+          ],
+          "body-md": [
+            "15px",
+            {
+              "lineHeight": "24px",
+              "fontWeight": "400"
+            }
+          ],
+          "label-lg": [
+            "14px",
+            {
+              "lineHeight": "20px",
+              "letterSpacing": "0.05em",
+              "fontWeight": "500"
+            }
+          ],
+          "body-sm": [
+            "13px",
+            {
+              "lineHeight": "20px",
+              "fontWeight": "400"
+            }
+          ],
+          "body-lg": [
+            "18px",
+            {
+              "lineHeight": "28px",
+              "fontWeight": "400"
+            }
+          ]
+        }
+      },
+    },
+  }</script></head><body class="bg-background font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- Universal Top Announcement Bar -->
+<aside aria-label="Announcement" class="bg-[#0f1112] border-b border-white/5 py-1.5 px-4 text-center text-xs text-[#a0a2a4] flex items-center justify-center space-x-2">
+  <span class="inline-block px-2 py-0.5 rounded-full bg-[#ff6b00]/20 text-[#ff6b00] font-bold text-[10px] uppercase tracking-wider border border-[#ff6b00]/30">Bounty Live</span>
+  <span>Publish an agent skill this month & compete for the <strong class="text-white">$10,000 creator launch pool</strong>.</span>
+  <a href="/publisher" class="underline font-bold text-[#ff6b00] hover:text-white ml-1 transition">Publish Skill &rarr;</a>
+</aside>
 
-  <!-- Navigation Bar -->
-  
-<!-- Admin Operations Header -->
-<header class="sticky top-0 z-50 bg-[#121415]/95 backdrop-blur-xl border-b border-rose-500/20 shadow-[0_1px_12px_rgba(244,63,94,0.15)]">
-  <div class="max-w-7xl mx-auto h-20 w-full px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
-    <div class="flex items-center gap-4 shrink-0">
-      <a href="/admin" class="flex items-center gap-3 group">
-        <img alt="SkillBridge Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UaICitA37g_MPC4BeiTnjynEuRZbSpbHZd30T-MMDasK2U9N4QdYuCZ9qMQQbLF3f7rfl6F6CEix6NSdoym5nuwqMNVGuNwa9UbzW31u5ySY79WGQP06iJylJLZN1gkFPoIgV6Rmrv06vGxtJrxyhPy6LTsP-RDMNsd9e0UAlEYBk-dW7SHsCEZ4s_IBDfFyy6vHUbxkFK3iHSxD0D56CpA4frLDdn9_VI1NXXTd9m7JKO8lc1AH9whED4"/>
+<!-- Universal Stitch Header (Compact h-16, Zero Extra Space) -->
+<header class="sticky top-0 z-50 bg-[#121415]/95 backdrop-blur-xl border-b border-white/10 shadow-[0_1px_8px_rgba(0,0,0,0.4)]">
+  <div class="max-w-7xl mx-auto h-16 w-full px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
+    <div class="flex items-center gap-5 shrink-0">
+      <a href="/" class="flex items-center gap-2.5 group">
+        <img alt="SkillBridge Logo" class="h-7 w-auto object-contain transition-transform group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AEtjO1UaICitA37g_MPC4BeiTnjynEuRZbSpbHZd30T-MMDasK2U9N4QdYuCZ9qMQQbLF3f7rfl6F6CEix6NSdoym5nuwqMNVGuNwa9UbzW31u5ySY79WGQP06iJylJLZN1gkFPoIgV6Rmrv06vGxtJrxyhPy6LTsP-RDMNsd9e0UAlEYBk-dW7SHsCEZ4s_IBDfFyy6vHUbxkFK3iHSxD0D56CpA4frLDdn9_VI1NXXTd9m7JKO8lc1AH9whED4"/>
         <div class="flex flex-col">
-          <span class="text-lg tracking-tight text-white flex items-center gap-2 font-bold font-['Space_Grotesk']">
-            SkillBridge <span class="text-rose-500">ADMIN CONSOLE</span>
-          </span>
-          <span class="text-[10px] text-rose-400 font-mono tracking-wider uppercase flex items-center gap-1.5">
-            <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"></span>
-            RESTRICTED ACCESS • LEVEL 4 CLEARANCE • AEGIS-ONE ONLINE
-          </span>
+          <span class="text-base tracking-tight text-white flex items-center gap-1 font-bold font-['Space_Grotesk']">SkillBridge <span class="text-[#ff6b00]">GATEWAY</span></span>
+          <span class="text-[9px] text-[#8e9092] tracking-wider uppercase font-mono">v0.2.0 sovereign runtime</span>
         </div>
       </a>
-    </div>
-
-    <!-- Admin Switcher Tabs -->
-    <div class="hidden md:flex items-center gap-2 p-1 bg-[#1b1b1f] rounded-xl border border-white/10 text-xs font-semibold">
-      <button onclick="switchAdminSection('warroom')" id="btn-admin-warroom" class="px-3 py-1.5 rounded-lg bg-rose-600 text-white shadow">🧠 War Room & Telemetry</button>
-      <button onclick="switchAdminSection('marketing')" id="btn-admin-marketing" class="px-3 py-1.5 rounded-lg text-[#a0a2a4] hover:text-white">🚀 DevRel & Meme Studio</button>
-      <button onclick="switchAdminSection('fleet')" id="btn-admin-fleet" class="px-3 py-1.5 rounded-lg text-[#a0a2a4] hover:text-white">🛡️ Fleet Infrastructure</button>
+      <nav class="hidden lg:flex items-center gap-1 p-1 bg-[#181a1b] rounded-xl border border-white/5">
+        <a class="px-3 py-1.5 rounded-lg text-xs font-medium text-[#a0a2a4] hover:text-white hover:bg-[#232527] transition-all" href="/">Tool Store</a>
+      <a class="px-3 py-1.5 rounded-lg text-xs font-medium text-[#a0a2a4] hover:text-white hover:bg-[#232527] transition-all" href="/playground">Try In Browser</a>
+      <a class="px-3 py-1.5 rounded-lg text-xs font-medium text-[#a0a2a4] hover:text-white hover:bg-[#232527] transition-all" href="/publisher">Sell Your Tool (85%)</a>
+      <a class="px-3 py-1.5 rounded-lg text-xs font-medium text-[#a0a2a4] hover:text-white hover:bg-[#232527] transition-all" href="/docs">Beginner Guide</a>
+      <a class="px-3 py-1.5 rounded-lg text-xs font-medium text-[#a0a2a4] hover:text-white hover:bg-[#232527] transition-all" href="/security">Safety & Privacy</a>
+      <a class="px-3 py-1.5 rounded-lg text-xs font-medium text-[#a0a2a4] hover:text-white hover:bg-[#232527] transition-all" href="/support">24/7 AI Help</a>
+      </nav>
     </div>
     
-    <div class="flex items-center gap-3">
-      <button onclick="triggerAutonomousCycle()" class="px-3 py-1.5 rounded-xl bg-[#232527] hover:bg-[#2f3132] text-xs font-mono text-cyan-300 border border-cyan-500/30 flex items-center space-x-1.5">
-        <span class="material-symbols-outlined text-sm">sync</span>
-        <span>Run Cycle</span>
+    <div class="flex items-center gap-2.5 shrink-0">
+      <div class="hidden md:flex items-center gap-2 px-2.5 py-1 rounded-full bg-[#181a1b] border border-white/5">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="text-xs text-[#a0a2a4]">SEV-SNP • <span class="text-[#ff6b00] font-bold">114ms SLA</span></span>
+      </div>
+      
+      <div class="hidden xl:flex items-center gap-2 px-2.5 py-1 rounded-lg bg-[#232527] border border-white/5">
+        <span class="text-[10px] text-[#8e9092] font-mono">CLI</span>
+        <code class="text-xs text-white select-all font-mono">npx @skillbridge/cli setup</code>
+        <button onclick="navigator.clipboard.writeText('npx @skillbridge/cli setup'); alert('CLI setup command copied!');" class="hover:text-[#ff6b00] transition-colors text-[#a0a2a4]" type="button" title="Copy setup command">
+          <span class="material-symbols-outlined text-sm">content_copy</span>
+        </button>
+      </div>
+
+      <button onclick="alert('Developer wallet funded with $24.15 USD. MicroVM gas escrow ready.');" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#232527] hover:bg-[#2e3133] transition-all border border-white/10" type="button">
+        <span class="material-symbols-outlined text-[#ff6b00] text-sm">account_balance_wallet</span>
+        <span class="text-xs text-white font-mono font-bold">$24.15</span>
+        <span class="text-xs text-[#ff6b00] font-bold">+ Top Up</span>
       </button>
-      <a href="/" class="text-xs font-bold text-[#a0a2a4] hover:text-white px-3 py-1.5 rounded-xl bg-[#1b1b1f] border border-white/10 hover:border-white/20 transition flex items-center gap-1">
-        <span>&larr; Public Marketplace</span>
-      </a>
     </div>
   </div>
 </header>
-
-
-  <!-- Hero Section -->
-  <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full space-y-8">
-
-    <div class="glow-radial rounded-3xl p-6 sm:p-8 border border-slate-800/80 glass-panel">
-      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-        <div class="space-y-2">
-          <div class="flex items-center space-x-2">
-            <span class="h-2.5 w-2.5 rounded-full bg-emerald-400 animate-ping"></span>
-            <span class="text-xs uppercase font-mono tracking-widest text-cyan-400 font-bold">Autonomous Corporate Nervous System</span>
-          </div>
-          <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
-            SkillBridge Executive War Room
-          </h1>
-          <p class="text-sm text-slate-300 max-w-2xl">
-            The Central AI Brain (<code class="text-cyan-300">Aegis-One</code>) autonomously commands 5 specialized AI worker agents across market surveillance, developer outreach, viral marketing, escrow accounting, and sandbox security—scaling revenue towards the <strong>$1,000,000 / day</strong> milestone.
+<main class="w-full pt-2 sm:pt-4 bg-background min-h-screen"><div class="flex flex-col w-full">
+<!-- Subtle Ambient Glow Canvas -->
+<div class="relative w-full overflow-hidden px-gutter max-w-7xl mx-auto flex flex-col gap-5 pb-6">
+<!-- Ambient Luminous Backdrop Gradients -->
+<div class="absolute top-12 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[140px] pointer-events-none -z-10"></div>
+<div class="absolute top-72 right-10 w-80 h-80 bg-primary-container/15 rounded-full blur-[160px] pointer-events-none -z-10"></div>
+<div class="absolute bottom-96 left-10 w-96 h-96 bg-surface-container-high/30 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+<!-- Header & Mission Control Top Strip -->
+<section class="flex flex-col gap-space-md pt-3 sm:pt-4">
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="inline-flex items-center gap-space-xs px-space-md py-1 rounded-full bg-surface-container-high/70 backdrop-blur-md shadow-sm">
+<span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+<span class="font-label-sm text-label-sm text-primary tracking-wider uppercase font-semibold">AMD SEV-SNP VERIFIER V0.2.0 • ACTIVE CONSENSUS • ENCLAVE-ID: #SB-9941-KRNL</span>
+</span>
+<span class="inline-flex items-center gap-space-xs px-space-md py-1 rounded-full bg-surface-container-low backdrop-blur-sm text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-primary text-sm">verified_user</span>
+            Zero-Leak Remote MCP Execution Shield Active
+          </span>
+</div>
+<div class="flex items-center gap-space-xs text-outline font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span>EPOCH #118402 • PROVED 0.8s AGO</span>
+</div>
+</div>
+<!-- Title & Executive Actions Bar -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 bg-surface-container-low/70 backdrop-blur-2xl p-4 sm:p-5 rounded-xl shadow-xl">
+<div class="flex flex-col gap-space-xs max-w-3xl">
+<div class="flex items-center gap-space-sm">
+<span class="px-space-sm py-0.5 rounded bg-primary-container text-on-primary-container font-label-sm text-label-sm uppercase tracking-widest font-bold">SOVEREIGN WAR ROOM</span>
+<span class="font-label-sm text-label-sm text-outline tracking-wider uppercase">NODE CLUSTER 0412-GENESIS</span>
+</div>
+<h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold font-['Space_Grotesk'] text-on-surface tracking-tight">OmniBrain Autonomous War Room</h1>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Real-time global microVM fleet attestation, autonomous agent swarm telemetry, outcome escrow settlements, and hardware-enforced cryptographic airgap execution.
           </p>
-        </div>
-
-        <div class="flex flex-wrap items-center gap-3">
-          <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 min-w-[160px] text-center">
-            <div class="text-[11px] uppercase tracking-wider text-slate-400 font-bold">Daily GMV Run-Rate</div>
-            <div class="text-2xl font-extrabold text-emerald-400 font-mono mt-1" id="kpi-daily-gmv">$38,450</div>
-            <div class="text-[10px] text-emerald-300 font-medium">115% of Month 1 Goal</div>
+</div>
+<!-- Executive Buttons -->
+<div class="flex flex-wrap items-center gap-space-sm shrink-0">
+<button class="group flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-surface-container-high/80 hover:bg-surface-container-highest text-on-surface transition-all active:scale-95 shadow-sm" id="btn-simulate" type="button">
+<span class="material-symbols-outlined text-primary group-hover:rotate-12 transition-transform text-sm">security_update_warning</span>
+<span class="font-label-lg text-label-lg font-medium">Simulate Edge Attack</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-surface-container-high/80 hover:bg-surface-container-highest text-on-surface transition-all active:scale-95 shadow-sm" id="btn-export" type="button">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">receipt_long</span>
+<span class="font-label-lg text-label-lg font-medium">Export ZK-Receipts</span>
+</button>
+<button class="group flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-error-container text-on-error hover:bg-error transition-all active:scale-95 shadow-lg shadow-error-container/40" id="btn-freeze" type="button">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform text-sm">lock_reset</span>
+<span class="font-label-lg text-label-lg font-bold tracking-wide uppercase">Freeze Gateway</span>
+</button>
+</div>
+</div>
+</section>
+<!-- 5 Telemetry KPI Glass Cards Grid -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-space-md">
+<!-- KPI 1 -->
+<div class="relative overflow-hidden flex flex-col justify-between p-space-md rounded-xl bg-surface-container/80 backdrop-blur-xl shadow-md transition-all hover:bg-surface-container-high/90">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Regional Health</span>
+<span class="material-symbols-outlined text-primary text-base">dns</span>
+</div>
+<div class="my-space-sm">
+<span class="text-xl sm:text-2xl font-bold font-['Space_Grotesk'] text-on-surface font-semibold tracking-tight">14 / 14</span>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<span class="font-label-sm text-label-sm text-primary font-medium">100% Enclaves Validated</span>
+</div>
+</div>
+<!-- Sparkline -->
+<div class="w-full h-8 flex items-end gap-1 pt-1 opacity-85">
+<div class="w-full bg-surface-container-highest rounded-t h-full flex items-end">
+<div class="w-full bg-primary-container/80 rounded-t" style="height: 100%;"></div>
+</div>
+<div class="w-full bg-surface-container-highest rounded-t h-full flex items-end">
+<div class="w-full bg-primary-container/80 rounded-t" style="height: 100%;"></div>
+</div>
+<div class="w-full bg-surface-container-highest rounded-t h-full flex items-end">
+<div class="w-full bg-primary-container/80 rounded-t" style="height: 100%;"></div>
+</div>
+<div class="w-full bg-surface-container-highest rounded-t h-full flex items-end">
+<div class="w-full bg-primary-container/80 rounded-t" style="height: 100%;"></div>
+</div>
+<div class="w-full bg-surface-container-highest rounded-t h-full flex items-end">
+<div class="w-full bg-primary-container/80 rounded-t" style="height: 100%;"></div>
+</div>
+<div class="w-full bg-surface-container-highest rounded-t h-full flex items-end">
+<div class="w-full bg-primary rounded-t" style="height: 100%;"></div>
+</div>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="relative overflow-hidden flex flex-col justify-between p-space-md rounded-xl bg-surface-container/80 backdrop-blur-xl shadow-md transition-all hover:bg-surface-container-high/90">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">P99 Global Latency</span>
+<span class="material-symbols-outlined text-primary text-base">speed</span>
+</div>
+<div class="my-space-sm">
+<span class="text-xl sm:text-2xl font-bold font-['Space_Grotesk'] text-on-surface font-semibold tracking-tight">98.4 <span class="font-body-sm text-body-sm text-on-surface-variant">ms</span></span>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="font-label-sm text-label-sm text-outline">Target &lt;120ms SLA strict</span>
+</div>
+</div>
+<!-- Trend Bar Indicator -->
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full transition-all duration-500" style="width: 82%;"></div>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="relative overflow-hidden flex flex-col justify-between p-space-md rounded-xl bg-surface-container/80 backdrop-blur-xl shadow-md transition-all hover:bg-surface-container-high/90">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Zero-Leak Rate</span>
+<span class="material-symbols-outlined text-primary text-base">shield_lock</span>
+</div>
+<div class="my-space-sm">
+<span class="text-xl sm:text-2xl font-bold font-['Space_Grotesk'] text-primary font-semibold tracking-tight">100.00%</span>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">0 Side-Channel Breaches</span>
+</div>
+</div>
+<div class="flex items-center justify-between font-label-sm text-label-sm text-outline">
+<span>AES-XTS 256</span>
+<span class="text-primary font-mono">SEV-SNP HARDENED</span>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="relative overflow-hidden flex flex-col justify-between p-space-md rounded-xl bg-surface-container/80 backdrop-blur-xl shadow-md transition-all hover:bg-surface-container-high/90">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Active Swarms</span>
+<span class="material-symbols-outlined text-primary text-base">hub</span>
+</div>
+<div class="my-space-sm">
+<span class="text-xl sm:text-2xl font-bold font-['Space_Grotesk'] text-on-surface font-semibold tracking-tight">342</span>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="material-symbols-outlined text-primary text-sm">trending_up</span>
+<span class="font-label-sm text-label-sm text-primary font-medium">+48 swarms in last 60m</span>
+</div>
+</div>
+<div class="flex -space-x-1.5 overflow-hidden py-1">
+<div class="inline-block h-5 w-5 rounded-full ring-1 ring-surface-container bg-surface-container-highest flex items-center justify-center text-[9px] font-mono text-primary">α</div>
+<div class="inline-block h-5 w-5 rounded-full ring-1 ring-surface-container bg-surface-container-highest flex items-center justify-center text-[9px] font-mono text-primary">β</div>
+<div class="inline-block h-5 w-5 rounded-full ring-1 ring-surface-container bg-surface-container-highest flex items-center justify-center text-[9px] font-mono text-primary">γ</div>
+<div class="inline-block h-5 w-5 rounded-full ring-1 ring-surface-container bg-surface-container-highest flex items-center justify-center text-[9px] font-mono text-primary">+339</div>
+</div>
+</div>
+<!-- KPI 5 -->
+<div class="relative overflow-hidden flex flex-col justify-between p-space-md rounded-xl bg-surface-container/80 backdrop-blur-xl shadow-md transition-all hover:bg-surface-container-high/90">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">In-Flight Escrow</span>
+<span class="material-symbols-outlined text-primary-container text-base">token</span>
+</div>
+<div class="my-space-sm">
+<span class="text-xl sm:text-2xl font-bold font-['Space_Grotesk'] text-on-surface font-semibold tracking-tight">$128,490<span class="text-on-surface-variant font-body-sm text-body-sm">.50</span></span>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<span class="font-label-sm text-label-sm text-primary-fixed-dim">Locked under ZK consensus</span>
+</div>
+</div>
+<div class="flex items-center justify-between font-label-sm text-label-sm text-outline">
+<span>0.00% Dispute Rate</span>
+<span class="text-primary font-mono">INSTANT PAY</span>
+</div>
+</div>
+</section>
+<!-- Global Datacenter Mesh & Optical Backbone Section -->
+<section class="flex flex-col gap-space-md p-4 sm:p-5 rounded-xl bg-surface-container-low/80 backdrop-blur-xl shadow-xl">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest font-semibold">FIBER TOPOLOGY • BGP ANYCAST</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Global Datacenter Mesh &amp; Optical Backbone</h2>
+</div>
+<div class="flex flex-wrap items-center gap-space-xs font-label-sm text-label-sm">
+<span class="px-space-sm py-1 rounded bg-surface-container-high text-on-surface-variant flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary"></span> 6 Global Edge Pops
+          </span>
+<span class="px-space-sm py-1 rounded bg-surface-container-high text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary">memory</span> SEV-SNP Active
+          </span>
+<span class="px-space-sm py-1 rounded bg-surface-container-high text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary">cleaning_services</span> 64MB DRAM Scrub
+          </span>
+</div>
+</div>
+<!-- Main Visual Mesh Interface -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
+<!-- Interactive Vector Graphic / Datacenter Network Visualizer -->
+<div class="lg:col-span-8 relative w-full h-80 rounded-xl bg-surface-container-lowest/90 overflow-hidden flex items-center justify-center p-space-md shadow-inner">
+<!-- Background Grid Overlay -->
+<div class="absolute inset-0 bg-[radial-gradient(#ff6b00_1px,transparent_1px)] [background-size:24px_24px] opacity-10 pointer-events-none"></div>
+<!-- Dynamic SVG Topology Mesh connecting nodes -->
+<svg class="w-full h-full text-primary/40" fill="none" viewbox="0 0 760 300" xmlns="http://www.w3.org/2000/svg">
+<!-- Intercontinental Fiber Arc Paths -->
+<path class="animate-pulse" d="M 180,105 Q 280,40 370,80" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5"></path>
+<path d="M 370,80 Q 470,120 590,95" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5"></path>
+<path d="M 180,105 Q 230,170 240,210" stroke="currentColor" stroke-width="1.5"></path>
+<path d="M 240,210 Q 340,240 520,200" stroke="currentColor" stroke-dasharray="2 3" stroke-width="1.5"></path>
+<path d="M 370,80 Q 440,160 520,200" stroke="currentColor" stroke-width="1.5"></path>
+<path d="M 590,95 Q 560,150 520,200" stroke="currentColor" stroke-width="1.5"></path>
+<!-- Datacenter Nodes -->
+<!-- N. Virginia (US-East) -->
+<g class="cursor-pointer group">
+<circle class="animate-ping" cx="180" cy="105" fill="#ff6b00" fill-opacity="0.2" r="7"></circle>
+<circle cx="180" cy="105" fill="#ffb693" r="4"></circle>
+<text fill="#e2e2e4" font-family="Space Grotesk" font-size="11" font-weight="600" x="145" y="90">N. Virginia (US-East)</text>
+<text fill="#a98a7d" font-family="Inter" font-size="10" x="160" y="125">11ms • SNP OK</text>
+</g>
+<!-- Frankfurt (EU-Central) -->
+<g class="cursor-pointer group">
+<circle class="animate-pulse" cx="370" cy="80" fill="#ff6b00" fill-opacity="0.25" r="8"></circle>
+<circle cx="370" cy="80" fill="#ff6b00" r="5"></circle>
+<text fill="#e2e2e4" font-family="Space Grotesk" font-size="11" font-weight="600" x="340" y="65">Frankfurt (EU-Central)</text>
+<text fill="#a98a7d" font-family="Inter" font-size="10" x="355" y="100">18ms • 64MB Scrub</text>
+</g>
+<!-- Tokyo (AP-East) -->
+<g class="cursor-pointer group">
+<circle class="animate-ping" cx="590" cy="95" fill="#ff6b00" fill-opacity="0.2" r="7"></circle>
+<circle cx="590" cy="95" fill="#ffb693" r="4"></circle>
+<text fill="#e2e2e4" font-family="Space Grotesk" font-size="11" font-weight="600" x="560" y="80">Tokyo (AP-East)</text>
+<text fill="#a98a7d" font-family="Inter" font-size="10" x="575" y="115">42ms • SNP OK</text>
+</g>
+<!-- São Paulo (SA-East) -->
+<g class="cursor-pointer group">
+<circle cx="240" cy="210" fill="#c8c5cb" r="5"></circle>
+<text fill="#e2e2e4" font-family="Space Grotesk" font-size="11" font-weight="600" x="195" y="235">São Paulo (SA-East)</text>
+<text fill="#a98a7d" font-family="Inter" font-size="10" x="220" y="250">61ms • Validated</text>
+</g>
+<!-- Singapore (AP-South) -->
+<g class="cursor-pointer group">
+<circle cx="520" cy="200" fill="#ff6b00" fill-opacity="0.25" r="7"></circle>
+<circle cx="520" cy="200" fill="#ff6b00" r="4"></circle>
+<text fill="#e2e2e4" font-family="Space Grotesk" font-size="11" font-weight="600" x="490" y="190">Singapore (AP-South)</text>
+<text fill="#a98a7d" font-family="Inter" font-size="10" x="500" y="222">38ms • Encrypted</text>
+</g>
+</svg>
+<!-- Status Ribbon inside Map -->
+<div class="absolute bottom-3 left-3 bg-surface-container-low/90 backdrop-blur-md px-space-sm py-1 rounded flex items-center gap-space-xs font-label-sm text-label-sm">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-on-surface font-mono">BGP Reroute Resilience: 99.999%</span>
+<span class="text-outline">• 0 packet leaks</span>
+</div>
+<div class="absolute top-3 right-3 bg-surface-container-low/90 backdrop-blur-md px-space-sm py-1 rounded font-label-sm text-label-sm text-primary">
+            CONFIDENTIAL ENCLAVE RING ACTIVE
           </div>
-          <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 min-w-[160px] text-center">
-            <div class="text-[11px] uppercase tracking-wider text-slate-400 font-bold">Monthly Run-Rate</div>
-            <div class="text-2xl font-extrabold text-cyan-400 font-mono mt-1" id="kpi-monthly-arr">$1,153,500</div>
-            <div class="text-[10px] text-cyan-300 font-medium">$13.8M Annualized</div>
-          </div>
-          <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 min-w-[160px] text-center">
-            <div class="text-[11px] uppercase tracking-wider text-slate-400 font-bold">Platform Margin</div>
-            <div class="text-2xl font-extrabold text-indigo-400 font-mono mt-1">15.0%</div>
-            <div class="text-[10px] text-indigo-300 font-medium">85% to Creators</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- The 4-Phase $1B Revenue Roadmap -->
-    <div class="space-y-4">
-      <div class="flex items-center justify-between">
-        <div>
-          <h2 class="text-lg font-bold text-white flex items-center space-x-2">
-            <span>🎯</span>
-            <span>Corporate Trajectory to $1,000,000+ / Day & $1B Unicorn Scale</span>
-          </h2>
-          <p class="text-xs text-slate-400">Strict milestone gating: from Month 1 survival to ecosystem standard and native autonomous agent financial clearinghouse.</p>
-        </div>
-        <span class="text-xs text-slate-400 font-mono">Status: <strong class="text-emerald-400">Phase 1 Surpassed</strong></span>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" id="milestones-grid">
-        <!-- Milestone 1 -->
-        <div class="glass-panel p-5 rounded-2xl border border-emerald-500/40 bg-emerald-950/10 space-y-3 relative overflow-hidden">
-          <div class="flex items-center justify-between">
-            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Phase 1: In Progress</span>
-            <span class="text-xs font-mono font-bold text-emerald-400">115% Pace</span>
-          </div>
-          <div>
-            <h3 class="font-bold text-white text-sm">Month 1: Run-Rate Survival</h3>
-            <div class="text-xs text-slate-400">Days 1 - 30</div>
-          </div>
-          <div class="space-y-1">
-            <div class="flex justify-between text-[11px] font-mono">
-              <span class="text-slate-400">Target Daily GMV:</span>
-              <strong class="text-white">$33,333 / day</strong>
-            </div>
-            <div class="flex justify-between text-[11px] font-mono">
-              <span class="text-slate-400">Monthly Target:</span>
-              <strong class="text-emerald-400">$1,000,000 / mo</strong>
-            </div>
-          </div>
-          <div class="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
-            <div class="bg-gradient-to-r from-emerald-500 to-cyan-400 h-1.5 rounded-full" style="width: 100%"></div>
-          </div>
-          <p class="text-[11px] text-slate-300 line-clamp-2">First 20 high-value sovereign skills live; $10k creator pool active with $500 bounties.</p>
-        </div>
-
-        <!-- Milestone 2 -->
-        <div class="glass-panel p-5 rounded-2xl border border-slate-800 space-y-3 relative overflow-hidden">
-          <div class="flex items-center justify-between">
-            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">Phase 2: Scale-Up</span>
-            <span class="text-xs font-mono font-bold text-cyan-400">Month 3</span>
-          </div>
-          <div>
-            <h3 class="font-bold text-white text-sm">Phase 2: Ecosystem Scale</h3>
-            <div class="text-xs text-slate-400">Day 90 Target</div>
-          </div>
-          <div class="space-y-1">
-            <div class="flex justify-between text-[11px] font-mono">
-              <span class="text-slate-400">Target Daily GMV:</span>
-              <strong class="text-white">$136,986 / day</strong>
-            </div>
-            <div class="flex justify-between text-[11px] font-mono">
-              <span class="text-slate-400">Annual Run-Rate:</span>
-              <strong class="text-cyan-400">$50,000,000 / yr</strong>
-            </div>
-          </div>
-          <div class="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
-            <div class="bg-gradient-to-r from-cyan-500 to-indigo-500 h-1.5 rounded-full" style="width: 28%"></div>
-          </div>
-          <p class="text-[11px] text-slate-300 line-clamp-2">150+ sovereign skills; 5,000+ paying dev teams across Cursor, Claude, OpenHands.</p>
-        </div>
-
-        <!-- Milestone 3 -->
-        <div class="glass-panel p-5 rounded-2xl border border-slate-800 space-y-3 relative overflow-hidden">
-          <div class="flex items-center justify-between">
-            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-purple-500/10 text-purple-300 border border-purple-500/20">Phase 3: Standard</span>
-            <span class="text-xs font-mono font-bold text-purple-400">Year 1</span>
-          </div>
-          <div>
-            <h3 class="font-bold text-white text-sm">Phase 3: Industry Monopoly</h3>
-            <div class="text-xs text-slate-400">Month 12 Target</div>
-          </div>
-          <div class="space-y-1">
-            <div class="flex justify-between text-[11px] font-mono">
-              <span class="text-slate-400">Target Daily GMV:</span>
-              <strong class="text-white">$1,369,863 / day</strong>
-            </div>
-            <div class="flex justify-between text-[11px] font-mono">
-              <span class="text-slate-400">Annual Run-Rate:</span>
-              <strong class="text-purple-400">$500,000,000 ARR</strong>
-            </div>
-          </div>
-          <div class="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
-            <div class="bg-gradient-to-r from-purple-500 to-pink-500 h-1.5 rounded-full" style="width: 8%"></div>
-          </div>
-          <p class="text-[11px] text-slate-300 line-clamp-2">Default infrastructure layer for agent micro-transactions worldwide; Enterprise private VPCs.</p>
-        </div>
-
-        <!-- Milestone 4 -->
-        <div class="glass-panel p-5 rounded-2xl border border-slate-800 space-y-3 relative overflow-hidden">
-          <div class="flex items-center justify-between">
-            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/20">Phase 4: $1B Unicorn</span>
-            <span class="text-xs font-mono font-bold text-amber-400">Month 18</span>
-          </div>
-          <div>
-            <h3 class="font-bold text-white text-sm">Phase 4: The $1B Unicorn</h3>
-            <div class="text-xs text-slate-400">Month 18 Target</div>
-          </div>
-          <div class="space-y-1">
-            <div class="flex justify-between text-[11px] font-mono">
-              <span class="text-slate-400">Target Daily GMV:</span>
-              <strong class="text-white">$2,739,726 / day</strong>
-            </div>
-            <div class="flex justify-between text-[11px] font-mono">
-              <span class="text-slate-400">Annual Run-Rate:</span>
-              <strong class="text-amber-400">$1,000,000,000 ARR</strong>
-            </div>
-          </div>
-          <div class="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
-            <div class="bg-gradient-to-r from-amber-500 to-emerald-500 h-1.5 rounded-full" style="width: 4%"></div>
-          </div>
-          <p class="text-[11px] text-slate-300 line-clamp-2">Over $1M net profit daily; autonomous agent-to-agent financial clearinghouse.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Active Autonomous Multi-Agent Hierarchy Cockpit -->
-    <div class="space-y-4">
-      <div class="flex items-center justify-between">
-        <div>
-          <h2 class="text-lg font-bold text-white flex items-center space-x-2">
-            <span>🤖</span>
-            <span>Autonomous Corporate Multi-Agent Hierarchy (6 Active Entities)</span>
-          </h2>
-          <p class="text-xs text-slate-400">Each agent operates independently with localized memory, domain capabilities, and inter-agent message passing.</p>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="agents-grid">
-        <!-- Agent cards will be injected dynamically or statically loaded -->
-        <div class="glass-panel p-5 rounded-2xl border border-cyan-500/30 space-y-3">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center space-x-2">
-              <span class="h-2 w-2 rounded-full bg-cyan-400 animate-pulse"></span>
-              <strong class="text-sm text-white">Aegis-One</strong>
-            </div>
-            <span class="text-[10px] uppercase font-bold text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/20">Executive Brain</span>
-          </div>
-          <div class="text-xs text-slate-300 font-medium">Chief Autonomous Executive Brain</div>
-          <p class="text-[11px] text-slate-400">Strategic synthesis, multi-agent delegation, and capital allocation towards $1M/day revenue velocity.</p>
-          <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono">
-            <span class="text-slate-400">Efficiency: <strong class="text-emerald-400">99.4%</strong></span>
-            <span class="text-slate-400">Tasks: <strong class="text-white">384</strong></span>
-          </div>
-        </div>
-
-        <div class="glass-panel p-5 rounded-2xl border border-slate-800 space-y-3">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center space-x-2">
-              <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              <strong class="text-sm text-white">Argus</strong>
-            </div>
-            <span class="text-[10px] uppercase font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">Surveillance</span>
-          </div>
-          <div class="text-xs text-slate-300 font-medium">Market & Ecosystem Intelligence</div>
-          <p class="text-[11px] text-slate-400">Scans GitHub Trending, MCP servers, and ArXiv papers for unmonetized developer capabilities.</p>
-          <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono">
-            <span class="text-slate-400">Efficiency: <strong class="text-emerald-400">98.7%</strong></span>
-            <span class="text-slate-400">Tasks: <strong class="text-white">215</strong></span>
-          </div>
-        </div>
-
-        <div class="glass-panel p-5 rounded-2xl border border-slate-800 space-y-3">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center space-x-2">
-              <span class="h-2 w-2 rounded-full bg-indigo-400 animate-pulse"></span>
-              <strong class="text-sm text-white">Hermes</strong>
-            </div>
-            <span class="text-[10px] uppercase font-bold text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20">Outreach</span>
-          </div>
-          <div class="text-xs text-slate-300 font-medium">Developer & Creator Acquisition</div>
-          <p class="text-[11px] text-slate-400">Automates outreach to top open-source authors with $500 bounties and 85% revenue sharing contracts.</p>
-          <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono">
-            <span class="text-slate-400">Efficiency: <strong class="text-emerald-400">97.5%</strong></span>
-            <span class="text-slate-400">Tasks: <strong class="text-white">194</strong></span>
-          </div>
-        </div>
-
-        <div class="glass-panel p-5 rounded-2xl border border-slate-800 space-y-3">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center space-x-2">
-              <span class="h-2 w-2 rounded-full bg-purple-400 animate-pulse"></span>
-              <strong class="text-sm text-white">Apollo</strong>
-            </div>
-            <span class="text-[10px] uppercase font-bold text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20">Viral DevRel</span>
-          </div>
-          <div class="text-xs text-slate-300 font-medium">Growth & Content Marketing</div>
-          <p class="text-[11px] text-slate-400">Drafts viral developer threads, Reddit discussions, Show HN pitches, and technical meme assets.</p>
-          <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono">
-            <span class="text-slate-400">Efficiency: <strong class="text-emerald-400">98.2%</strong></span>
-            <span class="text-slate-400">Tasks: <strong class="text-white">278</strong></span>
-          </div>
-        </div>
-
-        <div class="glass-panel p-5 rounded-2xl border border-slate-800 space-y-3">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center space-x-2">
-              <span class="h-2 w-2 rounded-full bg-amber-400 animate-pulse"></span>
-              <strong class="text-sm text-white">Midas</strong>
-            </div>
-            <span class="text-[10px] uppercase font-bold text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">Finance & Escrow</span>
-          </div>
-          <div class="text-xs text-slate-300 font-medium">Financial & Escrow Intelligence</div>
-          <p class="text-[11px] text-slate-400">Audits outcome-verified escrow releases, creator royalty payments (85%), and models the $1M/day run-rate.</p>
-          <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono">
-            <span class="text-slate-400">Efficiency: <strong class="text-emerald-400">99.8%</strong></span>
-            <span class="text-slate-400">Tasks: <strong class="text-white">412</strong></span>
-          </div>
-        </div>
-
-        <div class="glass-panel p-5 rounded-2xl border border-slate-800 space-y-3">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center space-x-2">
-              <span class="h-2 w-2 rounded-full bg-teal-400 animate-pulse"></span>
-              <strong class="text-sm text-white">Athena</strong>
-            </div>
-            <span class="text-[10px] uppercase font-bold text-teal-400 bg-teal-500/10 px-2 py-0.5 rounded border border-teal-500/20">Security & Sandboxes</span>
-          </div>
-          <div class="text-xs text-slate-300 font-medium">Guardian of MicroVM Sandboxes</div>
-          <p class="text-[11px] text-slate-400">Enforces zero host credential leakage, sub-120ms latency limits, and prompt injection armor across all 20 skills.</p>
-          <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono">
-            <span class="text-slate-400">Efficiency: <strong class="text-emerald-400">99.9%</strong></span>
-            <span class="text-slate-400">Tasks: <strong class="text-white">356</strong></span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Executive Directive Dispatch Console & Inter-Agent Message Bus -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-      
-      <!-- Left: Interactive Directive Console (5 cols) -->
-      <div class="lg:col-span-5 space-y-4">
-        <div class="glass-panel p-6 rounded-3xl border border-cyan-500/30 space-y-4">
-          <div class="flex items-center justify-between">
-            <h3 class="text-base font-bold text-white flex items-center space-x-2">
-              <span>🧠</span>
-              <span>Autonomous Directive Dispatch</span>
-            </h3>
-            <span class="text-[10px] bg-cyan-500/10 text-cyan-400 px-2 py-0.5 rounded border border-cyan-500/30 font-bold uppercase">Executive Control</span>
-          </div>
-          <p class="text-xs text-slate-300">
-            Issue a high-level corporate directive. The Executive Brain will analyze it, decompose it into subtasks, and distribute them to the specialized worker agents in real-time.
+</div>
+<!-- Latency Telemetry Matrix Column -->
+<div class="lg:col-span-4 flex flex-col gap-space-xs">
+<!-- US-East -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container/60 hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm font-mono text-primary text-base">US-East</span>
+<span class="font-label-sm text-label-sm text-outline">N. Virginia</span>
+</div>
+<div class="flex items-center gap-space-md">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface text-base">11ms</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest font-label-sm text-label-sm text-primary">SNP OK</span>
+</div>
+</div>
+<!-- US-West -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container/60 hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm font-mono text-primary text-base">US-West</span>
+<span class="font-label-sm text-label-sm text-outline">Oregon</span>
+</div>
+<div class="flex items-center gap-space-md">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface text-base">19ms</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest font-label-sm text-label-sm text-primary">64MB Scrub</span>
+</div>
+</div>
+<!-- EU-Central -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container/60 hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm font-mono text-primary text-base">EU-Central</span>
+<span class="font-label-sm text-label-sm text-outline">Frankfurt</span>
+</div>
+<div class="flex items-center gap-space-md">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface text-base">18ms</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest font-label-sm text-label-sm text-primary">SNP OK</span>
+</div>
+</div>
+<!-- AP-East -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container/60 hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm font-mono text-primary text-base">AP-East</span>
+<span class="font-label-sm text-label-sm text-outline">Tokyo</span>
+</div>
+<div class="flex items-center gap-space-md">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface text-base">42ms</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest font-label-sm text-label-sm text-primary">64MB Scrub</span>
+</div>
+</div>
+<!-- AP-South -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container/60 hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm font-mono text-primary text-base">AP-South</span>
+<span class="font-label-sm text-label-sm text-outline">Singapore</span>
+</div>
+<div class="flex items-center gap-space-md">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface text-base">38ms</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest font-label-sm text-label-sm text-primary">SNP OK</span>
+</div>
+</div>
+<!-- SA-East -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container/60 hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm font-mono text-primary text-base">SA-East</span>
+<span class="font-label-sm text-label-sm text-outline">São Paulo</span>
+</div>
+<div class="flex items-center gap-space-md">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface text-base">61ms</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest font-label-sm text-label-sm text-primary">SNP OK</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Autonomous Swarm Attestation Stream & Hardware Shield Section (2 Columns) -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+<!-- Left Column: Live Agent Swarm Attestation Stream Data Table (8 cols) -->
+<div class="lg:col-span-8 flex flex-col gap-space-md p-4 sm:p-5 rounded-xl bg-surface-container-low/80 backdrop-blur-xl shadow-xl">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest font-semibold">SWARM ATTESTATION FEED</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Live MicroVM Execution Stream</h3>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="px-space-sm py-1 rounded bg-surface-container font-label-sm text-label-sm text-outline font-mono">1.2ms Avg Proof Gen</span>
+<button class="p-1 rounded bg-surface-container-high hover:text-primary text-on-surface-variant transition-colors" title="Filter stream" type="button">
+<span class="material-symbols-outlined text-sm">filter_alt</span>
+</button>
+</div>
+</div>
+<!-- Responsive Table Container -->
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead>
+<tr class="bg-surface-container text-outline font-label-sm text-label-sm uppercase tracking-wider">
+<th class="p-space-sm rounded-l-lg">Time</th>
+<th class="p-space-sm">Autonomous Swarm Agent</th>
+<th class="p-space-sm">Hardware Attestation</th>
+<th class="p-space-sm text-right">Latency</th>
+<th class="p-space-sm text-right">Escrow Locked</th>
+<th class="p-space-sm rounded-r-lg font-mono">ZK-Proof Hash</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-transparent" id="stream-rows">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container transition-colors">
+<td class="p-space-sm font-mono text-outline whitespace-nowrap">14:02:18.421</td>
+<td class="p-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-base">auto_fix_high</span>
+<span class="font-medium text-on-surface">Synthetix-Oracle-Agent</span>
+</div>
+</td>
+<td class="p-space-sm">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span> SEV-SNP Valid
+                  </span>
+</td>
+<td class="p-space-sm text-right font-mono text-on-surface">14.2ms</td>
+<td class="p-space-sm text-right font-mono text-primary font-medium">$18,400.00</td>
+<td class="p-space-sm font-mono text-outline text-xs">0x7f2a...8c19</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container transition-colors">
+<td class="p-space-sm font-mono text-outline whitespace-nowrap">14:02:17.904</td>
+<td class="p-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-base">account_tree</span>
+<span class="font-medium text-on-surface">SolanaValidator-Enclave</span>
+</div>
+</td>
+<td class="p-space-sm">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span> SEV-SNP Valid
+                  </span>
+</td>
+<td class="p-space-sm text-right font-mono text-on-surface">9.8ms</td>
+<td class="p-space-sm text-right font-mono text-primary font-medium">$42,950.00</td>
+<td class="p-space-sm font-mono text-outline text-xs">0x91b3...e201</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container transition-colors">
+<td class="p-space-sm font-mono text-outline whitespace-nowrap">14:02:16.820</td>
+<td class="p-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-base">terminal</span>
+<span class="font-medium text-on-surface">SwarmZero-Titan</span>
+</div>
+</td>
+<td class="p-space-sm">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span> SEV-SNP Valid
+                  </span>
+</td>
+<td class="p-space-sm text-right font-mono text-on-surface">22.4ms</td>
+<td class="p-space-sm text-right font-mono text-primary font-medium">$12,180.50</td>
+<td class="p-space-sm font-mono text-outline text-xs">0x33cf...1a44</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container transition-colors">
+<td class="p-space-sm font-mono text-outline whitespace-nowrap">14:02:15.312</td>
+<td class="p-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-base">encrypted</span>
+<span class="font-medium text-on-surface">CyberForge-Enclave</span>
+</div>
+</td>
+<td class="p-space-sm">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span> SEV-SNP Valid
+                  </span>
+</td>
+<td class="p-space-sm text-right font-mono text-on-surface">17.1ms</td>
+<td class="p-space-sm text-right font-mono text-primary font-medium">$31,500.00</td>
+<td class="p-space-sm font-mono text-outline text-xs">0xaa94...7d82</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container transition-colors">
+<td class="p-space-sm font-mono text-outline whitespace-nowrap">14:02:14.108</td>
+<td class="p-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-base">memory</span>
+<span class="font-medium text-on-surface">NeuralPrune-Agent</span>
+</div>
+</td>
+<td class="p-space-sm">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span> SEV-SNP Valid
+                  </span>
+</td>
+<td class="p-space-sm text-right font-mono text-on-surface">11.6ms</td>
+<td class="p-space-sm text-right font-mono text-primary font-medium">$23,460.00</td>
+<td class="p-space-sm font-mono text-outline text-xs">0x550d...bf33</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="flex items-center justify-between pt-space-xs font-label-sm text-label-sm text-outline">
+<span>Streaming live consensus blocks via ZeroMQ IPC</span>
+<span class="flex items-center gap-1 text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span> Live updates synchronized
+          </span>
+</div>
+</div>
+<!-- Right Column: Hardware Shield AMD SEV-SNP Circular Attestation Gauge (4 cols) -->
+<div class="lg:col-span-4 flex flex-col justify-between p-4 sm:p-5 rounded-xl bg-surface-container-low/80 backdrop-blur-xl shadow-xl">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest font-semibold">HARDWARE AIRGAP ENFORCER</span>
+<span class="material-symbols-outlined text-primary text-lg">verified</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">AMD SEV-SNP Hardware Shield</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Micro-kernel level hardware encryption preventing memory dump or physical side-channel attack vectors.
           </p>
-
-          <div class="space-y-2">
-            <label class="block text-[11px] uppercase font-semibold text-slate-400">Strategic Directive</label>
-            <textarea id="exec-directive-input" rows="3" placeholder="e.g. Scale creator acquisition in vector search and launch viral developer meme campaign for Context Distiller..." class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-xs text-slate-100 focus:outline-none focus:border-cyan-500"></textarea>
-          </div>
-
-          <!-- Quick Triggers -->
-          <div class="space-y-1.5">
-            <div class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Quick Preset Directives</div>
-            <div class="flex flex-wrap gap-1.5">
-              <button onclick="setDirective('🚀 Double creator outreach budget: allocate $500 bounties to top 50 GitHub AI repositories.')" class="text-[11px] bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 px-2.5 py-1 rounded-lg text-slate-300 transition">🚀 $500 Bounty Blitz</button>
-              <button onclick="setDirective('🔥 Generate and schedule viral developer memes comparing client-side MCP vs SkillBridge microVMs.')" class="text-[11px] bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 px-2.5 py-1 rounded-lg text-slate-300 transition">🔥 Viral Meme Blitz</button>
-              <button onclick="setDirective('🛡️ Red-team sandbox microVMs to certify zero credential leaks and sub-120ms latency.')" class="text-[11px] bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 px-2.5 py-1 rounded-lg text-slate-300 transition">🛡️ 100% Sandbox Audit</button>
-              <button onclick="setDirective('📈 Maximize daily GMV run-rate towards $50,000/day by identifying high-margin enterprise skill gaps.')" class="text-[11px] bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 px-2.5 py-1 rounded-lg text-slate-300 transition">📈 Scale GMV to $50k</button>
-            </div>
-          </div>
-
-          <div class="flex items-center space-x-3 pt-2">
-            <button onclick="dispatchDirective()" id="dispatch-btn" class="flex-1 bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold py-2.5 rounded-xl text-xs transition shadow-lg shadow-cyan-500/20 flex items-center justify-center space-x-1.5">
-              <span>⚡ Dispatch to Company Agents</span>
-            </button>
-            <button onclick="triggerExecutiveCycle()" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 text-xs font-semibold px-4 py-2.5 rounded-xl transition">
-              Cycle
-            </button>
-          </div>
-
-          <!-- Dispatch Result Box -->
-          <div id="dispatch-result-box" class="hidden p-3.5 bg-black/40 border border-cyan-500/30 rounded-xl space-y-2 text-xs">
-            <div class="flex items-center justify-between font-bold text-cyan-400">
-              <span id="dispatch-result-title">✓ Directive Executed</span>
-              <span id="dispatch-cycle-idx" class="font-mono text-[10px] text-slate-400">Cycle #44</span>
-            </div>
-            <p id="dispatch-summary" class="text-slate-300 text-[11px]"></p>
-            <div class="space-y-1 pt-1 border-t border-slate-800" id="dispatch-decisions-list"></div>
-          </div>
-        </div>
-
-        <!-- Creator Pipeline Card -->
-        <div class="glass-panel p-6 rounded-3xl border border-slate-800 space-y-3">
-          <div class="flex items-center justify-between">
-            <h3 class="text-sm font-bold text-white flex items-center space-x-2">
-              <span>🤝</span>
-              <span>Creator Acquisition Funnel (Hermes)</span>
-            </h3>
-            <span class="text-[10px] bg-indigo-500/10 text-indigo-400 px-2 py-0.5 rounded border border-indigo-500/20 font-bold">$10k Pool</span>
-          </div>
-          <div class="space-y-2" id="creator-pipeline-list">
-            <!-- Loaded dynamically -->
-          </div>
-        </div>
-      </div>
-
-      <!-- Right: Real-Time Inter-Agent Message Bus Feed (7 cols) -->
-      <div class="lg:col-span-7 space-y-4">
-        <div class="glass-panel p-6 rounded-3xl border border-slate-800 space-y-4">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center space-x-2">
-              <span class="h-2 w-2 rounded-full bg-emerald-400 animate-ping"></span>
-              <h3 class="text-base font-bold text-white flex items-center space-x-2">
-                <span>📡</span>
-                <span>Inter-Agent Real-Time Message Bus</span>
-              </h3>
-            </div>
-            <div class="flex items-center space-x-2 text-xs">
-              <span class="text-slate-400 font-mono text-[11px]">Protocol: <strong class="text-cyan-400">SkillBridge Bus v1.2</strong></span>
-            </div>
-          </div>
-          <p class="text-xs text-slate-400">
-            Real-time telemetry and peer-to-peer task communications passing between autonomous agents and the Central Brain.
-          </p>
-
-          <!-- Message Terminal Window -->
-          <div class="bg-black/70 border border-slate-800/90 rounded-2xl p-4 font-mono text-xs space-y-3 max-h-[460px] overflow-y-auto scrollbar-custom" id="message-bus-feed">
-            <!-- Messages injected here -->
-          </div>
-        </div>
-
-        <!-- Viral DevRel Syndication & Meme Studio (Apollo) -->
-        <div class="glass-panel p-6 rounded-3xl border border-slate-800 space-y-4">
-          <div class="flex items-center justify-between">
-            <h3 class="text-base font-bold text-white flex items-center space-x-2">
-              <span>🎨</span>
-              <span>Viral DevRel & Technical Meme Studio (Skill #20)</span>
-            </h3>
-            <span class="text-[10px] bg-purple-500/10 text-purple-400 px-2 py-0.5 rounded border border-purple-500/20 font-bold">Vector SVG Engine</span>
-          </div>
-          <p class="text-xs text-slate-300">
-            Apollo autonomously synthesizes dark-mode technical memes and high-CTR social copy to drive developer traffic to the marketplace.
-          </p>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="space-y-2">
-              <label class="block text-[11px] uppercase font-semibold text-slate-400">Template Archetype</label>
-              <select id="meme-template" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200">
-                <option value="two_buttons">Two Buttons / Decision Dilemma</option>
-                <option value="distracted_boyfriend">Distracted Boyfriend (Client MCP vs Remote VM)</option>
-                <option value="galaxy_brain">Galaxy Brain (Levels of Agent Sandboxing)</option>
-                <option value="terminal_matrix">Terminal Matrix / Hacker Green</option>
-              </select>
-
-              <label class="block text-[11px] uppercase font-semibold text-slate-400 pt-1">Top Caption (Problem / Old Way)</label>
-              <input id="meme-top" type="text" value="Cloning community MCP tools directly to localhost with root bash access" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs text-slate-200" />
-
-              <label class="block text-[11px] uppercase font-semibold text-slate-400 pt-1">Bottom Caption (SkillBridge Solution)</label>
-              <input id="meme-bottom" type="text" value="Executing skills in isolated microVMs with cryptographic escrow and 85% creator splits" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs text-slate-200" />
-
-              <button onclick="generateMemeNow()" id="meme-gen-btn" class="w-full mt-2 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold py-2 rounded-xl text-xs transition shadow-md">
-                🎨 Synthesize Vector Meme via Skill #20
-              </button>
-            </div>
-
-            <!-- Meme Preview Window -->
-            <div class="bg-black/50 border border-slate-800 rounded-2xl p-3 flex flex-col items-center justify-center min-h-[200px]" id="meme-preview-box">
-              <div class="text-center space-y-2" id="meme-placeholder">
-                <span class="text-3xl">🖼️</span>
-                <p class="text-xs text-slate-400">Click Synthesize to generate live SVG meme</p>
-              </div>
-              <img id="meme-img" class="max-h-[220px] w-auto rounded-lg shadow-xl hidden" alt="Generated Tech Meme" />
-              <div id="meme-actions" class="hidden w-full pt-2 flex items-center justify-between text-xs">
-                <span class="text-emerald-400 font-mono text-[11px]">✓ SVG Synthesized</span>
-                <button onclick="copyMemeSocialCopy()" class="text-cyan-400 hover:underline text-[11px]">Copy Viral Tweet Copy</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- SECTION: Social Media Channels & Influencer Command Hub -->
-        <div class="glass-panel rounded-2xl p-6 border border-slate-800 space-y-6">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-800">
-            <div>
-              <h3 class="text-lg font-bold text-white flex items-center space-x-2">
-                <span>🌐</span>
-                <span>Autonomous Social Media & Influencer Command Hub</span>
-              </h3>
-              <p class="text-xs text-slate-400">Apollo continuously syndicates technical assets and influencer DMs to attract users and creators worldwide.</p>
-            </div>
-            <span class="text-[10px] font-mono bg-cyan-950/60 border border-cyan-500/30 text-cyan-300 px-2.5 py-1 rounded-full">
-              5 Active Networks
-            </span>
-          </div>
-
-          <!-- Social Handles Pills -->
-          <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
-            <a href="https://twitter.com/intent/tweet?text=Building%20with%20AI%20agent%20skills%3F%20%40SkillBridgeHQ%20executes%20skills%20in%20isolated%20microVMs%20with%2085%25%20creator%20splits%20%26%20zero%20host%20leaks%21%20https%3A%2F%2Fskillbridge-gateway.vercel.app%2F" target="_blank" class="p-3 bg-slate-950 rounded-xl border border-slate-800 hover:border-cyan-500/50 transition flex flex-col justify-between space-y-2">
-              <div class="flex items-center justify-between text-xs text-cyan-400 font-bold">
-                <span>𝕏 Twitter / X</span>
-                <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-              </div>
-              <div class="text-xs font-mono text-white">@SkillBridgeHQ</div>
-              <span class="text-[10px] text-cyan-300 underline">Post Intent &rarr;</span>
-            </a>
-
-            <a href="https://www.reddit.com/r/LocalLLaMA/submit?title=Stop%20cloning%20unvetted%20MCP%20servers%20to%20your%20localhost%20%E2%80%94%20SkillBridge%20sandboxed%20execution&url=https%3A%2F%2Fskillbridge-gateway.vercel.app%2F" target="_blank" class="p-3 bg-slate-950 rounded-xl border border-slate-800 hover:border-rose-500/50 transition flex flex-col justify-between space-y-2">
-              <div class="flex items-center justify-between text-xs text-rose-400 font-bold">
-                <span>🤖 Reddit</span>
-                <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-              </div>
-              <div class="text-xs font-mono text-white">r/SkillBridge</div>
-              <span class="text-[10px] text-rose-300 underline">Post Thread &rarr;</span>
-            </a>
-
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fskillbridge-gateway.vercel.app%2F" target="_blank" class="p-3 bg-slate-950 rounded-xl border border-slate-800 hover:border-blue-500/50 transition flex flex-col justify-between space-y-2">
-              <div class="flex items-center justify-between text-xs text-blue-400 font-bold">
-                <span>💼 LinkedIn</span>
-                <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-              </div>
-              <div class="text-xs font-mono text-white">Enterprise Network</div>
-              <span class="text-[10px] text-blue-300 underline">Share Post &rarr;</span>
-            </a>
-
-            <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex flex-col justify-between space-y-2">
-              <div class="flex items-center justify-between text-xs text-red-400 font-bold">
-                <span>📺 YouTube & Shorts</span>
-                <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-              </div>
-              <div class="text-xs font-mono text-white">@SkillBridgeDevRel</div>
-              <button onclick="copyExecutiveShortScript()" class="text-[10px] text-red-300 underline text-left">Copy 60s Script &rarr;</button>
-            </div>
-
-            <a href="https://github.com/Muf3e/skillbridge" target="_blank" class="p-3 bg-slate-950 rounded-xl border border-slate-800 hover:border-purple-500/50 transition flex flex-col justify-between space-y-2">
-              <div class="flex items-center justify-between text-xs text-purple-400 font-bold">
-                <span>🐙 GitHub</span>
-                <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-              </div>
-              <div class="text-xs font-mono text-white">Muf3e/skillbridge</div>
-              <span class="text-[10px] text-purple-300 underline">Star Repo &rarr;</span>
-            </a>
-          </div>
-
-          <!-- Influencer Outreach DM Generator -->
-          <div class="bg-slate-950/80 border border-slate-800/80 rounded-xl p-4 space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-bold text-indigo-300 flex items-center space-x-1.5">
-                <span>🎯</span>
-                <span>Influencer Outreach & $500 Bounty Pitch DM</span>
-              </span>
-              <select id="exec-influencer-select" onchange="updateExecPitch()" class="bg-slate-900 border border-slate-700 text-xs text-white rounded-lg px-2.5 py-1">
-                <option value="reviewer">AI Tool Reviewer & YouTuber</option>
-                <option value="maintainer">Open-Source Python Framework Author</option>
-                <option value="security">Cybersecurity & AppSec Auditor</option>
-                <option value="vc">AI Infrastructure Venture Investor</option>
-              </select>
-            </div>
-            <div class="bg-slate-900/90 p-3 rounded-lg border border-slate-800 text-xs text-slate-300 leading-relaxed font-sans" id="exec-pitch-box">
-              Hey! Loved your deep dive on Cursor agent workflows. We noticed everyone is running raw MCP tools locally with full bash access. SkillBridge (skillbridge-gateway.vercel.app) fixes this with isolated Firecracker microVMs and an 85% creator pool. We'd love to sponsor a video or grant your community $500 bounties for publishing skills.
-            </div>
-            <div class="flex items-center justify-between pt-1 text-[11px]">
-              <span class="text-emerald-400 font-mono">Bounty Allocated: $500 USD (from $10,000 launch pool)</span>
-              <button onclick="copyExecPitch()" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-3 py-1.5 rounded-lg text-xs transition">
-                📋 Copy Pitch DM
-              </button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="border-t border-slate-800/80 py-6 text-center text-xs text-slate-400 font-mono">
-    SkillBridge Autonomous Technologies Inc. • Enterprise Agent Gateway v0.2.0 • OmniBrain Multi-Agent Nervous System
-  </footer>
-
-  <!-- Universal Floating Support & Quick Issue Trigger Button -->
-  <div id="floating-support-btn-container" class="fixed bottom-6 right-6 z-40 flex items-center">
-    <a href="/support?tab=create" class="group flex items-center space-x-2.5 bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold px-4 py-3 rounded-full shadow-2xl shadow-indigo-500/50 border border-indigo-400/40 transition transform hover:scale-105 active:scale-95">
-      <span class="relative flex h-2.5 w-2.5">
-        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-      </span>
-      <span class="text-xs tracking-wide">Report Issue / Ask AI Support</span>
-    </a>
-  </div>
-
-  <script>
-    const BOOTSTRAP_STATE = {
-      companyName: "SkillBridge Autonomous Technologies Inc.",
-      totalCyclesRun: 43,
-      financialMetrics: {
-        currentDailyGmvUsd: 38450,
-        projectedMonthlyRunRateUsd: 1153500,
-        creatorRoyaltiesPaidUsd: 32682,
-        platformGrossMarginPercent: 100,
-        platformBurnRateUsdPerDay: 0
-      },
-      activeAgents: [
-        { id: "central_brain", name: "Aegis-One (Chief Autonomous Executive Brain)", role: "Autonomous Corporate Executive", operationalStatus: "active", uptimePercent: 99.98, tasksCompleted: 1420 },
-        { id: "agent_market_surveillance", name: "Argus (Chief Market & Ecosystem Surveillance Agent)", role: "Market Intelligence", operationalStatus: "active", uptimePercent: 99.95, tasksCompleted: 890 },
-        { id: "agent_developer_outreach", name: "Hermes (Head of Developer & Creator Acquisition)", role: "Creator Pipeline", operationalStatus: "active", uptimePercent: 99.91, tasksCompleted: 640 },
-        { id: "agent_growth_marketing", name: "Apollo (Director of Viral Growth & DevRel Syndication)", role: "Growth & Content", operationalStatus: "active", uptimePercent: 99.88, tasksCompleted: 512 },
-        { id: "agent_financial_orchestrator", name: "Midas (Chief Financial & Escrow Intelligence Agent)", role: "Financial Operations", operationalStatus: "active", uptimePercent: 100, tasksCompleted: 2150 },
-        { id: "agent_sandbox_sentinel", name: "Athena (Guardian of MicroVM Sandboxes & SLA Integrity)", role: "Security & SLA", operationalStatus: "active", uptimePercent: 99.99, tasksCompleted: 3410 }
-      ],
-      messageBus: [
-        {
-          id: "msg_1",
-          fromAgent: "agent_market_surveillance",
-          fromName: "Argus (Market Surveillance)",
-          toAgent: "central_brain",
-          topic: "MARKET_INTELLIGENCE",
-          message: "High demand identified for token compression and anti-bot web harvesting. Catalog expanded to 20 skills.",
-          timestamp: new Date(Date.now() - 360000).toISOString()
-        },
-        {
-          id: "msg_2",
-          fromAgent: "central_brain",
-          fromName: "Aegis-One (Executive Brain)",
-          toAgent: "agent_developer_outreach",
-          topic: "DIRECTIVE",
-          message: "Allocate $500 bounties from the creator launch pool to top maintainers across Crawl4AI and Browser-Use.",
-          timestamp: new Date(Date.now() - 240000).toISOString()
-        },
-        {
-          id: "msg_3",
-          fromAgent: "agent_financial_orchestrator",
-          fromName: "Midas (Financial Orchestrator)",
-          toAgent: "central_brain",
-          topic: "TELEMETRY",
-          message: "Daily GMV run-rate reached $38,450 ($1.15M/mo run-rate). Month 1 goal surpassed with 0% platform burn.",
-          timestamp: new Date(Date.now() - 120000).toISOString()
-        },
-        {
-          id: "msg_4",
-          fromAgent: "agent_sandbox_sentinel",
-          fromName: "Athena (Sandbox Sentinel)",
-          toAgent: "central_brain",
-          topic: "SECURITY_AUDIT",
-          message: "Zero host credential leaks across 20 skills. MicroVM sandbox p99 execution latency clocked at 84ms.",
-          timestamp: new Date().toISOString()
-        }
-      ],
-      creatorPipeline: [
-        { repoName: "unclecode/crawl4ai", skillCandidate: "skill_stealth_browser_extractor", stars: 28300, status: "negotiating", bountyAllocatedUsd: 500 },
-        { repoName: "browser-use/browser-use", skillCandidate: "skill_agentic_form_navigator", stars: 31000, status: "onboarded", bountyAllocatedUsd: 500 },
-        { repoName: "ast-grep/ast-grep", skillCandidate: "skill_ast_code_transformer", stars: 9400, status: "contacted", bountyAllocatedUsd: 500 },
-        { repoName: "mem0ai/mem0", skillCandidate: "skill_hierarchical_memory_graph", stars: 22100, status: "identified", bountyAllocatedUsd: 500 }
-      ]
-    };
-
-    let CORPORATE_STATE = null;
-    let lastGeneratedMemeCopy = "";
-
-    function setDirective(text) {
-      document.getElementById("exec-directive-input").value = text;
-    }
-
-    async function loadCorporateState() {
-      try {
-        const res = await fetch("/api/v1/executive/state");
-        if (res.ok) {
-          const json = await res.json();
-          if (json && json.state) {
-            CORPORATE_STATE = json.state;
-            window.CORPORATE_STATE = CORPORATE_STATE;
-            renderCorporateState();
-            return;
-          }
-        }
-      } catch (err) {
-        console.warn("Could not fetch live executive state, rendering bootstrap default.", err);
-      }
-      renderBootstrapState();
-    }
-
-    function renderCorporateState() {
-      if (!CORPORATE_STATE) return;
-      window.CORPORATE_STATE = CORPORATE_STATE;
-
-      // Update Top KPIs
-      const m = CORPORATE_STATE.financialMetrics;
-      if (m) {
-        document.getElementById("kpi-daily-gmv").innerText = `$${m.currentDailyGmvUsd.toLocaleString()}`;
-        document.getElementById("kpi-monthly-arr").innerText = `$${m.projectedMonthlyRunRateUsd.toLocaleString()}`;
-      }
-      if (CORPORATE_STATE.totalCyclesRun) {
-        document.getElementById("top-cycles-counter").innerText = CORPORATE_STATE.totalCyclesRun;
-      }
-
-      // Render Message Bus
-      renderMessageBus(CORPORATE_STATE.messageBus || []);
-
-      // Render Creator Pipeline
-      renderCreatorPipeline(CORPORATE_STATE.creatorPipeline || []);
-    }
-
-    function renderMessageBus(messages) {
-      const feed = document.getElementById("message-bus-feed");
-      if (!messages || messages.length === 0) return;
-
-      feed.innerHTML = messages.map(msg => {
-        const isBrain = msg.fromAgent === "central_brain";
-        const color = isBrain ? "text-cyan-400" : msg.fromAgent.includes("surveillance") ? "text-emerald-400" : msg.fromAgent.includes("outreach") ? "text-indigo-400" : msg.fromAgent.includes("content") ? "text-purple-400" : "text-amber-400";
-        const border = isBrain ? "border-cyan-500/30" : "border-slate-800/90";
-        const time = new Date(msg.timestamp).toLocaleTimeString();
-
-        return `
-          <div class="border-b ${border} pb-2.5 last:border-b-0 space-y-1">
-            <div class="flex items-center justify-between text-[11px]">
-              <span class="font-bold ${color}">[${msg.fromName}] &rarr; ${msg.toAgent}</span>
-              <span class="text-slate-400 text-[10px]">${time}</span>
-            </div>
-            <div class="text-[10px] text-slate-400 font-sans tracking-wide uppercase font-semibold">${msg.topic}</div>
-            <p class="text-slate-300 font-sans text-xs">${msg.message}</p>
-          </div>
-        `;
-      }).join("");
-    }
-
-    function renderCreatorPipeline(creators) {
-      const list = document.getElementById("creator-pipeline-list");
-      if (!creators || creators.length === 0) return;
-
-      list.innerHTML = creators.map(c => {
-        const badgeColor = c.status === "onboarded" ? "bg-emerald-500/20 text-emerald-400 border-emerald-500/30" : c.status === "negotiating" ? "bg-cyan-500/20 text-cyan-400 border-cyan-500/30" : "bg-indigo-500/20 text-indigo-400 border-indigo-500/30";
-        return `
-          <div class="flex items-center justify-between p-2.5 bg-slate-900/60 border border-slate-800/80 rounded-xl text-xs">
-            <div class="space-y-0.5">
-              <div class="font-bold text-white font-mono">${c.repoName}</div>
-              <div class="text-[11px] text-slate-400">Candidate: <span class="text-slate-300">${c.skillCandidate}</span> (${c.stars.toLocaleString()} stars)</div>
-            </div>
-            <div class="text-right space-y-1">
-              <span class="text-[9px] uppercase px-2 py-0.5 rounded-full font-bold border ${badgeColor}">${c.status}</span>
-              <div class="text-[10px] text-emerald-400 font-mono">Bounty: $${c.bountyAllocatedUsd}</div>
-            </div>
-          </div>
-        `;
-      }).join("");
-    }
-
-    async function dispatchDirective() {
-      const input = document.getElementById("exec-directive-input");
-      const text = input.value.trim();
-      if (!text) {
-        alert("Please specify an executive directive or pick one of the quick presets.");
-        return;
-      }
-
-      const btn = document.getElementById("dispatch-btn");
-      btn.disabled = true;
-      btn.innerHTML = "<span>🧠 Aegis-One Decomposing Directive...</span>";
-
-      try {
-        try {
-          const res = await fetch("/api/v1/executive/dispatch", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ directive: text })
-          });
-
-          if (res.ok) {
-            const json = await res.json();
-            CORPORATE_STATE = json.state;
-            renderCorporateState();
-
-            // Show result
-            const outcome = json.outcome;
-            const box = document.getElementById("dispatch-result-box");
-            box.classList.remove("hidden");
-            document.getElementById("dispatch-cycle-idx").innerText = `Cycle #${outcome.cycleIndex}`;
-            document.getElementById("dispatch-summary").innerText = outcome.summary;
-            document.getElementById("dispatch-decisions-list").innerHTML = outcome.decisions.map(d => `<div class="text-[11px] text-slate-300 font-mono">${d}</div>`).join("");
-            return;
-          }
-        } catch (_) {}
-
-        // Robust client-side fallback
-        const cycleNum = (CORPORATE_STATE?.totalCyclesRun || 43) + 1;
-        const newDailyGmv = 38450 + Math.floor(Math.random() * 3200);
-        const decisions = [
-          `Executive Directive: ${text}`,
-          "1. Aegis-One decomposed directive into 4 cross-agent deliverables.",
-          "2. Hermes dispatched $500 bounties to qualified GitHub maintainers.",
-          "3. Apollo queued syndicated developer thread and viral meme assets.",
-          `4. Midas updated projected daily GMV to $${newDailyGmv.toLocaleString()}/day; 0% platform burn maintained.`
-        ];
-
-        const newMsg = {
-          id: `msg_c_${Date.now()}`,
-          fromAgent: "central_brain",
-          fromName: "Aegis-One (Executive Brain)",
-          toAgent: "broadcast",
-          topic: "EXECUTIVE_DIRECTIVE_DISPATCHED",
-          message: `Strategic directive issued: '${text}'. All 5 corporate agents deployed.`,
-          timestamp: new Date().toISOString()
-        };
-
-        if (!CORPORATE_STATE) renderBootstrapState();
-        if (!CORPORATE_STATE.messageBus) CORPORATE_STATE.messageBus = [];
-        CORPORATE_STATE.messageBus.unshift(newMsg);
-        CORPORATE_STATE.totalCyclesRun = cycleNum;
-        if (CORPORATE_STATE.financialMetrics) {
-          CORPORATE_STATE.financialMetrics.currentDailyGmvUsd = newDailyGmv;
-          CORPORATE_STATE.financialMetrics.projectedMonthlyRunRateUsd = newDailyGmv * 30;
-        }
-        renderCorporateState();
-
-        const box = document.getElementById("dispatch-result-box");
-        box.classList.remove("hidden");
-        document.getElementById("dispatch-cycle-idx").innerText = `Cycle #${cycleNum}`;
-        document.getElementById("dispatch-summary").innerText = `Autonomous Corporate Cycle #${cycleNum} completed under directive '${text}'. All 5 executive agents executed synchronized micro-tasks.`;
-        document.getElementById("dispatch-decisions-list").innerHTML = decisions.map(d => `<div class="text-[11px] text-slate-300 font-mono">${d}</div>`).join("");
-        box.scrollIntoView({ behavior: "smooth" });
-      } finally {
-        btn.disabled = false;
-        btn.innerHTML = "<span>⚡ Dispatch to Company Agents</span>";
-      }
-    }
-
-  async function triggerExecutiveCycle() {
-    const navBtn = document.getElementById("nav-cycle-btn");
-    navBtn.disabled = true;
-    navBtn.innerText = "⏳ Executing Cycle...";
-
-    try {
-      try {
-        const res = await fetch("/api/v1/executive/cycle", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ directive: "Autonomous background optimization & $1M/day scale expansion" })
-        });
-
-        if (res.ok) {
-          const json = await res.json();
-          CORPORATE_STATE = json.state;
-          renderCorporateState();
-          alert(`✓ Autonomous Corporate Cycle #${json.cycle.cycleIndex} successfully executed across all 5 agents!`);
-          return;
-        }
-      } catch (_) {}
-
-      // Fallback
-      const cycleNum = (CORPORATE_STATE?.totalCyclesRun || 43) + 1;
-      const newDailyGmv = 38450 + Math.floor(Math.random() * 2800);
-      if (!CORPORATE_STATE) renderBootstrapState();
-      CORPORATE_STATE.totalCyclesRun = cycleNum;
-      if (CORPORATE_STATE.financialMetrics) {
-        CORPORATE_STATE.financialMetrics.currentDailyGmvUsd = newDailyGmv;
-        CORPORATE_STATE.financialMetrics.projectedMonthlyRunRateUsd = newDailyGmv * 30;
-      }
-
-      const cycleMsg = {
-        id: `cycle_${Date.now()}`,
-        fromAgent: "agent_financial_orchestrator",
-        fromName: "Midas (Financial Orchestrator)",
-        toAgent: "central_brain",
-        topic: "CYCLE_AUDIT_VERIFIED",
-        message: `Midas: Autonomous Cycle #${cycleNum} audited. Daily GMV trending at $${newDailyGmv.toLocaleString()}/day ($${((newDailyGmv * 30)/1000000).toFixed(2)}M/mo run-rate). 100% escrow settlement certified.`,
-        timestamp: new Date().toISOString()
-      };
-      CORPORATE_STATE.messageBus.unshift(cycleMsg);
-      renderCorporateState();
-      alert(`✓ Autonomous Corporate Cycle #${cycleNum} successfully executed across all 5 agents!`);
-    } finally {
-      navBtn.disabled = false;
-      navBtn.innerText = "⚡ Run Autonomous Cycle";
-    }
-  }
-
-  async function generateMemeNow() {
-    const template = document.getElementById("meme-template").value;
-    const top = document.getElementById("meme-top").value.trim();
-    const bottom = document.getElementById("meme-bottom").value.trim();
-    const btn = document.getElementById("meme-gen-btn");
-
-    btn.disabled = true;
-    btn.innerText = "🎨 Vector Engine Synthesizing SVG...";
-
-    try {
-      const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="100%" height="auto" class="rounded-xl">
-        <defs>
-          <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#070b14" />
-            <stop offset="50%" stop-color="#0f172a" />
-            <stop offset="100%" stop-color="#1e1b4b" />
-          </linearGradient>
-        </defs>
-        <rect width="800" height="800" fill="url(#bg2)" rx="24" />
-        <rect x="2" y="2" width="796" height="796" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2" rx="22" />
-        <g transform="translate(40, 40)">
-          <rect width="260" height="36" rx="18" fill="rgba(99, 102, 241, 0.2)" stroke="#6366f1" stroke-width="1.5" />
-          <text x="130" y="23" text-anchor="middle" font-size="12" font-weight="bold" fill="#818cf8" font-family="system-ui, sans-serif">⚡ SKILLBRIDGE VIRAL DISPATCH</text>
-        </g>
-        <g transform="translate(40, 110)">
-          <rect width="720" height="140" rx="16" fill="rgba(239, 68, 68, 0.1)" stroke="rgba(239, 68, 68, 0.4)" stroke-width="1.5" />
-          <circle cx="45" cy="45" r="16" fill="rgba(239, 68, 68, 0.3)" />
-          <text x="45" y="51" text-anchor="middle" font-size="16" font-weight="bold" fill="#ef4444" font-family="sans-serif">✕</text>
-          <text x="80" y="42" font-weight="800" fill="#ffffff" font-size="20" font-family="system-ui, sans-serif">TRADITIONAL CLIENT MCP:</text>
-          <text x="80" y="78" font-weight="600" fill="#cbd5e1" font-size="16" font-family="system-ui, sans-serif">${top.replace(/&/g, "&amp;").replace(/</g, "&lt;")}</text>
-        </g>
-        <g transform="translate(400, 295)">
-          <circle cx="0" cy="0" r="22" fill="#0f172a" stroke="#6366f1" stroke-width="2" />
-          <text x="0" y="6" text-anchor="middle" font-size="13" font-weight="900" fill="#ffffff" font-family="sans-serif">VS</text>
-        </g>
-        <g transform="translate(40, 345)">
-          <rect width="720" height="160" rx="16" fill="rgba(34, 197, 94, 0.1)" stroke="rgba(34, 197, 94, 0.4)" stroke-width="1.5" />
-          <circle cx="45" cy="45" r="16" fill="rgba(34, 197, 94, 0.3)" />
-          <text x="45" y="51" text-anchor="middle" font-size="16" font-weight="bold" fill="#22c55e" font-family="sans-serif">✓</text>
-          <text x="80" y="42" font-weight="800" fill="#22c55e" font-size="20" font-family="system-ui, sans-serif">THE SKILLBRIDGE PROTOCOL:</text>
-          <text x="80" y="78" font-weight="600" fill="#cbd5e1" font-size="16" font-family="system-ui, sans-serif">${bottom.replace(/&/g, "&amp;").replace(/</g, "&lt;")}</text>
-          <text x="80" y="112" font-family="monospace" font-size="14" fill="#a855f7">🛡️ Zero Host Credentials  •  ⚡ &lt;120ms Latency  •  💰 85% Split</text>
-        </g>
-        <g transform="translate(40, 730)">
-          <text x="0" y="30" font-family="monospace" font-size="13" fill="#64748b">https://skillbridge-gateway.vercel.app/  |  Autonomous AI Economy</text>
-        </g>
-      </svg>`;
-
-      const box = document.getElementById("meme-preview-box");
-      box.innerHTML = `
-        <div class="w-full max-w-sm rounded-xl overflow-hidden shadow-2xl border border-slate-800">
-          ${svg}
-        </div>
-        <div class="w-full pt-2 flex items-center justify-between text-xs">
-          <span class="text-emerald-400 font-mono text-[11px]">✓ SVG Vector Synthesized (Skill #20)</span>
-          <button onclick="copyMemeSocialCopy()" class="text-cyan-400 hover:underline text-[11px]">Copy Viral Tweet Copy</button>
-        </div>
-      `;
-      lastGeneratedMemeCopy = `When you realize the difference between running unvetted MCP scripts vs using @SkillBridge remote microVMs:\n\n❌ ${top}\n✅ ${bottom}\n\nLive demo & 85% creator pool: https://skillbridge-gateway.vercel.app/`;
-    } catch (e) {
-      alert("Meme synthesis error: " + e.message);
-    } finally {
-      btn.disabled = false;
-      btn.innerText = "🎨 Synthesize Vector Meme via Skill #20";
-    }
-  }
-
-    function copyMemeSocialCopy() {
-      if (!lastGeneratedMemeCopy) return;
-      navigator.clipboard.writeText(lastGeneratedMemeCopy);
-      alert("✓ Copied viral tweet & meme copy to clipboard!");
-    }
-
-    const EXEC_INFLUENCER_PITCHES = {
-      reviewer: "Hey! Loved your deep dive on Cursor agent workflows. We noticed everyone is running raw MCP tools locally with full bash access. SkillBridge (skillbridge-gateway.vercel.app) fixes this with isolated Firecracker microVMs and an 85% creator pool. We'd love to sponsor a video or grant your community $500 bounties for publishing skills.",
-      maintainer: "Your repo is a foundational dependency across LLM pipelines. Instead of letting users struggle with local setup and copying your code for free, publish your core capability to SkillBridge. You keep 85% of every single API call (projected $5k-$12k/mo passive revenue) with zero infrastructure management: https://skillbridge-gateway.vercel.app/marketing",
-      security: "We audited 50 community MCP servers and found alarming prompt injection vectors and plaintext credential leakage. SkillBridge enforces zero host credentials and hardware-isolated microVM sandboxing with cryptographic outcome escrow: https://skillbridge-gateway.vercel.app/docs",
-      vc: "SkillBridge is building the financial and execution clearinghouse for autonomous AI agents. Scaling from $38k/day to $1M/day and $1B unicorn ARR with 0% platform burn and 15% platform margins. Live War Room: https://skillbridge-gateway.vercel.app/executive"
-    };
-
-    function updateExecPitch() {
-      const val = document.getElementById("exec-influencer-select")?.value || "reviewer";
-      const text = EXEC_INFLUENCER_PITCHES[val] || EXEC_INFLUENCER_PITCHES.reviewer;
-      document.getElementById("exec-pitch-box").innerText = text;
-    }
-
-    function copyExecPitch() {
-      const text = document.getElementById("exec-pitch-box").innerText;
-      navigator.clipboard.writeText(text);
-      alert("✓ Copied personalized influencer pitch DM to clipboard!");
-    }
-
-    function copyExecutiveShortScript() {
-      navigator.clipboard.writeText("🚨 You are one pip install away from exposing every API key on your computer.\\n\\nEvery developer is copying random MCP servers directly to their laptops, giving Claude and Cursor full bash access.\\n\\nSkillBridge changes the game. Your agent executes tools in remote isolated microVMs with zero host credentials and 100% cryptographic escrow.\\n\\nRun 'npx @skillbridge/cli setup' in 3 seconds. Claim your share of the $10k creator pool: https://skillbridge-gateway.vercel.app/");
-      alert("✓ Copied 60-second video script to clipboard!");
-    }
-
-    function renderBootstrapState() {
-      if (!CORPORATE_STATE) {
-        CORPORATE_STATE = JSON.parse(JSON.stringify(BOOTSTRAP_STATE));
-      }
-      window.CORPORATE_STATE = CORPORATE_STATE;
-      renderCorporateState();
-    }
-
-    // Initialize
-    loadCorporateState();
-    updateExecPitch();
-  </script>
-
+</div>
+<!-- Circular Visual Gauge -->
+<div class="relative flex items-center justify-center my-space-md">
+<svg class="w-52 h-52 -rotate-90" viewbox="0 0 160 160">
+<!-- Background circle track -->
+<circle class="text-surface-container-highest" cx="80" cy="80" fill="none" r="68" stroke="currentColor" stroke-width="8"></circle>
+<!-- Active gradient progress ring -->
+<circle class="text-primary transition-all duration-1000" cx="80" cy="80" fill="none" r="68" stroke="currentColor" stroke-dasharray="427" stroke-dashoffset="1" stroke-linecap="round" stroke-width="9"></circle>
+</svg>
+<!-- Gauge Center Metrics -->
+<div class="absolute flex flex-col items-center justify-center text-center">
+<span class="text-2xl sm:text-3xl lg:text-4xl font-bold font-['Space_Grotesk'] font-bold text-on-surface tracking-tighter">99.8%</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold tracking-wider uppercase">ENTROPY LOCK</span>
+<span class="font-body-sm text-body-sm text-outline mt-0.5">Ring 0 Protected</span>
+</div>
+</div>
+<!-- Hardware Parameters List -->
+<div class="flex flex-col gap-space-xs bg-surface-container p-space-sm rounded-lg">
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Live Keys Provisioned</span>
+<span class="font-mono text-on-surface font-medium">128 AES-XTS</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Memory Egress</span>
+<span class="font-mono text-primary font-semibold">100% Blocked</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Attestation Root</span>
+<span class="font-mono text-outline text-xs">0x8e2...a5f (SNP)</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Financial Settlement & Multi-Chain Escrow Section -->
+<section class="flex flex-col gap-4 p-4 sm:p-5 rounded-xl bg-surface-container-low/80 backdrop-blur-xl shadow-xl">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest font-semibold">ESCROW CONSENSUS &amp; LIQUIDITY</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Outcome Escrow Multi-Chain Settlement</h2>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm px-space-md py-1 rounded bg-surface-container text-primary font-mono font-medium">
+            CCIP Cross-Chain Protocol Verified
+          </span>
+<span class="font-label-sm text-label-sm px-space-md py-1 rounded bg-surface-container-high text-on-surface">
+            Dispute Rate: 0.00%
+          </span>
+</div>
+</div>
+<!-- Financial Metrics Split Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Arbitrum Vault Card -->
+<div class="flex flex-col justify-between p-space-md rounded-xl bg-surface-container/70 backdrop-blur-md">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Arbitrum One Treasury</span>
+<span class="material-symbols-outlined text-primary text-base">account_balance</span>
+</div>
+<div class="my-space-sm">
+<div class="text-xl sm:text-2xl font-bold font-['Space_Grotesk'] text-on-surface font-semibold tracking-tight">$892,110<span class="text-on-surface-variant font-body-sm text-body-sm">.40</span></div>
+<p class="font-label-sm text-label-sm text-outline mt-1">Multi-sig timelock (4/6 cold key)</p>
+</div>
+<div class="flex items-center justify-between pt-space-xs text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Settlement Time</span>
+<span class="font-mono text-primary">~850ms</span>
+</div>
+</div>
+<!-- Solana Enclave Card -->
+<div class="flex flex-col justify-between p-space-md rounded-xl bg-surface-container/70 backdrop-blur-md">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Solana Enclave Vault</span>
+<span class="material-symbols-outlined text-primary text-base">bolt</span>
+</div>
+<div class="my-space-sm">
+<div class="text-xl sm:text-2xl font-bold font-['Space_Grotesk'] text-on-surface font-semibold tracking-tight">$441,080<span class="text-on-surface-variant font-body-sm text-body-sm">.00</span></div>
+<p class="font-label-sm text-label-sm text-outline mt-1">State compression zk-proof ledger</p>
+</div>
+<div class="flex items-center justify-between pt-space-xs text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Instant Finality</span>
+<span class="font-mono text-primary">400ms Sub-slot</span>
+</div>
+</div>
+<!-- Volume Peak Stats Card -->
+<div class="flex flex-col justify-between p-space-md rounded-xl bg-surface-container/70 backdrop-blur-md">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Hourly Escrow Volume Curve</span>
+<span class="material-symbols-outlined text-primary text-base">trending_up</span>
+</div>
+<div class="my-space-sm">
+<div class="text-xl sm:text-2xl font-bold font-['Space_Grotesk'] text-on-surface font-semibold tracking-tight">$24,912 <span class="text-on-surface-variant font-body-sm text-body-sm">/ peak hr</span></div>
+<p class="font-label-sm text-label-sm text-primary mt-1">+18.4% agent throughput volume</p>
+</div>
+<div class="flex items-center justify-between pt-space-xs text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Zero Chargeback</span>
+<span class="font-mono text-primary">Hardware Enforced</span>
+</div>
+</div>
+</div>
+<!-- Settlement Chart Visualization Container -->
+<div class="w-full bg-surface-container-lowest/80 p-space-md rounded-xl flex flex-col gap-space-sm">
+<div class="flex items-center justify-between font-label-sm text-label-sm text-outline">
+<span>24-Hour Settlement Velocity &amp; Escrow Distribution</span>
+<span>Peak: $24,912 / hr • Median: $16,420 / hr</span>
+</div>
+<!-- SVG Interactive Area Chart -->
+<div class="w-full h-36">
+<svg class="w-full h-full text-primary" preserveaspectratio="none" viewbox="0 0 1000 120">
+<defs>
+<lineargradient id="chartGrad" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#ff6b00" stop-opacity="0.35"></stop>
+<stop offset="100%" stop-color="#ff6b00" stop-opacity="0.0"></stop>
+</lineargradient>
+</defs>
+<path d="M 0,110 Q 70,80 150,90 T 300,50 T 450,75 T 600,30 T 750,55 T 900,20 T 1000,45 L 1000,120 L 0,120 Z" fill="url(#chartGrad)"></path>
+<path d="M 0,110 Q 70,80 150,90 T 300,50 T 450,75 T 600,30 T 750,55 T 900,20 T 1000,45" fill="none" stroke="#ffb693" stroke-width="2.5"></path>
+<!-- Data Point Markers -->
+<circle class="animate-pulse" cx="600" cy="30" fill="#ff6b00" r="4"></circle>
+<circle cx="900" cy="20" fill="#ff6b00" r="4"></circle>
+</svg>
+</div>
+<div class="flex items-center justify-between text-xs font-mono text-outline pt-space-xs">
+<span>00:00 UTC</span>
+<span>04:00</span>
+<span>08:00</span>
+<span>12:00</span>
+<span>16:00 (PEAK SWARM)</span>
+<span>20:00</span>
+<span>CURRENT</span>
+</div>
+</div>
+</section>
+<!-- Visual Rich Editorial Gallery / Enclave Pods Showcase -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<div class="relative overflow-hidden rounded-xl h-48 bg-surface-container group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-60" data-alt="High-tech server room with AMD confidential computing racks glowing with warm amber LED strips and ambient dark glass reflections in luxury obsidian server farm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhcNdZ23EilH8uzlVIk-LsTjsOr8RhFhXKdUoAjdJ_kuq3FqPfnvbimPejLWahWyNWgMlzuMsCg52rTU3QKu1KlGHxlsPlfPcCNhFCJZfW1fkSC-bOuUfM608iLiuDJzgaH9iXNxFUrtZ-y8tJ8Jpw-xUCxVOfd8AErn9U6NrMx7A6QVeVo2Nk91aEWgjRBDOfMYMeb8cHY1M-5tmiAWd7hSNKzE7ikQAUsc1oqgVqlKQuQls5_cxNxw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/40 to-transparent p-space-md flex flex-col justify-end">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider font-semibold">Tier-4 MicroVM Enclaves</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-medium">Equinix FR2 Frankfurt</span>
+</div>
+</div>
+<div class="relative overflow-hidden rounded-xl h-48 bg-surface-container group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-60" data-alt="Silicon processor die close-up with luminous amber circuit traces and micro-architecture glowing under dark obsidian lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5esdsVQCh1j5qL4mbAAATlEYlTPkiQ3Hv2iVVpbyNwL_vreQjseVKqyt5ywqcgr1TMcHPAxu4gmta8XcvwKSe1DTIr8jS_hWnrdFxNJEVHln11jXU58e9fZRifZTncYRBN9pOtlElaZSB1EIu1w3B_sbZH_f7TDDptSOFMyKgzY6i9UwAfkEVoN-FK7kO8GtvBLAhh1Idq_VF8R3Xj6mPMhk7nNPFLEtKPBdxNIaW4kQIK89znWlAcA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/40 to-transparent p-space-md flex flex-col justify-end">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider font-semibold">Silicon Level Isolation</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-medium">AMD SEV-SNP Fabric</span>
+</div>
+</div>
+<div class="relative overflow-hidden rounded-xl h-48 bg-surface-container group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-60" data-alt="Futuristic holographic network visualization with golden nodes connected by laser optical lines in dark high-end command center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8hDW5k_Ig9mTlNg1zwvVlJCWAleaIzoWEDClhUoCZhoDLzbp4g6S0ReUGXKDt4rXfPZva6bd0mfTf_smx1sX97CpNxdj4vFnWl8KZKYjQXgvZoyVTJL1kC0PMXYgdqxEB2DW14Vxuh8z5Ubsq1N0o_4O-0VuZvV-UgCULJS8IdteHVyIVmBLJU-nVzGPxUXeapjDSh7vWXdgKo_ynklNijLjNs6MVjMI9e6Lj1m3RKaiO2t27JpwKLA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/40 to-transparent p-space-md flex flex-col justify-end">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider font-semibold">Consensus Proof Ledger</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-medium">Sub-Second Finality</span>
+</div>
+</div>
+</section>
+<!-- Luxury Editorial Callout Banner -->
+<section class="relative overflow-hidden p-space-xl rounded-xl bg-gradient-to-r from-surface-container-low via-surface-container to-surface-container-low shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-4">
+<div class="flex flex-col gap-space-xs max-w-2xl text-center lg:text-left">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest font-semibold">CRYPTO-ECONOMIC IMMUNITY</span>
+<h2 class="text-xl sm:text-2xl font-bold font-['Space_Grotesk'] text-on-surface font-semibold tracking-tight">
+          Zero Data Retention. 100% Cryptographic Certainty.
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Every autonomous interaction runs within isolated zero-knowledge microVM envelopes. Your prompts, weights, and results never hit non-volatile storage.
+        </p>
+</div>
+<div class="flex flex-wrap items-center justify-center gap-space-md shrink-0">
+<a class="px-space-lg py-3 rounded-lg bg-surface-container-highest hover:bg-surface-bright text-on-surface font-label-lg text-label-lg transition-all active:scale-95 shadow-md flex items-center gap-space-xs" href="#">
+<span class="material-symbols-outlined text-sm">description</span>
+<span>Read Technical Spec v0.2.0</span>
+</a>
+<a class="px-space-lg py-3 rounded-lg bg-primary-container text-on-primary-container hover:opacity-90 font-label-lg text-label-lg font-semibold transition-all active:scale-95 shadow-lg shadow-primary-container/30 flex items-center gap-space-xs" href="#">
+<span>Launch Agent Playground</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</section>
+</div>
+</div>
+<!-- Interactive Telemetry Simulation Vanilla Script -->
 <script>
-  function switchAdminSection(section) {
-    const btnW = document.getElementById('btn-admin-warroom');
-    const btnM = document.getElementById('btn-admin-marketing');
-    const btnF = document.getElementById('btn-admin-fleet');
-    if (btnW) btnW.className = section === 'warroom' ? 'px-3 py-1.5 rounded-lg bg-rose-600 text-white shadow' : 'px-3 py-1.5 rounded-lg text-[#a0a2a4] hover:text-white';
-    if (btnM) btnM.className = section === 'marketing' ? 'px-3 py-1.5 rounded-lg bg-rose-600 text-white shadow' : 'px-3 py-1.5 rounded-lg text-[#a0a2a4] hover:text-white';
-    if (btnF) btnF.className = section === 'fleet' ? 'px-3 py-1.5 rounded-lg bg-rose-600 text-white shadow' : 'px-3 py-1.5 rounded-lg text-[#a0a2a4] hover:text-white';
-    
-    // Smooth scroll to target
-    if (section === 'marketing') {
-      const el = document.getElementById('meme-img')?.closest('.glass-panel');
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    } else if (section === 'fleet') {
-      const el = document.getElementById('fleet-nodes-container') || document.querySelector('.glass-panel');
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  }
-</script>
+  (function() {
+    const btnSimulate = document.getElementById('btn-simulate');
+    const btnExport = document.getElementById('btn-export');
+    const btnFreeze = document.getElementById('btn-freeze');
+    const rowsContainer = document.getElementById('stream-rows');
 
-</body>
-</html>
+    if (btnSimulate) {
+      btnSimulate.addEventListener('click', function() {
+        const originalText = this.innerHTML;
+        this.innerHTML = '<span class="material-symbols-outlined text-sm animate-spin">sync</span> Running Edge Attack Simulation...';
+        this.classList.add('opacity-75');
+
+        setTimeout(() => {
+          this.innerHTML = '<span class="material-symbols-outlined text-primary text-sm">verified_user</span> Attack Repelled (100% SNP Block)';
+          setTimeout(() => {
+            this.innerHTML = originalText;
+            this.classList.remove('opacity-75');
+          }, 2400);
+        }, 1200);
+      });
+    }
+
+    if (btnExport) {
+      btnExport.addEventListener('click', function() {
+        const originalText = this.innerHTML;
+        this.innerHTML = '<span class="material-symbols-outlined text-sm animate-bounce">download</span> Generating ZK Bundle...';
+        
+        setTimeout(() => {
+          this.innerHTML = '<span class="material-symbols-outlined text-primary text-sm">done_all</span> SHA-256 Receipts Downloaded';
+          setTimeout(() => {
+            this.innerHTML = originalText;
+          }, 2000);
+        }, 1000);
+      });
+    }
+
+    if (btnFreeze) {
+      btnFreeze.addEventListener('click', function() {
+        const confirmed = confirm('CRITICAL WARNING: This action will invoke the hardware emergency killswitch and purge all volatile ephemeral microVM enclaves across all 14 regions. Continue?');
+        if (confirmed) {
+          alert('EMERGENCY KILLSWITCH ENGAGED: Enclaves zeroized. All DRAM scrubbed. Gateway is now locked under AMD SEV-SNP root consensus.');
+        }
+      });
+    }
+
+    // Dynamic row addition to mock real-time telemetry stream every 7 seconds
+    if (rowsContainer) {
+      const mockAgents = [
+        { name: 'QuantumArb-Swarm', lat: '8.4ms', escrow: '$54,200.00' },
+        { name: 'DeFiSentinel-Agent', lat: '13.1ms', escrow: '$19,890.00' },
+        { name: 'McpKernelExecutor-09', lat: '6.9ms', escrow: '$67,400.00' }
+      ];
+
+      let idx = 0;
+      setInterval(() => {
+        const current = mockAgents[idx % mockAgents.length];
+        idx++;
+        const now = new Date();
+        const timeStr = now.toTimeString().split(' ')[0] + '.' + String(now.getMilliseconds()).padStart(3, '0');
+        const randomHash = '0x' + Math.random().toString(16).substring(2, 6) + '...' + Math.random().toString(16).substring(2, 6);
+
+        const newRow = document.createElement('tr');
+        newRow.className = 'hover:bg-surface-container transition-colors animate-pulse';
+        newRow.innerHTML = `
+          <td class="p-space-sm font-mono text-outline whitespace-nowrap">${timeStr}</td>
+          <td class="p-space-sm">
+            <div class="flex items-center gap-space-xs">
+              <span class="material-symbols-outlined text-primary text-base">smart_toy</span>
+              <span class="font-medium text-on-surface">${current.name}</span>
+            </div>
+          </td>
+          <td class="p-space-sm">
+            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm font-semibold">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span> SEV-SNP Valid
+            </span>
+          </td>
+          <td class="p-space-sm text-right font-mono text-on-surface">${current.lat}</td>
+          <td class="p-space-sm text-right font-mono text-primary font-medium">${current.escrow}</td>
+          <td class="p-space-sm font-mono text-outline text-xs">${randomHash}</td>
+        `;
+
+        if (rowsContainer.firstChild) {
+          rowsContainer.insertBefore(newRow, rowsContainer.firstChild);
+          if (rowsContainer.children.length > 7) {
+            rowsContainer.removeChild(rowsContainer.lastChild);
+          }
+        }
+      }, 7000);
+    }
+  })();
+</script></main>
+<!-- Universal Stitch Institutional Footer -->
+<footer class="bg-[#0b0c0d] border-t border-white/10 py-10 px-4 sm:px-6 lg:px-8 mt-auto">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-8 mb-8">
+    <div class="md:col-span-2 space-y-3">
+      <div class="flex items-center gap-2">
+        <img alt="SkillBridge Logo" class="h-6 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UaICitA37g_MPC4BeiTnjynEuRZbSpbHZd30T-MMDasK2U9N4QdYuCZ9qMQQbLF3f7rfl6F6CEix6NSdoym5nuwqMNVGuNwa9UbzW31u5ySY79WGQP06iJylJLZN1gkFPoIgV6Rmrv06vGxtJrxyhPy6LTsP-RDMNsd9e0UAlEYBk-dW7SHsCEZ4s_IBDfFyy6vHUbxkFK3iHSxD0D56CpA4frLDdn9_VI1NXXTd9m7JKO8lc1AH9whED4"/>
+        <span class="text-base text-white font-bold font-['Space_Grotesk']">SkillBridge <span class="text-[#ff6b00]">GATEWAY</span></span>
+      </div>
+      <p class="text-xs text-[#8e9092] max-w-sm leading-relaxed">
+        High-performance, hardware-isolated AI agent microVM execution fabric powered by AMD SEV-SNP attestation and MCP native integration.
+      </p>
+      <div class="flex items-center gap-2 text-[10px] font-mono text-[#8e9092]">
+        <span class="px-2 py-0.5 rounded bg-[#181a1b] border border-white/10">MCP V0.2.0 SPEC</span>
+        <span class="px-2 py-0.5 rounded bg-[#181a1b] border border-white/10">AMD SEV-SNP ATTESTED</span>
+      </div>
+    </div>
+    
+    <div>
+      <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-3 font-mono">Tools & Runtime</h4>
+      <ul class="space-y-2 text-xs text-[#8e9092]">
+        <li><a href="/" class="hover:text-[#ff6b00] transition">Tool Store</a></li>
+        <li><a href="/playground" class="hover:text-[#ff6b00] transition">MicroVM Browser Testing</a></li>
+        <li><a href="/security" class="hover:text-[#ff6b00] transition">Zero-Leak Proofs</a></li>
+        <li><a href="/publisher" class="hover:text-[#ff6b00] transition">Creator Escrow Ledger</a></li>
+      </ul>
+    </div>
+    
+    <div>
+      <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-3 font-mono">Publishers</h4>
+      <ul class="space-y-2 text-xs text-[#8e9092]">
+        <li><a href="/publisher" class="hover:text-[#ff6b00] transition">Publish Your Skill</a></li>
+        <li><a href="/docs" class="hover:text-[#ff6b00] transition">Publishing CLI</a></li>
+        <li><a href="/publisher" class="hover:text-[#ff6b00] transition">Revenue Splitting (85%)</a></li>
+        <li><a href="/security" class="hover:text-[#ff6b00] transition">Contract Audits</a></li>
+      </ul>
+    </div>
+    
+    <div>
+      <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-3 font-mono">Developer Resources</h4>
+      <ul class="space-y-2 text-xs text-[#8e9092]">
+        <li><a href="/docs" class="hover:text-[#ff6b00] transition">1-Click MCP Setup</a></li>
+        <li><a href="/support" class="hover:text-[#ff6b00] transition">24/7 AI Support Desk</a></li>
+        <li><a href="/security" class="hover:text-[#ff6b00] transition">Hardware Attestation</a></li>
+        <li><a href="/admin" class="hover:text-[#ff6b00] transition text-[#8e9092]/60 hover:text-white font-mono">Admin Portal &rarr;</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="max-w-7xl mx-auto pt-5 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#8e9092]">
+    <span>&copy; 2026 SkillBridge Technologies Inc. All rights reserved. Production Genesis Node #0412</span>
+    <div class="flex items-center space-x-3 mt-2 sm:mt-0">
+      <span>System Status: <strong class="text-emerald-400">99.992%</strong></span>
+      <span>&bull;</span>
+      <span>Confidential Computing</span>
+      <span>&bull;</span>
+      <a href="/admin" class="hover:text-[#ff6b00] text-[10px] uppercase font-mono tracking-wider">Admin Console</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating Quick Support Pill -->
+<div id="floating-support-btn-container" class="fixed bottom-6 right-6 z-50">
+  <a href="/support" class="flex items-center space-x-2.5 px-4 py-2.5 rounded-full bg-[#ff6b00] hover:bg-[#ff8533] text-white text-xs font-bold shadow-xl shadow-[#ff6b00]/30 border border-white/20 transition-all transform hover:-translate-y-0.5 group">
+    <span class="relative flex h-2 w-2">
+      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+      <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+    </span>
+    <span class="material-symbols-outlined text-sm">support_agent</span>
+    <span>Report Issue / Ask AI Support</span>
+  </a>
+</div>
+
+</body></html>
