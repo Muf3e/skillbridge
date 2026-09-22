@@ -1,3 +1,4 @@
+import "dotenv/config";
 import http from "http";
 import path from "path";
 import fs from "fs";
@@ -6,6 +7,7 @@ import { ALL_SEED_SKILLS } from "./seedSkills";
 import { HardenedSandboxEngine } from "./sandboxEngine";
 import { SkillBridgeSupportAgent } from "./supportAgent";
 import { SkillBridgeExecutiveBrain } from "./executiveBrain";
+import { PaymentAdapter } from "./paymentAdapter";
 import { ExecutionRequest, ExecutionResult, CreateSupportCaseDTO, ReplySupportCaseDTO } from "@skillbridge/shared-types";
 
 function parseJsonBody(req: any): Promise<any> {
@@ -53,6 +55,7 @@ export class GatewayServer {
   private sandbox: HardenedSandboxEngine;
   public supportAgent: SkillBridgeSupportAgent;
   public executiveBrain: SkillBridgeExecutiveBrain;
+  public paymentAdapter: PaymentAdapter;
   private port: number;
 
   constructor(port = 8787) {
@@ -61,6 +64,7 @@ export class GatewayServer {
     this.sandbox = new HardenedSandboxEngine();
     this.supportAgent = new SkillBridgeSupportAgent(this.registry);
     this.executiveBrain = new SkillBridgeExecutiveBrain(this.registry);
+    this.paymentAdapter = new PaymentAdapter();
     this.init();
   }
 
@@ -374,6 +378,42 @@ export class GatewayServer {
         res.setHeader("Content-Type", "application/json");
         if (res.writeHead) res.writeHead(500); else res.statusCode = 500;
         res.end(JSON.stringify({ error: "Directive dispatch failed", details: err.message }));
+      }
+      return;
+    }
+
+    // 9e. Billing: Gateway Payment Status
+    if (method === "GET" && (url === "/api/v1/billing/status" || url === "/api/v1/billing/status/")) {
+      res.setHeader("Content-Type", "application/json");
+      if (res.writeHead) res.writeHead(200); else res.statusCode = 200;
+      res.end(JSON.stringify({ success: true, ...this.paymentAdapter.getStatus() }));
+      return;
+    }
+
+    // 9f. Billing: Create Top-Up / Skill Escrow Checkout Session
+    if (method === "POST" && (url === "/api/v1/billing/checkout" || url === "/api/v1/billing/checkout/")) {
+      try {
+        const body = await parseJsonBody(req);
+        const result = await this.paymentAdapter.createTopUpOrder({
+          amountUsd: Number(body.amountUsd) || 50,
+          currency: body.currency || "usd",
+          gateway: "stripe",
+          buyerId: body.buyerId || "usr_demo_123",
+          successUrl: body.successUrl,
+          cancelUrl: body.cancelUrl
+        });
+
+        res.setHeader("Content-Type", "application/json");
+        if (result.success) {
+          if (res.writeHead) res.writeHead(200); else res.statusCode = 200;
+        } else {
+          if (res.writeHead) res.writeHead(400); else res.statusCode = 400;
+        }
+        res.end(JSON.stringify(result));
+      } catch (err: any) {
+        res.setHeader("Content-Type", "application/json");
+        if (res.writeHead) res.writeHead(500); else res.statusCode = 500;
+        res.end(JSON.stringify({ error: "Checkout session creation failed", details: err.message }));
       }
       return;
     }
