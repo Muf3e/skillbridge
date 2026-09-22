@@ -1,0 +1,22 @@
+{
+  "twitter": [
+    {
+      "id": "tw_launch_01",
+      "title": "Problem with local MCP tools",
+      "text": "Every AI engineer running MCP tools in Claude Desktop & Cursor has the same problem:\n\nIf you ship a local tool, users inspect your prompt, clone your code, and bypass payment.\n\nWe built SkillBridge: https://skillbridge-gateway.vercel.app/\nHardware-isolated AMD SEV-SNP microVMs.\nYour IP never leaks.\nCreators keep 85% of execution fees.\n\nRun in terminal:\nnpx @skillbridge/cli setup"
+    },
+    {
+      "id": "tw_bounty_02",
+      "title": "$10k Creator Launch Pool",
+      "text": "Announcing the $10,000 USD SkillBridge Creator Launch Pool 🚀\n\nPublish an agent skill this month (Security, SQL, Web3, DevOps, BioNLP) and earn guaranteed $500 milestone bonuses + 85% transaction splits.\n\nTry live in browser: https://skillbridge-gateway.vercel.app/playground\nDocs: https://skillbridge-gateway.vercel.app/docs"
+    }
+  ],
+  "reddit": [
+    {
+      "id": "rd_mcp_01",
+      "subreddit": "r/ClaudeAI",
+      "title": "I built a zero-prompt-leak remote execution gateway for monetized MCP skills (Claude Desktop + Cursor)",
+      "content": "Hey everyone,\n\nOver the past few months building agent workflows, one recurring hurdle has been tool distribution. If you want to share or monetize an advanced prompt or script (e.g. SAST vulnerability scanning, SQL query optimization, gas auditing), distributing raw scripts locally means prompt piracy and zero IP protection.\n\nWe built SkillBridge: https://skillbridge-gateway.vercel.app/\n\nHow it works:\n- External tool calls route through an authenticated remote gateway (v0.2.0 MCP spec).\n- Runs in an AMD SEV-SNP attested micro-sandbox.\n- The user's IDE gets clean outputs in <150ms.\n- Creator keeps 85% of per-run micropayments with an outcome-guaranteed escrow.\n\nLive Web: https://skillbridge-gateway.vercel.app/\nDeveloper Guide: https://skillbridge-gateway.vercel.app/docs\n\nWould love honest feedback from other Claude and Cursor developers!"
+    }
+  ]
+}
