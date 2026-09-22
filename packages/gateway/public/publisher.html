@@ -1065,7 +1065,7 @@ async function executeStripeCheckout() {
     if (data.checkoutUrl) {
       window.location.href = data.checkoutUrl;
     } else {
-      alert('Stripe Gateway: ' + (data.error || 'Checkout initialized for $' + selectedTopUpAmountUsd + '.'));
+      alert(data.message || data.error || ('Checkout initialized for $' + selectedTopUpAmountUsd + '.'));
     }
   } catch(e) {
     alert('Connecting to payment processor for $' + selectedTopUpAmountUsd + ' USD...');

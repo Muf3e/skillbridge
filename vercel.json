@@ -6,6 +6,14 @@
       "destination": "/index.html"
     },
     {
+      "source": "/api/v1/billing/checkout",
+      "destination": "/api/billing/checkout.js"
+    },
+    {
+      "source": "/api/v1/billing/status",
+      "destination": "/api/billing/status.js"
+    },
+    {
       "source": "/compare/capafy",
       "destination": "/compare-capafy.html"
     },
