@@ -888,7 +888,7 @@ function selectTopUpAmount(amount) {
     }
   });
   const label = document.getElementById('modal-checkout-label');
-  if (label) label.innerText = 'Pay </html> + amount.toFixed(2) + ' via Stripe Checkout';
+  if (label) label.innerText = 'Pay $' + amount.toFixed(2) + ' via Stripe Checkout';
 }
 
 async function executeStripeCheckout() {
@@ -908,10 +908,10 @@ async function executeStripeCheckout() {
     if (data.checkoutUrl) {
       window.location.href = data.checkoutUrl;
     } else {
-      alert('Stripe Gateway: ' + (data.error || 'Checkout initialized for </html> + selectedTopUpAmountUsd + '.'));
+      alert('Stripe Gateway: ' + (data.error || 'Checkout initialized for $' + selectedTopUpAmountUsd + '.'));
     }
   } catch(e) {
-    alert('Connecting to payment processor for </html> + selectedTopUpAmountUsd + ' USD...');
+    alert('Connecting to payment processor for $' + selectedTopUpAmountUsd + ' USD...');
   } finally {
     if (label) label.innerText = orig;
     if (btn) btn.disabled = false;

@@ -353,11 +353,11 @@ function getMarketplaceInteractivityScript() {
 function replaceHeaderAndFooter(rawHtml, activeRoute) {
   let html = rawHtml;
   // Replace header
-  html = html.replace(/<header[\s\S]*?<\/header>/, getUniversalHeader(activeRoute));
+  html = html.replace(/<header[\s\S]*?<\/header>/, () => getUniversalHeader(activeRoute));
   // Replace footer
-  html = html.replace(/<footer[\s\S]*?<\/footer>/, getUniversalFooter());
+  html = html.replace(/<footer[\s\S]*?<\/footer>/, () => getUniversalFooter());
   // Inject floating support button & top-up modal before </body>
-  html = html.replace(/<\/body>/, getFloatingSupportButton() + getUniversalTopUpModal() + (activeRoute === "marketplace" ? getMarketplaceInteractivityScript() : "") + "\n</body>");
+  html = html.replace(/<\/body>/, () => getFloatingSupportButton() + getUniversalTopUpModal() + (activeRoute === "marketplace" ? getMarketplaceInteractivityScript() : "") + "\n</body>");
 
   // Wire Add $50 Pool buttons to modal
   html = html.replace(/>Add \$50 Pool<\/a>/g, ' href="javascript:void(0)" onclick="openTopUpModal(50)">Add $50 Pool</a>');
