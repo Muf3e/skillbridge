@@ -1,4 +1,4 @@
-import "dotenv/config";
+try { require("dotenv").config(); } catch (_) {}
 import https from "https";
 import http from "http";
 import crypto from "crypto";

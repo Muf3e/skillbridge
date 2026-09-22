@@ -1,4 +1,4 @@
-import "dotenv/config";
+try { require("dotenv").config(); } catch (_) {}
 import http from "http";
 import path from "path";
 import fs from "fs";
